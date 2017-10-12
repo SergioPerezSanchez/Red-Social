@@ -22,5 +22,15 @@
 			<attribute name="org.eclipse.jst.component.dependency" value="/WEB-INF/lib"/>
 		</attributes>
 	</classpathentry>
+	<classpathentry kind="lib" path="lib/cobertura-2.1.1.jar"/>
+	<classpathentry kind="lib" path="lib/cucumber-core-1.1.2.jar"/>
+	<classpathentry kind="lib" path="lib/cucumber-java-1.1.2.jar"/>
+	<classpathentry kind="lib" path="lib/cucumber-junit-1.1.2.jar"/>
+	<classpathentry kind="lib" path="lib/cucumber-jvm-deps-1.0.3.jar"/>
+	<classpathentry kind="lib" path="lib/cucumber-reporting-0.1.0.jar"/>
+	<classpathentry kind="lib" path="lib/gherkin-2.12.1.jar"/>
+	<classpathentry kind="lib" path="lib/junit-4.11.jar"/>
+	<classpathentry kind="lib" path="lib/mockito-all-2.0.2-beta.jar"/>
+	<classpathentry kind="lib" path="lib/selenium-server-standalone-3.0.0-beta4.jar"/>
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>
