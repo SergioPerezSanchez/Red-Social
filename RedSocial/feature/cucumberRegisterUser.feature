@@ -11,6 +11,6 @@ When No Cumple los Requisitos
 Then Muestra Mensaje de Error
 
 Scenario: Requisitos de Contraseña
-Given Un usuario se registra en el sistema
+Given Un usuario se va a registrar en el sistema
 When No Cumple los Requisitos de la contraseña
 Then Muestra Mensaje de Error de la contraseña
