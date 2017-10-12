@@ -1,28 +1,38 @@
 package tests;
 
-import cucumber.annotation.en.Given;
-import cucumber.annotation.en.Then;
-import cucumber.annotation.en.When;
+import cucumber.api.java.en.Given;
+import cucumber.api.java.en.Then;
+import cucumber.api.java.en.When;
 import cucumber.api.PendingException;
+import modelo.DAOPersona;
+import modelo.Persona;
 
 public class RegisterTests {
+	Persona p;
+	DAOPersona dao;
+	
 	//SCENARIO: REGISTRAR A UN USUARIO
+	
 	@Given("^Un usuario se registra en el sistema$")
 	public void Un_usuario_se_registra_en_el_sistema() throws Throwable {
-	    // Express the Regexp above with the code you wish you had
-	    throw new PendingException();
+		dao = new DAOPersona();
+	    p=new Persona("Carlos", "Delgado", "carlitos93", "carlitos@mail.com", "a1Zs7s2DS", "Calle Jane Doe", "0", "photo");
+	    assert(true);
 	}
 
 	@When("^Cumple los requisitos$")
 	public void Cumple_los_requisitos() throws Throwable {
-	    // Express the Regexp above with the code you wish you had
-	    throw new PendingException();
+		if(p.requisitosPassword()&&(!(dao.existeEmail(p.getEmail())))&&(!(dao.existeUsername(p.getUsername())))) {
+			dao.crearPersona(p);
+		    assert(true);
+		}else {
+			assert(false);
+		}
 	}
 
 	@Then("^Usuario registrado$")
 	public void Usuario_registrado() throws Throwable {
-	    // Express the Regexp above with the code you wish you had
-	    throw new PendingException();
+		assert(true);
 	}
 	
 	//SCENARIO: EL CORREO YA EXISTE
