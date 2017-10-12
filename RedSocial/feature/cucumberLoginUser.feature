@@ -13,4 +13,4 @@ Then Mostrara mensaje de error
 Scenario: Password incorrecto
 Given El usuario accede al sistema
 When No coincide la password del usuario
-Then Mostrará mensaje de error
+Then Mostrara mensaje de error
