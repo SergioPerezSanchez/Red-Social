@@ -6,8 +6,8 @@ public class DAOPersona {
 		db = new DataBase();
 	}
 	
-	public void crearPersona(Persona p) {
-		db.create(p);
+	public boolean crearPersona(Persona p) {
+		return db.create(p);
 	}
 	
 	public boolean existeEmail(String email) {

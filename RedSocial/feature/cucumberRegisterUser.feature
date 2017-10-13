@@ -10,7 +10,7 @@ Given Un usuario ya esta registrado en el sistema
 When No Cumple los Requisitos
 Then Muestra Mensaje de Error
 
-Scenario: Requisitos de Contraseña
+Scenario: Requisitos de Clave
 Given Un usuario se va a registrar en el sistema
-When No Cumple los Requisitos de la contraseña
-Then Muestra Mensaje de Error de la contraseña
+When No Cumple los Requisitos de la clave
+Then Muestra Mensaje de Error de la clave

@@ -30,7 +30,9 @@ public class Persona {
 	
 	public boolean requisitosPassword() {
 		boolean size=false, numeros=false, minuscula=false, mayuscula=false;
-		if(getPassword().length()>=8)size=true;
+		if(this.password.length()>=8) {
+			size=true;
+		}
 		for(int j=0; j<getPassword().length(); j++) {
 			if(esNumero(getPassword().charAt(j)))numeros=true;
 		}
