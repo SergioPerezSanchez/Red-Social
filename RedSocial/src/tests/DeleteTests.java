@@ -3,29 +3,27 @@ package tests;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
+import modelo.DAOPersona;
+import modelo.Persona;
 
 public class DeleteTests {
-	
+	Persona p;
+	DAOPersona dao;
 	@Given("^El usuario se encuentra dentro del sistema$")
 	public void El_usuario_se_encuentra_dentro_del_sistema() throws Throwable {
-	    // Express the Regexp above with the code you wish you had
-	    //throw new PendingException();
-		assert(true);
+	    p=new Persona("Carlos", "Delgado", "carlitos93", "carlitos@mail.com", "a1Zs7s2DS", "Calle Jane Doe", "0", "photo");
+	    dao = new DAOPersona();
+	    assert(dao.login(p));
 	}
 
 	@When("^Quiere eliminar la cuenta$")
 	public void Quiere_eliminar_la_cuenta() throws Throwable {
-	    // Express the Regexp above with the code you wish you had
-	    //throw new PendingException();
-		assert(true);
+		assert(dao.delete(p));
 	}
 
 	@Then("^Cuenta eliminada$")
 	public void Cuenta_eliminada() throws Throwable {
-	    // Express the Regexp above with the code you wish you had
-	    //throw new PendingException();
-		assert(true);
+		assert(!(dao.login(p)));
 	}
-
 	
 }

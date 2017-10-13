@@ -17,4 +17,12 @@ public class DAOPersona {
 	public boolean existeUsername(String username) {
 		return db.existeUsername(username);
 	}
+	
+	public boolean login(Persona p) {
+		return db.login(p);
+	}
+	
+	public boolean delete(Persona p) {
+		return db.delete(p);
+	}
 }

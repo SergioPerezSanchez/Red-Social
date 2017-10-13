@@ -13,7 +13,7 @@ public class DataBase {
 	MongoClient client;
 	MongoDatabase db;
 	MongoCollection<Document> dbUsuarios;
-	Document doc;
+	Document doc, aux;
 	MongoCursor<Document>elementos;
 	
 	public DataBase() {
@@ -21,7 +21,7 @@ public class DataBase {
         client = new MongoClient(uri);
 	}
 	
-	public boolean create(Persona p) {
+	protected boolean create(Persona p) {
 		try {
 			db = client.getDatabase(uri.getDatabase());
 			dbUsuarios = db.getCollection("usuarios");
@@ -41,7 +41,7 @@ public class DataBase {
 		}
 	}
 	
-	public boolean existeEmail(String email) {
+	protected boolean existeEmail(String email) {
 		boolean existe = false;
 		db = client.getDatabase(uri.getDatabase());
 		dbUsuarios = db.getCollection("usuarios");
@@ -53,7 +53,7 @@ public class DataBase {
 		return existe;
 	}
 	
-	public boolean existeUsername(String username) {
+	protected boolean existeUsername(String username) {
 		boolean existe = false;
 		db = client.getDatabase(uri.getDatabase());
 		dbUsuarios = db.getCollection("usuarios");
@@ -63,5 +63,44 @@ public class DataBase {
 			if(doc.get("username").toString().equalsIgnoreCase(username))existe=true;
 		}
 		return existe;
+	}
+	
+	protected boolean login(Persona p) {
+		boolean logueado = false;
+		db = client.getDatabase(uri.getDatabase());
+		dbUsuarios = db.getCollection("usuarios");
+		elementos = dbUsuarios.find().iterator();
+		while(elementos.hasNext()) {
+			doc=elementos.next();
+			if((doc.get("email").toString().equalsIgnoreCase(p.getEmail()))&&
+			   (doc.get("clave").toString().equalsIgnoreCase(p.getPassword()))) {
+				logueado=true;
+			}
+		}
+		return logueado;
+	}
+	
+	protected boolean delete(Persona p) {
+		boolean borrado= false;
+		db = client.getDatabase(uri.getDatabase());
+		dbUsuarios = db.getCollection("usuarios");
+		elementos = dbUsuarios.find().iterator();
+		doc=new Document("email",p.getEmail())
+				.append("clave", p.getPassword())
+				.append("username", p.getUsername())
+				.append("nombre", p.getNombre())
+				.append("apellidos", p.getApellidos())
+				.append("direccion", p.getDireccion())
+				.append("telefono", p.getTelefono())
+				.append("foto", p.getFoto());
+		while(elementos.hasNext()) {
+			aux=elementos.next();
+			if((aux.get("email").toString().equalsIgnoreCase(p.getEmail()))&&
+			   (aux.get("clave").toString().equalsIgnoreCase(p.getPassword()))) {
+				dbUsuarios.deleteOne(doc);
+				borrado=true;
+			}
+		}
+		return borrado;
 	}
 }
