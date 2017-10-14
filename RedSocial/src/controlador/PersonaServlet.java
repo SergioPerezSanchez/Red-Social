@@ -6,7 +6,7 @@ import modelo.Persona;
 @Controller
 public class PersonaServlet {
 	
-	String sourceNombre = "X",
+	String sourceNombre = "X", // Falta añadir el nombre del recurso cuando exista.
 	sourceApellidos = "X",
 	sourceUsername = "X",
 	sourceEmail = "X",
