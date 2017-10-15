@@ -22,9 +22,9 @@ public class PersonaServlet {
 	DAOPersona daoPersona;
 	
 	@RequestMapping("crear.do")
-	public void crear(HttpServletResponse response) throws Exception {
+	public void crear(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		
-		crearPersona();
+		crearPersona(request, persona);
 
 		if( !daoPersona.existeEmail(persona.getEmail) 
 			&& !daoPersona.existeUsername(persona.getUsername) ){
@@ -34,9 +34,9 @@ public class PersonaServlet {
 	}
 	
 	@RequestMapping("borrar.do")
-	public void borrar(HttpServletResponse response) throws Exception {
+	public void borrar(HttpServletRequest request, HttpServletResponse response) throws Exception {
 
-		crearPersona();
+		crearPersona(request, persona);
 
 		if( daoPersona.existeEmail(persona.getEmail) 
 			&& daoPersona.existeUsername(persona.getUsername) ){
@@ -45,17 +45,28 @@ public class PersonaServlet {
 		
 	}
 	
-	@RequestMapping("login.do")
-	public void login(HttpServletResponse response) throws Exception {
+	@RequestMapping("actualizar.do")
+	public void actualizar(HttpServletRequest request, HttpServletResponse response) throws Exception {
 
-		crearPersona();
+		crearPersona(request, persona);
+
+		if( daoPersona.existeEmail(persona.getEmail) ){
+			daoPersona.update(persona);
+		}
+		
+	}
+	
+	@RequestMapping("login.do")
+	public void login(HttpServletRequest request, HttpServletResponse response) throws Exception {
+
+		crearPersona(request, persona);
 
 		login = daoPersona.login(persona);
 				
 	}
 	
 	@RequestMapping("logout.do")
-	public void logout(HttpServletResponse response) throws Exception {
+	public void logout(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		
 		///////////////////////////////////////////////////////
 		/////                  ToDo                       /////
@@ -64,7 +75,7 @@ public class PersonaServlet {
 	}
 	
 	@RequestMapping("userToAdmin.do")
-	public void userToAdmin(HttpServletResponse response) throws Exception {
+	public void userToAdmin(HttpServletRequest request, HttpServletResponse response) throws Exception {
 
 		///////////////////////////////////////////////////////
 		/////                  ToDo                       /////
@@ -73,7 +84,7 @@ public class PersonaServlet {
 	}
 	
 	@RequestMapping("adminToUser.do")
-	public void adminToUser(HttpServletResponse response) throws Exception {
+	public void adminToUser(HttpServletRequest request, HttpServletResponse response) throws Exception {
 
 		///////////////////////////////////////////////////////
 		/////                  ToDo                       /////
@@ -81,7 +92,7 @@ public class PersonaServlet {
 			
 	}
 
-	private void crearPersona(){
+	private void crearPersona(HttpServletRequest request, Persona persona){
 
 		persona = new Persona();
 		persona.setNombre(request.getParameter(sourceNombre));
