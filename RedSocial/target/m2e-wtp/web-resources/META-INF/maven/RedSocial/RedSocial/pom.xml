@@ -48,5 +48,12 @@
    		<version>4.10</version> 
    		<scope>test</scope> 
 	</dependency>
-  </dependencies>
+	<dependency>
+    	<groupId>org.mongodb</groupId>
+    	<artifactId>mongo-java-driver</artifactId>
+    	<version>3.6.0-beta2</version>
+	</dependency>
+
+</dependencies>
+
 </project>
