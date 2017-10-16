@@ -69,10 +69,10 @@ public class Persona {
 	protected void setEmail(String email) {
 		this.email = email;
 	}
-	protected String getPassword() {
+	public String getPassword() {
 		return password;
 	}
-	protected void setPassword(String password) {
+	public void setPassword(String password) {
 		this.password = password;
 	}
 	protected String getDireccion() {
