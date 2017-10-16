@@ -32,5 +32,6 @@
 	<classpathentry kind="lib" path="lib/junit-4.11.jar"/>
 	<classpathentry kind="lib" path="lib/mockito-all-2.0.2-beta.jar"/>
 	<classpathentry kind="lib" path="lib/selenium-server-standalone-3.0.0-beta4.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Javii/git/Red-Social/RedSocial/mongodb-driver-3.6.0-beta2.jar"/>
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>
