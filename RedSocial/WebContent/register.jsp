@@ -159,7 +159,7 @@
             <img id="profile-img" class="profile-img-card" src="//ssl.gstatic.com/accounts/ui/avatar_2x.png" />
             <p id="profile-name" class="profile-name-card"></p>
             <button class="btn btn-primary btn-block" type="submit">Subir Foto</button>
-            <form class="form-signin">
+            <form action="crear.do" method="post" class="form-signin">
                 <span id="reauth-email" class="reauth-email"></span>
                 <input type="text" id="inputNombre" class="form-control" placeholder="Nombre" required autofocus>
                 <input type="email" id="inputEmail" class="form-control" placeholder="Email address" required autofocus>
