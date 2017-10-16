@@ -25,4 +25,8 @@ public class DAOPersona {
 	public boolean delete(Persona p) {
 		return db.delete(p);
 	}
+	
+	public boolean update(Persona p) {
+		return db.update(p);
+	}
 }
