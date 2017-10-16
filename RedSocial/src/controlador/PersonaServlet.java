@@ -21,7 +21,7 @@ public class PersonaServlet {
 	@Autwired
 	DAOPersona daoPersona;
 	
-	@RequestMapping("crear.do")
+	@RequestMapping("crear.jsp")
 	public void crear(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		
 		crearPersona(request, persona);
@@ -33,7 +33,7 @@ public class PersonaServlet {
 		
 	}
 	
-	@RequestMapping("borrar.do")
+	@RequestMapping("borrar.jsp")
 	public void borrar(HttpServletRequest request, HttpServletResponse response) throws Exception {
 
 		crearPersona(request, persona);
@@ -45,7 +45,7 @@ public class PersonaServlet {
 		
 	}
 	
-	@RequestMapping("actualizar.do")
+	@RequestMapping("actualizar.jsp")
 	public void actualizar(HttpServletRequest request, HttpServletResponse response) throws Exception {
 
 		crearPersona(request, persona);
@@ -56,7 +56,7 @@ public class PersonaServlet {
 		
 	}
 	
-	@RequestMapping("login.do")
+	@RequestMapping("login.jsp")
 	public void login(HttpServletRequest request, HttpServletResponse response) throws Exception {
 
 		crearPersona(request, persona);
@@ -65,7 +65,7 @@ public class PersonaServlet {
 				
 	}
 	
-	@RequestMapping("logout.do")
+	@RequestMapping("logout.jsp")
 	public void logout(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		
 		///////////////////////////////////////////////////////
@@ -74,7 +74,7 @@ public class PersonaServlet {
 
 	}
 	
-	@RequestMapping("userToAdmin.do")
+	@RequestMapping("userToAdmin.jsp")
 	public void userToAdmin(HttpServletRequest request, HttpServletResponse response) throws Exception {
 
 		///////////////////////////////////////////////////////
@@ -83,7 +83,7 @@ public class PersonaServlet {
 
 	}
 	
-	@RequestMapping("adminToUser.do")
+	@RequestMapping("adminToUser.jsp")
 	public void adminToUser(HttpServletRequest request, HttpServletResponse response) throws Exception {
 
 		///////////////////////////////////////////////////////
