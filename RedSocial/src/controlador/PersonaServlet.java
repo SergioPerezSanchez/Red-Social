@@ -8,9 +8,9 @@ public class PersonaServlet {
 	
 	String sourceNombre = "X", // Falta añadir el nombre del recurso cuando exista.
 	sourceApellidos = "X",
-	sourceUsername = "X",
-	sourceEmail = "X",
-	sourcePassword = "X",
+	sourceUsername = "inputNombre",
+	sourceEmail = "inputEmail",
+	sourcePassword = "inputPassword",
 	sourceDireccion = "X",
 	sourceTelefono = "X",
 	sourceFoto = "X";
@@ -95,14 +95,14 @@ public class PersonaServlet {
 	private void crearPersona(HttpServletRequest request, Persona persona){
 
 		persona = new Persona();
-		persona.setNombre(request.getParameter(sourceNombre));
-		persona.setApellidos(request.getParameter(sourceApellidos));
+		//persona.setNombre(request.getParameter(sourceNombre));
+		//persona.setApellidos(request.getParameter(sourceApellidos));
 		persona.setUsername(request.getParameter(sourceUsername));
 		persona.setEmail(request.getParameter(sourceEmail));
 		persona.setPassword(request.getParameter(sourcePassword));
-		persona.setDireccion(request.getParameter(sourceDireccion));
-		persona.setTelefono(request.getParameter(sourceTelefono));
-		persona.setFoto(request.getParameter(sourceFoto));
+		//persona.setDireccion(request.getParameter(sourceDireccion));
+		//persona.setTelefono(request.getParameter(sourceTelefono));
+		//persona.setFoto(request.getParameter(sourceFoto));
 
 	}
 	
