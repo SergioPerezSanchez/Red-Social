@@ -15,6 +15,6 @@
        <!-- Scans the classpath of this application for @Components to deploy as beans -->
        <context:component-scan base-package="modelo"></context:component-scan>
        <!-- Configures the @Controller programming model -->
-       <bean id="DAOPersona" class="modelo.DAOPersona"/>
+       <bean id="DAOPersona" class="src.modelo.DAOPersona"/>
 
 </beans>
