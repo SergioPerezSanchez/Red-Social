@@ -5,7 +5,6 @@ import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 import modelo.DAOPersona;
 import modelo.Persona;
-import cucumber.api.PendingException;
 
 public class LoginTests {
 	
@@ -63,7 +62,7 @@ public class LoginTests {
 	
 	@Then("^Mostrara mensaje de error$")
 	public void Mostrara_mensaje_de_error() throws Throwable {
-	    System.out.println("El email o la contraseña es erronea");
+	    System.out.println("El email o la contraseï¿½a es erronea");
 	    assert(true);
 	}
 	
