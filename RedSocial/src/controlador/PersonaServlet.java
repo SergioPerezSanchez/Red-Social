@@ -1,12 +1,19 @@
 package controlador;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+
 import modelo.DAOPersona;
 import modelo.Persona;
 
 @Controller
 public class PersonaServlet {
 	
-	String sourceNombre = "X", // Falta añadir el nombre del recurso cuando exista.
+	String sourceNombre = "X", // Falta aï¿½adir el nombre del recurso cuando exista.
 	sourceApellidos = "X",
 	sourceUsername = "inputNombre",
 	sourceEmail = "inputEmail",
@@ -18,7 +25,7 @@ public class PersonaServlet {
 	Persona persona;
 	boolean login = false;
 
-	@Autwired
+	@Autowired
 	DAOPersona daoPersona;
 	
 	@RequestMapping("crear.jsp")
@@ -26,8 +33,8 @@ public class PersonaServlet {
 		
 		crearPersona(request, persona);
 
-		if( !daoPersona.existeEmail(persona.getEmail) 
-			&& !daoPersona.existeUsername(persona.getUsername) ){
+		if( !daoPersona.existeEmail(persona.getEmail()) 
+			&& !daoPersona.existeUsername(persona.getUsername()) ){
 			daoPersona.crearPersona(persona);
 		}
 		
@@ -38,8 +45,8 @@ public class PersonaServlet {
 
 		crearPersona(request, persona);
 
-		if( daoPersona.existeEmail(persona.getEmail) 
-			&& daoPersona.existeUsername(persona.getUsername) ){
+		if( daoPersona.existeEmail(persona.getEmail()) 
+			&& daoPersona.existeUsername(persona.getUsername()) ){
 			daoPersona.delete(persona);
 		}
 		
@@ -50,7 +57,7 @@ public class PersonaServlet {
 
 		crearPersona(request, persona);
 
-		if( daoPersona.existeEmail(persona.getEmail) ){
+		if( daoPersona.existeEmail(persona.getEmail()) ){
 			daoPersona.update(persona);
 		}
 		
@@ -94,7 +101,7 @@ public class PersonaServlet {
 
 	private void crearPersona(HttpServletRequest request, Persona persona){
 
-		persona = new Persona();
+		persona = new Persona(sourceApellidos, sourceApellidos, sourceApellidos, sourceApellidos, sourceApellidos, sourceApellidos, sourceApellidos, sourceApellidos);
 		//persona.setNombre(request.getParameter(sourceNombre));
 		//persona.setApellidos(request.getParameter(sourceApellidos));
 		persona.setUsername(request.getParameter(sourceUsername));

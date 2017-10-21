@@ -60,13 +60,13 @@ public class Persona {
 	public String getUsername() {
 		return username;
 	}
-	protected void setUsername(String username) {
+	public void setUsername(String username) {
 		this.username = username;
 	}
 	public String getEmail() {
 		return email;
 	}
-	protected void setEmail(String email) {
+	public void setEmail(String email) {
 		this.email = email;
 	}
 	public String getPassword() {
