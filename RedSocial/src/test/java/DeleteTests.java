@@ -9,8 +9,9 @@ public class DeleteTests {
 	DAOPersona dao;
 	@Given("^El usuario se encuentra dentro del sistema$")
 	public void El_usuario_se_encuentra_dentro_del_sistema() throws Throwable {
-	    p=new Persona("Carlos", "Delgado", "carlitos93", "carlitos@mail.com", "a1Zs7s2DM", "Calle Jane Doe", "0", "photo");
+	    p=new Persona("Carlos", "Delgado", "carlitos93", "carlitos@mail.com", "a1Zs7s2DM", "Calle Jane Doe", "0", "photo", false);
 	    dao = new DAOPersona();
+	    System.out.println("Mostrar Clave Encriptada: "+p.getPassword());
 	    assert(dao.login(p));
 	}
 

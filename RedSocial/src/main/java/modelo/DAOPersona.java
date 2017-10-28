@@ -29,4 +29,8 @@ public class DAOPersona {
 	public boolean update(Persona p) {
 		return db.update(p);
 	}
+	
+	public Persona getPersona(String email) {
+		return db.getPersona(email);
+	}
 }
