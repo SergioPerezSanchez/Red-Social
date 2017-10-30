@@ -143,21 +143,9 @@
 	<div  style="position:absolute; width:100%; height: 100%; background-image:url(https://k60.kn3.net/taringa/3/6/E/E/A/9/luisdavid1256/F49.jpg);background-position: center center;
 	background-repeat: no-repeat; background-size: cover;">
 	
-
-	<nav class="navbar navbar-inverse">
-  		<div class="container-fluid">
-    	<div class="navbar-header">
-      		<a style="color:white"class="navbar-brand" href="#">RedSocial</a>
-    	</div>
-    	<ul class="nav navbar-nav">
-      		<li class="active"><a style="color:white" href="index.jsp">Inicio</a></li>
-      		<li><a style="color:white" href="register.jsp">Regístrate</a></li>
-    	</ul>
-  		</div>
-	</nav>
 	<div class="container">
-		<h1 style="color:white;">Bienvenido a Red Social</h1>
-		<p style="font-size: 20px; color:white;">Inicia sesión para entrar o si aún no tienes cuenta <a href="register.jsp"style="cursor: pointer;font-size: 30px; color: white">¡Registrate!</a></p>
+		<h1 style="color:white;">Recupera tu cuenta!</h1>
+		<p style="font-size: 20px; color:white;">Introduce tu correo y recuperala!</p>
 		<!--  Aqui añadir un form -->
 		
 		
@@ -171,8 +159,11 @@
                     
                 </div>
                 <button class="btn btn-lg btn-primary btn-block btn-signin" type="submit">Recupera!</button>
+               
             </form><!-- /form -->
-
+ <form action="home" method="get">
+            	<button class="forgot-password" type="submit" value="home" name = "home">Volver a Inicio</button>
+        	</form>
         </div><!-- /card-container -->
 	</div>
 		</div>

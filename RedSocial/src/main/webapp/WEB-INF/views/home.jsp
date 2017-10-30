@@ -142,24 +142,13 @@
 
     <div  style="position:absolute; width:100%; height: 100%; background-image:url(https://k60.kn3.net/taringa/3/6/E/E/A/9/luisdavid1256/F49.jpg);background-position: center center;
     background-repeat: no-repeat; background-size: cover;">
-    
 
-    <nav class="navbar navbar-inverse">
-        <div class="container-fluid">
-        <div class="navbar-header">
-            <a style="color:white"class="navbar-brand" href="#">RedSocial</a>
-        </div>
-        <ul class="nav navbar-nav">
-            <li class="active"><a style="color:white" href="index.jsp">Inicio</a></li>
-            <form action="register" method="get">
-            	<li><button type="submit" value="Registrarse" name = "register">Registro</button></li>
-            </form>
-        </ul>
-        </div>
-    </nav>
     <div class="container">
-        <h1 style="color:white;">Bienvenido a Red Social</h1>
-        <p style="font-size: 20px; color:white;">Inicia sesión para entrar o si aún no tienes cuenta <a href="register.jsp"style="cursor: pointer;font-size: 30px; color: white">¡Registrate!</a></p>
+        <h1 style="color:white;">Bienvenido a Intravita</h1>
+        <p style="font-size: 20px; color:white;">Inicia sesión para entrar o si aún no tienes cuenta...regístrate!</p>
+      	<form action="register" method="get">
+            	<button class="btn btn-success" style="font-size: 20px; color:white;" type="submit" value="Registrarse" name = "register">Registro</button>
+        </form>
         <!--  Aqui añadir un form -->
         
         
@@ -168,16 +157,21 @@
             <p id="profile-name" class="profile-name-card"></p>
             <form class="form-signin">
                 <span id="reauth-email" class="reauth-email"></span>
-                <input type="email" id="inputEmail" class="form-control" placeholder="Email address" required autofocus>
+                <input type="text" id="inputEmail" class="form-control" placeholder="Username" required autofocus>
                 <input type="password" id="inputPassword" class="form-control" placeholder="Password" required>
                 <div id="remember" class="checkbox">
                     
                 </div>
                 <button class="btn btn-lg btn-primary btn-block btn-signin" type="submit">Sign in</button>
             </form><!-- /form -->
-            <a href="#" class="forgot-password">
-                Forgot the password?
-            </a>
+            <div>
+          
+             <form action="forgotPassword" method="get">
+            	<button style="align-content: center;margin: auto;display: table;" class="btn btn-warning" type="submit" value="forgotPassword" name = "forgotPassword">Contraseña?</button>
+        	</form>
+        
+        	
+        	</div>
         </div><!-- /card-container -->
     </div>
         </div>
