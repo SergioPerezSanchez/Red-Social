@@ -1,4 +1,8 @@
-package controlador;
+package com.pis.redSocial;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 import modelo.DAOPersona;
 import modelo.Persona;
@@ -18,7 +22,7 @@ public class PersonaServlet {
 	Persona persona;
 	boolean login = false;
 
-	@Autwired
+	@Autowired
 	DAOPersona daoPersona;
 	
 	@RequestMapping("crear.jsp")
