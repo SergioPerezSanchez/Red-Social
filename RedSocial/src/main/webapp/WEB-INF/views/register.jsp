@@ -141,19 +141,9 @@
 	<div id="contenedor" style="position:absolute; width:110%; height: 110%;background-image:url(http://img13.deviantart.net/121b/i/2009/179/7/7/_pure_gaia_wp06_by_g2k2007.jpg);background-position: center center;
 	background-repeat: no-repeat; background-size: cover;">
 	
-	<nav class="navbar navbar-inverse">
-  		<div class="container-fluid">
-    	<div class="navbar-header">
-      		<a style="color:white" class="navbar-brand" href="#">RedSocial</a>
-    	</div>
-    	<ul class="nav navbar-nav">
-      		<li><a href="index.jsp">Inicio</a></li>
-      		<li  class="active"><a style="color:white" href="register.jsp">Regístrate</a></li>
-    	</ul>
-  		</div>
-	</nav>
+
 	<div class="container">
-		<h1 style="color:white">Regístrate en Red Social</h1>
+		<h1 style="color:white">Regístrate en Intravita</h1>
 		<p style="font-size: 20px;color:white">Introduce tus datos personales a continuación</p>
 <div class="card card-container">
             <!-- <img class="profile-img-card" src="//lh3.googleusercontent.com/-6V8xOA6M7BA/AAAAAAAAAAI/AAAAAAAAAAA/rzlHcD0KYwo/photo.jpg?sz=120" alt="" /> -->
@@ -170,7 +160,9 @@
                 </div>
                 <button class="btn btn-lg btn-primary btn-block btn-signin" type="submit">Sign up</button>
             </form><!-- /form -->
-            
+              <form action="home.jsp" method="get">
+            	<button style="padding-bottom:10px; float: right;margin: auto;display: table;" class="btn btn-warning" type="submit" value="Home" name="home" >Volver</button>
+        	</form>
         </div><!-- /card-container -->
 	</div>
 
