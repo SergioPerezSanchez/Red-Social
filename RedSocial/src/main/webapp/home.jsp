@@ -145,16 +145,16 @@
 
     <div class="container">
         <h1 style="color:white;">Bienvenido a Intravita</h1>
-        <p style="font-size: 20px; color:white;">Inicia sesión para entrar o si aún no tienes cuenta...regístrate!</p>
+        <p style="font-size: 20px; color:white;">Inicia sesiÃ³n para entrar o si aÃºn no tienes cuenta...regÃ­strate!</p>
       	<form action="register" method="get">
             	<button class="btn btn-success" style="font-size: 20px; color:white;" type="submit" value="Registrarse" name = "register">Registro</button>
         </form>
-        <!--  Aqui añadir un form -->
+        <!--  Aqui aÃ±adir un form -->
         
         
  <div class="card card-container">
             
-            <p id="profile-name" class="profile-name-card"></p>
+            <p style="align-content: center; margin:auto; display:table; font-size: 20px; color:grey;">Login</p>
             <form class="form-signin">
                 <span id="reauth-email" class="reauth-email"></span>
                 <input type="text" id="inputEmail" class="form-control" placeholder="Username" required autofocus>
@@ -167,7 +167,7 @@
             <div>
           
              <form action="forgotPassword" method="get">
-            	<button style="align-content: center;margin: auto;display: table;" class="btn btn-warning" type="submit" value="forgotPassword" name = "forgotPassword">Contraseña?</button>
+            	<button style="align-content: center;margin: auto;display: table;" class="btn btn-warning" type="submit" value="forgotPassword" name = "forgotPassword">Â¿ContraseÃ±a?</button>
         	</form>
         
         	

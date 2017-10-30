@@ -150,7 +150,7 @@
 		
 		
  <div class="card card-container">
-            
+             <p style="align-content: center; margin:auto; display:table; font-size: 20px; color:grey;">Reestablecer</p>
             <p id="profile-name" class="profile-name-card"></p>
             <form class="form-signin">
                 <span id="reauth-email" class="reauth-email"></span>
@@ -162,7 +162,7 @@
                
             </form><!-- /form -->
  <form action="home.jsp" method="get">
-            	<button class="forgot-password" type="submit" value="home" name = "home">Volver a Inicio</button>
+            	<button style="align-content: center;margin: auto;display: table;" class="btn btn-warning" class="forgot-password" type="submit" value="home" name = "home">Volver</button>
         	</form>
         </div><!-- /card-container -->
 	</div>
