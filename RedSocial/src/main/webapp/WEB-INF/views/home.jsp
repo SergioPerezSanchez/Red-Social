@@ -151,7 +151,9 @@
         </div>
         <ul class="nav navbar-nav">
             <li class="active"><a style="color:white" href="index.jsp">Inicio</a></li>
-            <li><a style="color:white" href="register.jsp">Regístrate</a></li>
+            <form action="register" method="get">
+            	<li><button type="submit" value="Registrarse" name = "register">Registro</button></li>
+            </form>
         </ul>
         </div>
     </nav>
