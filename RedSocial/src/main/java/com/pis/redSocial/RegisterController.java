@@ -18,7 +18,7 @@ private static final Logger logger = LoggerFactory.getLogger(RegisterController.
 	/**
 	 * Simply selects the home view to render by returning its name.
 	 */
-	@RequestMapping(value = "/register", method = RequestMethod.GET)
+	@RequestMapping(value = "register", method = RequestMethod.GET)
 	public String register(Locale locale, Model model) {
 		logger.info("Register page! The client locale is {}.", locale);
 		
