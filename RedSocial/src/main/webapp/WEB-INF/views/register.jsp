@@ -160,8 +160,8 @@
                 </div>
                 <button class="btn btn-lg btn-primary btn-block btn-signin" type="submit">Sign up</button>
             </form><!-- /form -->
-              <form action="home" method="get">
-            	<button style="padding-bottom:10px; float: right;margin: auto;display: table;" class="btn btn-warning" type="submit" value="home" name = "home">Volver</button>
+              <form action="home.jsp" method="get">
+            	<button style="padding-bottom:10px; float: right;margin: auto;display: table;" class="btn btn-warning" type="submit" value="Home" name="home" >Volver</button>
         	</form>
         </div><!-- /card-container -->
 	</div>

@@ -161,7 +161,7 @@
                 <button class="btn btn-lg btn-primary btn-block btn-signin" type="submit">Recupera!</button>
                
             </form><!-- /form -->
- <form action="home" method="get">
+ <form action="home.jsp" method="get">
             	<button class="forgot-password" type="submit" value="home" name = "home">Volver a Inicio</button>
         	</form>
         </div><!-- /card-container -->
