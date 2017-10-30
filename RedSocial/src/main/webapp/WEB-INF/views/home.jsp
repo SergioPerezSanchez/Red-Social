@@ -1,13 +1,12 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-    <%@page import="modelo.DAOPersona" %>
-    <%@page import="modelo.Persona" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ page session="false" %>
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Red Social - Registro</title>
-	<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css" rel="stylesheet" media="screen">
+    <title>Red Social</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css" rel="stylesheet" media="screen">
 </head>
+
 <style>
 .card-container.card {
     max-width: 350px;
@@ -139,42 +138,42 @@
     color: rgb(12, 97, 33);
 }
 </style>
-<body>
+<body >
 
-	<div id="contenedor" style="position:absolute; width:100%; height: 130%;background-image:url(http://img13.deviantart.net/121b/i/2009/179/7/7/_pure_gaia_wp06_by_g2k2007.jpg);background-position: center center;
-	background-repeat: no-repeat; background-size: cover;">
-	
+    <div  style="position:absolute; width:100%; height: 100%; background-image:url(https://k60.kn3.net/taringa/3/6/E/E/A/9/luisdavid1256/F49.jpg);background-position: center center;
+    background-repeat: no-repeat; background-size: cover;">
 
-	<div class="container">
-		<h1 style="color:white">Regístrate en Intravita</h1>
-		<p style="font-size: 20px;color:white">Introduce tus datos personales a continuación</p>
-<div class="card card-container">
- <p style="align-content: center; margin:auto; display:table; font-size: 20px; color:grey;">Registro</p>
-            <!-- <img class="profile-img-card" src="//lh3.googleusercontent.com/-6V8xOA6M7BA/AAAAAAAAAAI/AAAAAAAAAAA/rzlHcD0KYwo/photo.jpg?sz=120" alt="" /> -->
-            <form action="crearUsuario" method="post" class="form-signin">
+    <div class="container">
+        <h1 style="color:white;">Bienvenido a Intravita</h1>
+        <p style="font-size: 20px; color:white;">Inicia sesión para entrar o si aún no tienes cuenta...regístrate!</p>
+      	<form action="register" method="get">
+            	<button class="btn btn-success" style="font-size: 20px; color:white;" type="submit" value="Registrarse" name = "register">Registro</button>
+        </form>
+        <!--  Aqui añadir un form -->
+        
+        
+ <div class="card card-container">
+            
+            <p style="align-content: center; margin:auto; display:table; font-size: 20px; color:grey;">Login</p>
+            <form class="form-signin">
                 <span id="reauth-email" class="reauth-email"></span>
-                <input type="text" name="inputNombreRegistro" class="form-control" placeholder="Nombre" >
-                <input type="text" name="inputApellidosRegistro" class="form-control" placeholder="Apellidos" >
-                <input type="text" name="inputUsernameRegistro" class="form-control" placeholder="Username" >
-                <input type="email" name="inputEmailRegistro" class="form-control" placeholder="Email address" >
-                <input type="password" name="inputPasswordRegistro" class="form-control" placeholder="Password" >
-                <input type="password" name="inputRePasswordRegistro" class="form-control" placeholder="Repita Password" >
-                 <input type="text" name="inputDireccionRegistro" class="form-control" placeholder="Direccion" >
-                  <input type="text" name="inputTelefonoRegistro" class="form-control" placeholder="Telefono" >
-                   <!--  <button class="btn btn-primary btn-block">Subir Foto</button>-->
+                <input type="text" id="inputEmail" class="form-control" placeholder="Username" required autofocus>
+                <input type="password" id="inputPassword" class="form-control" placeholder="Password" required>
                 <div id="remember" class="checkbox">
-                   
+                    
                 </div>
-                <button id="btnSignup" class="btn btn-lg btn-primary btn-block btn-signin" type="submit">Sign up</button>
+                <button class="btn btn-lg btn-primary btn-block btn-signin" type="submit">Sign in</button>
             </form><!-- /form -->
-              <form action="home.jsp" method="get">
-            	<button style="padding-bottom:10px; float: right;margin: auto;display: table;" class="btn btn-warning" type="submit" value="Home" name="home" >Volver</button>
+            <div>
+          
+             <form action="forgotPassword" method="get">
+            	<button style="align-content: center;margin: auto;display: table;" class="btn btn-warning" type="submit" value="forgotPassword" name = "forgotPassword">¿Contraseña?</button>
         	</form>
+        
+        	
+        	</div>
         </div><!-- /card-container -->
-	</div>
-
-	</div>
+    </div>
+        </div>
 </body>
 </html>
-<script type="text/javascript" src="js/jquery-3.2.1.min.js"></script>
-<script type="text/javascript" src="js/index.js"></script>
