@@ -1,10 +1,10 @@
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%@ page session="false" %>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Red Social</title>
-    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css" rel="stylesheet" media="screen">
+	<title>Red Social</title>
+	<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css" rel="stylesheet" media="screen">
 </head>
 
 <style>
@@ -140,46 +140,41 @@
 </style>
 <body >
 
-    <div  style="position:absolute; width:100%; height: 100%; background-image:url(https://k60.kn3.net/taringa/3/6/E/E/A/9/luisdavid1256/F49.jpg);background-position: center center;
-    background-repeat: no-repeat; background-size: cover;">
-    
+	<div  style="position:absolute; width:100%; height: 100%; background-image:url(https://k60.kn3.net/taringa/3/6/E/E/A/9/luisdavid1256/F49.jpg);background-position: center center;
+	background-repeat: no-repeat; background-size: cover;">
+	
 
-    <nav class="navbar navbar-inverse">
-        <div class="container-fluid">
-        <div class="navbar-header">
-            <a style="color:white"class="navbar-brand" href="#">RedSocial</a>
-        </div>
-        <ul class="nav navbar-nav">
-            <li class="active"><a style="color:white" href="index.jsp">Inicio</a></li>
-            <form action="register" method="get">
-            	<li><button type="submit" value="Registrarse" name = "register">Registro</button></li>
-            </form>
-        </ul>
-        </div>
-    </nav>
-    <div class="container">
-        <h1 style="color:white;">Bienvenido a Red Social</h1>
-        <p style="font-size: 20px; color:white;">Inicia sesión para entrar o si aún no tienes cuenta <a href="register.jsp"style="cursor: pointer;font-size: 30px; color: white">¡Registrate!</a></p>
-        <!--  Aqui añadir un form -->
-        
-        
+	<nav class="navbar navbar-inverse">
+  		<div class="container-fluid">
+    	<div class="navbar-header">
+      		<a style="color:white"class="navbar-brand" href="#">RedSocial</a>
+    	</div>
+    	<ul class="nav navbar-nav">
+      		<li class="active"><a style="color:white" href="index.jsp">Inicio</a></li>
+      		<li><a style="color:white" href="register.jsp">RegÃ­strate</a></li>
+    	</ul>
+  		</div>
+	</nav>
+	<div class="container">
+		<h1 style="color:white;">Bienvenido a Red Social</h1>
+		<p style="font-size: 20px; color:white;">Inicia sesiÃ³n para entrar o si aÃºn no tienes cuenta <a href="register.jsp"style="cursor: pointer;font-size: 30px; color: white">Â¡Registrate!</a></p>
+		<!--  Aqui aÃ±adir un form -->
+		
+		
  <div class="card card-container">
             
             <p id="profile-name" class="profile-name-card"></p>
             <form class="form-signin">
                 <span id="reauth-email" class="reauth-email"></span>
                 <input type="email" id="inputEmail" class="form-control" placeholder="Email address" required autofocus>
-                <input type="password" id="inputPassword" class="form-control" placeholder="Password" required>
                 <div id="remember" class="checkbox">
                     
                 </div>
-                <button class="btn btn-lg btn-primary btn-block btn-signin" type="submit">Sign in</button>
+                <button class="btn btn-lg btn-primary btn-block btn-signin" type="submit">Recupera!</button>
             </form><!-- /form -->
-            <a href="#" class="forgot-password">
-                Forgot the password?
-            </a>
+
         </div><!-- /card-container -->
-    </div>
-        </div>
+	</div>
+		</div>
 </body>
 </html>
