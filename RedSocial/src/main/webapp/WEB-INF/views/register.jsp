@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <%@page import="modelo.DAOPersona" %>
+    <%@page import="modelo.Persona" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -138,7 +140,8 @@
 }
 </style>
 <body>
-	<div id="contenedor" style="position:absolute; width:110%; height: 110%;background-image:url(http://img13.deviantart.net/121b/i/2009/179/7/7/_pure_gaia_wp06_by_g2k2007.jpg);background-position: center center;
+
+	<div id="contenedor" style="position:absolute; width:100%; height: 130%;background-image:url(http://img13.deviantart.net/121b/i/2009/179/7/7/_pure_gaia_wp06_by_g2k2007.jpg);background-position: center center;
 	background-repeat: no-repeat; background-size: cover;">
 	
 
@@ -146,19 +149,23 @@
 		<h1 style="color:white">Regístrate en Intravita</h1>
 		<p style="font-size: 20px;color:white">Introduce tus datos personales a continuación</p>
 <div class="card card-container">
+ <p style="align-content: center; margin:auto; display:table; font-size: 20px; color:grey;">Registro</p>
             <!-- <img class="profile-img-card" src="//lh3.googleusercontent.com/-6V8xOA6M7BA/AAAAAAAAAAI/AAAAAAAAAAA/rzlHcD0KYwo/photo.jpg?sz=120" alt="" /> -->
-            <img id="profile-img" class="profile-img-card" src="//ssl.gstatic.com/accounts/ui/avatar_2x.png" />
-            <p id="profile-name" class="profile-name-card"></p>
-            <button class="btn btn-primary btn-block" type="submit">Subir Foto</button>
-            <form action="crear.do" method="post" class="form-signin">
+            <form action="crearUsuario" method="post" class="form-signin">
                 <span id="reauth-email" class="reauth-email"></span>
-                <input type="text" id="inputNombre" class="form-control" placeholder="Nombre" required autofocus>
-                <input type="email" id="inputEmail" class="form-control" placeholder="Email address" required autofocus>
-                <input type="password" id="inputPassword" class="form-control" placeholder="Password" required>
+                <input type="text" name="inputNombreRegistro" class="form-control" placeholder="Nombre" >
+                <input type="text" name="inputApellidosRegistro" class="form-control" placeholder="Apellidos" >
+                <input type="text" name="inputUsernameRegistro" class="form-control" placeholder="Username" >
+                <input type="email" name="inputEmailRegistro" class="form-control" placeholder="Email address" >
+                <input type="password" name="inputPasswordRegistro" class="form-control" placeholder="Password" >
+                <input type="password" name="inputRePasswordRegistro" class="form-control" placeholder="Repita Password" >
+                 <input type="text" name="inputDireccionRegistro" class="form-control" placeholder="Direccion" >
+                  <input type="text" name="inputTelefonoRegistro" class="form-control" placeholder="Telefono" >
+                   <!--  <button class="btn btn-primary btn-block">Subir Foto</button>-->
                 <div id="remember" class="checkbox">
                    
                 </div>
-                <button class="btn btn-lg btn-primary btn-block btn-signin" type="submit">Sign up</button>
+                <button id="btnSignup" class="btn btn-lg btn-primary btn-block btn-signin" type="submit">Sign up</button>
             </form><!-- /form -->
               <form action="home.jsp" method="get">
             	<button style="padding-bottom:10px; float: right;margin: auto;display: table;" class="btn btn-warning" type="submit" value="Home" name="home" >Volver</button>
@@ -169,3 +176,5 @@
 	</div>
 </body>
 </html>
+<script type="text/javascript" src="js/jquery-3.2.1.min.js"></script>
+<script type="text/javascript" src="js/index.js"></script>
