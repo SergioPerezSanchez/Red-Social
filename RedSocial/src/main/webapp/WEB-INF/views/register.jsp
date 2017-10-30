@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <%@page import="modelo.DAOPersona" %>
+    <%@page import="modelo.Persona" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -139,9 +141,28 @@
 </style>
 <body>
 	<%
-	String nombre, apellidos, username, email, password, direccion, telefono, foto, id;
+	String nombre, apellidos, username, email, password, direccion, telefono, foto;
 	username = request.getParameter("inputUsernameRegistro");
-	
+	email = request.getParameter("inputEmailRegistro");
+	DAOPersona dao = new DAOPersona();
+	Persona p;
+	if(dao.existeUsername(username)){
+		//Mostrar Error Existe Usuario
+	}else{
+		if(dao.existeEmail(email)){
+			//Mostrar Error Existe Email
+		}else {
+			//CREA USUARIO
+			nombre=request.getParameter("inputNombreRegistro");
+			apellidos=request.getParameter("inputApellidosRegistro");
+			password=request.getParameter("inputPasswordRegistro");
+			direccion=request.getParameter("inputDireccionRegistro");
+			telefono=request.getParameter("inputTelefonoRegistro");
+			p = new Persona(nombre, apellidos, username, email, password, direccion, telefono, "", false);
+			dao.crearPersona(p);
+		}
+		
+	}
 	%>
 	<div id="contenedor" style="position:absolute; width:100%; height: 130%;background-image:url(http://img13.deviantart.net/121b/i/2009/179/7/7/_pure_gaia_wp06_by_g2k2007.jpg);background-position: center center;
 	background-repeat: no-repeat; background-size: cover;">
