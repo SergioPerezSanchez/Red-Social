@@ -18,12 +18,16 @@ public class DAOPersona {
 		return db.existeUsername(username);
 	}
 	
-	public boolean login(Persona p) {
+	public boolean login(Persona p) throws Exception {
 		return db.login(p);
 	}
 	
 	public boolean delete(Persona p) {
 		return db.delete(p);
+	}
+	
+	public boolean deleteEmail(String email) {
+		return db.deleteEmail(email);
 	}
 	
 	public boolean update(Persona p) {
