@@ -65,15 +65,18 @@ public class DataBase {
 		return existe;
 	}
 	
-	protected boolean login(Persona p) {
+	protected boolean login(Persona p) throws Exception {
 		boolean logueado = false;
 		db = client.getDatabase(uri.getDatabase());
+		Persona persona=new Persona();
 		dbUsuarios = db.getCollection("usuarios");
 		elementos = dbUsuarios.find().iterator();
 		while(elementos.hasNext()) {
 			doc=elementos.next();
+			persona.setPassword(doc.get("clave").toString());
+			persona.decrypt();
 			if((doc.get("email").toString().equalsIgnoreCase(p.getEmail()))&&
-			   (doc.get("clave").toString().equalsIgnoreCase(p.getPassword()))) {
+			   (persona.getPassword().equalsIgnoreCase(p.getPassword()))) {
 				logueado=true;
 			}
 		}
@@ -138,7 +141,7 @@ public class DataBase {
 		elementos = dbUsuarios.find().iterator();
 		while(elementos.hasNext()) {
 			doc=elementos.next();
-			if((doc.get("email").toString().equalsIgnoreCase(email))) {
+			if((doc.get("username").toString().equalsIgnoreCase(email))) {
 				p = new Persona(doc.getString("nombre"), doc.getString("apellidos"), doc.getString("username"), doc.getString("email"), doc.getString("clave"), doc.getString("direccion"), doc.getString("telefono"), doc.getString("foto"), true);
 			}
 		}		

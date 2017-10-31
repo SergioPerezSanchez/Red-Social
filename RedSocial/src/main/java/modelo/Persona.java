@@ -10,16 +10,18 @@ public class Persona {
 	private String nombre, apellidos, username, email, password, direccion, telefono, foto, original;
 	
 	//https://bit502.wordpress.com/2014/06/27/codigo-java-encriptar-y-desencriptar-texto-usando-el-algoritmo-aes-con-cifrado-por-bloques-cbc-de-128-bits/
-	// Definición del tipo de algoritmo a utilizar (AES, DES, RSA)
+	// Definiciï¿½n del tipo de algoritmo a utilizar (AES, DES, RSA)
     private final static String alg = "AES";
-    // Definición del modo de cifrado a utilizar
+    // Definiciï¿½n del modo de cifrado a utilizar
     private final static String cI = "AES/CBC/PKCS5Padding";
     //key es la llave en tipo String a utilizar
     private final static String key="92AE31A79FEEB2A3";
-    //iv el vector de inicialización a utilizar
+    //iv el vector de inicializaciï¿½n a utilizar
     private final static String iv="0123456789ABCDEF"; 
     
-    
+    public Persona(){
+    	
+    }
 	public Persona(String n, String ap, String us, String e, String pass, String dir, String tlfn, String photo, boolean esEncriptado) {
 		try {
 			this.nombre=n;

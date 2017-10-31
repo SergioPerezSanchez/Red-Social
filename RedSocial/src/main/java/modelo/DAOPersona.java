@@ -18,7 +18,7 @@ public class DAOPersona {
 		return db.existeUsername(username);
 	}
 	
-	public boolean login(Persona p) {
+	public boolean login(Persona p) throws Exception {
 		return db.login(p);
 	}
 	
