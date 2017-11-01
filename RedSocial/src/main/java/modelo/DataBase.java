@@ -1,7 +1,9 @@
 package modelo;
 
-import org.bson.Document;
+import java.util.LinkedList;
+import java.util.List;
 
+import org.bson.Document;
 import com.mongodb.MongoClient;
 import com.mongodb.MongoClientURI;
 import com.mongodb.client.MongoCollection;
@@ -12,10 +14,10 @@ public class DataBase {
 	MongoClientURI uri;
 	MongoClient client;
 	MongoDatabase db;
-	MongoCollection<Document> dbUsuarios;
+	MongoCollection<Document> dbUsuarios, dbPublicaciones;
 	Document doc, aux;
 	MongoCursor<Document>elementos;
-	
+	Publicacion pub;
 	public DataBase() {
 		uri  = new MongoClientURI("mongodb://equipo03:pis03equipo@ds113935.mlab.com:13935/equipo03"); 
         client = new MongoClient(uri);
@@ -143,5 +145,46 @@ public class DataBase {
 			}
 		}		
 		return p;
+	}
+	
+	protected boolean createPublicacion(Publicacion p) {
+		try {
+			db = client.getDatabase(uri.getDatabase());
+			dbPublicaciones = db.getCollection("publicaciones");
+			doc=new Document("username", p.getUsername())
+					.append("mensaje", p.getMensaje())
+					.append("compartir", p.getCompartirCon())
+					.append("adjuntos", p.getAdjuntos())
+					.append("fecha", p.getFecha().toString());
+			dbPublicaciones.insertOne(doc);
+			return true;
+		}catch(Exception ex) {
+			ex.printStackTrace();
+			return false;
+		}
+	}
+	
+	protected Publicacion readPublicacion(String username, String fecha) {
+		try {
+			
+			db = client.getDatabase(uri.getDatabase());
+			dbPublicaciones = db.getCollection("publicaciones");
+			elementos = dbPublicaciones.find().iterator();
+			while(elementos.hasNext()) {
+				aux = elementos.next();
+				if(aux.get("username").toString().equalsIgnoreCase(username)&&(aux.get("fecha").toString().equalsIgnoreCase(fecha))) {
+					List<String>els=(List<String>)aux.get("adjuntos");
+					LinkedList<String> adjs=new LinkedList<String>();
+					for(int i=0; i<els.size();i++) {
+						adjs.add(els.get(i));
+					}
+					pub=new Publicacion(aux.get("username").toString(), aux.get("mensaje").toString(), aux.get("compartir").toString(), adjs, aux.get("fecha").toString());
+				}
+			}
+			return pub;
+		}catch(Exception ex) {
+			ex.printStackTrace();
+			return null;
+		}
 	}
 }
