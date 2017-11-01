@@ -202,7 +202,6 @@ public class DataBase {
 		db = client.getDatabase(uri.getDatabase());
 		dbPublicaciones = db.getCollection("publicaciones");
 		elementos = dbPublicaciones.find().iterator();
-		System.out.println("Delete: "+pub.getUsername()+" "+pub.getFecha().toString());
 		while(elementos.hasNext()) {
 			aux=elementos.next();
 			System.out.println("Entra: "+aux.get("username").toString()+" "+aux.get("fecha").toString());
@@ -213,5 +212,74 @@ public class DataBase {
 			}
 		}
 		return borrado;
+	}
+	
+	protected boolean deletePublicacionesUsuario(String username) {
+		db = client.getDatabase(uri.getDatabase());
+		dbPublicaciones = db.getCollection("publicaciones");
+		elementos = dbPublicaciones.find().iterator();
+		System.out.println("Delete: "+pub.getUsername()+" "+pub.getFecha().toString());
+		while(elementos.hasNext()) {
+			aux=elementos.next();
+			if((aux.get("username").toString().equalsIgnoreCase(username))) {
+				dbPublicaciones.deleteOne(aux);
+			}
+		}
+		return true;
+	}
+	
+	protected boolean deleteAllPublicaciones() {
+		db = client.getDatabase(uri.getDatabase());
+		dbPublicaciones = db.getCollection("publicaciones");
+		elementos = dbPublicaciones.find().iterator();
+		while(elementos.hasNext()) {
+			aux=elementos.next();
+			dbPublicaciones.deleteOne(aux);
+		}
+		return true;
+	}
+	
+	protected LinkedList<Publicacion> readPublicaciones(String username) {
+		LinkedList<Publicacion>pubs = new LinkedList<Publicacion>();
+		try {
+			db = client.getDatabase(uri.getDatabase());
+			dbPublicaciones = db.getCollection("publicaciones");
+			elementos = dbPublicaciones.find().iterator();
+			while(elementos.hasNext()) {
+				aux = elementos.next();
+				if(aux.get("username").toString().equalsIgnoreCase(username)) {
+					List<String>els=(List<String>)aux.get("adjuntos");
+					LinkedList<String> adjs=new LinkedList<String>();
+					for(int i=0; i<els.size();i++) {
+						adjs.add(els.get(i));
+					}
+					pubs.add(new Publicacion(aux.get("username").toString(), aux.get("mensaje").toString(), aux.get("compartir").toString(), adjs, aux.get("fecha").toString()));
+				}
+			}
+		}catch(Exception ex) {
+			ex.printStackTrace();
+		}
+		return pubs;
+	}
+	
+	protected LinkedList<Publicacion> readAllPublicaciones() {
+		LinkedList<Publicacion>pubs = new LinkedList<Publicacion>();
+		try {
+			db = client.getDatabase(uri.getDatabase());
+			dbPublicaciones = db.getCollection("publicaciones");
+			elementos = dbPublicaciones.find().iterator();
+			while(elementos.hasNext()) {
+				aux = elementos.next();
+				List<String>els=(List<String>)aux.get("adjuntos");
+				LinkedList<String> adjs=new LinkedList<String>();
+				for(int i=0; i<els.size();i++) {
+					adjs.add(els.get(i));
+				}
+				pubs.add(new Publicacion(aux.get("username").toString(), aux.get("mensaje").toString(), aux.get("compartir").toString(), adjs, aux.get("fecha").toString()));
+			}
+		}catch(Exception ex) {
+			ex.printStackTrace();
+		}
+		return pubs;
 	}
 }
