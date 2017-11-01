@@ -11,7 +11,7 @@ public class PublicacionesTest {
 	DAOPersona dao;
 	Persona person;
 	DAOPublicacion daoP;
-	Publicacion publi, publi2;
+	Publicacion publi, publi2, publi3, publi4;
 	@Given("^Un usuario logueado en el sistema$")
 	public void un_usuario_logueado_en_el_sistema() throws Throwable {
 		dao = new DAOPersona();
@@ -24,7 +24,7 @@ public class PublicacionesTest {
 	    daoP = new DAOPublicacion();
 	    LinkedList<String>adj = new LinkedList<String>();
 	    adj.add("adj1");
-	    publi = new Publicacion(person.getUsername(),"prueba", "Privado", adj);
+	    publi = new Publicacion(person.getUsername(),"prueba", "Privado", adj, "Wed Nov 01 15:10:41 CET 2017");
 	    assert(daoP.crearPublicacion(publi));
 	}
 
@@ -36,25 +36,35 @@ public class PublicacionesTest {
 
 	@When("^Quiere editar una publicacion$")
 	public void quiere_editar_una_publicacion() throws Throwable {
-	    // Write code here that turns the phrase above into concrete actions
-	    //throw new PendingException();
+		daoP = new DAOPublicacion();
+	    LinkedList<String>adj = new LinkedList<String>();
+	    adj.add("adj1");
+	    publi = new Publicacion(person.getUsername(),"prueba", "Privado", adj, "Wed Nov 01 15:10:41 CET 2017");
+	    adj.add("adj2");
+	    publi2 = new Publicacion(person.getUsername(),"prueba", "Publico", adj, "Wed Nov 01 15:10:50 CET 2017");
+	    assert(daoP.actualizaPublicacion(publi, publi2));
 	}
 
 	@Then("^Se edita la publicacion$")
 	public void se_edita_la_publicacion() throws Throwable {
-	    // Write code here that turns the phrase above into concrete actions
-	    //throw new PendingException();
+	    publi3=daoP.leerPublicacion(publi.getUsername(), publi.getFecha().toString());
+	    publi4=daoP.leerPublicacion(publi2.getUsername(), publi2.getFecha().toString());
+	    assert(publi3==null && publi4!=null);
 	}
 
 	@When("^Quiere eliminar una publicacion$")
 	public void quiere_eliminar_una_publicacion() throws Throwable {
-	    // Write code here that turns the phrase above into concrete actions
-	    //throw new PendingException();
+		daoP = new DAOPublicacion();
+	    LinkedList<String>adj = new LinkedList<String>();
+	    adj.add("adj1");adj.add("adj2");
+		publi2 = new Publicacion(person.getUsername(),"prueba", "Privado", adj, "Wed Nov 01 15:10:50 CET 2017");
+		daoP.borrarPublicacion(publi2);
+	    
 	}
 
 	@Then("^Se elimina la publicacion$")
 	public void se_elimina_la_publicacion() throws Throwable {
-	    // Write code here that turns the phrase above into concrete actions
-	    //throw new PendingException();
+		publi4=daoP.leerPublicacion(publi2.getUsername(), publi2.getFecha().toString());
+	    assert(publi4==null);
 	}
 }

@@ -23,11 +23,6 @@ public class DataBase {
         client = new MongoClient(uri);
 	}
 	
-	
-	/*+-----------------------------------------------------------------------------------+
-	 *                                PERSONA
-	  +-----------------------------------------------------------------------------------+*/
-	
 	protected boolean create(Persona p) {
 		try {
 			db = client.getDatabase(uri.getDatabase());
@@ -171,7 +166,7 @@ public class DataBase {
 	
 	protected Publicacion readPublicacion(String username, String fecha) {
 		try {
-			
+			pub = null;
 			db = client.getDatabase(uri.getDatabase());
 			dbPublicaciones = db.getCollection("publicaciones");
 			elementos = dbPublicaciones.find().iterator();
@@ -186,10 +181,37 @@ public class DataBase {
 					pub=new Publicacion(aux.get("username").toString(), aux.get("mensaje").toString(), aux.get("compartir").toString(), adjs, aux.get("fecha").toString());
 				}
 			}
-			return pub;
 		}catch(Exception ex) {
 			ex.printStackTrace();
-			return null;
 		}
+		return pub;
+	}
+	
+	protected boolean updatePublicacion(Publicacion antigua, Publicacion nueva) {
+		try {
+			deletePublicacion(antigua);
+			createPublicacion(nueva);
+			return true;
+		}catch(Exception ex) {
+			ex.printStackTrace();
+			return false;
+		}
+	}
+	protected boolean deletePublicacion(Publicacion pub) {
+		boolean borrado= false;
+		db = client.getDatabase(uri.getDatabase());
+		dbPublicaciones = db.getCollection("publicaciones");
+		elementos = dbPublicaciones.find().iterator();
+		System.out.println("Delete: "+pub.getUsername()+" "+pub.getFecha().toString());
+		while(elementos.hasNext()) {
+			aux=elementos.next();
+			System.out.println("Entra: "+aux.get("username").toString()+" "+aux.get("fecha").toString());
+			if((aux.get("username").toString().equalsIgnoreCase(pub.getUsername()))&&
+			   (aux.get("fecha").toString().equalsIgnoreCase(pub.getFecha().toString()))) {
+				dbPublicaciones.deleteOne(aux);
+				borrado=true;
+			}
+		}
+		return borrado;
 	}
 }

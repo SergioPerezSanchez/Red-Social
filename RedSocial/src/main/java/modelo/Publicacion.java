@@ -11,7 +11,7 @@ public class Publicacion {
 	LinkedList<String> adjuntos;
 	Date fecha;
 	
-	
+	//PARA CREAR UNA PUBLICACION NUEVA
 	public Publicacion(String user, String m, String cC, LinkedList<String>adj) {
 		setUsername(user);
 		setMensaje(m);
@@ -19,6 +19,7 @@ public class Publicacion {
 		setAdjuntos(adj);
 		creaFecha();
 	}
+	//ESPECIAL: SOLO PARA LECTURA DE PUBLICACIONES DE LA BASE DATOS
 	public Publicacion(String user, String m, String cC, LinkedList<String>adj, String f) {
 		setUsername(user);
 		setMensaje(m);
@@ -31,31 +32,34 @@ public class Publicacion {
 	protected String getMensaje() {
 		return mensaje;
 	}
-	protected void setMensaje(String mensaje) {
+	public void setMensaje(String mensaje) {
 		this.mensaje = mensaje;
+		creaFecha();
 	}
 	protected String getCompartirCon() {
 		return compartirCon;
 	}
-	protected void setCompartirCon(String compartirCon) {
+	public void setCompartirCon(String compartirCon) {
 		this.compartirCon = compartirCon;
+		creaFecha();
 	}
 	protected LinkedList<String> getAdjuntos() {
 		return adjuntos;
 	}
-	protected void setAdjuntos(LinkedList<String> adjuntos) {
+	public void setAdjuntos(LinkedList<String> adjuntos) {
 		this.adjuntos = adjuntos;
 	}
 	public String getUsername() {
 		return username;
 	}
-	protected void setUsername(String username) {
+	public void setUsername(String username) {
 		this.username = username;
+		creaFecha();
 	}
 	public Date getFecha() {
 		return fecha;
 	}
-	protected void setFecha(String fecha) {
+	public void setFecha(String fecha) {
 		try {
 			DateFormat format = new SimpleDateFormat("EEE MMM dd HH:mm:ss zzz yyyy", Locale.ENGLISH);
 			this.fecha= format.parse(fecha);
