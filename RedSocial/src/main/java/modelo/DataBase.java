@@ -34,7 +34,8 @@ public class DataBase {
 					.append("apellidos", p.getApellidos())
 					.append("direccion", p.getDireccion())
 					.append("telefono", p.getTelefono())
-					.append("foto", p.getFoto());
+					.append("foto", p.getFoto())
+					.append("rol", p.getRol());
 			dbUsuarios.insertOne(doc);
 			return true;
 		}catch(Exception ex) {
@@ -94,7 +95,8 @@ public class DataBase {
 				.append("apellidos", p.getApellidos())
 				.append("direccion", p.getDireccion())
 				.append("telefono", p.getTelefono())
-				.append("foto", p.getFoto());
+				.append("foto", p.getFoto())
+				.append("rol", p.getRol());
 		while(elementos.hasNext()) {
 			aux=elementos.next();
 			if((aux.get("email").toString().equalsIgnoreCase(p.getEmail()))&&
@@ -141,7 +143,7 @@ public class DataBase {
 		while(elementos.hasNext()) {
 			doc=elementos.next();
 			if((doc.get("email").toString().equalsIgnoreCase(email))) {
-				p = new Persona(doc.getString("nombre"), doc.getString("apellidos"), doc.getString("username"), doc.getString("email"), doc.getString("clave"), doc.getString("direccion"), doc.getString("telefono"), doc.getString("foto"), true);
+				p = new Persona(doc.getString("nombre"), doc.getString("apellidos"), doc.getString("username"), doc.getString("email"), doc.getString("clave"), doc.getString("direccion"), doc.getString("telefono"), doc.getString("foto"), true, doc.getString("rol"));
 			}
 		}		
 		return p;

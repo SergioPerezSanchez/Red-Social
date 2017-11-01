@@ -63,7 +63,7 @@ private static final Logger logger = LoggerFactory.getLogger(RegisterController.
 				password=request.getParameter("inputPasswordRegistro");
 				direccion=request.getParameter("inputDireccionRegistro");
 				telefono=request.getParameter("inputTelefonoRegistro");
-				p = new Persona(nombre, apellidos, username, email, password, direccion, telefono, "", false);
+				p = new Persona(nombre, apellidos, username, email, password, direccion, telefono, "", false, "usuario");
 				dao.crearPersona(p);
 				flag=true;
 			}

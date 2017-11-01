@@ -15,7 +15,7 @@ public class PublicacionesTest {
 	@Given("^Un usuario logueado en el sistema$")
 	public void un_usuario_logueado_en_el_sistema() throws Throwable {
 		dao = new DAOPersona();
-	    person=new Persona("Carlos", "Delgado", "carlitos93", "carlitos@mail.com", "a1Zs7s2DM", "Calle Jane Doe", "0", "photo", false);
+	    person=new Persona("Carlos", "Delgado", "carlitos93", "carlitos@mail.com", "a1Zs7s2DM", "Calle Jane Doe", "0", "photo", false, "usuario");
 	    assert(dao.login(person));
 	}
 

@@ -7,20 +7,20 @@ import static org.apache.commons.codec.binary.Base64.decodeBase64;
 import static org.apache.commons.codec.binary.Base64.encodeBase64;
 
 public class Persona {
-	private String nombre, apellidos, username, email, password, direccion, telefono, foto, original;
+	private String nombre, apellidos, username, email, password, direccion, telefono, foto, original, rol;
 	
 	//https://bit502.wordpress.com/2014/06/27/codigo-java-encriptar-y-desencriptar-texto-usando-el-algoritmo-aes-con-cifrado-por-bloques-cbc-de-128-bits/
-	// Definición del tipo de algoritmo a utilizar (AES, DES, RSA)
+	// Definicion del tipo de algoritmo a utilizar (AES, DES, RSA)
     private final static String alg = "AES";
-    // Definición del modo de cifrado a utilizar
+    // Definicion del modo de cifrado a utilizar
     private final static String cI = "AES/CBC/PKCS5Padding";
     //key es la llave en tipo String a utilizar
     private final static String key="92AE31A79FEEB2A3";
-    //iv el vector de inicialización a utilizar
+    //iv el vector de inicializacion a utilizar
     private final static String iv="0123456789ABCDEF"; 
     
     
-	public Persona(String n, String ap, String us, String e, String pass, String dir, String tlfn, String photo, boolean esEncriptado) {
+	public Persona(String n, String ap, String us, String e, String pass, String dir, String tlfn, String photo, boolean esEncriptado, String rol) {
 		try {
 			this.nombre=n;
 			this.apellidos=ap;
@@ -31,6 +31,7 @@ public class Persona {
 			this.direccion=dir;
 			this.telefono=tlfn;
 			this.foto=photo;
+			this.rol=rol;
 			if(esEncriptado) {
 				decrypt();
 			}else {
@@ -139,5 +140,12 @@ public class Persona {
 	}
 	protected void setFoto(String foto) {
 		this.foto = foto;
+	}
+	protected String getRol() {
+		return rol;
+	}
+
+	protected void setRol(String rol) {
+		this.rol = rol;
 	}
 }
