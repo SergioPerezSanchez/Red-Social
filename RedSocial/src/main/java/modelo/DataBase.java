@@ -23,6 +23,11 @@ public class DataBase {
         client = new MongoClient(uri);
 	}
 	
+	
+	/*+-----------------------------------------------------------------------------------+
+	 *                                PERSONA
+	  +-----------------------------------------------------------------------------------+*/
+	
 	protected boolean create(Persona p) {
 		try {
 			db = client.getDatabase(uri.getDatabase());
@@ -105,7 +110,7 @@ public class DataBase {
 		}
 		return borrado;
 	}
-
+	
 	protected boolean deleteEmail(String email) {
 		
 		db = client.getDatabase(uri.getDatabase());
