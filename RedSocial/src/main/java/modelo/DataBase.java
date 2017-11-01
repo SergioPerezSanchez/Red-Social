@@ -21,6 +21,11 @@ public class DataBase {
         client = new MongoClient(uri);
 	}
 	
+	
+	/*+-----------------------------------------------------------------------------------+
+	 *                                PERSONA
+	  +-----------------------------------------------------------------------------------+*/
+	
 	protected boolean create(Persona p) {
 		try {
 			db = client.getDatabase(uri.getDatabase());
@@ -103,7 +108,7 @@ public class DataBase {
 		}
 		return borrado;
 	}
-
+	
 	protected boolean deleteEmail(String email) {
 		
 		db = client.getDatabase(uri.getDatabase());
@@ -143,5 +148,93 @@ public class DataBase {
 			}
 		}		
 		return p;
+	}
+	
+
+	/*+-----------------------------------------------------------------------------------+
+	 *                                PUBLICACION
+	  +-----------------------------------------------------------------------------------+*/
+	
+	protected boolean create(Publicacion publicacion) {
+		try {
+			/*db = client.getDatabase(uri.getDatabase());
+			dbUsuarios = db.getCollection("usuarios");
+			doc=new Document("email",p.getEmail())
+					.append("clave", p.getPassword())
+					.append("username", p.getUsername())
+					.append("nombre", p.getNombre())
+					.append("apellidos", p.getApellidos())
+					.append("direccion", p.getDireccion())
+					.append("telefono", p.getTelefono())
+					.append("foto", p.getFoto());
+			dbUsuarios.insertOne(doc);*/
+			return true;
+		}catch(Exception ex) {
+			ex.printStackTrace();
+			return false;
+		}
+	}
+	
+	protected boolean existeTitulo(String titulo) {
+		boolean existe = false;
+		/*db = client.getDatabase(uri.getDatabase());
+		dbUsuarios = db.getCollection("usuarios");
+		elementos = dbUsuarios.find().iterator();
+		while(elementos.hasNext()) {
+			doc=elementos.next();
+			if(doc.get("username").toString().equalsIgnoreCase(username))existe=true;
+		}*/
+		return existe;
+	}
+	
+
+	protected boolean delete(Publicacion publicacion) {
+		boolean borrado= false;
+		/*db = client.getDatabase(uri.getDatabase());
+		dbUsuarios = db.getCollection("usuarios");
+		elementos = dbUsuarios.find().iterator();
+		doc=new Document("email",p.getEmail())
+				.append("clave", p.getPassword())
+				.append("username", p.getUsername())
+				.append("nombre", p.getNombre())
+				.append("apellidos", p.getApellidos())
+				.append("direccion", p.getDireccion())
+				.append("telefono", p.getTelefono())
+				.append("foto", p.getFoto());
+		while(elementos.hasNext()) {
+			aux=elementos.next();
+			if((aux.get("email").toString().equalsIgnoreCase(p.getEmail()))&&
+			   (aux.get("clave").toString().equalsIgnoreCase(p.getPassword()))) {
+				dbUsuarios.deleteOne(doc);
+				borrado=true;
+			}
+		}*/
+		return borrado;
+	}
+
+
+protected boolean update(Publicacion publicacion){
+		
+		/*db = client.getDatabase(uri.getDatabase());
+		dbUsuarios = db.getCollection("usuarios");
+		elementos = dbUsuarios.find().iterator();
+		
+		deleteEmail(p.getEmail());
+		create(p);*/
+		return true;
+	}
+	
+	protected Publicacion getPublicacion(String email) {
+		Publicacion publicacion = null;
+		/*db = client.getDatabase(uri.getDatabase());
+		dbUsuarios = db.getCollection("usuarios");
+		elementos = dbUsuarios.find().iterator();
+		while(elementos.hasNext()) {
+			doc=elementos.next();
+			if((doc.get("email").toString().equalsIgnoreCase(email))) {
+				p = new Persona(doc.getString("nombre"), doc.getString("apellidos"), doc.getString("username"), doc.getString("email"), doc.getString("clave"), doc.getString("direccion"), doc.getString("telefono"), doc.getString("foto"), true);
+			}
+		}*/		
+		return publicacion;
 	}
 }
