@@ -27,7 +27,7 @@
 
   <meta name="viewport" content="width=device-width">
   
-  <title>Red-Social/03cucumberUpdateUser.feature at modelo · SergioPerezSanchez/Red-Social</title>
+  <title>Red-Social/06cucumberUserDeletePublicacion.feature at modelo · SergioPerezSanchez/Red-Social</title>
   <link rel="search" type="application/opensearchdescription+xml" href="/opensearch.xml" title="GitHub">
   <link rel="fluid-icon" href="https://github.com/fluidicon.png" title="GitHub">
   <meta property="fb:app_id" content="1401488693436528">
@@ -36,10 +36,10 @@
     <meta content="https://avatars1.githubusercontent.com/u/15104570?s=400&amp;v=4" property="og:image" /><meta content="GitHub" property="og:site_name" /><meta content="object" property="og:type" /><meta content="SergioPerezSanchez/Red-Social" property="og:title" /><meta content="https://github.com/SergioPerezSanchez/Red-Social" property="og:url" /><meta content="Contribute to Red-Social development by creating an account on GitHub." property="og:description" />
 
   <link rel="assets" href="https://assets-cdn.github.com/">
-  <link rel="web-socket" href="wss://live.github.com/_sockets/VjI6MjExMjgzNjU5OjA3ODA3NDI5MzQ4MjY3MzRjYzZhYjZhMzMyNDY4OTA2OWU4ZTZiNWFkYzM5ODAyMjUxNjc1OWYxYzJkODY5Y2E=--83a93b7a65b35017a1d94fef1d1ad5523053d478">
+  <link rel="web-socket" href="wss://live.github.com/_sockets/VjI6MjExMjgzNjU5OjVmODJlYjQ0ODcwNmU4NTFhYTZmMjgyYWQ2M2RhZjBmZjM1ZjY4NDQyMDk2ZjY0YzJjZmY4YWQ5YjVkMTIyNmY=--75791f74ce6c625e711873b45951dd0bb60cd3dd">
   <meta name="pjax-timeout" content="1000">
   <link rel="sudo-modal" href="/sessions/sudo_modal">
-  <meta name="request-id" content="C6FC:489D:17577B:2633B1:59FBAB37" data-pjax-transient>
+  <meta name="request-id" content="C6FC:489D:176275:2642FF:59FBAB49" data-pjax-transient>
   
 
   <meta name="selected-link" value="repo_source" data-pjax-transient>
@@ -48,7 +48,7 @@
 <meta name="google-site-verification" content="ZzhVyEFwb7w3e0-uOTltm8Jsck2F5StVihD0exw2fsA">
     <meta name="google-analytics" content="UA-3769691-2">
 
-<meta content="collector.githubapp.com" name="octolytics-host" /><meta content="github" name="octolytics-app-id" /><meta content="https://collector.githubapp.com/github-external/browser_event" name="octolytics-event-url" /><meta content="C6FC:489D:17577B:2633B1:59FBAB37" name="octolytics-dimension-request_id" /><meta content="iad" name="octolytics-dimension-region_edge" /><meta content="iad" name="octolytics-dimension-region_render" /><meta content="15104570" name="octolytics-actor-id" /><meta content="SergioPerezSanchez" name="octolytics-actor-login" /><meta content="1698ac6998904c6731a46269171cb5d42eae303669b990be6fbf38316284f536" name="octolytics-actor-hash" />
+<meta content="collector.githubapp.com" name="octolytics-host" /><meta content="github" name="octolytics-app-id" /><meta content="https://collector.githubapp.com/github-external/browser_event" name="octolytics-event-url" /><meta content="C6FC:489D:176275:2642FF:59FBAB49" name="octolytics-dimension-request_id" /><meta content="iad" name="octolytics-dimension-region_edge" /><meta content="iad" name="octolytics-dimension-region_render" /><meta content="15104570" name="octolytics-actor-id" /><meta content="SergioPerezSanchez" name="octolytics-actor-login" /><meta content="1698ac6998904c6731a46269171cb5d42eae303669b990be6fbf38316284f536" name="octolytics-actor-hash" />
 <meta content="/&lt;user-name&gt;/&lt;repo-name&gt;/blob/show" data-pjax-transient="true" name="analytics-location" />
 
 
@@ -63,7 +63,7 @@
   <meta name="user-login" content="SergioPerezSanchez">
 
       <meta name="expected-hostname" content="github.com">
-    <meta name="js-proxy-site-detection-payload" content="NDU3NTRlMjVmMjJmNzhkYWMxYjI0OGRmODQxNTY1NWE5MTMzMTI5NjEwNmFiZDJmMDE2MzY5Zjg0NjEyODcwZXx7InJlbW90ZV9hZGRyZXNzIjoiMTg1LjE5MS42Ni45NSIsInJlcXVlc3RfaWQiOiJDNkZDOjQ4OUQ6MTc1NzdCOjI2MzNCMTo1OUZCQUIzNyIsInRpbWVzdGFtcCI6MTUwOTY2NTU5NywiaG9zdCI6ImdpdGh1Yi5jb20ifQ==">
+    <meta name="js-proxy-site-detection-payload" content="ZjVkZmM5N2M1ZWY0ZDE2ZmNiYjkxODk0NGIyNDc2YTkxNmVmZTI0MDA1M2JlNGY4OTFjNmQwNGJlMDE0YzRkYnx7InJlbW90ZV9hZGRyZXNzIjoiMTg1LjE5MS42Ni45NSIsInJlcXVlc3RfaWQiOiJDNkZDOjQ4OUQ6MTc2Mjc1OjI2NDJGRjo1OUZCQUI0OSIsInRpbWVzdGFtcCI6MTUwOTY2NTYxNywiaG9zdCI6ImdpdGh1Yi5jb20ifQ==">
 
     <meta name="enabled-features" content="UNIVERSE_BANNER,FREE_TRIALS">
 
@@ -80,7 +80,7 @@
   <meta content="15104570" name="octolytics-dimension-user_id" /><meta content="SergioPerezSanchez" name="octolytics-dimension-user_login" /><meta content="105633804" name="octolytics-dimension-repository_id" /><meta content="SergioPerezSanchez/Red-Social" name="octolytics-dimension-repository_nwo" /><meta content="true" name="octolytics-dimension-repository_public" /><meta content="false" name="octolytics-dimension-repository_is_fork" /><meta content="105633804" name="octolytics-dimension-repository_network_root_id" /><meta content="SergioPerezSanchez/Red-Social" name="octolytics-dimension-repository_network_root_nwo" /><meta content="false" name="octolytics-dimension-repository_explore_github_marketplace_ci_cta_shown" />
 
 
-    <link rel="canonical" href="https://github.com/SergioPerezSanchez/Red-Social/blob/modelo/RedSocial/src/test/resources/03cucumberUpdateUser.feature" data-pjax-transient>
+    <link rel="canonical" href="https://github.com/SergioPerezSanchez/Red-Social/blob/modelo/RedSocial/src/test/resources/06cucumberUserDeletePublicacion.feature" data-pjax-transient>
 
 
   <meta name="browser-stats-url" content="https://api.github.com/_private/browser/stats">
@@ -127,7 +127,7 @@
               <div class="header-search scoped-search site-scoped-search js-site-search" role="search">
   <!-- '"` --><!-- </textarea></xmp> --></option></form><form accept-charset="UTF-8" action="/SergioPerezSanchez/Red-Social/search" class="js-site-search-form" data-scoped-search-url="/SergioPerezSanchez/Red-Social/search" data-unscoped-search-url="/search" method="get"><div style="margin:0;padding:0;display:inline"><input name="utf8" type="hidden" value="&#x2713;" /></div>
     <label class="form-control header-search-wrapper js-chromeless-input-container">
-        <a href="/SergioPerezSanchez/Red-Social/blob/modelo/RedSocial/src/test/resources/03cucumberUpdateUser.feature" class="header-search-scope no-underline">This repository</a>
+        <a href="/SergioPerezSanchez/Red-Social/blob/modelo/RedSocial/src/test/resources/06cucumberUserDeletePublicacion.feature" class="header-search-scope no-underline">This repository</a>
       <input type="text"
         class="form-control header-search-input js-site-search-focus js-site-search-field is-clearable"
         data-hotkey="s"
@@ -253,7 +253,7 @@
           Settings
         </a></li>
 
-        <li><!-- '"` --><!-- </textarea></xmp> --></option></form><form accept-charset="UTF-8" action="/logout" class="logout-form" method="post"><div style="margin:0;padding:0;display:inline"><input name="utf8" type="hidden" value="&#x2713;" /><input name="authenticity_token" type="hidden" value="Oz3KC1+bNYLjgCHNF8R6NAFAjE0L1hHmbeKSsO5fiaqNFwWwZ8/Z+kAsWoLlm3bma+O+ogcr7GyiaQrWf5t+pg==" /></div>
+        <li><!-- '"` --><!-- </textarea></xmp> --></option></form><form accept-charset="UTF-8" action="/logout" class="logout-form" method="post"><div style="margin:0;padding:0;display:inline"><input name="utf8" type="hidden" value="&#x2713;" /><input name="authenticity_token" type="hidden" value="FtRSe1Hn9T932Zo32Jsx1Pt7KV2FIrEhKOTx/o/zHuig/p3AabMZR9R14XgqxD0GkdgbsonfTKvnb2mYHjfp5A==" /></div>
           <button type="submit" class="dropdown-item dropdown-signout" data-ga-click="Header, sign out, icon:logout">
             Sign out
           </button>
@@ -264,7 +264,7 @@
 </ul>
 
 
-        <!-- '"` --><!-- </textarea></xmp> --></option></form><form accept-charset="UTF-8" action="/logout" class="sr-only right-0" method="post"><div style="margin:0;padding:0;display:inline"><input name="utf8" type="hidden" value="&#x2713;" /><input name="authenticity_token" type="hidden" value="wbYrt/2Rg9zZTdHCZ48PVeolEWNudzYJDGx0xFGuGY13nOQMxcVvpHrhqo2V0AOHgIYjjGKKy4PD5+yiwGrugQ==" /></div>
+        <!-- '"` --><!-- </textarea></xmp> --></option></form><form accept-charset="UTF-8" action="/logout" class="sr-only right-0" method="post"><div style="margin:0;padding:0;display:inline"><input name="utf8" type="hidden" value="&#x2713;" /><input name="authenticity_token" type="hidden" value="cts59eJe78C4+lSQwdEblKolw1FUshThjn60SPoaDCLE8fZO2goDuBtWL98zjhdGwIbxvlhP6WtB9Swua977Lg==" /></div>
           <button type="submit" class="dropdown-item dropdown-signout" data-ga-click="Header, sign out, icon:logout">
             Sign out
           </button>
@@ -299,7 +299,7 @@
 
         <ul class="pagehead-actions">
   <li>
-        <!-- '"` --><!-- </textarea></xmp> --></option></form><form accept-charset="UTF-8" action="/notifications/subscribe" class="js-social-container" data-autosubmit="true" data-remote="true" method="post"><div style="margin:0;padding:0;display:inline"><input name="utf8" type="hidden" value="&#x2713;" /><input name="authenticity_token" type="hidden" value="6qo+XLSS1zfOK8s4WGiv78b5BPy+bWUFY0uHHDZEO3PNR1JbwRNlSmvDeE1/xg9bsF2KX3QgAwAu8kkiI8nlog==" /></div>      <input class="form-control" id="repository_id" name="repository_id" type="hidden" value="105633804" />
+        <!-- '"` --><!-- </textarea></xmp> --></option></form><form accept-charset="UTF-8" action="/notifications/subscribe" class="js-social-container" data-autosubmit="true" data-remote="true" method="post"><div style="margin:0;padding:0;display:inline"><input name="utf8" type="hidden" value="&#x2713;" /><input name="authenticity_token" type="hidden" value="09cqnpg7RBPpIG4lYxcOQUNlMgtZ3XTrNIxXejwwli30OkaZ7br2bkzI3VBEua71NcG8qJOQEu55NZlEKb1I/A==" /></div>      <input class="form-control" id="repository_id" name="repository_id" type="hidden" value="105633804" />
 
         <div class="select-menu js-menu-container js-select-menu">
           <a href="/SergioPerezSanchez/Red-Social/subscription"
@@ -379,7 +379,7 @@
   <li>
     
   <div class="js-toggler-container js-social-container starring-container ">
-    <!-- '"` --><!-- </textarea></xmp> --></option></form><form accept-charset="UTF-8" action="/SergioPerezSanchez/Red-Social/unstar" class="starred js-social-form" method="post"><div style="margin:0;padding:0;display:inline"><input name="utf8" type="hidden" value="&#x2713;" /><input name="authenticity_token" type="hidden" value="taOJbZsGqJqOIxHusSOimckieSGa5jOqT5ICCJyNkc2D56CPXnBvnhyVnIE8HEJwkxWXOBK/3RJ4HMe8Ts/c+A==" /></div>
+    <!-- '"` --><!-- </textarea></xmp> --></option></form><form accept-charset="UTF-8" action="/SergioPerezSanchez/Red-Social/unstar" class="starred js-social-form" method="post"><div style="margin:0;padding:0;display:inline"><input name="utf8" type="hidden" value="&#x2713;" /><input name="authenticity_token" type="hidden" value="Y8h5wq+UgzeC+gCNDb/T4JwsSHqsdmL4roHETNG/CAdVjFAgauJEMxBMjeKAgDMJxhumYyQvjECZDwH4A/1FMg==" /></div>
       <input type="hidden" name="context" value="repository"></input>
       <button
         type="submit"
@@ -394,7 +394,7 @@
           2
         </a>
 </form>
-    <!-- '"` --><!-- </textarea></xmp> --></option></form><form accept-charset="UTF-8" action="/SergioPerezSanchez/Red-Social/star" class="unstarred js-social-form" method="post"><div style="margin:0;padding:0;display:inline"><input name="utf8" type="hidden" value="&#x2713;" /><input name="authenticity_token" type="hidden" value="t623Uxp7p9VztklrgJif5aVPJuk6aHvgxigzIoGfplZ1Ac7B4LUMbqbu28N+BzP6r0TSmdcrRGSf9XkOHICkDg==" /></div>
+    <!-- '"` --><!-- </textarea></xmp> --></option></form><form accept-charset="UTF-8" action="/SergioPerezSanchez/Red-Social/star" class="unstarred js-social-form" method="post"><div style="margin:0;padding:0;display:inline"><input name="utf8" type="hidden" value="&#x2713;" /><input name="authenticity_token" type="hidden" value="L7JV3bs7ZJQ8uO34LBDGWaT6haef7K0aaM/77ajoV2ztHixPQfXPL+ngf1DSj2pGrvFx13Kvkp4xErHBNfdVNA==" /></div>
       <input type="hidden" name="context" value="repository"></input>
       <button
         type="submit"
@@ -504,9 +504,9 @@
   <div class="repository-content">
 
     
-  <a href="/SergioPerezSanchez/Red-Social/blob/2a1661eb133bc9cf5e75a2de627ae40f4aa717aa/RedSocial/src/test/resources/03cucumberUpdateUser.feature" class="d-none js-permalink-shortcut" data-hotkey="y">Permalink</a>
+  <a href="/SergioPerezSanchez/Red-Social/blob/2a1661eb133bc9cf5e75a2de627ae40f4aa717aa/RedSocial/src/test/resources/06cucumberUserDeletePublicacion.feature" class="d-none js-permalink-shortcut" data-hotkey="y">Permalink</a>
 
-  <!-- blob contrib key: blob_contributors:v21:ee5a400b286a33ce84d5418b63b35687 -->
+  <!-- blob contrib key: blob_contributors:v21:fdcf39cb58181f0adf25e13ce36adf66 -->
 
   <div class="file-navigation js-zeroclipboard-container">
     
@@ -548,7 +548,7 @@
 
 
             <a class="select-menu-item js-navigation-item js-navigation-open "
-               href="/SergioPerezSanchez/Red-Social/blob/configuracion/RedSocial/src/test/resources/03cucumberUpdateUser.feature"
+               href="/SergioPerezSanchez/Red-Social/blob/configuracion/RedSocial/src/test/resources/06cucumberUserDeletePublicacion.feature"
                data-name="configuracion"
                data-skip-pjax="true"
                rel="nofollow">
@@ -558,7 +558,7 @@
               </span>
             </a>
             <a class="select-menu-item js-navigation-item js-navigation-open "
-               href="/SergioPerezSanchez/Red-Social/blob/controlador/RedSocial/src/test/resources/03cucumberUpdateUser.feature"
+               href="/SergioPerezSanchez/Red-Social/blob/controlador/RedSocial/src/test/resources/06cucumberUserDeletePublicacion.feature"
                data-name="controlador"
                data-skip-pjax="true"
                rel="nofollow">
@@ -568,7 +568,7 @@
               </span>
             </a>
             <a class="select-menu-item js-navigation-item js-navigation-open "
-               href="/SergioPerezSanchez/Red-Social/blob/master/RedSocial/src/test/resources/03cucumberUpdateUser.feature"
+               href="/SergioPerezSanchez/Red-Social/blob/master/RedSocial/src/test/resources/06cucumberUserDeletePublicacion.feature"
                data-name="master"
                data-skip-pjax="true"
                rel="nofollow">
@@ -578,7 +578,7 @@
               </span>
             </a>
             <a class="select-menu-item js-navigation-item js-navigation-open selected"
-               href="/SergioPerezSanchez/Red-Social/blob/modelo/RedSocial/src/test/resources/03cucumberUpdateUser.feature"
+               href="/SergioPerezSanchez/Red-Social/blob/modelo/RedSocial/src/test/resources/06cucumberUserDeletePublicacion.feature"
                data-name="modelo"
                data-skip-pjax="true"
                rel="nofollow">
@@ -588,7 +588,7 @@
               </span>
             </a>
             <a class="select-menu-item js-navigation-item js-navigation-open "
-               href="/SergioPerezSanchez/Red-Social/blob/vista/RedSocial/src/test/resources/03cucumberUpdateUser.feature"
+               href="/SergioPerezSanchez/Red-Social/blob/vista/RedSocial/src/test/resources/06cucumberUserDeletePublicacion.feature"
                data-name="vista"
                data-skip-pjax="true"
                rel="nofollow">
@@ -599,7 +599,7 @@
             </a>
         </div>
 
-          <!-- '"` --><!-- </textarea></xmp> --></option></form><form accept-charset="UTF-8" action="/SergioPerezSanchez/Red-Social/branches" class="js-create-branch select-menu-item select-menu-new-item-form js-navigation-item js-new-item-form" method="post"><div style="margin:0;padding:0;display:inline"><input name="utf8" type="hidden" value="&#x2713;" /><input name="authenticity_token" type="hidden" value="2/7dOmyWteXOQABIrEjEVSxXXQGj44G/jGkC72PYRC09VcQiKrFCj5YWcoK06FUq3Ecc1xk1lvql+4c62sfT4Q==" /></div>
+          <!-- '"` --><!-- </textarea></xmp> --></option></form><form accept-charset="UTF-8" action="/SergioPerezSanchez/Red-Social/branches" class="js-create-branch select-menu-item select-menu-new-item-form js-navigation-item js-new-item-form" method="post"><div style="margin:0;padding:0;display:inline"><input name="utf8" type="hidden" value="&#x2713;" /><input name="authenticity_token" type="hidden" value="Hbn/yhXf1sIghS6bIyTpwoeDzDjQTbFHd26RyiDfNCf7EubSU/ghqHjTXFE7hHi9d5ON7mqbpgJe/BQfmcCj6w==" /></div>
           <svg aria-hidden="true" class="octicon octicon-git-branch select-menu-item-icon" height="16" version="1.1" viewBox="0 0 10 16" width="10"><path fill-rule="evenodd" d="M10 5c0-1.11-.89-2-2-2a1.993 1.993 0 0 0-1 3.72v.3c-.02.52-.23.98-.63 1.38-.4.4-.86.61-1.38.63-.83.02-1.48.16-2 .45V4.72a1.993 1.993 0 0 0-1-3.72C.88 1 0 1.89 0 3a2 2 0 0 0 1 1.72v6.56c-.59.35-1 .99-1 1.72 0 1.11.89 2 2 2 1.11 0 2-.89 2-2 0-.53-.2-1-.53-1.36.09-.06.48-.41.59-.47.25-.11.56-.17.94-.17 1.05-.05 1.95-.45 2.75-1.25S8.95 7.77 9 6.73h-.02C9.59 6.37 10 5.73 10 5zM2 1.8c.66 0 1.2.55 1.2 1.2 0 .65-.55 1.2-1.2 1.2C1.35 4.2.8 3.65.8 3c0-.65.55-1.2 1.2-1.2zm0 12.41c-.66 0-1.2-.55-1.2-1.2 0-.65.55-1.2 1.2-1.2.65 0 1.2.55 1.2 1.2 0 .65-.55 1.2-1.2 1.2zm6-8c-.66 0-1.2-.55-1.2-1.2 0-.65.55-1.2 1.2-1.2.65 0 1.2.55 1.2 1.2 0 .65-.55 1.2-1.2 1.2z"/></svg>
             <div class="select-menu-item-text">
               <span class="select-menu-item-heading">Create branch: <span class="js-new-item-name"></span></span>
@@ -607,7 +607,7 @@
             </div>
             <input type="hidden" name="name" id="name" class="js-new-item-value">
             <input type="hidden" name="branch" id="branch" value="modelo">
-            <input type="hidden" name="path" id="path" value="RedSocial/src/test/resources/03cucumberUpdateUser.feature">
+            <input type="hidden" name="path" id="path" value="RedSocial/src/test/resources/06cucumberUserDeletePublicacion.feature">
 </form>
       </div>
 
@@ -634,12 +634,12 @@
       <button aria-label="Copy file path to clipboard" class="js-zeroclipboard btn btn-sm BtnGroup-item tooltipped tooltipped-s" data-copied-hint="Copied!" type="button">Copy path</button>
     </div>
     <div class="breadcrumb js-zeroclipboard-target">
-      <span class="repo-root js-repo-root"><span class="js-path-segment"><a href="/SergioPerezSanchez/Red-Social/tree/modelo"><span>Red-Social</span></a></span></span><span class="separator">/</span><span class="js-path-segment"><a href="/SergioPerezSanchez/Red-Social/tree/modelo/RedSocial"><span>RedSocial</span></a></span><span class="separator">/</span><span class="js-path-segment"><a href="/SergioPerezSanchez/Red-Social/tree/modelo/RedSocial/src"><span>src</span></a></span><span class="separator">/</span><span class="js-path-segment"><a href="/SergioPerezSanchez/Red-Social/tree/modelo/RedSocial/src/test"><span>test</span></a></span><span class="separator">/</span><span class="js-path-segment"><a href="/SergioPerezSanchez/Red-Social/tree/modelo/RedSocial/src/test/resources"><span>resources</span></a></span><span class="separator">/</span><strong class="final-path">03cucumberUpdateUser.feature</strong>
+      <span class="repo-root js-repo-root"><span class="js-path-segment"><a href="/SergioPerezSanchez/Red-Social/tree/modelo"><span>Red-Social</span></a></span></span><span class="separator">/</span><span class="js-path-segment"><a href="/SergioPerezSanchez/Red-Social/tree/modelo/RedSocial"><span>RedSocial</span></a></span><span class="separator">/</span><span class="js-path-segment"><a href="/SergioPerezSanchez/Red-Social/tree/modelo/RedSocial/src"><span>src</span></a></span><span class="separator">/</span><span class="js-path-segment"><a href="/SergioPerezSanchez/Red-Social/tree/modelo/RedSocial/src/test"><span>test</span></a></span><span class="separator">/</span><span class="js-path-segment"><a href="/SergioPerezSanchez/Red-Social/tree/modelo/RedSocial/src/test/resources"><span>resources</span></a></span><span class="separator">/</span><strong class="final-path">06cucumberUserDeletePublicacion.feature</strong>
     </div>
   </div>
 
 
-  <include-fragment class="commit-tease" src="/SergioPerezSanchez/Red-Social/contributors/modelo/RedSocial/src/test/resources/03cucumberUpdateUser.feature">
+  <include-fragment class="commit-tease" src="/SergioPerezSanchez/Red-Social/contributors/modelo/RedSocial/src/test/resources/06cucumberUserDeletePublicacion.feature">
     <div>
       Fetching contributors&hellip;
     </div>
@@ -655,24 +655,24 @@
   <div class="file-actions">
 
     <div class="BtnGroup">
-      <a href="/SergioPerezSanchez/Red-Social/raw/modelo/RedSocial/src/test/resources/03cucumberUpdateUser.feature" class="btn btn-sm BtnGroup-item" id="raw-url">Raw</a>
-        <a href="/SergioPerezSanchez/Red-Social/blame/modelo/RedSocial/src/test/resources/03cucumberUpdateUser.feature" class="btn btn-sm js-update-url-with-hash BtnGroup-item" data-hotkey="b">Blame</a>
-      <a href="/SergioPerezSanchez/Red-Social/commits/modelo/RedSocial/src/test/resources/03cucumberUpdateUser.feature" class="btn btn-sm BtnGroup-item" rel="nofollow">History</a>
+      <a href="/SergioPerezSanchez/Red-Social/raw/modelo/RedSocial/src/test/resources/06cucumberUserDeletePublicacion.feature" class="btn btn-sm BtnGroup-item" id="raw-url">Raw</a>
+        <a href="/SergioPerezSanchez/Red-Social/blame/modelo/RedSocial/src/test/resources/06cucumberUserDeletePublicacion.feature" class="btn btn-sm js-update-url-with-hash BtnGroup-item" data-hotkey="b">Blame</a>
+      <a href="/SergioPerezSanchez/Red-Social/commits/modelo/RedSocial/src/test/resources/06cucumberUserDeletePublicacion.feature" class="btn btn-sm BtnGroup-item" rel="nofollow">History</a>
     </div>
 
         <a class="btn-octicon tooltipped tooltipped-nw"
-           href="github-windows://openRepo/https://github.com/SergioPerezSanchez/Red-Social?branch=modelo&amp;filepath=RedSocial%2Fsrc%2Ftest%2Fresources%2F03cucumberUpdateUser.feature"
+           href="github-windows://openRepo/https://github.com/SergioPerezSanchez/Red-Social?branch=modelo&amp;filepath=RedSocial%2Fsrc%2Ftest%2Fresources%2F06cucumberUserDeletePublicacion.feature"
            aria-label="Open this file in GitHub Desktop"
            data-ga-click="Repository, open with desktop, type:windows">
             <svg aria-hidden="true" class="octicon octicon-device-desktop" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M15 2H1c-.55 0-1 .45-1 1v9c0 .55.45 1 1 1h5.34c-.25.61-.86 1.39-2.34 2h8c-1.48-.61-2.09-1.39-2.34-2H15c.55 0 1-.45 1-1V3c0-.55-.45-1-1-1zm0 9H1V3h14v8z"/></svg>
         </a>
 
-        <!-- '"` --><!-- </textarea></xmp> --></option></form><form accept-charset="UTF-8" action="/SergioPerezSanchez/Red-Social/edit/modelo/RedSocial/src/test/resources/03cucumberUpdateUser.feature" class="inline-form js-update-url-with-hash" method="post"><div style="margin:0;padding:0;display:inline"><input name="utf8" type="hidden" value="&#x2713;" /><input name="authenticity_token" type="hidden" value="R+vnk8Q+02jyruTEHpqv3940NQzv0tHHfVoePD5yNadgjWs7sHY+sW5x0TIUja/TNvsMKUwIilVrKzrVy0Bg3Q==" /></div>
+        <!-- '"` --><!-- </textarea></xmp> --></option></form><form accept-charset="UTF-8" action="/SergioPerezSanchez/Red-Social/edit/modelo/RedSocial/src/test/resources/06cucumberUserDeletePublicacion.feature" class="inline-form js-update-url-with-hash" method="post"><div style="margin:0;padding:0;display:inline"><input name="utf8" type="hidden" value="&#x2713;" /><input name="authenticity_token" type="hidden" value="DcKt0zsWqrwQsAz/fqUpNKH12qzgAKzieJhgisyTYq+85GAHAjpG/hxfIR99XeD/MypU1qjn0vx3nTU7w/Q0CA==" /></div>
           <button class="btn-octicon tooltipped tooltipped-nw" type="submit"
             aria-label="Edit this file" data-hotkey="e" data-disable-with>
             <svg aria-hidden="true" class="octicon octicon-pencil" height="16" version="1.1" viewBox="0 0 14 16" width="14"><path fill-rule="evenodd" d="M0 12v3h3l8-8-3-3-8 8zm3 2H1v-2h1v1h1v1zm10.3-9.3L12 6 9 3l1.3-1.3a.996.996 0 0 1 1.41 0l1.59 1.59c.39.39.39 1.02 0 1.41z"/></svg>
           </button>
-</form>        <!-- '"` --><!-- </textarea></xmp> --></option></form><form accept-charset="UTF-8" action="/SergioPerezSanchez/Red-Social/delete/modelo/RedSocial/src/test/resources/03cucumberUpdateUser.feature" class="inline-form" method="post"><div style="margin:0;padding:0;display:inline"><input name="utf8" type="hidden" value="&#x2713;" /><input name="authenticity_token" type="hidden" value="xlkot0UjWfU6FJPGjLzsMr/4E7EXipX/K9cs0h5M95XCEs8Lvgj/qRkSEXvnFp1g9faEOq3KyxuUzzzsEdK4eg==" /></div>
+</form>        <!-- '"` --><!-- </textarea></xmp> --></option></form><form accept-charset="UTF-8" action="/SergioPerezSanchez/Red-Social/delete/modelo/RedSocial/src/test/resources/06cucumberUserDeletePublicacion.feature" class="inline-form" method="post"><div style="margin:0;padding:0;display:inline"><input name="utf8" type="hidden" value="&#x2713;" /><input name="authenticity_token" type="hidden" value="5bdWTFbzW6UG4nr8WAkR6XKFujfUOesk1zAVZT6oOdV3T1GjR/vdTb5SS8ZjT1AcadhpxoQQrVELzWmkeR13OA==" /></div>
           <button class="btn-octicon btn-octicon-danger tooltipped tooltipped-nw" type="submit"
             aria-label="Delete this file" data-disable-with>
             <svg aria-hidden="true" class="octicon octicon-trashcan" height="16" version="1.1" viewBox="0 0 12 16" width="12"><path fill-rule="evenodd" d="M11 2H9c0-.55-.45-1-1-1H5c-.55 0-1 .45-1 1H2c-.55 0-1 .45-1 1v1c0 .55.45 1 1 1v9c0 .55.45 1 1 1h7c.55 0 1-.45 1-1V5c.55 0 1-.45 1-1V3c0-.55-.45-1-1-1zm-1 12H3V5h1v8h1V5h1v8h1V5h1v8h1V5h1v9zm1-10H2V3h9v1z"/></svg>
@@ -680,9 +680,9 @@
 </form>  </div>
 
   <div class="file-info">
-      6 lines (5 sloc)
+      7 lines (5 sloc)
       <span class="file-info-divider"></span>
-    152 Bytes
+    183 Bytes
   </div>
 </div>
 
@@ -692,7 +692,7 @@
       <table class="highlight tab-size js-file-line-container" data-tab-size="8">
       <tr>
         <td id="L1" class="blob-num js-line-number" data-line-number="1"></td>
-        <td id="LC1" class="blob-code blob-code-inner js-file-line"><span class="pl-k">Feature</span>:<span class="pl-s"> Actualizar Datos</span></td>
+        <td id="LC1" class="blob-code blob-code-inner js-file-line"><span class="pl-k">Feature</span>:<span class="pl-s"> Eliminar Publicacion</span></td>
       </tr>
       <tr>
         <td id="L2" class="blob-num js-line-number" data-line-number="2"></td>
@@ -701,19 +701,19 @@
       </tr>
       <tr>
         <td id="L3" class="blob-num js-line-number" data-line-number="3"></td>
-        <td id="LC3" class="blob-code blob-code-inner js-file-line"><span class="pl-k">Scenario</span>:<span class="pl-s"> Actualizar Datos</span></td>
+        <td id="LC3" class="blob-code blob-code-inner js-file-line"><span class="pl-k">Scenario</span>:<span class="pl-s"> Usuario elimina publicacion</span></td>
       </tr>
       <tr>
         <td id="L4" class="blob-num js-line-number" data-line-number="4"></td>
-        <td id="LC4" class="blob-code blob-code-inner js-file-line"><span class="pl-k">Given </span>El usuario esta dentro del sistema</td>
+        <td id="LC4" class="blob-code blob-code-inner js-file-line"><span class="pl-k">Given </span>Un usuario logueado en el sistema</td>
       </tr>
       <tr>
         <td id="L5" class="blob-num js-line-number" data-line-number="5"></td>
-        <td id="LC5" class="blob-code blob-code-inner js-file-line"><span class="pl-k">When </span>Quiere cambiar la clave</td>
+        <td id="LC5" class="blob-code blob-code-inner js-file-line"><span class="pl-k">When </span>Quiere eliminar una publicacion</td>
       </tr>
       <tr>
         <td id="L6" class="blob-num js-line-number" data-line-number="6"></td>
-        <td id="LC6" class="blob-code blob-code-inner js-file-line"><span class="pl-k">Then </span>La clave se cambia</td>
+        <td id="LC6" class="blob-code blob-code-inner js-file-line"><span class="pl-k">Then </span>Se elimina la publicacion</td>
       </tr>
 </table>
 
@@ -731,7 +731,7 @@
       <ul class="BlobToolbar-dropdown dropdown-menu dropdown-menu-se mt-2">
         <li><a class="js-zeroclipboard dropdown-item" style="cursor:pointer;" id="js-copy-lines" data-original-text="Copy lines">Copy lines</a></li>
         <li><a class="js-zeroclipboard dropdown-item" id= "js-copy-permalink" style="cursor:pointer;" data-original-text="Copy permalink">Copy permalink</a></li>
-        <li><a href="/SergioPerezSanchez/Red-Social/blame/2a1661eb133bc9cf5e75a2de627ae40f4aa717aa/RedSocial/src/test/resources/03cucumberUpdateUser.feature" class="dropdown-item js-update-url-with-hash" id="js-view-git-blame">View git blame</a></li>
+        <li><a href="/SergioPerezSanchez/Red-Social/blame/2a1661eb133bc9cf5e75a2de627ae40f4aa717aa/RedSocial/src/test/resources/06cucumberUserDeletePublicacion.feature" class="dropdown-item js-update-url-with-hash" id="js-view-git-blame">View git blame</a></li>
           <li><a href="/SergioPerezSanchez/Red-Social/issues/new" class="dropdown-item" id="js-new-issue">Open new issue</a></li>
       </ul>
     </div>
@@ -761,7 +761,7 @@
 <div class="footer container-lg px-3" role="contentinfo">
   <div class="position-relative d-flex flex-justify-between py-6 mt-6 f6 text-gray border-top border-gray-light ">
     <ul class="list-style-none d-flex flex-wrap ">
-      <li class="mr-3">&copy; 2017 <span title="0.19067s from unicorn-412970905-f8thb">GitHub</span>, Inc.</li>
+      <li class="mr-3">&copy; 2017 <span title="0.16985s from unicorn-3333189530-zpg0j">GitHub</span>, Inc.</li>
         <li class="mr-3"><a href="https://github.com/site/terms" data-ga-click="Footer, go to terms, text:terms">Terms</a></li>
         <li class="mr-3"><a href="https://github.com/site/privacy" data-ga-click="Footer, go to privacy, text:privacy">Privacy</a></li>
         <li class="mr-3"><a href="https://github.com/security" data-ga-click="Footer, go to security, text:security">Security</a></li>

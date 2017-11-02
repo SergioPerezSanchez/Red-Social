@@ -13,7 +13,7 @@ public class RegisterTests {
 	@Given("^Un usuario se registra en el sistema$")
 	public void Un_usuario_se_registra_en_el_sistema() throws Throwable {
 		dao = new DAOPersona();
-	    p=new Persona("Carlos", "Delgado", "carlitos93", "carlitos@mail.com", "a1Zs7s2DS", "Calle Jane Doe", "0", "photo", false,"usuario");
+	    p=new Persona("Carlos", "Delgado", "carlitos93", "carlitos@mail.com", "a1Zs7s2DS", "Calle Jane Doe", "0", "photo", false, "usuario");
 	    assert(true);
 	}
 
@@ -33,7 +33,7 @@ public class RegisterTests {
 	@Given("^Un usuario ya esta registrado en el sistema$")
 	public void Un_usuario_ya_esta_registrado_en_el_sistema() throws Throwable {
 		dao = new DAOPersona();
-	    p=new Persona("Carlos", "Delgado", "carlitos93", "carlitos@mail.com", "a1Zs7s2DS", "Calle Jane Doe", "0", "photo", false,"usuario");
+	    p=new Persona("Carlos", "Delgado", "carlitos93", "carlitos@mail.com", "a1Zs7s2DS", "Calle Jane Doe", "0", "photo", false, "usuario");
 	    assert(true);
 	}
 
@@ -54,7 +54,7 @@ public class RegisterTests {
 	@Given("^Un usuario se va a registrar en el sistema$")
 	public void Un_usuario_se_va_a_registrar_en_el_sistema() throws Throwable {
 		dao = new DAOPersona();
-	    s=new Persona("Felipe", "Delgado", "felipe5", "felipe@mail.com", "12", "Calle Jane Doe", "0", "photo", false,"usuario");
+	    s=new Persona("Felipe", "Delgado", "felipe5", "felipe@mail.com", "12", "Calle Jane Doe", "0", "photo", false, "usuario");
 	    assert(true);
 	}
 
@@ -67,9 +67,9 @@ public class RegisterTests {
 	public void Muestra_Mensaje_de_Error_de_la_clave() throws Throwable {
 		System.out.println("La clave no presenta alguno de estos requisitos: "+
 		"\n - Tama�o minimo es de 8 caracteres"
-		+ "\n - Debe contener al menos una letra may�scula"
-		+ "\n - Debe contener al menos una letra min�scula"
-		+ "\n - Debe contener al menos un n�mero."
+		+ "\n - Debe contener al menos una letra mayuscula"
+		+ "\n - Debe contener al menos una letra minuscula"
+		+ "\n - Debe contener al menos un numero."
 		+ "\n\nRevise la clave, por favor.");
 	    assert(true);
 	}
