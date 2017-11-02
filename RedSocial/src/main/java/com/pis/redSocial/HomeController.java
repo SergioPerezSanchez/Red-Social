@@ -53,7 +53,7 @@ public class HomeController {
 		username = request.getParameter("inputEmail");
 		password = request.getParameter("inputPassword");
 		DAOPersona dao = new DAOPersona();
-		Persona p;
+		Persona p,a;
 		logger.info("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA");
 		if(dao.existeUsername(username)){
 			p=dao.getPersona(username);
@@ -61,6 +61,8 @@ public class HomeController {
 			logger.info(p.getPassword());
 			if(dao.login(p)){
 				cadena="menu";
+				a = dao.getPersona(p.getUsername());
+				return new ModelAndView(cadena, "persona", a);
 			}else{
 				cadena="home";
 			}

@@ -37,7 +37,7 @@ public class UpdateUserController {
 				password=request.getParameter("inputPasswordRegistro");
 				direccion=request.getParameter("inputDireccionRegistro");
 				telefono=request.getParameter("inputTelefonoRegistro");
-				p = new Persona(nombre, apellidos, username, email, password, direccion, telefono, "", false);
+				p = new Persona(nombre, apellidos, username, email, password, direccion, telefono, "", false,"usuario");
 				
 				dao.update(p);
 			}	

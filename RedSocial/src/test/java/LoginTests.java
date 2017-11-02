@@ -14,7 +14,7 @@ public class LoginTests {
 	@Given("^El usuario accede al sistema$")
 	public void El_usuario_accede_al_sistema() throws Throwable {
 		dao = new DAOPersona();
-	    p=new Persona("Carlos", "Delgado", "carlitos93", "carlitos@mail.com", "a1Zs7s2DS", "Calle Jane Doe", "0", "photo", false);
+	    p=new Persona("Carlos", "Delgado", "carlitos93", "carlitos@mail.com", "a1Zs7s2DS", "Calle Jane Doe", "0", "photo", false,"usuario");
 	    assert(true);
 	}
 
@@ -33,7 +33,7 @@ public class LoginTests {
 	@Given("^El usuario va a acceder al sistema$")
 	public void El_usuario_va_a_acceder_al_sistema() throws Throwable {
 		dao = new DAOPersona();
-	    p=new Persona("Carlos", "Delgado", "carlitos93", "carlitos@hotmail.com", "a1Zs7s2DS", "Calle Jane Doe", "0", "photo", false);
+	    p=new Persona("Carlos", "Delgado", "carlitos93", "carlitos@hotmail.com", "a1Zs7s2DS", "Calle Jane Doe", "0", "photo", false,"usuario");
 	    assert(true);
 	}
 
@@ -47,7 +47,7 @@ public class LoginTests {
 	@Given("^El usuario quiere acceder al sistema$")
 	public void El_usuario_quiere_acceder_al_sistema() throws Throwable {
 		dao = new DAOPersona();
-	    p=new Persona("Carlos", "Delgado", "carlitos93", "carlitos@mail.com", "a1Zs7s2DM", "Calle Jane Doe", "0", "photo", false);
+	    p=new Persona("Carlos", "Delgado", "carlitos93", "carlitos@mail.com", "a1Zs7s2DM", "Calle Jane Doe", "0", "photo", false,"usuario");
 	    assert(true);
 	}
 
@@ -60,7 +60,7 @@ public class LoginTests {
 	
 	@Then("^Mostrara mensaje de error$")
 	public void Mostrara_mensaje_de_error() throws Throwable {
-	    System.out.println("El email o la contraseña es erronea");
+	    System.out.println("El email o la contraseï¿½a es erronea");
 	    assert(true);
 	}
 	
