@@ -1,4 +1,4 @@
-package com.pis.redSocial;
+/*package com.pis.redSocial;
 
 import java.io.IOException;
 
@@ -32,3 +32,4 @@ public class DeleteUserController {
 		return new ModelAndView("home");
 	}
 }
+*/
