@@ -1,10 +1,10 @@
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%@ page session="false" %>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Red Social</title>
-    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css" rel="stylesheet" media="screen">
+	<title>Red Social</title>
+	<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css" rel="stylesheet" media="screen">
 </head>
 
 <style>
@@ -140,40 +140,32 @@
 </style>
 <body >
 
-    <div  style="position:absolute; width:100%; height: 100%; background-image:url(https://k60.kn3.net/taringa/3/6/E/E/A/9/luisdavid1256/F49.jpg);background-position: center center;
-    background-repeat: no-repeat; background-size: cover;">
-
-    <div class="container">
-        <h1 style="color:white;">Bienvenido a Intravita</h1>
-        <p style="font-size: 20px; color:white;">Inicia sesión para entrar o si aún no tienes cuenta...regístrate!</p>
-      	<form action="register" method="get">
-            	<button class="btn btn-success" style="font-size: 20px; color:white;" type="submit" value="Registrarse" name = "register">Registro</button>
-        </form>
-        <!--  Aqui añadir un form -->
-        
-        
+	<div  style="position:absolute; width:100%; height: 100%; background-image:url(https://k60.kn3.net/taringa/3/6/E/E/A/9/luisdavid1256/F49.jpg);background-position: center center;
+	background-repeat: no-repeat; background-size: cover;">
+	
+	<div class="container">
+		<h1 style="color:white;">Recupera tu cuenta!</h1>
+		<p style="font-size: 20px; color:white;">Introduce tu correo y recuperala!</p>
+		<!--  Aqui añadir un form -->
+		
+		
  <div class="card card-container">
-            
-            <p style="align-content: center; margin:auto; display:table; font-size: 20px; color:grey;">Login</p>
-            <form action="loginUsuario" method="post" class="form-signin">
+             <p style="align-content: center; margin:auto; display:table; font-size: 20px; color:grey;">Reestablecer</p>
+            <p id="profile-name" class="profile-name-card"></p>
+            <form class="form-signin">
                 <span id="reauth-email" class="reauth-email"></span>
-                <input type="text" name="inputEmail" class="form-control" placeholder="Username" required autofocus>
-                <input type="password" name="inputPassword" class="form-control" placeholder="Password" required>
+                <input type="email" id="inputEmail" class="form-control" placeholder="Email address" required autofocus>
                 <div id="remember" class="checkbox">
                     
                 </div>
-                <button class="btn btn-lg btn-primary btn-block btn-signin" type="submit">Sign in</button>
+                <button class="btn btn-lg btn-primary btn-block btn-signin" type="submit">Recupera!</button>
+               
             </form><!-- /form -->
-            <div>
-          
-             <form action="forgotPassword" method="get">
-            	<button style="align-content: center;margin: auto;display: table;" class="btn btn-warning" type="submit" value="forgotPassword" name = "forgotPassword">¿Contraseña?</button>
+ <form action="home.jsp" method="get">
+            	<button style="align-content: center;margin: auto;display: table;" class="btn btn-warning" class="forgot-password" type="submit" value="home" name = "home">Volver</button>
         	</form>
-        
-        	
-        	</div>
         </div><!-- /card-container -->
-    </div>
-        </div>
+	</div>
+		</div>
 </body>
 </html>

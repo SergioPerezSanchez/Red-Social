@@ -10,6 +10,7 @@ public class Persona {
 	private String nombre, apellidos, username, email, password, direccion, telefono, foto, original, rol;
 	
 	//https://bit502.wordpress.com/2014/06/27/codigo-java-encriptar-y-desencriptar-texto-usando-el-algoritmo-aes-con-cifrado-por-bloques-cbc-de-128-bits/
+
 	// Definicion del tipo de algoritmo a utilizar (AES, DES, RSA)
     private final static String alg = "AES";
     // Definicion del modo de cifrado a utilizar
@@ -20,27 +21,34 @@ public class Persona {
     private final static String iv="0123456789ABCDEF"; 
     
     
-	public Persona(String n, String ap, String us, String e, String pass, String dir, String tlfn, String photo, boolean esEncriptado, String rol) {
-		try {
-			this.nombre=n;
-			this.apellidos=ap;
-			this.username=us;
-			this.email=e;
-			this.password=pass;
-			this.original=pass;
-			this.direccion=dir;
-			this.telefono=tlfn;
-			this.foto=photo;
-			this.rol=rol;
-			if(esEncriptado) {
-				decrypt();
-			}else {
-				encrypt();
-			}
-		} catch (Exception e1) {
-			e1.printStackTrace();
-		}
-	}
+    public Persona(){
+    	
+    }
+    public Persona (String clave) {
+    	this.original=clave;
+    	}
+
+    	public Persona(String n, String ap, String us, String e, String pass, String dir, String tlfn, String photo, boolean esEncriptado, String rol) {
+    	try {
+    	this.nombre=n;
+    	this.apellidos=ap;
+    	this.username=us;
+    	this.email=e;
+    	this.password=pass;
+    	this.original=pass;
+    	this.direccion=dir;
+    	this.telefono=tlfn;
+    	this.foto=photo;
+    	this.rol=rol;
+    	if(esEncriptado) {
+    	decrypt();
+    	}else {
+    	encrypt();
+    	}
+    	} catch (Exception e1) {
+    	e1.printStackTrace();
+    	}
+    	}
 	
 	public void encrypt() throws Exception {
         Cipher cipher = Cipher.getInstance(cI);
@@ -93,28 +101,28 @@ public class Persona {
 		return size&&numeros&&mayuscula&&minuscula;
 	}
 	
-	protected String getNombre() {
+	public String getNombre() {
 		return nombre;
 	}
-	protected void setNombre(String nombre) {
+	public void setNombre(String nombre) {
 		this.nombre = nombre;
 	}
-	protected String getApellidos() {
+	public String getApellidos() {
 		return apellidos;
 	}
-	protected void setApellidos(String apellidos) {
+	public void setApellidos(String apellidos) {
 		this.apellidos = apellidos;
 	}
 	public String getUsername() {
 		return username;
 	}
-	protected void setUsername(String username) {
+	public void setUsername(String username) {
 		this.username = username;
 	}
 	public String getEmail() {
 		return email;
 	}
-	protected void setEmail(String email) {
+	public void setEmail(String email) {
 		this.email = email;
 	}
 	public String getPassword() {
@@ -123,29 +131,29 @@ public class Persona {
 	public void setPassword(String password) {
 		this.password = password;
 	}
-	protected String getDireccion() {
+	public String getDireccion() {
 		return direccion;
 	}
-	protected void setDireccion(String direccion) {
+	public void setDireccion(String direccion) {
 		this.direccion = direccion;
 	}
-	protected String getTelefono() {
+	public String getTelefono() {
 		return telefono;
 	}
-	protected void setTelefono(String telefono) {
+	public void setTelefono(String telefono) {
 		this.telefono = telefono;
 	}
-	protected String getFoto() {
+	public String getFoto() {
 		return foto;
 	}
-	protected void setFoto(String foto) {
+	public void setFoto(String foto) {
 		this.foto = foto;
 	}
-	protected String getRol() {
+
+	public String getRol() {
 		return rol;
 	}
-
-	protected void setRol(String rol) {
+	public void setRol(String rol) {
 		this.rol = rol;
 	}
 }

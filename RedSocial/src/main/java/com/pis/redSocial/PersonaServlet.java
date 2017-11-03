@@ -1,4 +1,6 @@
-package controlador;
+/*package com.pis.redSocial;
+
+import org.springframework.stereotype.Controller;
 
 import modelo.DAOPersona;
 import modelo.Persona;
@@ -6,7 +8,7 @@ import modelo.Persona;
 @Controller
 public class PersonaServlet {
 	
-	String sourceNombre = "X", // Falta añadir el nombre del recurso cuando exista.
+	String sourceNombre = "X", // Falta aï¿½adir el nombre del recurso cuando exista.
 	sourceApellidos = "X",
 	sourceUsername = "inputNombre",
 	sourceEmail = "inputEmail",
@@ -106,4 +108,4 @@ public class PersonaServlet {
 
 	}
 	
-}
+}*/

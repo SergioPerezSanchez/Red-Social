@@ -67,9 +67,9 @@ public class RegisterTests {
 	public void Muestra_Mensaje_de_Error_de_la_clave() throws Throwable {
 		System.out.println("La clave no presenta alguno de estos requisitos: "+
 		"\n - Tama�o minimo es de 8 caracteres"
-		+ "\n - Debe contener al menos una letra may�scula"
-		+ "\n - Debe contener al menos una letra min�scula"
-		+ "\n - Debe contener al menos un n�mero."
+		+ "\n - Debe contener al menos una letra mayuscula"
+		+ "\n - Debe contener al menos una letra minuscula"
+		+ "\n - Debe contener al menos un numero."
 		+ "\n\nRevise la clave, por favor.");
 	    assert(true);
 	}

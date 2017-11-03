@@ -1,8 +1,16 @@
 package com.pis.redSocial;
 
+import java.io.IOException;
 import java.text.DateFormat;
 import java.util.Date;
 import java.util.Locale;
+
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import modelo.DAOPersona;
+import modelo.Persona;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -10,6 +18,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.servlet.ModelAndView;
 
 /**
  * Handles requests for the application home page.
@@ -35,5 +44,37 @@ public class HomeController {
 		
 		return "home";
 	}
+	@RequestMapping(value = "loginUsuario", method = RequestMethod.POST)
+	public ModelAndView login(HttpServletRequest request, HttpServletResponse response)throws Exception{
+		//logger.info("Register page! The client locale is {}.", locale);
+		boolean flag=false;
+		String cadena = "";
+		String username, password;
+		username = request.getParameter("inputEmail");
+		password = request.getParameter("inputPassword");
+		DAOPersona dao = new DAOPersona();
+		Persona p,a;
+		logger.info("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA");
+		if(dao.existeUsername(username)){
+			p=dao.getPersona(username);
+			if(password.equals(p.getPassword())){
+			logger.info(p.getPassword());
+			if(dao.login(p)){
+				cadena="menu";
+				a = dao.getPersona(p.getUsername());
+				return new ModelAndView(cadena, "persona", a);
+			}else{
+				cadena="home";
+			}
+			}else{
+				cadena="home";
+			}
+		}else{
+			cadena="home";
+		}
+		
+		return new ModelAndView(cadena);
+	}
 	
 }
+
