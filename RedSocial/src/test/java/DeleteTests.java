@@ -24,4 +24,5 @@ public class DeleteTests {
 	public void Cuenta_eliminada() throws Throwable {
 		assert(!(dao.login(p)));
 	}
+	
 }

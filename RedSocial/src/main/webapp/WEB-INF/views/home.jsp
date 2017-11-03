@@ -3,6 +3,8 @@
 <!DOCTYPE html>
 <html>
 <head>
+	<script src="http://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="   crossorigin="anonymous"></script>
+	<script type="text/javascript" src="js/index.js"></script>
     <title>Red Social</title>
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css" rel="stylesheet" media="screen">
 </head>

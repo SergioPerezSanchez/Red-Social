@@ -9,17 +9,16 @@ import static org.apache.commons.codec.binary.Base64.encodeBase64;
 public class Persona {
 	private String nombre, apellidos, username, email, password, direccion, telefono, foto, original, rol;
 	
+	
 	//https://bit502.wordpress.com/2014/06/27/codigo-java-encriptar-y-desencriptar-texto-usando-el-algoritmo-aes-con-cifrado-por-bloques-cbc-de-128-bits/
-
-	// Definicion del tipo de algoritmo a utilizar (AES, DES, RSA)
+	// Definici�n del tipo de algoritmo a utilizar (AES, DES, RSA)
     private final static String alg = "AES";
-    // Definicion del modo de cifrado a utilizar
+    // Definici�n del modo de cifrado a utilizar
     private final static String cI = "AES/CBC/PKCS5Padding";
     //key es la llave en tipo String a utilizar
     private final static String key="92AE31A79FEEB2A3";
-    //iv el vector de inicializacion a utilizar
+    //iv el vector de inicializaci�n a utilizar
     private final static String iv="0123456789ABCDEF"; 
-    
     
     public Persona(){
     	
@@ -149,7 +148,6 @@ public class Persona {
 	public void setFoto(String foto) {
 		this.foto = foto;
 	}
-
 	public String getRol() {
 		return rol;
 	}

@@ -26,10 +26,6 @@ public class DAOPersona {
 		return db.delete(p);
 	}
 	
-	public boolean deleteEmail(String email) {
-		return db.deleteEmail(email);
-	}
-	
 	public boolean update(Persona p) {
 		return db.update(p);
 	}

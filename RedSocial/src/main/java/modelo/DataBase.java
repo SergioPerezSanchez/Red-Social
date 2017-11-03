@@ -2,7 +2,9 @@ package modelo;
 
 import java.util.LinkedList;
 import java.util.List;
+
 import org.bson.Document;
+
 import com.mongodb.MongoClient;
 import com.mongodb.MongoClientURI;
 import com.mongodb.client.MongoCollection;
@@ -14,9 +16,10 @@ public class DataBase {
 	MongoClient client;
 	MongoDatabase db;
 	MongoCollection<Document> dbUsuarios, dbPublicaciones;
+	Publicacion pub;
 	Document doc, aux;
 	MongoCursor<Document>elementos;
-	Publicacion pub;
+	
 	public DataBase() {
 		uri  = new MongoClientURI("mongodb://equipo03:pis03equipo@ds113935.mlab.com:13935/equipo03"); 
         client = new MongoClient(uri);
@@ -109,7 +112,7 @@ public class DataBase {
 		}
 		return borrado;
 	}
-	
+
 	protected boolean deleteEmail(String email) {
 		
 		db = client.getDatabase(uri.getDatabase());
@@ -137,20 +140,21 @@ public class DataBase {
 		return true;
 	}
 	
-	protected Persona getPersona(String username) {
+	protected Persona getPersona(String email) {
 		Persona p = null;
 		db = client.getDatabase(uri.getDatabase());
 		dbUsuarios = db.getCollection("usuarios");
 		elementos = dbUsuarios.find().iterator();
 		while(elementos.hasNext()) {
 			doc=elementos.next();
-			if((doc.get("username").toString().equalsIgnoreCase(username))) {
+			if((doc.get("username").toString().equalsIgnoreCase(email))) {
 				p = new Persona(doc.getString("nombre"), doc.getString("apellidos"), doc.getString("username"), doc.getString("email"), doc.getString("clave"), doc.getString("direccion"), doc.getString("telefono"), doc.getString("foto"), true, "usuario");
 			}
 		}		
 		return p;
 	}
 	
+
 protected boolean createPublicacion(Publicacion p) {
     try {
       db = client.getDatabase(uri.getDatabase());
