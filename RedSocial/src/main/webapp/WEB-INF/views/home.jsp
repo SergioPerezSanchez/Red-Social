@@ -3,6 +3,8 @@
 <!DOCTYPE html>
 <html>
 <head>
+	<script src="http://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="   crossorigin="anonymous"></script>
+	<script type="text/javascript" src="js/index.js"></script>
     <title>Red Social</title>
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css" rel="stylesheet" media="screen">
 </head>
@@ -155,10 +157,10 @@
  <div class="card card-container">
             
             <p style="align-content: center; margin:auto; display:table; font-size: 20px; color:grey;">Login</p>
-            <form class="form-signin">
+            <form action="loginUsuario" method="post" class="form-signin">
                 <span id="reauth-email" class="reauth-email"></span>
-                <input type="text" id="inputEmail" class="form-control" placeholder="Username" required autofocus>
-                <input type="password" id="inputPassword" class="form-control" placeholder="Password" required>
+                <input type="text" name="inputEmail" class="form-control" placeholder="Username" required autofocus>
+                <input type="password" name="inputPassword" class="form-control" placeholder="Password" required>
                 <div id="remember" class="checkbox">
                     
                 </div>

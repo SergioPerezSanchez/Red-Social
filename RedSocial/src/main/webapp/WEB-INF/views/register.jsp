@@ -5,6 +5,8 @@
 <!DOCTYPE html>
 <html>
 <head>
+<script src="http://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="   crossorigin="anonymous"></script>
+<script type="text/javascript" src="js/index.js"></script>
 	<title>Red Social - Registro</title>
 	<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css" rel="stylesheet" media="screen">
 </head>
@@ -140,7 +142,17 @@
 }
 </style>
 <body>
-
+	
+	<script language="JavaScript" type="text/javascript">
+		if("${mensaje}"==""){
+			alert("Al registrarse, recuerde que para la contraseña:"+
+			"\n- Debe tener mínimo 8 caracteres"+
+			"\n- Debe contener al menos un dígito, una letra mayúscula y una letra minúscula.");
+		}else{
+			alert("${mensaje}");
+		}
+	</script>
+	
 	<div id="contenedor" style="position:absolute; width:100%; height: 130%;background-image:url(http://img13.deviantart.net/121b/i/2009/179/7/7/_pure_gaia_wp06_by_g2k2007.jpg);background-position: center center;
 	background-repeat: no-repeat; background-size: cover;">
 	
@@ -153,14 +165,14 @@
             <!-- <img class="profile-img-card" src="//lh3.googleusercontent.com/-6V8xOA6M7BA/AAAAAAAAAAI/AAAAAAAAAAA/rzlHcD0KYwo/photo.jpg?sz=120" alt="" /> -->
             <form action="crearUsuario" method="post" class="form-signin">
                 <span id="reauth-email" class="reauth-email"></span>
-                <input type="text" name="inputNombreRegistro" class="form-control" placeholder="Nombre" >
-                <input type="text" name="inputApellidosRegistro" class="form-control" placeholder="Apellidos" >
-                <input type="text" name="inputUsernameRegistro" class="form-control" placeholder="Username" >
-                <input type="email" name="inputEmailRegistro" class="form-control" placeholder="Email address" >
-                <input type="password" name="inputPasswordRegistro" class="form-control" placeholder="Password" >
-                <input type="password" name="inputRePasswordRegistro" class="form-control" placeholder="Repita Password" >
-                 <input type="text" name="inputDireccionRegistro" class="form-control" placeholder="Direccion" >
-                  <input type="text" name="inputTelefonoRegistro" class="form-control" placeholder="Telefono" >
+                <input type="text" name="inputNombreRegistro" class="form-control" placeholder="Nombre" required>
+                <input type="text" name="inputApellidosRegistro" class="form-control" placeholder="Apellidos" required>
+                <input type="text" name="inputUsernameRegistro" class="form-control" placeholder="Username" required>
+                <input type="email" name="inputEmailRegistro" class="form-control" placeholder="Email address" required>
+                <input type="password" id="inputPasswordRegistro" name="inputPasswordRegistro" class="form-control" placeholder="Password" required>
+                <input type="password" id="inputRePasswordRegistro" name="inputRePasswordRegistro" class="form-control" placeholder="Repita Password" required>
+                 <input type="text" name="inputDireccionRegistro" class="form-control" placeholder="Direccion" required>
+                  <input type="text" name="inputTelefonoRegistro" class="form-control" placeholder="Telefono" required>
                    <!--  <button class="btn btn-primary btn-block">Subir Foto</button>-->
                 <div id="remember" class="checkbox">
                    
@@ -172,9 +184,13 @@
         	</form>
         </div><!-- /card-container -->
 	</div>
-
 	</div>
+	<!--  <script type="text/javascript">
+	$('#btnSignup').click(function(){
+    	if($('#inputPasswordRegistro').val() != $('#inputRePasswordRegistro').val()){
+    		alert("Contraseñas No Son Iguales!");
+    	}
+    });
+	</script>-->
 </body>
 </html>
-<script type="text/javascript" src="js/jquery-3.2.1.min.js"></script>
-<script type="text/javascript" src="js/index.js"></script>
