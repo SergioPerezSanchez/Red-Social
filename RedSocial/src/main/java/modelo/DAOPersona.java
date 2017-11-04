@@ -30,7 +30,7 @@ public class DAOPersona {
 		return db.update(p);
 	}
 	
-	public Persona getPersona(String email) {
-		return db.getPersona(email);
+	public Persona getPersona(String username) {
+		return db.getPersona(username);
 	}
 }

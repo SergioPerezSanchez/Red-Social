@@ -1,11 +1,9 @@
 package com.pis.redSocial;
 
-import java.io.IOException;
 import java.text.DateFormat;
 import java.util.Date;
 import java.util.Locale;
 
-import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -46,34 +44,37 @@ public class HomeController {
 	}
 	@RequestMapping(value = "loginUsuario", method = RequestMethod.POST)
 	public ModelAndView login(HttpServletRequest request, HttpServletResponse response)throws Exception{
-		//logger.info("Register page! The client locale is {}.", locale);
-		boolean flag=false;
-		String cadena = "";
 		String username, password;
 		username = request.getParameter("inputEmail");
 		password = request.getParameter("inputPassword");
 		DAOPersona dao = new DAOPersona();
 		Persona p,a;
-		logger.info("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA");
-		if(dao.existeUsername(username)){
+		p = new Persona(username, password);
+		
+		if(dao.login(p)) {
+			a = dao.getPersona(username);
+			return new ModelAndView("menu", "persona", a);
+		}else {
+			return new ModelAndView("home", "aviso", "El usuario y/o clave son incorrectos.");
+		}
+		
+		/*if(dao.existeUsername(username)){
 			p=dao.getPersona(username);
 			if(password.equals(p.getPassword())){
-			logger.info(p.getPassword());
-			if(dao.login(p)){
-				cadena="menu";
-				a = dao.getPersona(p.getUsername());
-				return new ModelAndView(cadena, "persona", a);
-			}else{
-				cadena="home";
-			}
+				if(dao.login(p)){
+					cadena="menu";
+					a = dao.getPersona(p.getUsername());
+					return new ModelAndView(cadena, "persona", a);
+				}else{
+					cadena="home";
+				}
 			}else{
 				cadena="home";
 			}
 		}else{
 			cadena="home";
-		}
-		
-		return new ModelAndView(cadena);
+		}*/
+		//return new ModelAndView(cadena);
 	}
 	
 }
