@@ -53,7 +53,11 @@ public class HomeController {
 		
 		if(dao.login(p)) {
 			a = dao.getPersona(username);
+			//if (a.getRol()=="usuario"){
 			return new ModelAndView("menu", "persona", a);
+			//}else{
+			//Codigo para el administrador
+			//}
 		}else {
 			return new ModelAndView("home", "aviso", "El usuario y/o clave son incorrectos.");
 		}

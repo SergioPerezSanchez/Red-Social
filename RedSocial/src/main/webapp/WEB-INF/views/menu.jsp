@@ -193,7 +193,7 @@
             <p style="align-content: center; margin:auto; display:table; font-size: 20px; color:grey;">Perfil</p>
          
                 <span id="reauth-email" class="reauth-email"></span>
-               	<p style=" font-size: 20px; color:grey;">Nombre:</p>
+               	<p style=" font-size: 20px; color:grey;">Nombre:</p><p><c:out value="${persona}"/>${persona.getNombre()}</p>
                	<p style=" font-size: 20px; color:grey;">Apellidos:</p><p><c:out value="${persona}"/>${persona.getApellidos()}</p>
                	<p style=" font-size: 20px; color:grey;">Dirección:</p><p><c:out value="${persona}"/>${persona.getDireccion()}</p>
                	<p style=" font-size: 20px; color:grey;">Teléfono:</p><p><c:out value="${persona}"/>${persona.getTelefono()}</p>
@@ -201,6 +201,7 @@
                 <div id="remember" class="checkbox">
                   
                 </div>
+                <button id="btnCancelarMP" class="btn btn-lg btn-primary btn-block btn-signin" value="Menu" type="submit">Cancelar</button>
                 <button id="btnModificarPerfil" class="btn btn-lg btn-primary btn-block btn-signin" type="submit">Modificar Perfil</button>
  
             <div>
