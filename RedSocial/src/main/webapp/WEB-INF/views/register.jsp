@@ -159,11 +159,11 @@
 <div class="card card-container">
  <p style="align-content: center; margin:auto; display:table; font-size: 20px; color:grey;">Registro</p>
             <!-- <img class="profile-img-card" src="//lh3.googleusercontent.com/-6V8xOA6M7BA/AAAAAAAAAAI/AAAAAAAAAAA/rzlHcD0KYwo/photo.jpg?sz=120" alt="" /> -->
-            <form action="crearUsuario" method="post" class="form-signin" name="form1" id="form1">
+            <form action="crearUsuario" method="post" class="form-signin" name="form1" >
 	                <span id="reauth-email" class="reauth-email"></span>
 	                <input type="text" name="inputNombreRegistro" class="form-control" placeholder="Nombre" required>
 	                <input type="text" name="inputApellidosRegistro" class="form-control" placeholder="Apellidos" required>
-	                <input type="text" name="inputUsernameRegistro" id="inputUsernameRegistro" class="form-control" placeholder="Username" required>
+	                <input type="text" name="inputUsernameRegistro" class="form-control" placeholder="Username" required>
 	                <input type="email" name="inputEmailRegistro" class="form-control" placeholder="Email address" required>
 	                <input type="password" id="inputPasswordRegistro" name="inputPasswordRegistro" class="form-control" placeholder="Password" required>
 	                La contraseña debe tener un tamaño mínimo de 8 caracteres y debe de contener al menos un dígito, una letra mayúscula y una letra minúscula.
@@ -171,7 +171,7 @@
 	                <input type="text" name="inputDireccionRegistro" class="form-control" placeholder="Direccion" required>
 	                <input type="text" name="inputTelefonoRegistro" class="form-control" placeholder="Telefono" required>
 	                FOTO DE PERFIL
-	                <input type="file" name="inputFotoRegistro" required>
+	                <input type="file" name="inputFotoRegistro" accept="image/*" required>
 	                <div id="remember" class="checkbox">	                
 	                </div>
                 <button id="btnSignup" class="btn btn-lg btn-primary btn-block btn-signin" type="submit" onclick="validarFormularios()">Sign up</button>
@@ -185,15 +185,15 @@
 	</div>
 	</div>
 	<script language="JavaScript" type="text/javascript">
-		document.form1.inputUsernameRegistro="${usuario}";
-					
-		function FileSelected(sender){
-			check(sender.value) 
-		}
-		
-		function check(a){
-			return (a.indexOf('jpg')>-1)||(a.indexOf('bmp')>-1)||(a.indexOf('gif')>-1)||(a.indexOf('jpeg')>-1)||(a.indexOf('tif')>-1)||(a.indexOf('tiff')>-1)||(a.indexOf('png')>-1)
-		}
+		document.form1.inputNombreRegistro.value="${nombre}";
+		document.form1.inputApellidosRegistro.value="${apellidos}";
+		document.form1.inputUsernameRegistro.value="${usuario}";
+		document.form1.inputEmailRegistro.value="${email}";
+		document.form1.inputPasswordRegistro.value="${password}";
+		document.form1.inputRePasswordRegistro.value="${repassword}";
+		document.form1.inputDireccionRegistro.value="${direccion}";
+		document.form1.inputTelefonoRegistro.value="${telefono}";
+		document.form1.inputFotoRegistro.value="${foto}";
 	</script>
 </body>
 </html>

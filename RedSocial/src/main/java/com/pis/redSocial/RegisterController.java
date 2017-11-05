@@ -3,9 +3,7 @@ package com.pis.redSocial;
 import java.io.IOException;
 import java.text.DateFormat;
 import java.util.Date;
-import java.util.HashMap;
 import java.util.Locale;
-import java.util.Map;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -46,92 +44,86 @@ private static final Logger logger = LoggerFactory.getLogger(RegisterController.
 	@RequestMapping(value = "crearUsuario", method = RequestMethod.POST)
 	public ModelAndView registrar(HttpServletRequest request, HttpServletResponse response)throws ServletException, IOException{
 		String nombre, apellidos, username, email, password, repitePassword, direccion, telefono, foto;
+		nombre = request.getParameter("inputNombreRegistro");
+		apellidos = request.getParameter("inputApellidosRegistro");
 		username = request.getParameter("inputUsernameRegistro");
 		email = request.getParameter("inputEmailRegistro");
 		password = request.getParameter("inputPasswordRegistro");
 		repitePassword = request.getParameter("inputRePasswordRegistro");
+		direccion = request.getParameter("inputDireccionRegistro");
+		telefono = request.getParameter("inputTelefonoRegistro");
+		foto = request.getParameter("inputFotoRegistro");
+		ModelAndView miMAV = new ModelAndView("register");
 		DAOPersona dao = new DAOPersona();
 		Persona p;
-		if(username.equalsIgnoreCase("")||email.equalsIgnoreCase("")||password.equalsIgnoreCase("")||repitePassword.equalsIgnoreCase("")) {
-			return new ModelAndView("register","mensaje","No se puede registrar. Los campos username, email, password y repetir password son obligatorios. No los puede dejar en blanco.");
-		}else {
-			if(dao.existeUsername(username)){
-				System.out.println("Existe Username");	 
-	            ModelAndView miMAV = new ModelAndView("register");
-	            miMAV.addObject("mensaje", "No se puede registrar. Hay una misma cuenta con ese username.");
-	            miMAV.addObject("usuario", username);
-	            return miMAV;
-				
-				
-				
-				
-				
-				//return new ModelAndView("register","mensaje","No se puede registrar. Hay una misma cuenta con ese username.");
-				//return null;
-				//return new ModelAndView("redirect:"+request.getHeader("Referer"),"mensaje","No se puede registrar. Hay una misma cuenta con ese username.");
-			}else{
-				if(dao.existeEmail(email)){
-					return new ModelAndView("register","mensaje","No se puede registrar. Hay una cuenta con el mismo email.");
+		if(dao.existeUsername(username)){
+			miMAV.addObject("nombre", nombre);
+	        miMAV.addObject("apellidos", apellidos);
+	        miMAV.addObject("email", email);
+	        miMAV.addObject("password", password);
+	        miMAV.addObject("repassword", repitePassword);
+	        miMAV.addObject("direccion", direccion);
+	        miMAV.addObject("telefono", telefono);
+	        miMAV.addObject("foto", foto);
+            miMAV.addObject("mensaje", "No se puede registrar. Hay una misma cuenta con ese username.");
+            return miMAV;
+		}else{
+			if(dao.existeEmail(email)){
+				miMAV.addObject("nombre", nombre);
+		        miMAV.addObject("apellidos", apellidos);
+		        miMAV.addObject("usuario", username);
+		        miMAV.addObject("password", password);
+		        miMAV.addObject("repassword", repitePassword);
+		        miMAV.addObject("direccion", direccion);
+		        miMAV.addObject("telefono", telefono);
+		        miMAV.addObject("foto", foto);
+				miMAV.addObject("mensaje","No se puede registrar. Hay una cuenta con el mismo email.");
+				return miMAV;
+			}else {
+				if(!(password.equalsIgnoreCase(repitePassword))){
+					miMAV.addObject("nombre", nombre);
+			        miMAV.addObject("apellidos", apellidos);
+			        miMAV.addObject("usuario", username);
+			        miMAV.addObject("email", email);
+			        miMAV.addObject("direccion", direccion);
+			        miMAV.addObject("telefono", telefono);
+			        miMAV.addObject("foto", foto);
+					miMAV.addObject("mensaje","No se puede registrar. Las contraseñas no coinciden.");
+					return miMAV;
 				}else {
-					if(!(password.equalsIgnoreCase(repitePassword))){
-						return new ModelAndView("register","mensaje","No se puede registrar. Las contraseñas no coinciden.");
-					}else {
-						p = new Persona(password);
-						if(!p.requisitosPassword()) {
-							return new ModelAndView("register","mensaje","No se puede registrar. No se cumple los requisitos de la contraseña:"+
-							"\n- Debe tener mínimo 8 caracteres"+
-							"\n- Debe contener al menos un dígito, una letra mayúscula y una letra minúscula.");
-						}else{
+					p = new Persona(password);
+					if(!p.requisitosPassword()) {
+						miMAV.addObject("nombre", nombre);
+				        miMAV.addObject("apellidos", apellidos);
+				        miMAV.addObject("usuario", username);
+				        miMAV.addObject("email", email);
+				        miMAV.addObject("direccion", direccion);
+				        miMAV.addObject("telefono", telefono);
+				        miMAV.addObject("foto", foto);
+						miMAV.addObject("mensaje","No se puede registrar. No se cumple los requisitos de la contraseña.");
+						return miMAV;
+					}else{
+						/*if(!foto.equalsIgnoreCase(".*")) {
+							//CODIGO CONTROL EXTENSION ARCHIVOS
+							miMAV.addObject("nombre", nombre);
+					        miMAV.addObject("apellidos", apellidos);
+					        miMAV.addObject("usuario", username);
+					        miMAV.addObject("email", email);
+					        miMAV.addObject("password", password);
+					        miMAV.addObject("repassword", repitePassword);
+					        miMAV.addObject("direccion", direccion);
+					        miMAV.addObject("telefono", telefono);
+				            miMAV.addObject("mensaje", "El archivo adjunto no es una imagen.");
+				            return miMAV;
+						}else {*/
 							//CREA USUARIO
-							nombre=request.getParameter("inputNombreRegistro");
-							apellidos=request.getParameter("inputApellidosRegistro");
-							password=request.getParameter("inputPasswordRegistro");
-							direccion=request.getParameter("inputDireccionRegistro");
-							telefono=request.getParameter("inputTelefonoRegistro");
-							p = new Persona(nombre, apellidos, username, email, password, direccion, telefono, "", false, "usuario");
+							p = new Persona(nombre, apellidos, username, email, password, direccion, telefono, foto, false, "usuario");
 							dao.crearPersona(p);
 							return new ModelAndView("home", "aviso", "Cuenta creada correctamente");
-						}
+						//}
 					}
 				}
 			}
 		}
 	}
-	
-	/*
-	@RequestMapping("crearUsuario")
-	public ModelAndView registrar(HttpServletRequest request, HttpServletResponse response)throws ServletException, IOException{
-		//logger.info("Register page! The client locale is {}.", locale);
-		boolean flag=false;
-		String nombre, apellidos, username, email, password, direccion, telefono, foto;
-		username = request.getParameter("inputUsernameRegistro");
-		email = request.getParameter("inputEmailRegistro");
-		DAOPersona dao = new DAOPersona();
-		Persona p;
-		if(dao.existeUsername(username)){
-			//Mostrar Error Existe Usuario
-		}else{
-			if(dao.existeEmail(email)){
-				//Mostrar Error Existe Email
-			}else {
-				//CREA USUARIO
-				nombre=request.getParameter("inputNombreRegistro");
-				apellidos=request.getParameter("inputApellidosRegistro");
-				password=request.getParameter("inputPasswordRegistro");
-				direccion=request.getParameter("inputDireccionRegistro");
-				telefono=request.getParameter("inputTelefonoRegistro");
-				p = new Persona(nombre, apellidos, username, email, password, direccion, telefono, "", false);
-				dao.crearPersona(p);
-				flag=true;
-			}
-			
-		}
-		
-		if(flag){
-			return "menu";
-		}else{
-			return "forgotPassword";
-		}
-		return new ModelAndView("home");
-	}*/
 }

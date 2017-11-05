@@ -80,7 +80,7 @@ public class DataBase {
 			doc=elementos.next();
 			persona.setPassword(doc.get("clave").toString());
 			persona.decrypt();
-			if((doc.get("email").toString().equalsIgnoreCase(p.getEmail()))&&
+			if((doc.get("username").toString().equalsIgnoreCase(p.getUsername()))&&
 			   (persona.getPassword().equalsIgnoreCase(p.getPassword()))) {
 				logueado=true;
 			}
