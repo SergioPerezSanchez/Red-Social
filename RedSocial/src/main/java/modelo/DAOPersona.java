@@ -33,4 +33,8 @@ public class DAOPersona {
 	public Persona getPersona(String username) {
 		return db.getPersona(username);
 	}
+	
+	public Persona getPersonaByEmail(String email) {
+		return db.getPersonaByEmail(email);
+	}
 }

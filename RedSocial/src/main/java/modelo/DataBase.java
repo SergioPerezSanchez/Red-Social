@@ -154,6 +154,20 @@ public class DataBase {
 		return p;
 	}
 	
+	protected Persona getPersonaByEmail(String email) {
+		Persona p = null;
+		db = client.getDatabase(uri.getDatabase());
+		dbUsuarios = db.getCollection("usuarios");
+		elementos = dbUsuarios.find().iterator();
+		while(elementos.hasNext()) {
+			doc=elementos.next();
+			if((doc.get("email").toString().equalsIgnoreCase(email))) {
+				p = new Persona(doc.getString("nombre"), doc.getString("apellidos"), doc.getString("username"), doc.getString("email"), doc.getString("clave"), doc.getString("direccion"), doc.getString("telefono"), doc.getString("foto"), true, doc.getString("rol"));
+			}
+		}		
+		return p;
+	}
+	
 
 protected boolean createPublicacion(Publicacion p) {
     try {
