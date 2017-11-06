@@ -144,11 +144,7 @@
 <body>
 	
 	<script language="JavaScript" type="text/javascript">
-		if("${mensaje}"==""){
-			alert("Al registrarse, recuerde que para la contraseña:"+
-			"\n- Debe tener mínimo 8 caracteres"+
-			"\n- Debe contener al menos un dígito, una letra mayúscula y una letra minúscula.");
-		}else{
+		if("${mensaje}"!=""){
 			alert("${mensaje}");
 		}
 	</script>
@@ -163,34 +159,41 @@
 <div class="card card-container">
  <p style="align-content: center; margin:auto; display:table; font-size: 20px; color:grey;">Registro</p>
             <!-- <img class="profile-img-card" src="//lh3.googleusercontent.com/-6V8xOA6M7BA/AAAAAAAAAAI/AAAAAAAAAAA/rzlHcD0KYwo/photo.jpg?sz=120" alt="" /> -->
-            <form action="crearUsuario" method="post" class="form-signin">
-                <span id="reauth-email" class="reauth-email"></span>
-                <input type="text" name="inputNombreRegistro" class="form-control" placeholder="Nombre" required>
-                <input type="text" name="inputApellidosRegistro" class="form-control" placeholder="Apellidos" required>
-                <input type="text" name="inputUsernameRegistro" class="form-control" placeholder="Username" required>
-                <input type="email" name="inputEmailRegistro" class="form-control" placeholder="Email address" required>
-                <input type="password" id="inputPasswordRegistro" name="inputPasswordRegistro" class="form-control" placeholder="Password" required>
-                <input type="password" id="inputRePasswordRegistro" name="inputRePasswordRegistro" class="form-control" placeholder="Repita Password" required>
-                 <input type="text" name="inputDireccionRegistro" class="form-control" placeholder="Direccion" required>
-                  <input type="text" name="inputTelefonoRegistro" class="form-control" placeholder="Telefono" required>
-                   <!--  <button class="btn btn-primary btn-block">Subir Foto</button>-->
-                <div id="remember" class="checkbox">
-                   
-                </div>
-                <button id="btnSignup" class="btn btn-lg btn-primary btn-block btn-signin" type="submit">Sign up</button>
-            </form><!-- /form -->
-              <form action="home.jsp" method="get">
+            <form action="crearUsuario" method="post" class="form-signin" name="form1" >
+	                <span id="reauth-email" class="reauth-email"></span>
+	                <input type="text" name="inputNombreRegistro" class="form-control" placeholder="Nombre" required>
+	                <input type="text" name="inputApellidosRegistro" class="form-control" placeholder="Apellidos" required>
+	                <input type="text" name="inputUsernameRegistro" class="form-control" placeholder="Username" required>
+	                <input type="email" name="inputEmailRegistro" class="form-control" placeholder="Email address" required>
+	                <input type="password" id="inputPasswordRegistro" name="inputPasswordRegistro" class="form-control" placeholder="Password" required>
+	                La contraseña debe tener un tamaño mínimo de 8 caracteres y debe de contener al menos un dígito, una letra mayúscula y una letra minúscula.
+	                <input type="password" id="inputRePasswordRegistro" name="inputRePasswordRegistro" class="form-control" placeholder="Repita Password" required>
+	                <input type="text" name="inputDireccionRegistro" class="form-control" placeholder="Direccion" required>
+	                <input type="text" name="inputTelefonoRegistro" class="form-control" placeholder="Telefono" required>
+	                FOTO DE PERFIL
+	                <input type="file" name="inputFotoRegistro" accept="image/*" required>
+	                <div id="remember" class="checkbox">	                
+	                </div>
+                <button id="btnSignup" class="btn btn-lg btn-primary btn-block btn-signin" type="submit" onclick="validarFormularios()">Sign up</button>
+            </form>
+            <div id="remember" class="checkbox">	                
+            </div>
+            <form action="home.jsp" method="get">
             	<button style="padding-bottom:10px; float: right;margin: auto;display: table;" class="btn btn-warning" type="submit" value="Home" name="home" >Volver</button>
         	</form>
         </div><!-- /card-container -->
 	</div>
 	</div>
-	<!--  <script type="text/javascript">
-	$('#btnSignup').click(function(){
-    	if($('#inputPasswordRegistro').val() != $('#inputRePasswordRegistro').val()){
-    		alert("Contraseñas No Son Iguales!");
-    	}
-    });
-	</script>-->
+	<script language="JavaScript" type="text/javascript">
+		document.form1.inputNombreRegistro.value="${nombre}";
+		document.form1.inputApellidosRegistro.value="${apellidos}";
+		document.form1.inputUsernameRegistro.value="${usuario}";
+		document.form1.inputEmailRegistro.value="${email}";
+		document.form1.inputPasswordRegistro.value="${password}";
+		document.form1.inputRePasswordRegistro.value="${repassword}";
+		document.form1.inputDireccionRegistro.value="${direccion}";
+		document.form1.inputTelefonoRegistro.value="${telefono}";
+		document.form1.inputFotoRegistro.value="${foto}";
+	</script>
 </body>
 </html>

@@ -80,7 +80,7 @@ public class DataBase {
 			doc=elementos.next();
 			persona.setPassword(doc.get("clave").toString());
 			persona.decrypt();
-			if((doc.get("email").toString().equalsIgnoreCase(p.getEmail()))&&
+			if((doc.get("username").toString().equalsIgnoreCase(p.getUsername()))&&
 			   (persona.getPassword().equalsIgnoreCase(p.getPassword()))) {
 				logueado=true;
 			}
@@ -140,15 +140,15 @@ public class DataBase {
 		return true;
 	}
 	
-	protected Persona getPersona(String email) {
+	protected Persona getPersona(String username) {
 		Persona p = null;
 		db = client.getDatabase(uri.getDatabase());
 		dbUsuarios = db.getCollection("usuarios");
 		elementos = dbUsuarios.find().iterator();
 		while(elementos.hasNext()) {
 			doc=elementos.next();
-			if((doc.get("username").toString().equalsIgnoreCase(email))) {
-				p = new Persona(doc.getString("nombre"), doc.getString("apellidos"), doc.getString("username"), doc.getString("email"), doc.getString("clave"), doc.getString("direccion"), doc.getString("telefono"), doc.getString("foto"), true, "usuario");
+			if((doc.get("username").toString().equalsIgnoreCase(username))) {
+				p = new Persona(doc.getString("nombre"), doc.getString("apellidos"), doc.getString("username"), doc.getString("email"), doc.getString("clave"), doc.getString("direccion"), doc.getString("telefono"), doc.getString("foto"), true, doc.getString("rol"));
 			}
 		}		
 		return p;
