@@ -139,7 +139,11 @@
 }
 </style>
 <body >
-
+	<script language="JavaScript" type="text/javascript">
+		if("${aviso}"!=""){
+			alert("${aviso}");
+		}
+	</script>
 	<div  style="position:absolute; width:100%; height: 100%; background-image:url(https://k60.kn3.net/taringa/3/6/E/E/A/9/luisdavid1256/F49.jpg);background-position: center center;
 	background-repeat: no-repeat; background-size: cover;">
 	
@@ -152,9 +156,9 @@
  <div class="card card-container">
              <p style="align-content: center; margin:auto; display:table; font-size: 20px; color:grey;">Reestablecer</p>
             <p id="profile-name" class="profile-name-card"></p>
-            <form class="form-signin">
+            <form action="recuperaUsernameClave" method="post" class="form-signin">
                 <span id="reauth-email" class="reauth-email"></span>
-                <input type="email" id="inputEmail" class="form-control" placeholder="Email address" required autofocus>
+                <input type="email" name="inputEmail" class="form-control" placeholder="Email address" required autofocus>
                 <div id="remember" class="checkbox">
                     
                 </div>
