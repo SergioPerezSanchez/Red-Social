@@ -11,12 +11,13 @@ public class UpdateTests {
 	@Given("^El usuario esta dentro del sistema$")
 	public void El_usuario_esta_dentro_del_sistema() throws Throwable {
 		dao = new DAOPersona();
-	    p=new Persona("Carlos", "Delgado", "carlitos93", "carlitos@mail.com", "a1Zs7s2DS", "Calle Jane Doe", "0", "photo", false, "usuario");   
-	  assert(dao.login(p));
+		p=new Persona("carlitos93", "a1Zs7s2DS");
+		assert(dao.login(p));
 	}
 
 	@When("^Quiere cambiar la clave$")
 	public void Quiere_cambiar_la_clave() throws Throwable {
+		p=new Persona("Carlos", "Delgado", "carlitos93", "carlitos@mail.com", "a1Zs7s2DS", "Calle Jane Doe", "0", "photo", false, "usuario");
 		p.setPassword("a1Zs7s2DM");
 		p.encrypt();
 		assert(true);
