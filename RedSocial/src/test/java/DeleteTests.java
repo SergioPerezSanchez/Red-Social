@@ -9,14 +9,14 @@ public class DeleteTests {
 	DAOPersona dao;
 	@Given("^El usuario se encuentra dentro del sistema$")
 	public void El_usuario_se_encuentra_dentro_del_sistema() throws Throwable {
-	    p=new Persona("Carlos", "Delgado", "carlitos93", "carlitos@mail.com", "a1Zs7s2DM", "Calle Jane Doe", "0", "photo", false, "usuario");
+	    p=new Persona("carlitos93", "a1Zs7s2DM");
 	    dao = new DAOPersona();
-	    System.out.println("Mostrar Clave Encriptada: "+p.getPassword());
 	    assert(dao.login(p));
 	}
 
 	@When("^Quiere eliminar la cuenta$")
 	public void Quiere_eliminar_la_cuenta() throws Throwable {
+		p=new Persona("Carlos", "Delgado", "carlitos93", "carlitos@mail.com", "a1Zs7s2DM", "Calle Jane Doe", "0", "photo", false, "usuario");
 		assert(dao.delete(p));
 	}
 
