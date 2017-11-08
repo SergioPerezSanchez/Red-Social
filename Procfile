@@ -1,0 +1,1 @@
+web: java -war /home/victor/.m2/repository/com/pis/redSocial/1.0.0-BUILD-SNAPSHOT/redSocial-1.0.0-BUILD-SNAPSHOT.war
