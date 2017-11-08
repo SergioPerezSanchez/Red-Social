@@ -2,7 +2,7 @@ language: java
 install: mvn install -DskipTests=true -Dmaven.javadoc.skip=true -B -V
 script: mvn test -B
 notifications:
-  slack: equipo3-pis:heW3XHXrt2LuoYNItXOjNIk
+  slack: equipo3-pis:heW3XHXrt2LuoYNItXOjNIkN
 deploy:
   api_key:
     secure: H4JZl9q/Ioy/I1RURcayDh2UQrZk8Hz8BLouqlN8L79oI8e8KAMgJRvqtbCir0whWyPkzPjuX97Moo0lDJmkJwDVIg+vYj3nytXSohzHqQg3xmg4UTmBtRE6pywsxYDRWQ5potxXIXB4H+frcX8AcmJSWVctww0ZDW5620zgKtylxR2fY5GTqYV8GyrrQF9sHzM+qBqWuzCQuPjtLX4z1xaekeqxHVKg5X2tExPCuCq7tX8QMX5ax1IQZRwjIy3plVXehSbMQslBRq+oRS+xem3Sx5ygAfux+Eg+DmeCwB252at3fZmgJ5YLdj9jq1LKCWUbgLVxGOdkvEW1D8EMQ8euCN9E/70mq+XVx7G+uS0BhaK3ZWjqa/YUipspJXo906I3XT/beUiBji+tHSpvI2GPG3Fu8is0a+FQxOxBpICWmAo3KUo5ualDaww6D6NkxgtceQ4FgdUekWo4bapZDLRVS4ozWZM2PMu+MQ/i8gVAlskt2DHwM91iXpRUBUQYNwsM6HN1TsR0hsw1kkSjEWZoWqHXAt3QBYucqNuWlObqvnE8Bhh8nac1cvNaOLUBxazHFfv/9jZvb9UD8yrPMJ1MkLkuNTh6UWdJea99kMSd2RVRr+CONliBA26RNkCvyL8k9zaqoc6qBwyju8Dd7P0OT4LvpSSRLHe1V/YL+cI=
