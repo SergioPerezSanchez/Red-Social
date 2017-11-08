@@ -1,11 +1,12 @@
-language:
-  java
-
-install:
-  mvn install -DskipTests=true -Dmaven.javadoc.skip=true -B -V
-
-script:
-  mvn test -B
-
+language: java
+install: mvn install -DskipTests=true -Dmaven.javadoc.skip=true -B -V
+script: mvn test -B
 notifications:
   slack: equipo3-pis:heW3XHXrt2LuoYNItXOjNIk
+deploy:
+  provider: heroku
+  api_key:
+    secure: IxLMqck+IDVcP5LYUZfbqLIzhsCwq8ghCdGDcOWCIOC6BH2w7HqVe/JR5pCFXz7viEBajxJyst3G4GBACK5Feg4ttuxqbC92Y1zvQbJNDwd5yfVoZwwk/hv8XsCxr4g+eVNeacRquC0+HDB3xp+5npWxtn9Wy/KBzeVcLHPH8D1yG1q4N8ozKnneZqXKbDGGiNO+1AQW9nUMLKQcVDFRG9Xm4jV07UMPB1b9rRZTA29ng2oiWYonqItah+N6cxOYaxCKddaAZvx+muhMJMW3iMOGwxwxbYfVyMl8TaqetK9e+p+da2n0MDxbaf/HhHU9wL4zPe8p35cZK2oNmjIHNO3LmJF7xBGl/8YSVok85C7NpczjrQ1cODREWTpaR10WdZdiyTQPnCiX/Owz9sLHJzN3zRE9cXJsgdQOVCn+HbS7j1+FIuqn8swqmQQoTAtw12hXQN7NH2IO+kG8+FvnbdYv+fmiozs5VvbXAwFU4+RQO8Zl7jFFt8nrCcU3/bLgVW1fnE3MVaaWr4NSmU/i5BYDF7622NWclNst7Vx2LP346XFtA95p01AlZCTn/hv8O+EMegZ0/WjGgUN6C6h2NtqW3iqEd2jxyhEaIXTdCZzJOnyPwRwYiyX1zGxIL8zpPDIqRUD1S/YAml749043aPrgNMRypnwZs8GlWhyi9CU=
+  app: Red-Social
+  on:
+    repo: SergioPerezSanchez/Red-Social
