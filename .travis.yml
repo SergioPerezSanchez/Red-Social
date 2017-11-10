@@ -1,10 +1,12 @@
 language: java
+jdk:
+ - oraclejdk6
 install: mvn install -DskipTests=true -Dmaven.javadoc.skip=true -B -V
 script: mvn test -B
 notifications:
   slack: equipo3-pis:heW3XHXrt2LuoYNItXOjNIkN
 deploy:
   provider: heroku
-  app: redsocial-eq03
   api_key:
     secure: USJm5nivHxgBDD+1kbXRWh9wQBcvYVc/erWBSc8tdcMcm3id1SE5VcGSDkG2S5HojUsQ8h4JODBmQ7HADjNoURDxwug3xLBReHGdHuIpL4gXsxlDobC5TC/IzwcLK3iz9XH4iENsl7zPXbKhUV88RoZ4U4V2J2dHVLNtYA/W87s5hpWbUwUhKX/RznllsG7Yvb2BiHI71Z3pDlvZvxIrbAYAT1gHV3M6jbpYnhFa3BCdNX1m9A8FWaboBG3TDmefTyc/i6ygydUNeYl/LY7PKOPo/oWg/L/uAVFbdtRveYzTL3K0vhT6+hMbfs7kpGypsUXXtwdYoiBUmYABRlA1xywormV2EIpBgUG9luYvmg1Na+oV+sZLuBG2FKswrmUZrMM78HSkRiH7JIny0qVSW/NUfYSNueC/SSn6DmszlpMJ0S7w4IVQdTVMbfTkigV+iS4Igmrb+6ZQQO5/z8IpceTciukGiwuUQTJpsHv5vkSmC1iumsoS7ZGx/EzRmCpqwIoVpcPnDasyKff02OvXUt3QzkgnZvrkhGPSbyeI6rg00tSEG0VfSGLqsRmQBZvxk7D8lkACG44dFFDw9GnR/QFqCaA5gZlwUe7Z6+8nNeE7iEKWs2+mw5fPf5oVngTVwuSWfCGvLh5WBOQ1fUzp1ySlhwu/kTUm+KiweJJyZqw=
+  app: redsocial-eq03

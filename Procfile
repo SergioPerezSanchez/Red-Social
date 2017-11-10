@@ -1,1 +1,1 @@
-web: java -war target/redSocial-1.0.0-BUILD-SNAPSHOT.war
+web: java $JAVA_OPTS -Dserver.port=$PORT -jar target/*.jar -Dspring.profiles.active=prod
