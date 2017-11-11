@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<testsuite tests="32" failures="0" name="CucumberTest" time="0.006" errors="0" skipped="0">
+<testsuite tests="32" failures="0" name="CucumberTest" time="0.016" errors="0" skipped="0">
   <properties>
     <property name="java.runtime.name" value="Java(TM) SE Runtime Environment"/>
     <property name="sun.boot.library.path" value="C:\Program Files\Java\jdk1.8.0_144\jre\bin"/>
@@ -27,7 +27,7 @@
     <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
     <property name="user.variant" value=""/>
     <property name="os.name" value="Windows 10"/>
-    <property name="classworlds.conf" value="C:\Users\hp15p01\Desktop\Proyecto Procesos\Proyecto\.metadata\.plugins\org.eclipse.m2e.launching\launches\m2conf4180697550524675675.tmp"/>
+    <property name="classworlds.conf" value="C:\Users\hp15p01\Desktop\Proyecto Procesos\Proyecto\.metadata\.plugins\org.eclipse.m2e.launching\launches\m2conf6556075896161412220.tmp"/>
     <property name="sun.jnu.encoding" value="Cp1252"/>
     <property name="java.library.path" value="C:\Program Files\Java\jdk1.8.0_144\bin;C:\WINDOWS\Sun\Java\bin;C:\WINDOWS\system32;C:\WINDOWS;C:/Program Files/Java/jre1.8.0_144/bin/server;C:/Program Files/Java/jre1.8.0_144/bin;C:/Program Files/Java/jre1.8.0_144/lib/amd64;C:\ProgramData\Oracle\Java\javapath;c:\aspectj1.8\bin:C:\Program Files\Broadcom\Broadcom 802.11;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\Program Files (x86)\Intel\iCLS Client\;C:\Program Files\Intel\iCLS Client\;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\Program Files\Hewlett-Packard\SimplePass\;C:\Program Files\Java\jdk1.8.0_144\bin;C:\Program Files\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files\Intel\Intel(R) Management Engine Components\IPT;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\IPT;C:\WINDOWS\system32\config\systemprofile\.dnx\bin;C:\Program Files\Microsoft DNX\Dnvm\;C:\Program Files\Java\jdk1.7.0_75\bin;C:\Program Files\Java\jre7\bin;C:\Program Files (x86)\Java\j2re1.4.1\bin;C:\Program Files\Java\jre7\bin\server\;C:\Program Files (x86)\MySQL\MySQL Fabric 1.5 &amp; MySQL Utilities 1.5\;C:\Program Files (x86)\MySQL\MySQL Fabric 1.5 &amp; MySQL Utilities 1.5\Doctrine extensions for PHP\;C:\Users\hp15p01\AppData\Local\Programs\Python\Python35-32;C:\Users\hp15p01\AppData\Local\Programs\Python\Python35-32\Scripts;C:\Program Files (x86)\ZeroC\Ice-3.6.2\bin;C:\Program Files\MongoDB\Server\3.2\bin;C:\apache-maven-3.3.9\bin;C:\Program Files\Git\cmd;C:\Program Files (x86)\Skype\Phone\;C:\Program Files\OpenSSL-Win32\bin;C:\Program Files (x86)\scala\bin;C:\Program Files\Java\jdk1.8.0_144\bin;C:\Ruby23\bin;C:\Users\hp15p01\AppData\Local\Microsoft\WindowsApps;C:\apache-maven-3.3.9\bin;C:\Program Files (x86)\Microsoft VS Code\bin;C:\Users\hp15p01\sleuthkit-4.2.0-win32\sleuthkit-4.2.0-win32\bin;C:\Program Files\Heroku\bin;C:\Users\hp15p01\Desktop\Proyecto Procesos\eclipse;;."/>
     <property name="java.specification.name" value="Java Platform API Specification"/>
@@ -61,13 +61,13 @@
     <property name="sun.desktop" value="windows"/>
     <property name="sun.cpu.isalist" value="amd64"/>
   </properties>
-  <testcase classname="Scenario: Registrar un usuario" name="Given Un usuario se registra en el sistema" time="0.003"/>
+  <testcase classname="Scenario: Registrar un usuario" name="Given Un usuario se registra en el sistema" time="0.004"/>
   <testcase classname="Scenario: Registrar un usuario" name="When Cumple los requisitos" time="0"/>
   <testcase classname="Scenario: Registrar un usuario" name="Then Usuario registrado" time="0"/>
-  <testcase classname="Scenario: Registrar un usuario" name="Scenario: Registrar un usuario" time="0"/>
+  <testcase classname="Scenario: Registrar un usuario" name="Scenario: Registrar un usuario" time="0.005"/>
   <testcase classname="Scenario: El correo ya existe" name="Given Un usuario ya esta registrado en el sistema" time="0"/>
   <testcase classname="Scenario: El correo ya existe" name="When No Cumple los Requisitos" time="0"/>
-  <testcase classname="Scenario: El correo ya existe" name="Then Muestra Mensaje de Error" time="0"/>
+  <testcase classname="Scenario: El correo ya existe" name="Then Muestra Mensaje de Error" time="0.001"/>
   <testcase classname="Scenario: El correo ya existe" name="Scenario: El correo ya existe" time="0.001"/>
   <testcase classname="Scenario: Requisitos de Clave" name="Given Un usuario se va a registrar en el sistema" time="0"/>
   <testcase classname="Scenario: Requisitos de Clave" name="When No Cumple los Requisitos de la clave" time="0"/>
@@ -80,17 +80,17 @@
   <testcase classname="Scenario: Usuario no Registrado" name="Given El usuario va a acceder al sistema" time="0"/>
   <testcase classname="Scenario: Usuario no Registrado" name="When No esta registrado" time="0"/>
   <testcase classname="Scenario: Usuario no Registrado" name="Then Mostrara mensaje de error" time="0"/>
-  <testcase classname="Scenario: Usuario no Registrado" name="Scenario: Usuario no Registrado" time="0"/>
+  <testcase classname="Scenario: Usuario no Registrado" name="Scenario: Usuario no Registrado" time="0.001"/>
   <testcase classname="Scenario: Password incorrecto" name="Given El usuario quiere acceder al sistema" time="0"/>
   <testcase classname="Scenario: Password incorrecto" name="When No coincide la password del usuario" time="0"/>
   <testcase classname="Scenario: Password incorrecto" name="Then Mostrara mensaje de error" time="0"/>
-  <testcase classname="Scenario: Password incorrecto" name="Scenario: Password incorrecto" time="0.001"/>
+  <testcase classname="Scenario: Password incorrecto" name="Scenario: Password incorrecto" time="0"/>
   <testcase classname="Scenario: Actualizar Datos" name="Given El usuario esta dentro del sistema" time="0"/>
   <testcase classname="Scenario: Actualizar Datos" name="When Quiere cambiar la clave" time="0"/>
   <testcase classname="Scenario: Actualizar Datos" name="Then La clave se cambia" time="0"/>
   <testcase classname="Scenario: Actualizar Datos" name="Scenario: Actualizar Datos" time="0"/>
   <testcase classname="Scenario: Eliminar Cuenta" name="Given El usuario se encuentra dentro del sistema" time="0"/>
   <testcase classname="Scenario: Eliminar Cuenta" name="When Quiere eliminar la cuenta" time="0"/>
-  <testcase classname="Scenario: Eliminar Cuenta" name="Then Cuenta eliminada" time="0"/>
-  <testcase classname="Scenario: Eliminar Cuenta" name="Scenario: Eliminar Cuenta" time="0.001"/>
+  <testcase classname="Scenario: Eliminar Cuenta" name="Then Cuenta eliminada" time="0.002"/>
+  <testcase classname="Scenario: Eliminar Cuenta" name="Scenario: Eliminar Cuenta" time="0.002"/>
 </testsuite>
