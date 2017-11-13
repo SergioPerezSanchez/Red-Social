@@ -172,6 +172,19 @@ public class DataBase {
 		return p;
 	}
 	
+	protected LinkedList<Persona>getAllPersonas(){
+		LinkedList<Persona> personas = new LinkedList<Persona>();
+		Persona p = null;
+		db = client.getDatabase(uri.getDatabase());
+		dbUsuarios = db.getCollection("usuarios");
+		elementos = dbUsuarios.find().iterator();
+		while(elementos.hasNext()) {
+			doc=elementos.next();
+			p = new Persona(doc.getString("nombre"), doc.getString("apellidos"), doc.getString("username"), doc.getString("email"), doc.getString("clave"), doc.getString("direccion"), doc.getString("telefono"), doc.getString("foto"), true, doc.getString("rol"));
+			personas.add(p);
+		}		
+		return personas;
+	}
 
 protected boolean createPublicacion(Publicacion p) {
     try {
