@@ -1,5 +1,7 @@
 package com.pis.redSocial;
 
+import java.io.File;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.text.DateFormat;
 import java.util.Date;
@@ -16,8 +18,10 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.multipart.commons.CommonsMultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 @Controller
@@ -46,7 +50,7 @@ public class RegisterController {
 
 	@RequestMapping(value = "crearUsuario", method = RequestMethod.POST)
 	public ModelAndView registrar(HttpServletRequest request,
-			HttpServletResponse response) throws ServletException, IOException {
+			HttpServletResponse response, @ModelAttribute FileFormBean fileFormBean ) throws ServletException, IOException {
 		String nombre, apellidos, username, email, password, repitePassword, direccion, telefono, foto;
 		nombre = request.getParameter("inputNombreRegistro");
 		apellidos = request.getParameter("inputApellidosRegistro");
@@ -125,9 +129,15 @@ public class RegisterController {
 						 * "El archivo adjunto no es una imagen."); return
 						 * miMAV; }else {
 						 */
+						String rutafoto = "no-foto";
+						try {
+							rutafoto = grabarFicheroALocal(fileFormBean);
+						} catch (Exception e) {
+							e.printStackTrace();
+						}
 						// CREA USUARIO
 						p = new Persona(nombre, apellidos, username, email,
-								password, direccion, telefono, foto, false,
+								password, direccion, telefono, rutafoto, false,
 								"usuario");
 						dao.crearPersona(p);
 						return new ModelAndView("home", "aviso",
@@ -137,5 +147,28 @@ public class RegisterController {
 				}
 			}
 		}
+	}
+	private String grabarFicheroALocal(FileFormBean fileFormBean) throws Exception {
+		CommonsMultipartFile uploaded = fileFormBean.getFichero();
+    	//File localFile = new File("/home/victor/git/Red-Social/src/main/resources/photo/"+uploaded.getOriginalFilename());
+		File localFile = new File("src/main/resources/photo/"+uploaded.getOriginalFilename());
+		FileOutputStream os = null;
+    	try {    		
+    		os = new FileOutputStream(localFile);
+    		os.write(uploaded.getBytes());
+    		
+    	} finally {
+    		if (os != null) {
+    			try {
+					os.close();
+					return localFile.getPath();
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+    		}else{
+    			return "no-foto";
+    		}
+    	}
+		return "no-foto";
 	}
 }

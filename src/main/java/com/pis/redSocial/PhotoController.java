@@ -34,11 +34,9 @@ public class PhotoController {
 	
 	private void grabarFicheroALocal(FileFormBean fileFormBean) throws Exception {
 		CommonsMultipartFile uploaded = fileFormBean.getFichero();
-    	File localFile = new File("/RedSocial/src/main/webapp/fotos/"+uploaded.getOriginalFilename());
+		File localFile = new File("/home/victor/git/Red-Social/src/main/resources/photo/"+uploaded.getOriginalFilename());
     	FileOutputStream os = null;
-    	
-    	try {
-    		
+    	try {    		
     		os = new FileOutputStream(localFile);
     		os.write(uploaded.getBytes());
     		

@@ -2,6 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@page import="modelo.DAOPersona"%>
 <%@page import="modelo.Persona"%>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <!DOCTYPE html>
 <html>
 <head>
