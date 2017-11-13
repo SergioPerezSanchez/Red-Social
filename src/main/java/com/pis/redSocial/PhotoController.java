@@ -1,14 +1,17 @@
 package com.pis.redSocial;
 
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.IOException;
+
+import java.util.Map;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.multipart.commons.CommonsMultipartFile;
+
+import com.cloudinary.*;
+import com.cloudinary.utils.ObjectUtils;
+
 
 
 @Controller
@@ -32,41 +35,19 @@ public class PhotoController {
     	return "Fichero grabado correctamente";
     }
 	
+	
 	private void grabarFicheroALocal(FileFormBean fileFormBean) throws Exception {
 		CommonsMultipartFile uploaded = fileFormBean.getFichero();
-		File localFile = new File("/home/victor/git/Red-Social/src/main/resources/photo/"+uploaded.getOriginalFilename());
-    	FileOutputStream os = null;
-    	try {    		
-    		os = new FileOutputStream(localFile);
-    		os.write(uploaded.getBytes());
-    		
-    	} finally {
-    		if (os != null) {
-    			try {
-					os.close();
-				} catch (IOException e) {
-					e.printStackTrace();
-				}
-    		}
-    	}
-		/*
-		try {
-			File inFile = new File(sourceFile);
-			File outFile = new File(destinationFile);
+		    	
+    	//Cloudinary
+    	Cloudinary cloudinary = new Cloudinary(ObjectUtils.asMap(
+    			  "cloud_name", "dtajtzcgw",
+    			  "api_key", "942888456823941",
+    			  "api_secret", "FefbhNW6ZnniBf4wFH0d6JUcn84"));
+    	
+    	Map upload = cloudinary.uploader().upload(uploaded.getBytes(), ObjectUtils.emptyMap());
+    	
 
-			FileInputStream in = new FileInputStream(inFile);
-			FileOutputStream out = new FileOutputStream(outFile);
-
-			int c;
-			while( (c = in.read() ) != -1)
-			out.write(c);
-
-			in.close();
-			out.close();
-			} catch(IOException e) {
-			System.err.println("Hubo un error de entrada/salida!!!");
-			}
-			*/
 	}
 /* FIN SUBIDA FOTOS*/
 	
