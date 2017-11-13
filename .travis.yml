@@ -8,3 +8,6 @@ deploy:
   api_key:
     secure: 3037dc9b-fddc-4dc3-8ef7-8310d7680536
   app: intravita-equipo03
+  on:
+    repo: SergioPerezSanchez/Red-Social
+    branch: master
