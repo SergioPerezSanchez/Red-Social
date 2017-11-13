@@ -1,11 +1,13 @@
-language:
-  java
-
-install:
-  mvn install -DskipTests=true -Dmaven.javadoc.skip=true -B -V
-
-script:
-  mvn test -B
-
+language: java
+jdk:
+- oraclejdk8
 notifications:
-  slack: equipo3-pis:heW3XHXrt2LuoYNItXOjNIk
+  slack: equipo3-pis:heW3XHXrt2LuoYNItXOjNIkN
+deploy:
+  provider: heroku
+  api_key:
+    secure: 3037dc9b-fddc-4dc3-8ef7-8310d7680536
+  app: intravita-equipo03
+  on:
+    repo: SergioPerezSanchez/Red-Social
+    branch: master

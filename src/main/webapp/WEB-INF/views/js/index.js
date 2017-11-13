@@ -1,0 +1,101 @@
+$('#liPublicacion').click(function(){
+	$('#divAmigos').fadeOut(400);
+	$('#divMensajes').fadeOut(400);
+	$('#divPublicaciones').fadeIn(400);
+	$('#liPublicacion').addClass('active');
+	$('#liAmistad').removeClass('active');
+	$('#liMP').removeClass('active');
+	$('#liPerfil').removeClass('active');
+	$('#liLogout').removeClass('active');
+});
+
+$('#aPublicacion').click(function(){
+	$('#divAmigos').fadeOut(400);
+	$('#divMensajes').fadeOut(400);
+	$('#divPublicaciones').fadeIn(400);
+	$('#liPublicacion').addClass('active');
+	$('#liAmistad').removeClass('active');
+	$('#liMP').removeClass('active');
+	$('#liPerfil').removeClass('active');
+	$('#liLogout').removeClass('active');
+});
+
+$('#liAmistad').click(function(){
+	$('#divPublicaciones').fadeOut(400);
+	$('#divMensajes').fadeOut(400);
+	$('#divAmigos').fadeIn(400);
+	$('#liAmistad').addClass('active');
+	$('#liPublicacion').removeClass('active');
+	$('#liMP').removeClass('active');
+	$('#liPerfil').removeClass('active');
+	$('#liLogout').removeClass('active');
+});
+
+$('#aAmistad').click(function(){
+	$('#divPublicaciones').fadeOut(400);
+	$('#divMensajes').fadeOut(400);
+	$('#divAmigos').fadeIn(400);
+	$('#liAmistad').addClass('active');
+	$('#liPublicacion').removeClass('active');
+	$('#liMP').removeClass('active');
+	$('#liPerfil').removeClass('active');
+	$('#liLogout').removeClass('active');
+});
+
+$('#liMP').click(function(){
+	$('#divPublicaciones').fadeOut(400);
+	$('#divAmigos').fadeOut(400);
+	$('#divMensajes').fadeIn(400);
+	$('#liMP').addClass('active');
+	$('#liPublicacion').removeClass('active');
+	$('#liAmistad').removeClass('active');
+	$('#liPerfil').removeClass('active');
+	$('#liLogout').removeClass('active');
+});
+
+$('#aMP').click(function(){
+	$('#divPublicaciones').fadeOut(400);
+	$('#divAmigos').fadeOut(400);
+	$('#divMensajes').fadeIn(400);
+	$('#divPublicaciones').fadeOut(400);
+	$('#divAmigos').fadeOut(400);
+	$('#divMensajes').fadeIn(400);
+	$('#liMP').addClass('active');
+	$('#liPublicacion').removeClass('active');
+	$('#liAmistad').removeClass('active');
+	$('#liPerfil').removeClass('active');
+	$('#liLogout').removeClass('active');
+});
+$('#liPerfil').click(function(){
+	alert('PERRRRFIL');
+	$('#liPerfil').addClass('active');
+	$('#liPublicacion').removeClass('active');
+	$('#liAmistad').removeClass('active');
+	$('#liMP').removeClass('active');
+	$('#liLogout').removeClass('active');
+});
+$('#aPerfil').click(function(){
+	alert('PEEEEEEEEERFIL');
+	$('#liPerfil').addClass('active');
+	$('#liPublicacion').removeClass('active');
+	$('#liAmistad').removeClass('active');
+	$('#liMP').removeClass('active');
+	$('#liLogout').removeClass('active');
+});
+$('#liLogout').click(function(){
+	alert('LOGOOOOOOUT');
+	$('#liLogout').addClass('active');
+	$('#liPublicacion').removeClass('active');
+	$('#liAmistad').removeClass('active');
+	$('#liMP').removeClass('active');
+	$('#liLPerfil').removeClass('active');
+});
+$('#aLogout').click(function(){
+	alert('LOGOOOOOOUT');
+	$('#liLogout').addClass('active');
+	$('#liPublicacion').removeClass('active');
+	$('#liAmistad').removeClass('active');
+	$('#liMP').removeClass('active');
+	$('#liPerfil').removeClass('active');
+});
+
