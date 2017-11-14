@@ -21,15 +21,14 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 @Controller
-public class MenuController {
-private static final Logger logger = LoggerFactory.getLogger(RegisterController.class);
+public class GenteController {
+private static final Logger logger = LoggerFactory.getLogger(GenteController.class);
 	
 	/**
 	 * Simply selects the home view to render by returning its name.
 	 */
-
-	@RequestMapping(value = "menu", method = RequestMethod.GET)
-	public String menu(Locale locale, Model model) {
+	@RequestMapping(value = "gente", method = RequestMethod.GET)
+	public String gente(Locale locale, Model model) {
 		logger.info("Register page! The client locale is {}.", locale);
 		
 		Date date = new Date();
@@ -39,8 +38,6 @@ private static final Logger logger = LoggerFactory.getLogger(RegisterController.
 		
 		model.addAttribute("serverTime", formattedDate );
 		
-		return "menu";
+		return "gente";
 	}
-
-
 }
