@@ -57,7 +57,7 @@ public class Publicacion {
 		creaFecha();
 	}
 	public Date getFecha() {
-		return this.fecha;
+		return fecha;
 	}
 	public void setFecha(String fecha) {
 		try {
@@ -69,6 +69,5 @@ public class Publicacion {
 	}
 	protected void creaFecha() {
 		this.fecha=new Date();
-		System.out.println(this.fecha);
 	}
 }

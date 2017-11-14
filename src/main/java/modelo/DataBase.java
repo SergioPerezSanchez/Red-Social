@@ -187,20 +187,20 @@ public class DataBase {
 	}
 
 protected boolean createPublicacion(Publicacion p) {
-    try {
-      db = client.getDatabase(uri.getDatabase());
-      dbPublicaciones = db.getCollection("publicaciones");
-      doc=new Document("username", p.getUsername())
-          .append("mensaje", p.getMensaje())
-          .append("compartir", p.getCompartirCon())
-          .append("adjuntos", p.getAdjuntos())
-          .append("fecha", p.getFecha());
-      dbPublicaciones.insertOne(doc);
-      return true;
-    }catch(Exception ex) {
-      ex.printStackTrace();
-      return false;
-    }
+	try {
+	      db = client.getDatabase(uri.getDatabase());
+	      dbPublicaciones = db.getCollection("publicaciones");
+	      doc=new Document("username", p.getUsername())
+	          .append("mensaje", p.getMensaje())
+	          .append("compartir", p.getCompartirCon())
+	          .append("adjuntos", p.getAdjuntos())
+	          .append("fecha", p.getFecha().toString());
+	      dbPublicaciones.insertOne(doc);
+	      return true;
+	    }catch(Exception ex) {
+	      ex.printStackTrace();
+	      return false;
+	    }
   }
   
   protected Publicacion readPublicacion(String username, String fecha) {
