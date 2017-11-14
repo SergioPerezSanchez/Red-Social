@@ -45,7 +45,8 @@ public class PhotoController {
     			  "api_key", "942888456823941",
     			  "api_secret", "FefbhNW6ZnniBf4wFH0d6JUcn84"));
     	
-    	Map upload = cloudinary.uploader().upload(uploaded.getBytes(), ObjectUtils.emptyMap());
+    	Map upload = cloudinary.uploader().upload(uploaded.getBytes(), ObjectUtils.asMap(
+    			"public_id", "vicpraga"));
     	
 
 	}
