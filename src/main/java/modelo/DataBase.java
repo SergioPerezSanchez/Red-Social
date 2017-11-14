@@ -194,7 +194,7 @@ protected boolean createPublicacion(Publicacion p) {
           .append("mensaje", p.getMensaje())
           .append("compartir", p.getCompartirCon())
           .append("adjuntos", p.getAdjuntos())
-          .append("fecha", p.getFecha().toString());
+          .append("fecha", p.getFecha());
       dbPublicaciones.insertOne(doc);
       return true;
     }catch(Exception ex) {

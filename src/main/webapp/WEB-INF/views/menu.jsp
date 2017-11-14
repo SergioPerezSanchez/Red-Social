@@ -74,7 +74,7 @@
 		color:#cccccc;  /*color de la fuente*/
 		letter-spacing: 2px; /*separación entre las letras*/
 		text-align: center; /*alineación del texto*/
-		text-transform: uppercase; /*texto se transforma en mayúsculas*/
+		text-transform: uppercase; /*texto se tpersonaransforma en mayúsculas*/
 		padding: 6px;  /*tamaño del fondo*/
 		border-radius: 30px; /*forma la borde del fondo*/
 	}
@@ -83,17 +83,19 @@
     <div id="divPublicaciones" style="height: 100%;width:100%; margin-top:-20px; position:absolute;" class="col-lg-12 col-md-12 col-xs-12">
         <div class="subencabezado" style="width:100%" ">Publicaciones</div>
         <div id="publicacion" class="row-lg-3 row-md-3 row-xs-3">
-  			<textarea name="message" id="textareaPublicacion" style="margin-top: 20px; padding-bottom: 30px; width:75%"></textarea>
-  			<div style="float: right; margin-top: 15px" class="col-md-3 col-lg-3 col-xs-3"><button class="btn btn-lg btn-primary btn-block btn-success" id="btnPublicar" type="submit">Publicar</button>
+  			<form action="publicarMensaje" method="post">
+  			<input style="display:none" name="nombreUser" value="${persona.getNombre()}" disabled><input name="message" id="textareaPublicacion" style="margin-top: 20px; padding-bottom: 30px; width:75%">
+  			<div style="float: right; margin-top: 15px" class="col-md-3 col-lg-3 col-xs-3"><button class="btn btn-lg btn-primary btn-block btn-success" id="btnPublicar" type="submit">Publicar</button></form>
   			<button id="btnAdjuntarFoto" class="btn btn-lg btn-primary btn-block btn-success" type="submit">Adjuntar Foto</button></div>
         </div>
         <hr style="border: 1px dotted #278e79; width:100%">
         <div id="panel" style="height: 80%; margin-top:15px;class="rog-lg-9 row-md-9 row-xs-9">
-
+		
         </div>
+        
     </div>
     <div id="divAmigos" style="background-image:url(https://3puntozeromktblog.files.wordpress.com/2015/03/estamos-trabajando-contenidos-web2.jpg);display: none; height: 590px; margin-top:-20px; position:absolute;border-style: solid;" class="col-lg-12 col-md-12 col-xs-12">
-
+	
 
     </div>
     <div id="divMensajes" style="background-image:url(https://3puntozeromktblog.files.wordpress.com/2015/03/estamos-trabajando-contenidos-web2.jpg);display: none; height: 590px; margin-top:-20px; position:absolute;border-style: solid;" class="col-lg-12 col-md-12 col-xs-12">
