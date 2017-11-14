@@ -117,7 +117,7 @@ private static final Logger logger = LoggerFactory.getLogger(RegisterController.
 				            return miMAV;
 						}else {*/
 							//CREA USUARIO
-							p = new Persona(nombre, apellidos, username, email, password, direccion, telefono, foto, false, "usuario");
+							p = new Persona(nombre, apellidos, username, email, password, direccion, telefono, foto, false, false);
 							dao.crearPersona(p);
 							return new ModelAndView("home", "aviso", "Cuenta creada correctamente");
 						//}

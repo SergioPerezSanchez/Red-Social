@@ -37,7 +37,7 @@ public class DataBase {
 					.append("direccion", p.getDireccion())
 					.append("telefono", p.getTelefono())
 					.append("foto", p.getFoto())
-					.append("rol", p.getRol());
+					.append("esAdmin", p.isEsAdmin());
 			dbUsuarios.insertOne(doc);
 			return true;
 		}catch(Exception ex) {
@@ -102,7 +102,7 @@ public class DataBase {
 					.append("direccion", p.getDireccion())
 					.append("telefono", p.getTelefono())
 					.append("foto", p.getFoto())
-					.append("rol", p.getRol());
+					.append("esAdmin", p.isEsAdmin());
 			while(elementos.hasNext()) {
 				aux=elementos.next();
 				if((aux.get("email").toString().equalsIgnoreCase(p.getEmail()))&&
@@ -152,7 +152,7 @@ public class DataBase {
 		while(elementos.hasNext()) {
 			doc=elementos.next();
 			if((doc.get("username").toString().equalsIgnoreCase(username))) {
-				p = new Persona(doc.getString("nombre"), doc.getString("apellidos"), doc.getString("username"), doc.getString("email"), doc.getString("clave"), doc.getString("direccion"), doc.getString("telefono"), doc.getString("foto"), true, doc.getString("rol"));
+				p = new Persona(doc.getString("nombre"), doc.getString("apellidos"), doc.getString("username"), doc.getString("email"), doc.getString("clave"), doc.getString("direccion"), doc.getString("telefono"), doc.getString("foto"), true, doc.getBoolean("esAdmin"));
 			}
 		}		
 		return p;
@@ -166,7 +166,7 @@ public class DataBase {
 		while(elementos.hasNext()) {
 			doc=elementos.next();
 			if((doc.get("email").toString().equalsIgnoreCase(email))) {
-				p = new Persona(doc.getString("nombre"), doc.getString("apellidos"), doc.getString("username"), doc.getString("email"), doc.getString("clave"), doc.getString("direccion"), doc.getString("telefono"), doc.getString("foto"), true, doc.getString("rol"));
+				p = new Persona(doc.getString("nombre"), doc.getString("apellidos"), doc.getString("username"), doc.getString("email"), doc.getString("clave"), doc.getString("direccion"), doc.getString("telefono"), doc.getString("foto"), true, doc.getBoolean("esAdmin"));
 			}
 		}		
 		return p;
@@ -180,7 +180,7 @@ public class DataBase {
 		elementos = dbUsuarios.find().iterator();
 		while(elementos.hasNext()) {
 			doc=elementos.next();
-			p = new Persona(doc.getString("nombre"), doc.getString("apellidos"), doc.getString("username"), doc.getString("email"), doc.getString("clave"), doc.getString("direccion"), doc.getString("telefono"), doc.getString("foto"), true, doc.getString("rol"));
+			p = new Persona(doc.getString("nombre"), doc.getString("apellidos"), doc.getString("username"), doc.getString("email"), doc.getString("clave"), doc.getString("direccion"), doc.getString("telefono"), doc.getString("foto"), true, doc.getBoolean("esAdmin"));
 			personas.add(p);
 		}		
 		return personas;
