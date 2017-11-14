@@ -3,6 +3,7 @@ package com.pis.redSocial;
 import java.io.IOException;
 import java.text.DateFormat;
 import java.util.Date;
+import java.util.LinkedList;
 import java.util.Locale;
 
 import javax.servlet.ServletException;
@@ -10,7 +11,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import modelo.DAOPersona;
+import modelo.DAOPublicacion;
 import modelo.Persona;
+import modelo.Publicacion;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -41,6 +44,24 @@ private static final Logger logger = LoggerFactory.getLogger(RegisterController.
 		
 		return "menu";
 	}
-
+	
+	@RequestMapping(value = "publicarMensaje", method = RequestMethod.POST)
+	public ModelAndView publicar(HttpServletRequest request, HttpServletResponse response)throws Exception{
+		String username, texto,privacidad;
+		LinkedList<String> adjuntos= new LinkedList<String>();
+		username = request.getParameter("nombreUser");
+		privacidad="publico";
+		texto = request.getParameter("message");
+		DAOPublicacion dao = new DAOPublicacion();
+		Publicacion p,a;
+		p = new Publicacion(username,texto,privacidad,adjuntos);
+		if(dao.crearPublicacion(p)) {
+			return new ModelAndView("menu", "publicacion", p);
+		}else {
+			return new ModelAndView("menu", "aviso", "Ha habido algún problema");
+		}
+		
+	}
+	
 
 }
