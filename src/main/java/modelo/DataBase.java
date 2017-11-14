@@ -1,5 +1,6 @@
 package modelo;
 
+import java.util.Date;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -15,7 +16,7 @@ public class DataBase {
 	MongoClientURI uri;
 	MongoClient client;
 	MongoDatabase db;
-	MongoCollection<Document> dbUsuarios, dbPublicaciones;
+	MongoCollection<Document> dbUsuarios, dbPublicaciones, dbAmistades, dbPeticiones;
 	Publicacion pub;
 	Document doc, aux;
 	MongoCursor<Document>elementos;
@@ -24,6 +25,13 @@ public class DataBase {
 		uri  = new MongoClientURI("mongodb://equipo03:pis03equipo@ds113935.mlab.com:13935/equipo03"); 
         client = new MongoClient(uri);
 	}
+	
+	  /*  +----------------------------------------------------------------------+
+	   *  |                                                                      |
+	   *  |                              PERSONAS                                |
+	   *  |                                                                      |
+	   *  +----------------------------------------------------------------------+
+	   */
 	
 	protected boolean create(Persona p) {
 		try {
@@ -186,6 +194,13 @@ public class DataBase {
 		return personas;
 	}
 
+	  /*  +----------------------------------------------------------------------+
+	   *  |                                                                      |
+	   *  |                            PUBLICACIONES                             |
+	   *  |                                                                      |
+	   *  +----------------------------------------------------------------------+
+	   */
+	
 protected boolean createPublicacion(Publicacion p) {
     try {
       db = client.getDatabase(uri.getDatabase());
@@ -321,5 +336,210 @@ protected boolean createPublicacion(Publicacion p) {
     }
     return pubs;
   }
+  
+  /*  +----------------------------------------------------------------------+
+   *  |                                                                      |
+   *  |                              AMISTADES                               |
+   *  |                                                                      |
+   *  +----------------------------------------------------------------------+
+   */
+  
+  protected boolean createAmistad(Amistad amistad) {
+		try {
+			db = client.getDatabase(uri.getDatabase());
+			dbAmistades = db.getCollection("amistades");
+			doc=new Document("amigo1",amistad.getAmigo1())
+					.append("amigo2", amistad.getAmigo2())
+					.append("fecha", amistad.getFechaAmistad().toString());
+					
+			dbAmistades.insertOne(doc);
+			return true;
+		}catch(Exception ex) {
+			ex.printStackTrace();
+			return false;
+		}
+  }
+  
+  protected boolean sonAmigos(String amigoA, String amigoB) {
+		boolean sonAmigos = false;
+		db = client.getDatabase(uri.getDatabase());
+		dbAmistades = db.getCollection("amistades");
+		elementos = dbAmistades.find().iterator();
+		while(elementos.hasNext()) {
+			doc=elementos.next();
+			if( ( doc.get("amigo1")==amigoA && doc.get("amigo2")==amigoB ) || 
+					( doc.get("amigo1")==amigoB && doc.get("amigo2")==amigoA ) ) {
+				sonAmigos=true;
+			}
+		}
+		return sonAmigos;
+  }
+  
+  protected LinkedList<Amistad> readAmistades(String username) {
+	    LinkedList<Amistad>amistades = new LinkedList<Amistad>();
+	    try {
+	      db = client.getDatabase(uri.getDatabase());
+	      dbAmistades = db.getCollection("amistades");
+	      elementos = dbAmistades.find().iterator();
+	      while(elementos.hasNext()) {
+	        aux = elementos.next();
+	        if( aux.get("amigo1").toString().equalsIgnoreCase(username) || 
+	        		aux.get("amigo2").toString().equalsIgnoreCase(username)) {
+	          amistades.add(new Amistad( aux.get("amigo1").toString(), 
+	        		  aux.get("amigo2").toString(), aux.get("fechaAmistad").toString() ) );
+	        }
+	      }
+	    }catch(Exception ex) {
+	      ex.printStackTrace();
+	    }
+	    return amistades;
+  }
+  
+  protected Amistad readAmistad(String amigoA, String amigoB) {
+	  	Amistad amistad =  null;
+	    try {
+	      db = client.getDatabase(uri.getDatabase());
+	      dbAmistades = db.getCollection("amistades");
+	      elementos = dbAmistades.find().iterator();
+	      while(elementos.hasNext()) {
+	        aux = elementos.next();
+	        if( ( aux.get("amigo1").toString().equalsIgnoreCase(amigoA) && 
+	        		aux.get("amigo2").toString().equalsIgnoreCase(amigoB) ) || 
+	        		( aux.get("amigo1").toString().equalsIgnoreCase(amigoB) && 
+	        				aux.get("amigo2").toString().equalsIgnoreCase(amigoA) )) {
+	          amistad = new Amistad( aux.get("amigo1").toString(), 
+	        		  aux.get("amigo2").toString(), aux.get("fechaAmistad").toString() );
+	        }
+	      }
+	    }catch(Exception ex) {
+	      ex.printStackTrace();
+	    }
+	    return amistad;
+}
+  
+  protected boolean deleteAmistad(Amistad amistad) {
+	    boolean borrado= false;
+	    db = client.getDatabase(uri.getDatabase());
+	    dbAmistades = db.getCollection("amistades");
+	    elementos = dbAmistades.find().iterator();
+	    while(elementos.hasNext()) {
+	      aux=elementos.next();
+	      System.out.println("Entra: "+aux.get("amigo1").toString()+" "+aux.get("amigo2").toString()+" "+aux.get("fechaAmistad").toString());
+	      if( (aux.get("amigo1").toString().equalsIgnoreCase(amistad.getAmigo1())) &&
+	         (aux.get("amigo2").toString().equalsIgnoreCase(amistad.getAmigo2())) ||
+	         (aux.get("amigo2").toString().equalsIgnoreCase(amistad.getAmigo1())) &&
+	         (aux.get("amigo1").toString().equalsIgnoreCase(amistad.getAmigo2())) ) {
+	        dbPublicaciones.deleteOne(aux);
+	        borrado=true;
+	      }
+	    }
+	    return borrado;
+	  }
 	
+  /*  +----------------------------------------------------------------------+
+   *  |                                                                      |
+   *  |                              PETICIONES                              |
+   *  |                                                                      |
+   *  +----------------------------------------------------------------------+
+   */
+  
+  protected boolean createPeticion(Peticion peticion) {
+		try {
+			db = client.getDatabase(uri.getDatabase());
+			dbPeticiones = db.getCollection("peticiones");
+			doc=new Document("amigo1",peticion.getId1())
+					.append("amigo2", peticion.getId2())
+					.append("mensaje", peticion.getMensaje())
+					.append("fechaPeticion", peticion.getFechaPeticion().toString())
+					.append("flag", peticion.getFlag());
+					
+			dbPeticiones.insertOne(doc);
+			return true;
+		}catch(Exception ex) {
+			ex.printStackTrace();
+			return false;
+		}
+  }
+  
+  protected boolean hayPeticion(String amigoA, String amigoB) {
+		boolean hayPeticion = false;
+		db = client.getDatabase(uri.getDatabase());
+		dbPeticiones = db.getCollection("peticiones");
+		elementos = dbPeticiones.find().iterator();
+		while(elementos.hasNext()) {
+			doc=elementos.next();
+			if( ( doc.get("amigo1")==amigoA && doc.get("amigo2")==amigoB ) || 
+					( doc.get("amigo1")==amigoB && doc.get("amigo2")==amigoA ) ) {
+				hayPeticion=true;
+			}
+		}
+		return hayPeticion;
+  }
+  
+  protected LinkedList<Peticion> readPeticionesDe(String username) {
+	    LinkedList<Peticion>peticiones = new LinkedList<Peticion>();
+	    try {
+	      db = client.getDatabase(uri.getDatabase());
+	      dbPeticiones = db.getCollection("peticiones");
+	      elementos = dbPeticiones.find().iterator();
+	      while(elementos.hasNext()) {
+	        aux = elementos.next();
+	        if( aux.get("amigo1").toString().equalsIgnoreCase(username) ) {
+	        	peticiones.add(new Peticion( aux.get("amigo1").toString(), 
+	        		  aux.get("amigo2").toString(), aux.get("mensaje").toString(), 
+	        		  aux.get("fechaPeticion").toString(), aux.get("flag").toString() ) );
+	        }
+	      }
+	    }catch(Exception ex) {
+	      ex.printStackTrace();
+	    }
+	    return peticiones;
+  }
+  
+  protected LinkedList<Peticion> readPeticionesA(String username) {
+	    LinkedList<Peticion>peticiones = new LinkedList<Peticion>();
+	    try {
+	      db = client.getDatabase(uri.getDatabase());
+	      dbPeticiones = db.getCollection("peticiones");
+	      elementos = dbPeticiones.find().iterator();
+	      while(elementos.hasNext()) {
+	        aux = elementos.next();
+	        if( aux.get("amigo2").toString().equalsIgnoreCase(username) ) {
+	        	peticiones.add(new Peticion( aux.get("amigo1").toString(), 
+	        		  aux.get("amigo2").toString(), aux.get("mensaje").toString(), 
+	        		  aux.get("fechaPeticion").toString(), aux.get("flag").toString() ) );
+	        }
+	      }
+	    }catch(Exception ex) {
+	      ex.printStackTrace();
+	    }
+	    return peticiones;
+  }
+  
+  protected Peticion readPeticion(String amigoA, String amigoB) {
+	    Peticion peticion =  null;
+	    try {
+	      db = client.getDatabase(uri.getDatabase());
+	      dbPeticiones = db.getCollection("peticiones");
+	      elementos = dbPeticiones.find().iterator();
+	      while(elementos.hasNext()) {
+	        aux = elementos.next();
+	        if( ( aux.get("amigo1").toString().equalsIgnoreCase(amigoA) && 
+	        		aux.get("amigo2").toString().equalsIgnoreCase(amigoB) ) || 
+	        		( aux.get("amigo1").toString().equalsIgnoreCase(amigoB) && 
+	        				aux.get("amigo2").toString().equalsIgnoreCase(amigoA) )) {
+	        	peticion = new Peticion( aux.get("amigo1").toString(), 
+		        		  aux.get("amigo2").toString(), aux.get("mensaje").toString(), 
+		        		  aux.get("fechaPeticion").toString(), aux.get("flag").toString() );
+	        }
+	      }
+	    }catch(Exception ex) {
+	      ex.printStackTrace();
+	    }
+	    return peticion;
+}
+  
+  /* No hay método deletePeticion(Peticion peticion) porque no tiene sentido
+  * borrar peticiones. En lugar de eso se cambia el flag. */
+  
 }
