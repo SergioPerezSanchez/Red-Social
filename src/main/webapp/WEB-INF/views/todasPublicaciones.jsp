@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -68,6 +69,12 @@
 	<div class="panel panel-warning">
       <div class="panel-heading">¡Ten Cuidado!</div>
       <div class="panel-body">¡Recuerda, está en contra de la ley de protección de datos!</div>
+      <div > <ul>
+			<c:forEach var="listValue" items="${listPublicaciones}">
+				<li>${listValue.getUsername()} ${listValue.getMensaje()} ${listValue.getCompartirCon()}</li>
+			</c:forEach>
+		</ul>
+		</div>
     </div>
 	<div id="panelTodasPublicaciones" style="width:100%;height:80%">
 	

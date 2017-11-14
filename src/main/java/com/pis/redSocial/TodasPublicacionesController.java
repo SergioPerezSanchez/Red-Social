@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.text.DateFormat;
 import java.util.Date;
 import java.util.LinkedList;
+import java.util.List;
 import java.util.Locale;
 
 import javax.servlet.ServletException;
@@ -62,8 +63,8 @@ private static final Logger logger = LoggerFactory.getLogger(TodasPublicacionesC
 		
 		// Falta recoger el username.
 		DAOPublicacion daoPublicacion = new DAOPublicacion();
-		LinkedList<Publicacion> publicaciones = daoPublicacion.leerPublicaciones(username);
-		model.addAllAttributes(publicaciones);
+		List<Publicacion> publicaciones = daoPublicacion.leerTodasPublicaciones();
+		model.addAttribute("listPublicaciones", publicaciones );
 		
 		return "todasPublicaciones";
 	}
