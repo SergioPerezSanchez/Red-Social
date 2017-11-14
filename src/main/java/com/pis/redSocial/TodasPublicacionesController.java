@@ -3,6 +3,7 @@ package com.pis.redSocial;
 import java.io.IOException;
 import java.text.DateFormat;
 import java.util.Date;
+import java.util.LinkedList;
 import java.util.Locale;
 
 import javax.servlet.ServletException;
@@ -10,7 +11,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import modelo.DAOPersona;
+import modelo.DAOPublicacion;
 import modelo.Persona;
+import modelo.Publicacion;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -27,6 +30,25 @@ private static final Logger logger = LoggerFactory.getLogger(TodasPublicacionesC
 	/**
 	 * Simply selects the home view to render by returning its name.
 	 */
+
+	@RequestMapping(value = "todasPublicacionesAdmin", method = RequestMethod.GET)
+	public String todasPublicacionesAdmin(Locale locale, Model model) {
+		logger.info("Register page! The client locale is {}.", locale);
+	
+		Date date = new Date();
+		DateFormat dateFormat = DateFormat.getDateTimeInstance(DateFormat.LONG, DateFormat.LONG, locale);
+	
+		String formattedDate = dateFormat.format(date);
+	
+		model.addAttribute("serverTime", formattedDate );
+	
+		DAOPublicacion daoPublicacion = new DAOPublicacion();
+		LinkedList<Publicacion> publicaciones = daoPublicacion.leerTodasPublicaciones();
+				model.addAllAttributes(publicaciones);
+	
+		return "todasPublicacionesAdmin";
+	}
+
 	@RequestMapping(value = "todasPublicaciones", method = RequestMethod.GET)
 	public String todasPublicaciones(Locale locale, Model model) {
 		logger.info("Register page! The client locale is {}.", locale);
@@ -37,6 +59,11 @@ private static final Logger logger = LoggerFactory.getLogger(TodasPublicacionesC
 		String formattedDate = dateFormat.format(date);
 		
 		model.addAttribute("serverTime", formattedDate );
+		
+		// Falta recoger el username.
+		DAOPublicacion daoPublicacion = new DAOPublicacion();
+		LinkedList<Publicacion> publicaciones = daoPublicacion.leerPublicaciones(username);
+		model.addAllAttributes(publicaciones);
 		
 		return "todasPublicaciones";
 	}
