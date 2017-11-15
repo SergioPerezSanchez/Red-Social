@@ -140,8 +140,7 @@
     color: rgb(12, 97, 33);
 }
 </style>
-<body >
-	
+<body >	
 	<script language="JavaScript" type="text/javascript">
 		if("${aviso}"!=""){
 			alert("${aviso}");
