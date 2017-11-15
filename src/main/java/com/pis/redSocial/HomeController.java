@@ -6,6 +6,7 @@ import java.util.Locale;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import modelo.DAOPersona;
 import modelo.Persona;
@@ -53,28 +54,16 @@ public class HomeController {
 		
 		if(dao.login(p)) {
 			a = dao.getPersona(username);
-			return new ModelAndView("menu", "persona", a);
+			HttpSession misession= request.getSession(true);
+			misession.setAttribute("persona",a);
+			if(a.isEsAdmin()) {
+				return new ModelAndView("menu", "persona", a);
+			}else {
+				return new ModelAndView("menu", "persona", a);
+			}
 		}else {
 			return new ModelAndView("home", "aviso", "El usuario y/o clave son incorrectos.");
 		}
-		
-		/*if(dao.existeUsername(username)){
-			p=dao.getPersona(username);
-			if(password.equals(p.getPassword())){
-				if(dao.login(p)){
-					cadena="menu";
-					a = dao.getPersona(p.getUsername());
-					return new ModelAndView(cadena, "persona", a);
-				}else{
-					cadena="home";
-				}
-			}else{
-				cadena="home";
-			}
-		}else{
-			cadena="home";
-		}*/
-		//return new ModelAndView(cadena);
 	}
 	
 }

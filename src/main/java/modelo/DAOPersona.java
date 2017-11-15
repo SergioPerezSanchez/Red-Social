@@ -1,5 +1,7 @@
 package modelo;
 
+import java.util.LinkedList;
+
 public class DAOPersona {
 	DataBase db;
 	public DAOPersona() {
@@ -36,5 +38,9 @@ public class DAOPersona {
 	
 	public Persona getPersonaByEmail(String email) {
 		return db.getPersonaByEmail(email);
+	}
+	
+	public LinkedList<Persona> getAllPersonas() {
+		return db.getAllPersonas();
 	}
 }

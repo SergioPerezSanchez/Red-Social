@@ -114,61 +114,28 @@ public class RegisterController {
 						miMAV.addObject("mensaje",
 								"No se puede registrar. No se cumple los requisitos de la contraseña.");
 						return miMAV;
-					} else {
-						/*
-						 * if(!foto.equalsIgnoreCase(".*")) { //CODIGO CONTROL
-						 * EXTENSION ARCHIVOS miMAV.addObject("nombre", nombre);
-						 * miMAV.addObject("apellidos", apellidos);
-						 * miMAV.addObject("usuario", username);
-						 * miMAV.addObject("email", email);
-						 * miMAV.addObject("password", password);
-						 * miMAV.addObject("repassword", repitePassword);
-						 * miMAV.addObject("direccion", direccion);
-						 * miMAV.addObject("telefono", telefono);
-						 * miMAV.addObject("mensaje",
-						 * "El archivo adjunto no es una imagen."); return
-						 * miMAV; }else {
-						 */
-						String rutafoto = "no-foto";
-						try {
-							rutafoto = grabarFicheroALocal(fileFormBean);
-						} catch (Exception e) {
-							e.printStackTrace();
-						}
-						// CREA USUARIO
-						p = new Persona(nombre, apellidos, username, email,
-								password, direccion, telefono, rutafoto, false,
-								"usuario");
-						dao.crearPersona(p);
-						return new ModelAndView("home", "aviso",
-								"Cuenta creada correctamente");
-						// }
+					}else{
+						/*if(!foto.equalsIgnoreCase(".*")) {
+							//CODIGO CONTROL EXTENSION ARCHIVOS
+							miMAV.addObject("nombre", nombre);
+					        miMAV.addObject("apellidos", apellidos);
+					        miMAV.addObject("usuario", username);
+					        miMAV.addObject("email", email);
+					        miMAV.addObject("password", password);
+					        miMAV.addObject("repassword", repitePassword);
+					        miMAV.addObject("direccion", direccion);
+					        miMAV.addObject("telefono", telefono);
+				            miMAV.addObject("mensaje", "El archivo adjunto no es una imagen.");
+				            return miMAV;
+						}else {*/
+							//CREA USUARIO
+							p = new Persona(nombre, apellidos, username, email, password, direccion, telefono, foto, false, false);
+							dao.crearPersona(p);
+							return new ModelAndView("home", "aviso", "Cuenta creada correctamente");
+						//}
 					}
 				}
 			}
 		}
-	}
-	private String grabarFicheroALocal(FileFormBean fileFormBean) throws Exception {
-		CommonsMultipartFile uploaded = fileFormBean.getFichero();
-    	//File localFile = new File("/home/victor/git/Red-Social/src/main/resources/photo/"+uploaded.getOriginalFilename());
-		File localFile = new File("src/main/resources/photo/"+uploaded.getOriginalFilename());
-		FileOutputStream os = null;
-    	try {    		
-    		os = new FileOutputStream(localFile);
-    		os.write(uploaded.getBytes());
-    		
-    	} finally {
-    		if (os != null) {
-    			try {
-					os.close();
-					return localFile.getPath();
-				} catch (IOException e) {
-					e.printStackTrace();
-				}
-    		}else{
-    			return "no-foto";
-    		}
-    	}
-		return "no-foto";
 	}
 }
