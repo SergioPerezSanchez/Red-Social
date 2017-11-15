@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -15,7 +17,7 @@
         <nav class="navbar navbar-inverse">
             <div class="container-fluid">
                 <div class="navbar-header">
-                    <a class="navbar-brand" >Intravita</a>
+                    <a id="liLogo" class="navbar-brand" >Intravita</a>
                 </div>
                 <ul class="nav navbar-nav">
                 
@@ -38,11 +40,15 @@
     	<form action="amigos" method="get">
             <button  id="holaAmigos" style="display:none; padding-bottom:10px; float: right;margin: auto;" class="btn btn-warning" type="submit" value="Amigos" name="amigos" >Volver</button>
         </form>
+        
         <form action="gente" method="get">
             <button  id="holaGente" style="display:none; padding-bottom:10px; float: right;margin: auto;" class="btn btn-warning" type="submit" value="Gente" name="Gente" >Volver</button>
         </form>
     	<form action="menu" method="get">
             <button  id="holaMenu" style="display:none; padding-bottom:10px; float: right;margin: auto;" class="btn btn-warning" type="submit" value="Menu" name="menu" >Volver</button>
+        </form>
+        <form action="home.jsp" method="get">
+            <button  id="holaLogo" style="display:none; padding-bottom:10px; float: right;margin: auto;" class="btn btn-warning" type="submit" value="Home" name="home" >Volver</button>
         </form>
         <form action="perfil" method="get">
             <button  id="holaPerfil" style="display:none; padding-bottom:10px; float: right;margin: auto;" class="btn btn-warning" type="submit" value="Perfil" name="perfil" >Volver</button>
@@ -74,7 +80,7 @@
 		color:#cccccc;  /*color de la fuente*/
 		letter-spacing: 2px; /*separación entre las letras*/
 		text-align: center; /*alineación del texto*/
-		text-transform: uppercase; /*texto se transforma en mayúsculas*/
+		text-transform: uppercase; /*texto se tpersonaransforma en mayúsculas*/
 		padding: 6px;  /*tamaño del fondo*/
 		border-radius: 30px; /*forma la borde del fondo*/
 	}
@@ -83,17 +89,24 @@
     <div id="divPublicaciones" style="height: 100%;width:100%; margin-top:-20px; position:absolute;" class="col-lg-12 col-md-12 col-xs-12">
         <div class="subencabezado" style="width:100%" ">Publicaciones</div>
         <div id="publicacion" class="row-lg-3 row-md-3 row-xs-3">
-  			<textarea name="message" id="textareaPublicacion" style="margin-top: 20px; padding-bottom: 30px; width:75%"></textarea>
-  			<div style="float: right; margin-top: 15px" class="col-md-3 col-lg-3 col-xs-3"><button class="btn btn-lg btn-primary btn-block btn-success" id="btnPublicar" type="submit">Publicar</button>
+  			<form action="publicarMensaje" method="post"> <input id="obtenerUsuario" style="display:none">
+  			<input style="display:none" id="nombreUser" name="nombreUser" value="${persona.getNombre()}" disabled><input name="message" id="textareaPublicacion" style="margin-top: 20px; padding-bottom: 30px; width:75%">
+  			<div style="float: right; margin-top: 15px" class="col-md-3 col-lg-3 col-xs-3"><button class="btn btn-lg btn-primary btn-block btn-success" id="btnPublicar" type="submit">Publicar</button></form>
   			<button id="btnAdjuntarFoto" class="btn btn-lg btn-primary btn-block btn-success" type="submit">Adjuntar Foto</button></div>
         </div>
         <hr style="border: 1px dotted #278e79; width:100%">
         <div id="panel" style="height: 80%; margin-top:15px;class="rog-lg-9 row-md-9 row-xs-9">
-
+			<c:forEach var="listValue" items="${listPublicacionesPersona}">
+				<div id="publicacion" class="mensaje" style="margin-top:10px;height:100px; width:100%" >
+					<div id="mensaje" style="text-align: left" class="col-md-10 col-lg-10 col-xs-10"> ${listValue.getMensaje()}</div>
+					<div id="perfil" style="font: 15px" class="col-lg-2 col-md-2 col-xs-2"><p>${listValue.getUsername()}}</p></div>
+				</div>
+			</c:forEach>
         </div>
+        
     </div>
     <div id="divAmigos" style="background-image:url(https://3puntozeromktblog.files.wordpress.com/2015/03/estamos-trabajando-contenidos-web2.jpg);display: none; height: 590px; margin-top:-20px; position:absolute;border-style: solid;" class="col-lg-12 col-md-12 col-xs-12">
-
+	
 
     </div>
     <div id="divMensajes" style="background-image:url(https://3puntozeromktblog.files.wordpress.com/2015/03/estamos-trabajando-contenidos-web2.jpg);display: none; height: 590px; margin-top:-20px; position:absolute;border-style: solid;" class="col-lg-12 col-md-12 col-xs-12">
@@ -448,11 +461,13 @@
     $('#btnPublicar').click(function(){
     	if($('#textareaPublicacion').val() == ""){
     		alert('Por favor, escribe algo para tu publicación!');
-    	}else{
+    	}/*else{
+    		
     	var texto=$('#textareaPublicacion').val();
     	$('#panel').append('<div id="publicacion" class="mensaje" style="margin-top:10px;height:100px; width:100%" ><div id="mensaje" style="text-align: left" class="col-md-10 col-lg-10 col-xs-10">'+texto+'</div><div id="perfil" style="font: 15px" class="col-lg-2 col-md-2 col-xs-2"><p><c:out value="${persona}"/>${persona.getNombre()}</p></div></div>');
-    	$('#textareaPublicacion').val("");
-    	}
+    	//$('#textareaPublicacion').val("");
+    	$('#obtenerUsuario').val($('#nombreUser').val());
+    	}*/
     	});
 
     $('#btnAdjuntarFoto').click(function(){
@@ -460,6 +475,9 @@
     });
     $('#liPublicacion').click(function(){
 		$('#holaMenu').click();
+    });
+    $('#liLogo').click(function(){
+		$('#holaLogo').click();
     });
 
     $('#aPublicacion').click(function(){

@@ -29,19 +29,19 @@ public class Publicacion {
 	}
 	
 		
-	protected String getMensaje() {
+	public String getMensaje() {
 		return mensaje;
 	}
 	public void setMensaje(String mensaje) {
 		this.mensaje = mensaje;
-		creaFecha();
+		
 	}
 	protected String getCompartirCon() {
 		return compartirCon;
 	}
 	public void setCompartirCon(String compartirCon) {
 		this.compartirCon = compartirCon;
-		creaFecha();
+		
 	}
 	protected LinkedList<String> getAdjuntos() {
 		return adjuntos;
@@ -54,7 +54,7 @@ public class Publicacion {
 	}
 	public void setUsername(String username) {
 		this.username = username;
-		creaFecha();
+		
 	}
 	public Date getFecha() {
 		return fecha;

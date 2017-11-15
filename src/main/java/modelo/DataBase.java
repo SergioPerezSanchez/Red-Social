@@ -187,20 +187,20 @@ public class DataBase {
 	}
 
 protected boolean createPublicacion(Publicacion p) {
-    try {
-      db = client.getDatabase(uri.getDatabase());
-      dbPublicaciones = db.getCollection("publicaciones");
-      doc=new Document("username", p.getUsername())
-          .append("mensaje", p.getMensaje())
-          .append("compartir", p.getCompartirCon())
-          .append("adjuntos", p.getAdjuntos())
-          .append("fecha", p.getFecha().toString());
-      dbPublicaciones.insertOne(doc);
-      return true;
-    }catch(Exception ex) {
-      ex.printStackTrace();
-      return false;
-    }
+	try {
+	      db = client.getDatabase(uri.getDatabase());
+	      dbPublicaciones = db.getCollection("publicaciones");
+	      doc=new Document("username", p.getUsername())
+	          .append("mensaje", p.getMensaje())
+	          .append("compartir", p.getCompartirCon())
+	          .append("adjuntos", p.getAdjuntos())
+	          .append("fecha", p.getFecha().toString());
+	      dbPublicaciones.insertOne(doc);
+	      return true;
+	    }catch(Exception ex) {
+	      ex.printStackTrace();
+	      return false;
+	    }
   }
   
   protected Publicacion readPublicacion(String username, String fecha) {
@@ -314,6 +314,10 @@ protected boolean createPublicacion(Publicacion p) {
         for(int i=0; i<els.size();i++) {
           adjs.add(els.get(i));
         }
+        System.out.println(aux.get("mensaje").toString());
+        System.out.println(aux.get("fecha").toString());
+        System.out.println(aux.get("username").toString());
+        System.out.println(aux.get("compartir").toString());
         pubs.add(new Publicacion(aux.get("username").toString(), aux.get("mensaje").toString(), aux.get("compartir").toString(), adjs, aux.get("fecha").toString()));
       }
     }catch(Exception ex) {
