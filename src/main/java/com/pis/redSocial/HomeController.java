@@ -2,13 +2,17 @@ package com.pis.redSocial;
 
 import java.text.DateFormat;
 import java.util.Date;
+import java.util.List;
 import java.util.Locale;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import modelo.DAOPersona;
+import modelo.DAOPublicacion;
 import modelo.Persona;
+import modelo.Publicacion;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -43,38 +47,29 @@ public class HomeController {
 		return "home";
 	}
 	@RequestMapping(value = "loginUsuario", method = RequestMethod.POST)
-	public ModelAndView login(HttpServletRequest request, HttpServletResponse response)throws Exception{
+	public ModelAndView login(HttpServletRequest request, HttpServletResponse response, Model model)throws Exception{
 		String username, password;
 		username = request.getParameter("inputEmail");
 		password = request.getParameter("inputPassword");
 		DAOPersona dao = new DAOPersona();
 		Persona p,a;
 		p = new Persona(username, password);
-		
 		if(dao.login(p)) {
 			a = dao.getPersona(username);
-			return new ModelAndView("menu", "persona", a);
+			HttpSession misession= request.getSession(true);
+			misession.setAttribute("persona",a);
+      DAOPublicacion daoPublicacion = new DAOPublicacion();
+			List<Publicacion> publicaciones = daoPublicacion.leerPublicaciones(username);
+			model.addAttribute("listPublicacionesPersona", publicaciones );
+			if(a.isEsAdmin()) {
+				return new ModelAndView("menu", "persona", a);
+			}else {
+				return new ModelAndView("menu", "persona", a);
+			}
 		}else {
 			return new ModelAndView("home", "aviso", "El usuario y/o clave son incorrectos.");
 		}
-		
-		/*if(dao.existeUsername(username)){
-			p=dao.getPersona(username);
-			if(password.equals(p.getPassword())){
-				if(dao.login(p)){
-					cadena="menu";
-					a = dao.getPersona(p.getUsername());
-					return new ModelAndView(cadena, "persona", a);
-				}else{
-					cadena="home";
-				}
-			}else{
-				cadena="home";
-			}
-		}else{
-			cadena="home";
-		}*/
-		//return new ModelAndView(cadena);
+
 	}
 	
 }
