@@ -69,15 +69,15 @@
 	<div class="panel panel-warning">
       <div class="panel-heading">¡Ten Cuidado!</div>
       <div class="panel-body">¡Recuerda, está en contra de la ley de protección de datos!</div>
-      <div > <ul>
+
+    </div>
+	<div id="panelTodasPublicaciones" style="width:100%;height:80%">
+	      <div > <ul>
 			<c:forEach var="listValue" items="${listPublicaciones}">
-				<li>${listValue.getUsername()} ${listValue.getMensaje()} ${listValue.getCompartirCon()}</li>
+				<li>${listValue.getUsername()} ${listValue.getMensaje()}</li>
 			</c:forEach>
 		</ul>
 		</div>
-    </div>
-	<div id="panelTodasPublicaciones" style="width:100%;height:80%">
-	
 	</div>
     </div>
     <script type="text/javascript">

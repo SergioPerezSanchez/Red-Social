@@ -2,13 +2,16 @@ package com.pis.redSocial;
 
 import java.text.DateFormat;
 import java.util.Date;
+import java.util.List;
 import java.util.Locale;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import modelo.DAOPersona;
+import modelo.DAOPublicacion;
 import modelo.Persona;
+import modelo.Publicacion;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -43,7 +46,7 @@ public class HomeController {
 		return "home";
 	}
 	@RequestMapping(value = "loginUsuario", method = RequestMethod.POST)
-	public ModelAndView login(HttpServletRequest request, HttpServletResponse response)throws Exception{
+	public ModelAndView login(HttpServletRequest request, HttpServletResponse response, Model model)throws Exception{
 		String username, password;
 		username = request.getParameter("inputEmail");
 		password = request.getParameter("inputPassword");
@@ -53,10 +56,15 @@ public class HomeController {
 		
 		if(dao.login(p)) {
 			a = dao.getPersona(username);
+			DAOPublicacion daoPublicacion = new DAOPublicacion();
+			List<Publicacion> publicaciones = daoPublicacion.leerPublicaciones(username);
+			model.addAttribute("listPublicacionesPersona", publicaciones );
 			return new ModelAndView("menu", "persona", a);
 		}else {
 			return new ModelAndView("home", "aviso", "El usuario y/o clave son incorrectos.");
 		}
+
+		
 		
 		/*if(dao.existeUsername(username)){
 			p=dao.getPersona(username);

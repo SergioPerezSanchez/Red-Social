@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.text.DateFormat;
 import java.util.Date;
 import java.util.LinkedList;
+import java.util.List;
 import java.util.Locale;
 
 import javax.servlet.ServletException;
@@ -41,21 +42,29 @@ private static final Logger logger = LoggerFactory.getLogger(RegisterController.
 		String formattedDate = dateFormat.format(date);
 		
 		model.addAttribute("serverTime", formattedDate );
+		DAOPublicacion daoPublicacion = new DAOPublicacion();
+		List<Publicacion> publicaciones = daoPublicacion.leerPublicaciones("pruebaprueba");
+		model.addAttribute("listPublicacionesPersona", publicaciones );
 		
 		return "menu";
 	}
 	
 	@RequestMapping(value = "publicarMensaje", method = RequestMethod.POST)
-	public ModelAndView publicar(HttpServletRequest request, HttpServletResponse response)throws Exception{
+	public ModelAndView publicar(HttpServletRequest request, HttpServletResponse response,Model model)throws Exception{
 		String username, texto,privacidad;
 		LinkedList<String> adjuntos= new LinkedList<String>();
-		username = request.getParameter("nombreUser");
-		privacidad="publico";
 		texto = request.getParameter("message");
+		//username = request.getParameter("obtenerUsuario");
+		username= "pruebaprueba";
+		privacidad="publico";
+		
 		DAOPublicacion dao = new DAOPublicacion();
 		Publicacion p,a;
 		p = new Publicacion(username,texto,privacidad,adjuntos);
 		if(dao.crearPublicacion(p)) {
+			DAOPublicacion daoPublicacion = new DAOPublicacion();
+			List<Publicacion> publicaciones = daoPublicacion.leerPublicaciones(username);
+			model.addAttribute("listPublicacionesPersona", publicaciones );
 			return new ModelAndView("menu", "publicacion", p);
 		}else {
 			return new ModelAndView("menu", "aviso", "Ha habido algún problema");

@@ -314,6 +314,10 @@ protected boolean createPublicacion(Publicacion p) {
         for(int i=0; i<els.size();i++) {
           adjs.add(els.get(i));
         }
+        System.out.println(aux.get("mensaje").toString());
+        System.out.println(aux.get("fecha").toString());
+        System.out.println(aux.get("username").toString());
+        System.out.println(aux.get("compartir").toString());
         pubs.add(new Publicacion(aux.get("username").toString(), aux.get("mensaje").toString(), aux.get("compartir").toString(), adjs, aux.get("fecha").toString()));
       }
     }catch(Exception ex) {

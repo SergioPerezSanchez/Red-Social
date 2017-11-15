@@ -61,7 +61,6 @@ private static final Logger logger = LoggerFactory.getLogger(TodasPublicacionesC
 		
 		model.addAttribute("serverTime", formattedDate );
 		
-		// Falta recoger el username.
 		DAOPublicacion daoPublicacion = new DAOPublicacion();
 		List<Publicacion> publicaciones = daoPublicacion.leerTodasPublicaciones();
 		model.addAttribute("listPublicaciones", publicaciones );
