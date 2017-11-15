@@ -149,7 +149,7 @@
 		}
 	</script>
 	
-	<div id="contenedor" style="position:absolute; width:100%; height: 130%;background-image:url(http://img13.deviantart.net/121b/i/2009/179/7/7/_pure_gaia_wp06_by_g2k2007.jpg);background-position: center center;
+	<div id="contenedor" style="position:absolute; width:100%; height: 150%;background-image:url(http://img13.deviantart.net/121b/i/2009/179/7/7/_pure_gaia_wp06_by_g2k2007.jpg);background-position: center center;
 	background-repeat: no-repeat; background-size: cover;">
 	
 
@@ -171,7 +171,7 @@
 	                <input type="text" name="inputDireccionRegistro" class="form-control" placeholder="Direccion" required>
 	                <input type="text" name="inputTelefonoRegistro" class="form-control" placeholder="Telefono" required>
 	                FOTO DE PERFIL
-	                <input type="file" name="inputFotoRegistro" accept="image/*" required>
+	                <input type="file" name="inputFotoRegistro" accept="image/*" >
 	                <div id="remember" class="checkbox">	                
 	                </div>
                 <button id="btnSignup" class="btn btn-lg btn-primary btn-block btn-signin" type="submit" onclick="validarFormularios()">Sign up</button>
