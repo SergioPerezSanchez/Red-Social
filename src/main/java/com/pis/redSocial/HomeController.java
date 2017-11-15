@@ -7,6 +7,7 @@ import java.util.Locale;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import modelo.DAOPersona;
 import modelo.DAOPublicacion;
@@ -53,36 +54,22 @@ public class HomeController {
 		DAOPersona dao = new DAOPersona();
 		Persona p,a;
 		p = new Persona(username, password);
-		
 		if(dao.login(p)) {
 			a = dao.getPersona(username);
-			DAOPublicacion daoPublicacion = new DAOPublicacion();
+			HttpSession misession= request.getSession(true);
+			misession.setAttribute("persona",a);
+      DAOPublicacion daoPublicacion = new DAOPublicacion();
 			List<Publicacion> publicaciones = daoPublicacion.leerPublicaciones(username);
 			model.addAttribute("listPublicacionesPersona", publicaciones );
-			return new ModelAndView("menu", "persona", a);
+			if(a.isEsAdmin()) {
+				return new ModelAndView("menu", "persona", a);
+			}else {
+				return new ModelAndView("menu", "persona", a);
+			}
 		}else {
 			return new ModelAndView("home", "aviso", "El usuario y/o clave son incorrectos.");
 		}
 
-		
-		
-		/*if(dao.existeUsername(username)){
-			p=dao.getPersona(username);
-			if(password.equals(p.getPassword())){
-				if(dao.login(p)){
-					cadena="menu";
-					a = dao.getPersona(p.getUsername());
-					return new ModelAndView(cadena, "persona", a);
-				}else{
-					cadena="home";
-				}
-			}else{
-				cadena="home";
-			}
-		}else{
-			cadena="home";
-		}*/
-		//return new ModelAndView(cadena);
 	}
 	
 }
