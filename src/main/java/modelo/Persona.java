@@ -7,8 +7,8 @@ import static org.apache.commons.codec.binary.Base64.decodeBase64;
 import static org.apache.commons.codec.binary.Base64.encodeBase64;
 
 public class Persona {
-	private String nombre, apellidos, username, email, password, direccion, telefono, foto, original, rol;
-	
+	private String nombre, apellidos, username, email, password, direccion, telefono, foto, original;
+	private boolean esAdmin;
 	
 	//https://bit502.wordpress.com/2014/06/27/codigo-java-encriptar-y-desencriptar-texto-usando-el-algoritmo-aes-con-cifrado-por-bloques-cbc-de-128-bits/
 	// Definición del tipo de algoritmo a utilizar (AES, DES, RSA)
@@ -33,7 +33,7 @@ public class Persona {
     	this.original=clave;
     }
 
-    public Persona(String n, String ap, String us, String e, String pass, String dir, String tlfn, String photo, boolean esEncriptado, String rol) {
+    public Persona(String n, String ap, String us, String e, String pass, String dir, String tlfn, String photo, boolean esEncriptado, boolean esAdmin) {
     	try {
 	    	this.nombre=n;
 	    	this.apellidos=ap;
@@ -44,7 +44,7 @@ public class Persona {
 	    	this.direccion=dir;
 	    	this.telefono=tlfn;
 	    	this.foto=photo;
-	    	this.rol=rol;
+	    	this.esAdmin=esAdmin;
 	    	if(esEncriptado) {
 	    		decrypt();
 	    	}else {
@@ -154,10 +154,10 @@ public class Persona {
 	public void setFoto(String foto) {
 		this.foto = foto;
 	}
-	public String getRol() {
-		return rol;
+	public boolean isEsAdmin() {
+		return esAdmin;
 	}
-	public void setRol(String rol) {
-		this.rol = rol;
+	public void setEsAdmin(boolean esAdmin) {
+		this.esAdmin = esAdmin;
 	}
 }
