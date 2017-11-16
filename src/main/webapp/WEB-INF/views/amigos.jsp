@@ -22,6 +22,7 @@
                     <li id="liAmistad" class="active"><a id="aAmistad" >Amigos</a></li>
                     <li id="liMP"><a id="aMP" >Gente</a></li>
                     <li id="liTodasPublicaciones"><a id="aTodasPublicaciones" >Todas Publicaciones</a></li>
+                    <li id="liPanel" ><a id="aPanel"> Panel</a></li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
                     <li id="liPerfil"><a id="aPerfil" ><span class="glyphicon glyphicon-user"></span> Perfil</a></li>
@@ -50,6 +51,9 @@
         </form>
     	<form action="menu" method="get">
             <button  id="holaMenu2" style="display:none; padding-bottom:10px; float: right;margin: auto;" class="btn btn-warning" type="submit" value="Menu" name="menu" >Volver</button>
+        </form>
+        <form action="panel" method="get">
+            <button  id="holaPanel" style="display:none; padding-bottom:10px; float: right;margin: auto;" class="btn btn-warning" type="submit" value="Panel" name="panel" >Volver</button>
         </form>
     </div>
     <!--  FIN PANEL BOTONES INVISIBLES ;D -->
@@ -130,6 +134,12 @@
     });
     $('#aLogout').click(function(){
     	$('#holaMenu2').click();
+    });
+    $('#liPanel').click(function(){
+    	$('#holaPanel').click();
+    });
+    $('#aPanel').click(function(){
+    	$('#holaPanel').click();
     });
 </script>
 </body>

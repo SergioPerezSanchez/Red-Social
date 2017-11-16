@@ -23,6 +23,7 @@
                     <li id="liAmistad"><a id="aAmistad" >Amigos</a></li>
                     <li id="liMP" class="active"><a id="aMP" >Gente</a></li>
                     <li id="liTodasPublicaciones"><a id="aTodasPublicaciones" >Todas Publicaciones</a></li>
+                    <li id="liPanel" ><a id="aPanel"> Panel</a></li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
                     <li id="liPerfil"><a id="aPerfil" ><span class="glyphicon glyphicon-user"></span> Perfil</a></li>
@@ -52,6 +53,9 @@
     	<form action="menu" method="get">
             <button  id="holaMenu2" style="display:none; padding-bottom:10px; float: right;margin: auto;" class="btn btn-warning" type="submit" value="Menu" name="menu" >Volver</button>
         </form>
+        <form action="panel" method="get">
+            <button  id="holaPanel" style="display:none; padding-bottom:10px; float: right;margin: auto;" class="btn btn-warning" type="submit" value="Panel" name="panel" >Volver</button>
+        </form>
         
     </div>
     <!--  FIN PANEL BOTONES INVISIBLES ;D -->
@@ -73,7 +77,7 @@
 	<div class="subencabezado" style="width:100%">Gente</div>
 	<div id="panelGente" style="width:100%;height:80%">
 		<ul>
-			<c:forEach var="listValue" items="${listAmigos}">
+			<c:forEach var="listValue" items="${listUsuarios}">
 				<li>${listValue.getNombre()} ${listValue.getApellidos()}</li>
 			</c:forEach>
 		</ul>
@@ -131,6 +135,12 @@
     });
     $('#aLogout').click(function(){
     	$('#holaMenu2').click();
+    });
+    $('#liPanel').click(function(){
+    	$('#holaPanel').click();
+    });
+    $('#aPanel').click(function(){
+    	$('#holaPanel').click();
     });
 </script>
 </body>

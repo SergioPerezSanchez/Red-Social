@@ -26,6 +26,8 @@
                     <li id="liAmistad" type="submit" value="Amigos" name="amigos"><a id="aAmistad" >Amigos</a></li>
                     <li id="liMP"><a id="aMP" >Gente</a></li>
                     <li id="liTodasPublicaciones"><a id="aTodasPublicaciones" >Todas Publicaciones</a></li>
+                    <li id="liPanel" ><a id="aPanel"> Panel</a></li>
+                    
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
                     <li id="liPerfil"><a id="aPerfil" ><span class="glyphicon glyphicon-user"></span> Perfil</a></li>
@@ -59,6 +61,9 @@
     	<form action="menu" method="get">
             <button  id="holaMenu2" style="display:none; padding-bottom:10px; float: right;margin: auto;" class="btn btn-warning" type="submit" value="Menu" name="menu" >Volver</button>
         </form>
+        <form action="panel" method="get">
+            <button  id="holaPanel" style="display:none; padding-bottom:10px; float: right;margin: auto;" class="btn btn-warning" type="submit" value="Panel" name="panel" >Volver</button>
+        </form>
     </div>
     <style>
 	.subencabezado {  /*nombre del estilo o botón*/
@@ -86,6 +91,8 @@
 	}
     </style>
     <!--  FIN PANEL BOTONES INVISIBLES ;D -->
+
+    <div id="divAdmin" class="${persona.isEsAdmin()}" style="display:none" >${persona.isEsAdmin()}</div>
     <div id="divPublicaciones" style="height: 100%;width:100%; margin-top:-20px; position:absolute;" class="col-lg-12 col-md-12 col-xs-12">
         <div class="subencabezado" style="width:100%" ">Publicaciones</div>
         <div id="publicacion" class="row-lg-3 row-md-3 row-xs-3">
@@ -517,6 +524,12 @@
     });
     $('#aLogout').click(function(){
     	$('#holaMenu2').click();
+    });
+    $('#liPanel').click(function(){
+    	$('#holaPanel').click();
+    });
+    $('#aPanel').click(function(){
+    	$('#holaPanel').click();
     });
 </script>
 </body>
