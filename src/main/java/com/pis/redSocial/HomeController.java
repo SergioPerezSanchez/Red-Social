@@ -29,8 +29,22 @@ import org.springframework.web.servlet.ModelAndView;
 public class HomeController {
 	
 	private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
+	
+	@RequestMapping(value = "/home.jsp", method = RequestMethod.GET)
+		public String home(Locale locale, Model model) {
+			logger.info("Welcome home! The client locale is {}.", locale);
+			
+			Date date = new Date();
+			DateFormat dateFormat = DateFormat.getDateTimeInstance(DateFormat.LONG, DateFormat.LONG, locale);
+		
+			String formattedDate = dateFormat.format(date);
+			
+			model.addAttribute("serverTime", formattedDate );
+			return "home";
+	}
+	
 	@RequestMapping(value = "init", method = RequestMethod.GET)
-	public ModelAndView home(HttpServletRequest request, HttpServletResponse response, Model model)throws Exception{
+	public ModelAndView init(HttpServletRequest request, HttpServletResponse response, Model model)throws Exception{
 		HttpSession misession= request.getSession();
 		Persona p= (Persona)misession.getAttribute("persona");
 		if(p!=null) {
