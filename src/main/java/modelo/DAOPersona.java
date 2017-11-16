@@ -28,6 +28,10 @@ public class DAOPersona {
 		return db.delete(p);
 	}
 	
+	public boolean deleteByEmail(String email) {
+		return db.deleteEmail(email);
+	}
+	
 	public boolean update(Persona p) {
 		return db.update(p);
 	}

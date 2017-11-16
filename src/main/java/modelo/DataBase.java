@@ -258,7 +258,6 @@ protected boolean createPublicacion(Publicacion p) {
     db = client.getDatabase(uri.getDatabase());
     dbPublicaciones = db.getCollection("publicaciones");
     elementos = dbPublicaciones.find().iterator();
-    System.out.println("Delete: "+pub.getUsername()+" "+pub.getFecha().toString());
     while(elementos.hasNext()) {
       aux=elementos.next();
       if((aux.get("username").toString().equalsIgnoreCase(username))) {
