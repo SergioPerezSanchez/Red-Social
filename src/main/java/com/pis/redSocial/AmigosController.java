@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import modelo.DAOPersona;
+import modelo.DAOPeticion;
 import modelo.Persona;
 
 import org.slf4j.Logger;
@@ -39,5 +40,41 @@ private static final Logger logger = LoggerFactory.getLogger(AmigosController.cl
 		model.addAttribute("serverTime", formattedDate );
 		
 		return "amigos";
+	}
+	
+	@RequestMapping(value = "rechazarPeticion", method = RequestMethod.POST)
+	public ModelAndView rechazarPeticion(HttpServletRequest request, HttpServletResponse response) {
+		
+		/*logger.info("Register page! The client locale is {}.", locale);
+		Date date = new Date();
+		DateFormat dateFormat = DateFormat.getDateTimeInstance(DateFormat.LONG, DateFormat.LONG, locale);
+		String formattedDate = dateFormat.format(date);
+		model.addAttribute("serverTime", formattedDate );*/
+		
+		String id1 = request.getParameter("id1");
+		String id2 = request.getParameter("id2");
+		DAOPeticion daoPeticion = new DAOPeticion();
+		daoPeticion.rechazarPeticion(id1, id2);
+		
+		
+		return new ModelAndView("amigos", "aviso", "Peticion rechazada correctamente.");
+	}
+	
+	@RequestMapping(value = "aceptarPeticion", method = RequestMethod.POST)
+	public ModelAndView aceptarPeticion(HttpServletRequest request, HttpServletResponse response) {
+		
+		/*logger.info("Register page! The client locale is {}.", locale);
+		Date date = new Date();
+		DateFormat dateFormat = DateFormat.getDateTimeInstance(DateFormat.LONG, DateFormat.LONG, locale);
+		String formattedDate = dateFormat.format(date);
+		model.addAttribute("serverTime", formattedDate );*/
+		
+		String id1 = request.getParameter("id1");
+		String id2 = request.getParameter("id2");
+		DAOPeticion daoPeticion = new DAOPeticion();
+		daoPeticion.aceptarPeticion(id1, id2);
+		
+		
+		return new ModelAndView("amigos", "aviso", "Peticion aceptada correctamente.");
 	}
 }

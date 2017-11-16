@@ -1,6 +1,5 @@
 package modelo;
 
-import java.util.Date;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -345,6 +344,9 @@ protected boolean createPublicacion(Publicacion p) {
    */
   
   protected boolean createAmistad(Amistad amistad) {
+	  	if(sonAmigos (amistad.getAmigo1(), amistad.getAmigo2())) {
+	  		return false;
+	  	}
 		try {
 			db = client.getDatabase(uri.getDatabase());
 			dbAmistades = db.getCollection("amistades");
@@ -452,7 +454,10 @@ protected boolean createPublicacion(Publicacion p) {
 					.append("mensaje", peticion.getMensaje())
 					.append("fechaPeticion", peticion.getFechaPeticion().toString())
 					.append("flag", peticion.getFlag());
-					
+			
+			if(hayPeticion(peticion.getId1(), peticion.getId2())) {
+				return false;
+			}
 			dbPeticiones.insertOne(doc);
 			return true;
 		}catch(Exception ex) {
@@ -475,6 +480,27 @@ protected boolean createPublicacion(Publicacion p) {
 		}
 		return hayPeticion;
   }
+  
+  protected Peticion readPeticion(String amigoA, String amigoB) {
+	    Peticion peticion = null;
+	    try {
+	      db = client.getDatabase(uri.getDatabase());
+	      dbPeticiones = db.getCollection("peticiones");
+	      elementos = dbPeticiones.find().iterator();
+	      while(elementos.hasNext()) {
+	        aux = elementos.next();
+	        if( ( aux.get("amigo1")==amigoA && aux.get("amigo2")==amigoB ) || 
+					( aux.get("amigo1")==amigoB && aux.get("amigo2")==amigoA ) ) {
+	        	peticion = new Peticion( aux.get("amigo1").toString(), 
+	        		  aux.get("amigo2").toString(), aux.get("mensaje").toString(), 
+	        		  aux.get("fechaPeticion").toString(), aux.get("flag").toString() );
+	        }
+	      }
+	    }catch(Exception ex) {
+	      ex.printStackTrace();
+	    }
+	    return peticion;
+}
   
   protected LinkedList<Peticion> readPeticionesDe(String username) {
 	    LinkedList<Peticion>peticiones = new LinkedList<Peticion>();
@@ -516,7 +542,7 @@ protected boolean createPublicacion(Publicacion p) {
 	    return peticiones;
   }
   
-  protected Peticion readPeticion(String amigoA, String amigoB) {
+  protected void rechazarPeticion(String amigoA, String amigoB) {
 	    Peticion peticion =  null;
 	    try {
 	      db = client.getDatabase(uri.getDatabase());
@@ -525,19 +551,86 @@ protected boolean createPublicacion(Publicacion p) {
 	      while(elementos.hasNext()) {
 	        aux = elementos.next();
 	        if( ( aux.get("amigo1").toString().equalsIgnoreCase(amigoA) && 
-	        		aux.get("amigo2").toString().equalsIgnoreCase(amigoB) ) || 
-	        		( aux.get("amigo1").toString().equalsIgnoreCase(amigoB) && 
-	        				aux.get("amigo2").toString().equalsIgnoreCase(amigoA) )) {
+	        		aux.get("amigo2").toString().equalsIgnoreCase(amigoB) )) {
+	        	
+	        	/*DBObject query = (DBObject) JSON.parse("{ amigo2: "+amigoB+" $and amigo2: "+amigoA+"}");
+	        	DBObject update = (DBObject) JSON.parse("{ amigo2: "+amigoB+" $and amigo2: "+amigoA+"}",
+	        			   "{ $set:"
+	 	        			      +"{"
+	 	        			        +"quantity: 500,"
+	 	        			      +"}"
+	 	        			   +"}");
+	        	dbPeticiones.updateOne(query, update);*/
 	        	peticion = new Peticion( aux.get("amigo1").toString(), 
 		        		  aux.get("amigo2").toString(), aux.get("mensaje").toString(), 
 		        		  aux.get("fechaPeticion").toString(), aux.get("flag").toString() );
+	        	deletePeticion(peticion);
+	        	peticion.setFlag(-1);
+	        	createPeticion(peticion);
+	        	
+	        }
+	      }
+	    }catch(Exception ex) {
+	      ex.printStackTrace();
+	    }    
+  }
+  
+  protected Amistad aceptarPeticion(String amigoA, String amigoB) {
+	    Peticion peticion =  null;
+	    Amistad amistad = null;
+	    try {
+	      db = client.getDatabase(uri.getDatabase());
+	      dbPeticiones = db.getCollection("peticiones");
+	      elementos = dbPeticiones.find().iterator();
+	      while(elementos.hasNext()) {
+	        aux = elementos.next();
+	        if( ( aux.get("amigo1").toString().equalsIgnoreCase(amigoA) && 
+	        		aux.get("amigo2").toString().equalsIgnoreCase(amigoB) )) {
+	        	
+	        	/*DBObject query = (DBObject) JSON.parse("{ amigo2: "+amigoB+" $and amigo2: "+amigoA+"}");
+	        	DBObject update = (DBObject) JSON.parse("{ amigo2: "+amigoB+" $and amigo2: "+amigoA+"}",
+	        			   "{ $set:"
+	 	        			      +"{"
+	 	        			        +"quantity: 500,"
+	 	        			      +"}"
+	 	        			   +"}");
+	        	dbPeticiones.updateOne(query, update);*/
+	        	peticion = new Peticion( aux.get("amigo1").toString(), 
+		        		  aux.get("amigo2").toString(), aux.get("mensaje").toString(), 
+		        		  aux.get("fechaPeticion").toString(), aux.get("flag").toString() );
+	        	deletePeticion(peticion);
+	        	peticion.setFlag(1);
+	        	createPeticion(peticion);
+	        	amistad = new Amistad(peticion.getId1(), peticion.getId2());
+	        	createAmistad(amistad);
+	        	
 	        }
 	      }
 	    }catch(Exception ex) {
 	      ex.printStackTrace();
 	    }
-	    return peticion;
+	    return amistad;    
 }
+  
+  protected boolean deletePeticion(Peticion peticion) {
+	    boolean borrado= false;
+	    db = client.getDatabase(uri.getDatabase());
+	    dbPeticiones = db.getCollection("peticiones");
+	    elementos = dbPeticiones.find().iterator();
+	    while(elementos.hasNext()) {
+	      aux=elementos.next();
+	      //System.out.println("Entra: "+aux.get("amigo1").toString()+" "+aux.get("amigo2").toString()+" "+aux.get("fechaAmistad").toString());
+	      if( (aux.get("amigo1").toString().equalsIgnoreCase(peticion.getId1())) &&
+	         (aux.get("amigo2").toString().equalsIgnoreCase(peticion.getId2())) ||
+	         (aux.get("amigo2").toString().equalsIgnoreCase(peticion.getId1())) &&
+	         (aux.get("amigo1").toString().equalsIgnoreCase(peticion.getId2())) ) {
+	    	  dbPeticiones.deleteOne(aux);
+	        borrado=true;
+	      }
+	    }
+	    return borrado;
+	  }
+  
   
   /* No hay método deletePeticion(Peticion peticion) porque no tiene sentido
   * borrar peticiones. En lugar de eso se cambia el flag. */

@@ -26,8 +26,21 @@ public class DAOPeticion {
 	}
 	
 	public Peticion readPeticion(String amigoA, String amigoB) {
-		return db.readPeticion(amigoA, amigoB);
+		if (hayPeticion(amigoA, amigoB)) {
+			return db.readPeticion(amigoA, amigoB);
+		}
+		return null;
 	}
 	
+	public void rechazarPeticion(String amigoA, String amigoB) {
+		if (db.hayPeticion(amigoA, amigoB)) {
+			db.rechazarPeticion(amigoA, amigoB);
+		}
+	}
 	
+	public void aceptarPeticion(String amigoA, String amigoB) {
+		if (db.hayPeticion(amigoA, amigoB)) {
+			db.aceptarPeticion(amigoA, amigoB);
+		}
+	}
 }
