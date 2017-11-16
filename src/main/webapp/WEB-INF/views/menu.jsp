@@ -17,7 +17,7 @@
         <nav class="navbar navbar-inverse">
             <div class="container-fluid">
                 <div class="navbar-header">
-                    <a id="liLogo" class="navbar-brand" >Intravita</a>
+                    <a href="init" id="liLogo" class="navbar-brand" >Intravita</a>
                 </div>
                 <ul class="nav navbar-nav">
                 

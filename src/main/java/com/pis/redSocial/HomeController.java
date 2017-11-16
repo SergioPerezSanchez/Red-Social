@@ -30,21 +30,29 @@ public class HomeController {
 	
 	private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
 	
-	/**
-	 * Simply selects the home view to render by returning its name.
-	 */
 	@RequestMapping(value = "/home.jsp", method = RequestMethod.GET)
-	public String home(Locale locale, Model model) {
-		logger.info("Welcome home! The client locale is {}.", locale);
+		public String home(Locale locale, Model model) {
+			logger.info("Welcome home! The client locale is {}.", locale);
+			
+			Date date = new Date();
+			DateFormat dateFormat = DateFormat.getDateTimeInstance(DateFormat.LONG, DateFormat.LONG, locale);
 		
-		Date date = new Date();
-		DateFormat dateFormat = DateFormat.getDateTimeInstance(DateFormat.LONG, DateFormat.LONG, locale);
+			String formattedDate = dateFormat.format(date);
+			
+			model.addAttribute("serverTime", formattedDate );
+			return "home";
+	}
+	
+	@RequestMapping(value = "init", method = RequestMethod.GET)
+	public ModelAndView init(HttpServletRequest request, HttpServletResponse response, Model model)throws Exception{
+		HttpSession misession= request.getSession();
+		Persona p= (Persona)misession.getAttribute("persona");
+		if(p!=null) {
+			System.out.println(p.getUsername());
+			return new ModelAndView("menu");
+		}
+		return new ModelAndView("home");
 		
-		String formattedDate = dateFormat.format(date);
-		
-		model.addAttribute("serverTime", formattedDate );
-		
-		return "home";
 	}
 	@RequestMapping(value = "loginUsuario", method = RequestMethod.POST)
 	public ModelAndView login(HttpServletRequest request, HttpServletResponse response, Model model)throws Exception{
@@ -58,7 +66,7 @@ public class HomeController {
 			a = dao.getPersona(username);
 			HttpSession misession= request.getSession(true);
 			misession.setAttribute("persona",a);
-      DAOPublicacion daoPublicacion = new DAOPublicacion();
+			DAOPublicacion daoPublicacion = new DAOPublicacion();
 			List<Publicacion> publicaciones = daoPublicacion.leerPublicaciones(username);
 			model.addAttribute("listPublicacionesPersona", publicaciones );
 			if(a.isEsAdmin()) {
