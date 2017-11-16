@@ -1,6 +1,6 @@
 package com.pis.redSocial;
 
-
+/*
 import java.util.Map;
 
 import org.springframework.stereotype.Controller;
@@ -12,14 +12,14 @@ import org.springframework.web.multipart.commons.CommonsMultipartFile;
 import com.cloudinary.*;
 import com.cloudinary.utils.ObjectUtils;
 
-
-
+*/
+/*
 @Controller
 @RequestMapping("photo")
 public class PhotoController {
-
+*/
 	/*INICIO FOTOS*/
-	@RequestMapping(method = RequestMethod.GET)
+	/*@RequestMapping(method = RequestMethod.GET)
 	public @ModelAttribute("fileFormBean") FileFormBean getInitialMessage() {
 		return new FileFormBean();
 	}
@@ -50,6 +50,6 @@ public class PhotoController {
     	
 
 	}
-/* FIN SUBIDA FOTOS*/
+// FIN SUBIDA FOTOS
 	
-}
+}*/

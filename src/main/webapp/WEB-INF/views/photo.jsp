@@ -1,5 +1,6 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 ...
+<!-- 
 <c:out value="${message}"/>
 <form:form method="post" action="photo" enctype="multipart/form-data" commandName="fileFormBean">
     <table>
@@ -14,4 +15,4 @@
     	<input type="submit" value="Subir fichero"></td>
         </tr>
      </table>
-</form:form>
+</form:form> -->

@@ -195,7 +195,7 @@
  <div class="card card-container">
             
             <p style="align-content: center; margin:auto; display:table; font-size: 20px; color:grey;">Perfil</p>
-         		<img class="profile-img-card" src="${persona.getFoto()}" alt="" />
+         		<img class="profile-img-card" src="${persona.getFoto()}"/>
                 <span id="reauth-email" class="reauth-email"></span>
                	<p style=" font-size: 20px; color:grey;">Nombre:</p><p><c:out value="${persona}"/>${persona.getNombre()}</p>
                	<p style=" font-size: 20px; color:grey;">Apellidos:</p><p><c:out value="${persona}"/>${persona.getApellidos()}</p>

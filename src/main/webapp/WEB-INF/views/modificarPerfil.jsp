@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -199,7 +200,7 @@
             
             <p style="align-content: center; margin:auto; display:table; font-size: 20px; color:grey;">Modifica Tu Perfil</p>
             <form action="modificarUsuario" method="post"  class="form-signin">
-            <img class="profile-img-card" src="${persona.getFoto()}" alt="" />
+            	<img class="profile-img-card" src="${persona.getFoto()}"/>
                 <span id="reauth-email" class="reauth-email"></span>
                 Email:<input class="form-control" name="aEmail" placeholder="${persona.getEmail() }" disabled> </input>
                 Usuario:<input class="form-control" name="aUser" placeholder="${persona.getUsername() }"  disabled > </input>
@@ -208,12 +209,19 @@
                 Password<input type="password" name="inputPassword" class="form-control" placeholder="*******" required> 
                 Direccion<input type="text" name="inputDireccion" class="form-control" placeholder="${persona.getDireccion()}" required>
                 Telefono<input type="text" name="inputTelefono" class="form-control" placeholder="${persona.getTelefono()}" required >  
-
+				
                 <div id="remember" class="checkbox">
                     
                 </div>
                 <button class="btn btn-lg btn-primary btn-block btn-signin" type="submit">Modificar</button>
             </form><!-- /form -->
+            <c:out value="${message}"/>
+            <form:form method="post" action="photo" enctype="multipart/form-data" commandName="fileFormBean">
+           		<td>Modifica tu foto de perfil: </td>
+           		<td><input type="file" name="fichero" /></td>
+           		<td colspan="2" align="center">
+    			<input type="submit" value="Subir fichero"></td>
+			</form:form>
             <form action="borrarUsuario" method="post">
              <button class="btn btn-lg btn-primary btn-block btn-danger" type="submit">Eliminar Cuenta</button>
             </form>
