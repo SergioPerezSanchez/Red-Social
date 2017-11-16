@@ -54,6 +54,16 @@ public class HomeController {
 		return new ModelAndView("home");
 		
 	}
+	
+	@RequestMapping(value = "exit", method = RequestMethod.GET)
+	public ModelAndView exit(HttpServletRequest request, HttpServletResponse response, Model model)throws Exception{
+		HttpSession session = request.getSession(false); 
+		if(session!=null) { 
+			session.invalidate(); 
+		} 
+		return new ModelAndView("home");
+	}
+	
 	@RequestMapping(value = "loginUsuario", method = RequestMethod.POST)
 	public ModelAndView login(HttpServletRequest request, HttpServletResponse response, Model model)throws Exception{
 		String username, password;
