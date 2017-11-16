@@ -152,6 +152,7 @@ public class DataBase {
 		while(elementos.hasNext()) {
 			doc=elementos.next();
 			if((doc.get("username").toString().equalsIgnoreCase(username))) {
+				System.out.println(username);
 				p = new Persona(doc.getString("nombre"), doc.getString("apellidos"), doc.getString("username"), doc.getString("email"), doc.getString("clave"), doc.getString("direccion"), doc.getString("telefono"), doc.getString("foto"), true, doc.getBoolean("esAdmin"));
 			}
 		}		

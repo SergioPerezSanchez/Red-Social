@@ -40,4 +40,5 @@ private static final Logger logger = LoggerFactory.getLogger(ModificarPerfilCont
 		
 		return "modificarPerfil";
 	}
+	
 }
