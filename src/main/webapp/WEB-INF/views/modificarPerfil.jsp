@@ -199,6 +199,7 @@
             
             <p style="align-content: center; margin:auto; display:table; font-size: 20px; color:grey;">Modifica Tu Perfil</p>
             <form action="modificarUsuario" method="post"  class="form-signin">
+            <!-- <img class="profile-img-card" src="${persona.getFoto()}" alt="" /> -->
                 <span id="reauth-email" class="reauth-email"></span>
                 Email:<input class="form-control" name="aEmail" placeholder="${persona.getEmail() }" disabled> </input>
                 Usuario:<input class="form-control" name="aUser" placeholder="${persona.getUsername() }"  disabled > </input>

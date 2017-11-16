@@ -10,6 +10,7 @@ import java.util.Locale;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import modelo.DAOPersona;
 import modelo.DAOPublicacion;
@@ -26,7 +27,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 @Controller
 public class MenuController {
-	private static final Logger logger = LoggerFactory.getLogger(RegisterController.class);
+	private static final Logger logger = LoggerFactory.getLogger(MenuController.class);
 	@RequestMapping("modificarUsuario")
 	public ModelAndView modificar(HttpServletRequest request, HttpServletResponse response)throws ServletException, IOException{
 		//logger.info("Register page! The client locale is {}.", locale);
@@ -50,7 +51,7 @@ public class MenuController {
 	 */
 
 	@RequestMapping(value = "menu", method = RequestMethod.GET)
-	public String menu(Locale locale, Model model) {
+	public String menu(HttpServletRequest request, Locale locale, Model model) {
 		logger.info("Register page! The client locale is {}.", locale);
 		
 		Date date = new Date();
@@ -60,7 +61,9 @@ public class MenuController {
 		
 		model.addAttribute("serverTime", formattedDate );
 		DAOPublicacion daoPublicacion = new DAOPublicacion();
-		List<Publicacion> publicaciones = daoPublicacion.leerPublicaciones("pruebaprueba");
+		HttpSession session=request.getSession();
+		Persona a=(Persona) session.getAttribute("persona");
+		List<Publicacion> publicaciones = daoPublicacion.leerPublicaciones(a.getUsername());
 		model.addAttribute("listPublicacionesPersona", publicaciones );
 		
 		return "menu";
@@ -72,8 +75,10 @@ public class MenuController {
 		String username, texto,privacidad;
 		LinkedList<String> adjuntos= new LinkedList<String>();
 		texto = request.getParameter("message");
+		HttpSession session=request.getSession();
+		Persona user=(Persona) session.getAttribute("persona");
 		//username = request.getParameter("obtenerUsuario");
-		username= "pruebaprueba";
+		username= user.getUsername();
 		privacidad="publico";
 		
 		DAOPublicacion dao = new DAOPublicacion();
