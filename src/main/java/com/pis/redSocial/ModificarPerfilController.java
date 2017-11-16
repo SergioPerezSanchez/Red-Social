@@ -3,14 +3,19 @@ package com.pis.redSocial;
 import java.io.IOException;
 import java.text.DateFormat;
 import java.util.Date;
+import java.util.LinkedList;
+import java.util.List;
 import java.util.Locale;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import modelo.DAOPersona;
+import modelo.DAOPublicacion;
 import modelo.Persona;
+import modelo.Publicacion;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -41,4 +46,24 @@ private static final Logger logger = LoggerFactory.getLogger(ModificarPerfilCont
 		return "modificarPerfil";
 	}
 	
+	@RequestMapping(value = "borrarUsuario", method = RequestMethod.POST)
+	public ModelAndView borrar(HttpServletRequest request, HttpServletResponse response,Model model)throws Exception{
+		String username;
+		HttpSession session=request.getSession();
+		Persona user=(Persona) session.getAttribute("persona");
+		username= user.getUsername();
+		DAOPersona dao= new DAOPersona();
+		DAOPublicacion daop= new DAOPublicacion();
+		daop.borrarPublicacionesUsuario(username);
+		
+		dao.deleteByEmail(user.getEmail());
+		
+		if(dao.login(user)) {
+			
+			return new ModelAndView("modificarPerfil", "aviso", "Ha habido algun problema");
+		}else {
+			return new ModelAndView("home", "aviso", "Cuenta Eliminada!");
+		}
+		
+	}
 }

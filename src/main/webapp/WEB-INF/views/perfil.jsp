@@ -53,7 +53,7 @@
         </form>
     </div>
     <!--  FIN PANEL BOTONES INVISIBLES ;D -->
-    <div id="divPerfil" style="background-image:url(https://k60.kn3.net/taringa/3/6/E/E/A/9/luisdavid1256/F49.jpg);height: 100%;width: 100%; margin-top:-20px; position:absolute" class="col-lg-12 col-md-12 col-xs-12">
+    <div id="divPerfil" style="background-image:url(https://k60.kn3.net/taringa/3/6/E/E/A/9/luisdavid1256/F49.jpg);height: 150%;width: 100%; margin-top:-20px; position:absolute" class="col-lg-12 col-md-12 col-xs-12">
     <style>
 .card-container.card {
     max-width: 350px;
@@ -187,7 +187,7 @@
 </style>
 
 
-    <div  style="position:absolute; width:100%; height: 100%; background-image:url(https://k60.kn3.net/taringa/3/6/E/E/A/9/luisdavid1256/F49.jpg)">
+    <div  style="position:absolute; width:100%; height: 100%">
 
     <div class="container">
         <h1 style="color:white;">Mi Perfil</h1>
@@ -195,7 +195,7 @@
  <div class="card card-container">
             
             <p style="align-content: center; margin:auto; display:table; font-size: 20px; color:grey;">Perfil</p>
-         		<!-- <img class="profile-img-card" src="${persona.getFoto()}" alt="" /> -->
+         		<img class="profile-img-card" src="${persona.getFoto()}" alt="" />
                 <span id="reauth-email" class="reauth-email"></span>
                	<p style=" font-size: 20px; color:grey;">Nombre:</p><p><c:out value="${persona}"/>${persona.getNombre()}</p>
                	<p style=" font-size: 20px; color:grey;">Apellidos:</p><p><c:out value="${persona}"/>${persona.getApellidos()}</p>
