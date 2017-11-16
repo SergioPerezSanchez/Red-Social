@@ -13,6 +13,14 @@
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css" rel="stylesheet" media="screen">
 </head>
 <body >
+	<%@ page import="modelo.Persona" %>
+	<%
+		HttpSession sesion = request.getSession();
+		Persona p= (Persona)sesion.getAttribute("persona");
+		if(p==null){
+			response.sendRedirect("home");
+		}
+	%>
     <div id="navBar">
         <nav class="navbar navbar-inverse">
             <div class="container-fluid">
