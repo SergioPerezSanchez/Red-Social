@@ -29,7 +29,7 @@ import org.springframework.web.servlet.ModelAndView;
 public class MenuController {
 	private static final Logger logger = LoggerFactory.getLogger(MenuController.class);
 	@RequestMapping("modificarUsuario")
-	public ModelAndView modificar(HttpServletRequest request, HttpServletResponse response)throws ServletException, IOException{
+	public ModelAndView modificar(HttpServletRequest request, HttpServletResponse response)throws Exception{
 		//logger.info("Register page! The client locale is {}.", locale);
 		boolean flag=false;
 		String nombre, apellidos, username, email, password, repitePassword, direccion, telefono, foto;
@@ -41,7 +41,7 @@ public class MenuController {
 		username= request.getParameter("aUser");
 		email=request.getParameter("aEmail");
 		DAOPersona dao = new DAOPersona();
-		Persona p= new Persona(nombre,apellidos, username,email, password, direccion, telefono, "", false, dao.getPersona(username).isEsAdmin());
+		Persona p= new Persona(nombre,apellidos, username,email, password, direccion, telefono, "", dao.getPersona(username).isEsAdmin());
 		dao.update(p);
 		return new ModelAndView("menu");
 	}

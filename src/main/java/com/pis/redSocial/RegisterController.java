@@ -50,7 +50,7 @@ public class RegisterController {
 
 	@RequestMapping(value = "crearUsuario", method = RequestMethod.POST)
 	public ModelAndView registrar(HttpServletRequest request,
-			HttpServletResponse response, @ModelAttribute FileFormBean fileFormBean ) throws ServletException, IOException {
+			HttpServletResponse response, @ModelAttribute FileFormBean fileFormBean ) throws Exception {
 		String nombre, apellidos, username, email, password, repitePassword, direccion, telefono, foto;
 		nombre = request.getParameter("inputNombreRegistro");
 		apellidos = request.getParameter("inputApellidosRegistro");
@@ -64,7 +64,7 @@ public class RegisterController {
 		foto = "https://n6-img-fp.akamaized.net/iconos-gratis/la-imagen-del-usuario-con-el-fondo-negro_318-34564.jpg?size=338&ext=jpg";
 		ModelAndView miMAV = new ModelAndView("register");
 		DAOPersona dao = new DAOPersona();
-		Persona p;
+		Persona p=new Persona(username, password);
 		if (dao.existeUsername(username)) {
 			miMAV.addObject("nombre", nombre);
 			miMAV.addObject("apellidos", apellidos);
@@ -103,7 +103,6 @@ public class RegisterController {
 							"No se puede registrar. Las contraseñas no coinciden.");
 					return miMAV;
 				} else {
-					p = new Persona(password);
 					if (!p.requisitosPassword()) {
 						miMAV.addObject("nombre", nombre);
 						miMAV.addObject("apellidos", apellidos);
@@ -130,7 +129,7 @@ public class RegisterController {
 				            return miMAV;
 						}else {*/
 							//CREA USUARIO
-							p = new Persona(nombre, apellidos, username, email, password, direccion, telefono, foto, false, false);
+							p = new Persona(nombre, apellidos, username, email, password, direccion, telefono, foto, false);
 							dao.crearPersona(p);
 							return new ModelAndView("home", "aviso", "Cuenta creada correctamente");
 						//}
