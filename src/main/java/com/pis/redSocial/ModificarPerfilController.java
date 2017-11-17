@@ -81,13 +81,12 @@ private static final Logger logger = LoggerFactory.getLogger(ModificarPerfilCont
 		username= user.getUsername();
 		try {
 			String urlfoto= grabarFicheroALocal(fileFormBean,username);
-			String urlCut = urlfoto.substring(10);
-			urlCut= urlCut.substring(0,urlCut.length()-3);
-			user.setFoto(urlCut);
+			user.setFoto(urlfoto);
 			user.encrypt();
 			DAOPersona daoPersona = new DAOPersona();
 			daoPersona.update(user);
-			return new ModelAndView("modificarPerfil", "aviso", "Foto de perfil cambiada");
+			
+			return new ModelAndView("perfil");
 		} catch (Exception e) {
 			e.printStackTrace();
 			return new ModelAndView("modificarPerfil", "aviso", "Ha habido algun problema");
@@ -104,11 +103,13 @@ private static final Logger logger = LoggerFactory.getLogger(ModificarPerfilCont
     			  "api_key", "942888456823941",
     			  "api_secret", "FefbhNW6ZnniBf4wFH0d6JUcn84"));
     	
-    	cloudinary.uploader().rename(username, username+"_old", ObjectUtils.asMap("overwrite", true));
+    	//cloudinary.uploader().rename(username, username+"_old", ObjectUtils.asMap("overwrite", true));
     	Map upload = cloudinary.uploader().upload(uploaded.getBytes(), ObjectUtils.asMap(
     			"public_id", username));
-    	
-    	String url= cloudinary.url().imageTag(username+".jpg");
+    	Integer version =(Integer) upload.get("version");
+    	String cadVersion = "v"+String.valueOf(version);
+    	//String url= cloudinary.url().imageTag(username+".jpg");
+    	String url= "http://res.cloudinary.com/dtajtzcgw/image/upload/"+cadVersion+"/"+username+".jpg";
     	return url;
 
 	}
