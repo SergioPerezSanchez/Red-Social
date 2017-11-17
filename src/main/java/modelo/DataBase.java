@@ -73,15 +73,12 @@ public class DataBase {
 	protected boolean login(Persona p) throws Exception {
 		boolean logueado = false;
 		db = client.getDatabase(uri.getDatabase());
-		Persona persona=new Persona();
 		dbUsuarios = db.getCollection("usuarios");
 		elementos = dbUsuarios.find().iterator();
 		while(elementos.hasNext()) {
 			doc=elementos.next();
-			persona.setPassword(doc.get("clave").toString());
-			persona.decrypt();
 			if((doc.get("username").toString().equalsIgnoreCase(p.getUsername()))&&
-			   (persona.getPassword().equalsIgnoreCase(p.getPassword()))) {
+			   (doc.get("clave").toString().equalsIgnoreCase(p.getPassword()))) {
 				logueado=true;
 			}
 		}
@@ -94,20 +91,10 @@ public class DataBase {
 			db = client.getDatabase(uri.getDatabase());
 			dbUsuarios = db.getCollection("usuarios");
 			elementos = dbUsuarios.find().iterator();
-			doc=new Document("email",p.getEmail())
-					.append("clave", p.getPassword())
-					.append("username", p.getUsername())
-					.append("nombre", p.getNombre())
-					.append("apellidos", p.getApellidos())
-					.append("direccion", p.getDireccion())
-					.append("telefono", p.getTelefono())
-					.append("foto", p.getFoto())
-					.append("esAdmin", p.isEsAdmin());
 			while(elementos.hasNext()) {
 				aux=elementos.next();
-				if((aux.get("email").toString().equalsIgnoreCase(p.getEmail()))&&
-				   (aux.get("clave").toString().equalsIgnoreCase(p.getPassword()))) {
-					dbUsuarios.deleteOne(doc);
+				if((aux.get("username").toString().equalsIgnoreCase(p.getUsername()))) {
+					dbUsuarios.deleteOne(aux);
 					borrado=true;
 				}
 			}
@@ -145,15 +132,14 @@ public class DataBase {
 	}
 	
 	protected Persona getPersona(String username) {
-		Persona p = null;
+		Persona p=null;
 		db = client.getDatabase(uri.getDatabase());
 		dbUsuarios = db.getCollection("usuarios");
 		elementos = dbUsuarios.find().iterator();
 		while(elementos.hasNext()) {
 			doc=elementos.next();
 			if((doc.get("username").toString().equalsIgnoreCase(username))) {
-				System.out.println(username);
-				p = new Persona(doc.getString("nombre"), doc.getString("apellidos"), doc.getString("username"), doc.getString("email"), doc.getString("clave"), doc.getString("direccion"), doc.getString("telefono"), doc.getString("foto"), true, doc.getBoolean("esAdmin"));
+				p = new Persona(doc.getString("nombre"), doc.getString("apellidos"), doc.getString("username"), doc.getString("email"), doc.getString("clave"), doc.getString("direccion"), doc.getString("telefono"), doc.getString("foto"), doc.getBoolean("esAdmin"));
 			}
 		}		
 		return p;
@@ -167,7 +153,7 @@ public class DataBase {
 		while(elementos.hasNext()) {
 			doc=elementos.next();
 			if((doc.get("email").toString().equalsIgnoreCase(email))) {
-				p = new Persona(doc.getString("nombre"), doc.getString("apellidos"), doc.getString("username"), doc.getString("email"), doc.getString("clave"), doc.getString("direccion"), doc.getString("telefono"), doc.getString("foto"), true, doc.getBoolean("esAdmin"));
+				p = new Persona(doc.getString("nombre"), doc.getString("apellidos"), doc.getString("username"), doc.getString("email"), doc.getString("clave"), doc.getString("direccion"), doc.getString("telefono"), doc.getString("foto"), doc.getBoolean("esAdmin"));
 			}
 		}		
 		return p;
@@ -181,7 +167,7 @@ public class DataBase {
 		elementos = dbUsuarios.find().iterator();
 		while(elementos.hasNext()) {
 			doc=elementos.next();
-			p = new Persona(doc.getString("nombre"), doc.getString("apellidos"), doc.getString("username"), doc.getString("email"), doc.getString("clave"), doc.getString("direccion"), doc.getString("telefono"), doc.getString("foto"), true, doc.getBoolean("esAdmin"));
+			p = new Persona(doc.getString("nombre"), doc.getString("apellidos"), doc.getString("username"), doc.getString("email"), doc.getString("clave"), doc.getString("direccion"), doc.getString("telefono"), doc.getString("foto"), doc.getBoolean("esAdmin"));
 			personas.add(p);
 		}		
 		return personas;

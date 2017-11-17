@@ -8,7 +8,8 @@ public class DAOPersona {
 		db = new DataBase();
 	}
 	
-	public boolean crearPersona(Persona p) {
+	public boolean crearPersona(Persona p) throws Exception {
+		p.encrypt();
 		return db.create(p);
 	}
 	
@@ -21,10 +22,12 @@ public class DAOPersona {
 	}
 	
 	public boolean login(Persona p) throws Exception {
+		p.encrypt();
 		return db.login(p);
 	}
 	
-	public boolean delete(Persona p) {
+	public boolean delete(Persona p) throws Exception {
+		p.encrypt();
 		return db.delete(p);
 	}
 	
@@ -32,16 +35,21 @@ public class DAOPersona {
 		return db.deleteEmail(email);
 	}
 	
-	public boolean update(Persona p) {
+	public boolean update(Persona p) throws Exception {
+		p.encrypt();
 		return db.update(p);
 	}
 	
-	public Persona getPersona(String username) {
-		return db.getPersona(username);
+	public Persona getPersona(String username) throws Exception {
+		Persona p= db.getPersona(username);
+		p.decrypt();
+		return p;
 	}
 	
-	public Persona getPersonaByEmail(String email) {
-		return db.getPersonaByEmail(email);
+	public Persona getPersonaByEmail(String email) throws Exception {
+		Persona p= db.getPersonaByEmail(email);
+		p.decrypt();
+		return p;
 	}
 	
 	public LinkedList<Persona> getAllPersonas() {

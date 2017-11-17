@@ -212,11 +212,11 @@
                 <span id="reauth-email" class="reauth-email"></span>
                 Email:<input class="form-control" name="aEmail" placeholder="${persona.getEmail() }" disabled> </input>
                 Usuario:<input class="form-control" name="aUser" placeholder="${persona.getUsername() }"  disabled > </input>
-                Nombre<input type="text" name="inputNombre" class="form-control" placeholder="${persona.getNombre()}" required> 
-                Apellidos<input type="text" name="inputApellidos" class="form-control" placeholder="${persona.getApellidos()}" required> 
-                Password<input type="password" name="inputPassword" class="form-control" placeholder="*******" required> 
-                Direccion<input type="text" name="inputDireccion" class="form-control" placeholder="${persona.getDireccion()}" required>
-                Telefono<input type="text" name="inputTelefono" class="form-control" placeholder="${persona.getTelefono()}" required >  
+                Nombre<input type="text" name="inputNombre" class="form-control" value="${persona.getNombre()}" required> 
+                Apellidos<input type="text" name="inputApellidos" class="form-control" value="${persona.getApellidos()}" required> 
+                Password<input type="password" name="inputPassword" class="form-control" value="${persona.getPassword()}" required> 
+                Direccion<input type="text" name="inputDireccion" class="form-control" value="${persona.getDireccion()}" required>
+                Telefono<input type="text" name="inputTelefono" class="form-control" value="${persona.getTelefono()}" required >  
 				
                 <div id="remember" class="checkbox">
                     
@@ -244,6 +244,7 @@
         </div>
     
     </div><!-- MODIFICARPERFIL -->
+    <!--  
     <script type="text/javascript">
     
     $('#btnPublicar').click(function(){
@@ -296,7 +297,7 @@
     $('#aLogout').click(function(){
     	$('#holaMenu2').click();
     });
-</script>
+</script> -->
 </body>
 </html>
 

@@ -52,6 +52,34 @@ private static final Logger logger = LoggerFactory.getLogger(ModificarPerfilCont
 		return "modificarPerfil";
 	}
 	
+	@RequestMapping(value = "modificarUsuario", method = RequestMethod.POST)
+	public ModelAndView modificar(HttpServletRequest request, HttpServletResponse response, Model model) throws Exception{
+		HttpSession session=request.getSession();
+		Persona user=(Persona) session.getAttribute("persona");
+		
+		String nombre, apellidos, username, email, password, repitePassword, direccion, telefono, foto;
+		nombre=request.getParameter("inputNombre");
+		apellidos=request.getParameter("inputApellidos");
+		password=request.getParameter("inputPassword");
+		direccion=request.getParameter("inputDireccion");
+		telefono=request.getParameter("inputTelefono");
+		
+		user.setNombre(nombre);
+		user.setApellidos(apellidos);
+		user.setPassword(password);
+		user.setDireccion(direccion);
+		user.setTelefono(telefono);
+		
+		try{
+			DAOPersona daoPersona = new DAOPersona();
+			daoPersona.update(user);
+			return new ModelAndView("perfil");
+		}catch (Exception e){
+			e.printStackTrace();
+			return new ModelAndView("modificarPerfil", "aviso", "Ha habido algun problema");
+		}
+	}
+	
 	@RequestMapping(value = "borrarUsuario", method = RequestMethod.POST)
 	public ModelAndView borrar(HttpServletRequest request, HttpServletResponse response,Model model)throws Exception{
 		String username;
@@ -82,7 +110,7 @@ private static final Logger logger = LoggerFactory.getLogger(ModificarPerfilCont
 		try {
 			String urlfoto= grabarFicheroALocal(fileFormBean,username);
 			user.setFoto(urlfoto);
-			user.encrypt();
+			//user.encrypt();
 			DAOPersona daoPersona = new DAOPersona();
 			daoPersona.update(user);
 			
