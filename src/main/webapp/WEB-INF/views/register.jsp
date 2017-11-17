@@ -191,16 +191,18 @@
 						name="inputDireccionRegistro" class="form-control"
 						placeholder="Direccion" required> <input type="text"
 						name="inputTelefonoRegistro" class="form-control"
-						placeholder="Telefono" required> FOTO DE PERFIL <input
-						type="file" name="inputFotoRegistro" accept="image/*" required>
+						placeholder="Telefono" required>
+						<!--   FOTO DE PERFIL <input
+						type="file" name="inputFotoRegistro" accept="image/*" required> -->
 					<div id="remember" class="checkbox"></div>
 					<button id="btnSignup"
 						class="btn btn-lg btn-primary btn-block btn-signin" type="submit"
 						onclick="validarFormularios()">Sign up</button>
 				</form>
+				<!--  
 				<form method="get" action="photo">
 					<button type="submit">Subir foto</button></td>
-				</form>
+				</form> -->
 				<div id="remember" class="checkbox"></div>
 				<form action="home.jsp" method="get">
 					<button

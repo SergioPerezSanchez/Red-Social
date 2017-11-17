@@ -6,6 +6,7 @@ import java.util.Date;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Locale;
+import java.util.Map;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -21,9 +22,14 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.multipart.commons.CommonsMultipartFile;
 import org.springframework.web.servlet.ModelAndView;
+
+import com.cloudinary.Cloudinary;
+import com.cloudinary.utils.ObjectUtils;
 
 @Controller
 public class ModificarPerfilController {
@@ -65,5 +71,46 @@ private static final Logger logger = LoggerFactory.getLogger(ModificarPerfilCont
 			return new ModelAndView("home", "aviso", "Cuenta Eliminada!");
 		}
 		
+	}
+	
+	@RequestMapping(method = RequestMethod.POST)
+    public ModelAndView guardaFichero(HttpServletRequest request, HttpServletResponse response,Model model, @ModelAttribute FileFormBean fileFormBean)throws Exception {
+		String username;
+		HttpSession session=request.getSession();
+		Persona user=(Persona) session.getAttribute("persona");
+		username= user.getUsername();
+		try {
+			String urlfoto= grabarFicheroALocal(fileFormBean,username);
+			user.setFoto(urlfoto);
+			user.encrypt();
+			DAOPersona daoPersona = new DAOPersona();
+			daoPersona.update(user);
+			
+			return new ModelAndView("perfil");
+		} catch (Exception e) {
+			e.printStackTrace();
+			return new ModelAndView("modificarPerfil", "aviso", "Ha habido algun problema");
+		}
+    }
+	
+	
+	private String grabarFicheroALocal(FileFormBean fileFormBean, String username) throws Exception {
+		CommonsMultipartFile uploaded = fileFormBean.getFichero();
+		   	
+    	//Cloudinary
+    	Cloudinary cloudinary = new Cloudinary(ObjectUtils.asMap(
+    			  "cloud_name", "dtajtzcgw",
+    			  "api_key", "942888456823941",
+    			  "api_secret", "FefbhNW6ZnniBf4wFH0d6JUcn84"));
+    	
+    	//cloudinary.uploader().rename(username, username+"_old", ObjectUtils.asMap("overwrite", true));
+    	Map upload = cloudinary.uploader().upload(uploaded.getBytes(), ObjectUtils.asMap(
+    			"public_id", username));
+    	Integer version =(Integer) upload.get("version");
+    	String cadVersion = "v"+String.valueOf(version);
+    	//String url= cloudinary.url().imageTag(username+".jpg");
+    	String url= "http://res.cloudinary.com/dtajtzcgw/image/upload/"+cadVersion+"/"+username+".jpg";
+    	return url;
+
 	}
 }
