@@ -91,20 +91,10 @@ public class DataBase {
 			db = client.getDatabase(uri.getDatabase());
 			dbUsuarios = db.getCollection("usuarios");
 			elementos = dbUsuarios.find().iterator();
-			doc=new Document("email",p.getEmail())
-					.append("clave", p.getPassword())
-					.append("username", p.getUsername())
-					.append("nombre", p.getNombre())
-					.append("apellidos", p.getApellidos())
-					.append("direccion", p.getDireccion())
-					.append("telefono", p.getTelefono())
-					.append("foto", p.getFoto())
-					.append("esAdmin", p.isEsAdmin());
 			while(elementos.hasNext()) {
 				aux=elementos.next();
-				if((aux.get("email").toString().equalsIgnoreCase(p.getEmail()))&&
-				   (aux.get("clave").toString().equalsIgnoreCase(p.getPassword()))) {
-					dbUsuarios.deleteOne(doc);
+				if((aux.get("username").toString().equalsIgnoreCase(p.getUsername()))) {
+					dbUsuarios.deleteOne(aux);
 					borrado=true;
 				}
 			}

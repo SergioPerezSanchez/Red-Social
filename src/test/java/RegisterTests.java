@@ -13,7 +13,7 @@ public class RegisterTests {
 	@Given("^Un usuario se registra en el sistema$")
 	public void Un_usuario_se_registra_en_el_sistema() throws Throwable {
 		dao = new DAOPersona();
-	    p=new Persona("Carlos", "Delgado", "carlitos93", "carlitos@mail.com", "a1Zs7s2DS", "Calle Jane Doe", "0", "photo", false, false);
+	    p=new Persona("Carlos", "Delgado", "carlitos93", "carlitos@mail.com", "a1Zs7s2DS", "Calle Jane Doe", "0", "photo", false);
 	    assert(true);
 	}
 
@@ -33,7 +33,7 @@ public class RegisterTests {
 	@Given("^Un usuario ya esta registrado en el sistema$")
 	public void Un_usuario_ya_esta_registrado_en_el_sistema() throws Throwable {
 		dao = new DAOPersona();
-	    p=new Persona("Carlos", "Delgado", "carlitos93", "carlitos@mail.com", "a1Zs7s2DS", "Calle Jane Doe", "0", "photo", false, false);
+	    p=new Persona("Carlos", "Delgado", "carlitos93", "carlitos@mail.com", "a1Zs7s2DS", "Calle Jane Doe", "0", "photo", false);
 	    assert(true);
 	}
 
@@ -54,7 +54,7 @@ public class RegisterTests {
 	@Given("^Un usuario se va a registrar en el sistema$")
 	public void Un_usuario_se_va_a_registrar_en_el_sistema() throws Throwable {
 		dao = new DAOPersona();
-	    s=new Persona("Felipe", "Delgado", "felipe5", "felipe@mail.com", "12", "Calle Jane Doe", "0", "photo", false, false);
+	    s=new Persona("Felipe", "Delgado", "felipe5", "felipe@mail.com", "12", "Calle Jane Doe", "0", "photo", false);
 	    assert(true);
 	}
 
