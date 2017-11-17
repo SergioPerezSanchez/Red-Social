@@ -10,9 +10,12 @@ import java.util.Locale;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import modelo.DAOPersona;
+import modelo.DAOPublicacion;
 import modelo.Persona;
+import modelo.Publicacion;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -46,6 +49,46 @@ private static final Logger logger = LoggerFactory.getLogger(GenteController.cla
 		
 		
 		return "panel";
+	}
+	
+	@RequestMapping(value = "promocionarUsuario", method = RequestMethod.POST)
+	public ModelAndView promocionar(HttpServletRequest request, HttpServletResponse response, Model model)throws Exception{
+
+		
+		List<Persona> usuarios =new ArrayList<Persona>();
+		DAOPersona dao = new DAOPersona();
+		usuarios=dao.getAllPersonas();
+		model.addAttribute("listUsuarios", usuarios );
+		String username;
+		username = request.getParameter("promocionar");
+		System.out.println(username);
+		return new ModelAndView("panel");
+
+	}
+	
+	@RequestMapping(value = "revocarUsuario", method = RequestMethod.POST)
+	public ModelAndView revocar(HttpServletRequest request, HttpServletResponse response, Model model)throws Exception{
+		List<Persona> usuarios =new ArrayList<Persona>();
+		DAOPersona dao = new DAOPersona();
+		usuarios=dao.getAllPersonas();
+		model.addAttribute("listUsuarios", usuarios );
+		String username;
+		username = request.getParameter("revocar");
+		System.out.println(username);
+		return new ModelAndView("panel");
+
+	}
+	
+	@RequestMapping(value = "eliminarUsuario", method = RequestMethod.POST)
+	public ModelAndView eliminar(HttpServletRequest request, HttpServletResponse response, Model model)throws Exception{
+		List<Persona> usuarios =new ArrayList<Persona>();
+		DAOPersona dao = new DAOPersona();
+		usuarios=dao.getAllPersonas();
+		model.addAttribute("listUsuarios", usuarios );
+		String username;
+		username = request.getParameter("eliminar");
+		System.out.println(username);
+		return new ModelAndView("panel");
 	}
 	
 	

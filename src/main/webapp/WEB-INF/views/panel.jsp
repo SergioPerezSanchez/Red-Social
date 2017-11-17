@@ -94,16 +94,33 @@
 	<div id="panelPanel" style="width:100%;height:80%">
 	      <c:forEach var="listValue" items="${listUsuarios}">
 				<div id="panelUsuario-${listValue.getUsername()}" class="mensaje" style="margin-top:10px;height:100px; width:100%" >
-					<div id="usuario-${listValue.getUsername()}" style="text-align: left" class="col-md-9 col-lg-9 col-xs-9"> ${listValue.getUsername()}</div>
-					<button id="promocionar-${listValue.getUsername()}" class="btn btn-success" name="promocionar-'${listValue.getUsername()}">Promocionar</button>
-					<button id="revocar-${listValue.getUsername()}" class="btn btn-warning" name="revocar-${listValue.getUsername()}">Revocar</button>
-					<button id="eliminar-${listValue.getUsername()}" class="btn btn-danger" name="eliminar-${listValue.getUsername()}">Eliminar</button>
+				<div id="usuario-${listValue.getUsername()}" style="text-align: left" class="col-md-6 col-lg-6 col-xs-6"> ${listValue.getUsername()}</div>
+						<!--  PROMOCIONAR USUARIOS -->
+				<div class="col-md-6 col-lg-6 col-xs-6" id="panel-${listValue.getUsername()}">
+						<form class="col-md-2 col-lg-2 col-xs-2" action="promocionarUsuario" method="post">
+						<input name="promocionar" value="${listValue.getUsername()}" style="display:none">
+						<button id="promocionar-${listValue.getUsername()}" class="btn btn-success" name="promocionar-'${listValue.getUsername()}">Promocionar</button>
+						</form>
+						<!--  REVOCAR USUARIOS -->
+						<form class="col-md-2 col-lg-2 col-xs-2" action="revocarUsuario" method="post">
+						<input name="revocar" value="${listValue.getUsername()}" style="display:none">
+						<button id="revocar-${listValue.getUsername()}" class="btn btn-warning" name="revocar-${listValue.getUsername()}">Revocar</button>
+						</form>
+						<!--  ELIMINAR USUARIOS -->
+						<form class="col-md-2 col-lg-2 col-xs-2" action="eliminarUsuario" method="post">
+						<input name="eliminar" value="${listValue.getUsername()}" style="display:none">
+						<button id="eliminar-${listValue.getUsername()}" class="btn btn-danger" name="eliminar-${listValue.getUsername()}">Eliminar</button>
+						</form>
+				</div>
 				</div>
 			</c:forEach>
 	</div>
     </div>
     <script type="text/javascript">
     
+    $('#promocionar-${listValue.getUsername()}').click(function(){
+    	alert('HPLA');
+    });
     $('#btnPublicar').click(function(){
     	var texto=$('#textareaPublicacion').val();
     	$('#panel').append('<div id="publicacion" style="margin-top:10px; margin-left:10px; height:100px; width:90%;border-style:solid" ><div id="mensaje" class="col-md-6 col-lg-6 col-xs-6">'+texto+'</div><div id="perfil" class="col-lg-3 col-md-3 col-xs-3"><p><c:out value="${persona}"/>${persona.getNombre()}</p></div></div>');
