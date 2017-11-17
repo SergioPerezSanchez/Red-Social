@@ -80,9 +80,17 @@
 	<!-- Panel Gente -->
 	<div class="subencabezado" style="width:100%">Gente</div>
 	<div id="panelGente" style="width:100%;height:80%">
+	
 		<ul>
 			<c:forEach var="listValue" items="${listAmigos}">
-				<li>${listValue.getNombre()} ${listValue.getApellidos()}</li>
+				<c:choose>
+					<c:when test="${listAmigos!=null}">
+					<li>${listValue.getNombre()} ${listValue.getApellidos()} Amigos    </li>  <!-- Aqui Va Amigos pon lo si queires en un cuadrado como si fuera un boton o como quieras -->
+					</c:when>
+					<c:otherwise>
+						<li>${listValue.getNombre()} ${listValue.getApellidos()}  Añadir</li> <!-- Aqui iria el boton añadir igual dentro del <li> -->
+					</c:otherwise>
+				</c:choose>
 			</c:forEach>
 		</ul>
 	</div>

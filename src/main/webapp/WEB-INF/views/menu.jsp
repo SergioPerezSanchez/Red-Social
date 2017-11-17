@@ -107,7 +107,7 @@
 			<c:forEach var="listValue" items="${listPublicacionesPersona}">
 				<div id="publicacion" class="mensaje" style="margin-top:10px;height:100px; width:100%" >
 					<div id="mensaje" style="text-align: left" class="col-md-10 col-lg-10 col-xs-10"> ${listValue.getMensaje()}</div>
-					<div id="perfil" style="font: 15px" class="col-lg-2 col-md-2 col-xs-2"><p>${listValue.getUsername()}}</p></div>
+					<div id="perfil" style="font: 15px" class="col-lg-2 col-md-2 col-xs-2"><p>${listValue.getUsername()}</p></div>
 				</div>
 			</c:forEach>
         </div>

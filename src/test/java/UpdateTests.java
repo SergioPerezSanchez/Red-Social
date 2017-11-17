@@ -17,7 +17,7 @@ public class UpdateTests {
 
 	@When("^Quiere cambiar la clave$")
 	public void Quiere_cambiar_la_clave() throws Throwable {
-		p=new Persona("Carlos", "Delgado", "carlitos93", "carlitos@mail.com", "a1Zs7s2DS", "Calle Jane Doe", "0", "photo", false);
+		p=new Persona("Carlos", "Delgado", "carlitos93", "carlitos@mail.com", "a1Zs7s2DS", "Calle Jane Doe", "0", "photo", false, null, null);
 		p.setPassword("a1Zs7s2DM");
 		assert(true);
 	}

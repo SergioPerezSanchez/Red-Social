@@ -6,8 +6,11 @@ import javax.crypto.spec.SecretKeySpec;
 import static org.apache.commons.codec.binary.Base64.decodeBase64;
 import static org.apache.commons.codec.binary.Base64.encodeBase64;
 
+import java.util.ArrayList;
+
 public class Persona {
 	private String nombre, apellidos, username, email, password, direccion, telefono, foto;
+	private ArrayList<Persona>amigos;
 	private boolean esAdmin;
 	
 	//https://bit502.wordpress.com/2014/06/27/codigo-java-encriptar-y-desencriptar-texto-usando-el-algoritmo-aes-con-cifrado-por-bloques-cbc-de-128-bits/
@@ -29,7 +32,7 @@ public class Persona {
     	this.password=password;
     }
 
-    public Persona(String n, String ap, String us, String e, String pass, String dir, String tlfn, String photo, boolean esAdmin) {
+    public Persona(String n, String ap, String us, String e, String pass, String dir, String tlfn, String photo, boolean esAdmin,ArrayList<Persona>amigos,ArrayList<Persona>peticiones) {
     	try {
 	    	this.nombre=n;
 	    	this.apellidos=ap;
@@ -40,6 +43,7 @@ public class Persona {
 	    	this.telefono=tlfn;
 	    	this.foto=photo;
 	    	this.esAdmin=esAdmin;
+	    	this.amigos=amigos;
     	} catch (Exception e1) {
     		e1.printStackTrace();
     	}
@@ -149,5 +153,13 @@ public class Persona {
 	}
 	public void setEsAdmin(boolean esAdmin) {
 		this.esAdmin = esAdmin;
+	}
+
+	public ArrayList<Persona> getAmigos() {
+		return amigos;
+	}
+
+	public void setAmigos(ArrayList<Persona> amigos) {
+		this.amigos = amigos;
 	}
 }

@@ -39,10 +39,10 @@ private static final Logger logger = LoggerFactory.getLogger(GenteController.cla
 		String formattedDate = dateFormat.format(date);
 		
 		model.addAttribute("serverTime", formattedDate );
-		List<Persona> amigos =new ArrayList<Persona>();
+		List<Persona> personas =new ArrayList<Persona>();
 		DAOPersona dao = new DAOPersona();
-		amigos=dao.getAllPersonas();
-		model.addAttribute("listAmigos", amigos );
+		personas=dao.getAllPersonas();
+		model.addAttribute("listAmigos", personas );
 		
 		
 		return "gente";
