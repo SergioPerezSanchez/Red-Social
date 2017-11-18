@@ -98,8 +98,6 @@
 						<li>${listValue.getNombre()} ${listValue.getApellidos()}  Añadir</li> <!-- Aqui iria el boton añadir igual dentro del <li> -->
 					</c:otherwise>
 				</c:choose>
-			<c:forEach var="listValue" items="${listUsuarios}">
-				<li>${listValue.getNombre()} ${listValue.getApellidos()}</li>
 
 			</c:forEach>
 		</ul>
