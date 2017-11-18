@@ -53,42 +53,121 @@ private static final Logger logger = LoggerFactory.getLogger(GenteController.cla
 	
 	@RequestMapping(value = "promocionarUsuario", method = RequestMethod.POST)
 	public ModelAndView promocionar(HttpServletRequest request, HttpServletResponse response, Model model)throws Exception{
-
-		
+		// NOS TRAEMOS LA LISTA DE USUARIOS EXISTENTES
+		ModelAndView miMAV = new ModelAndView("panel");
 		List<Persona> usuarios =new ArrayList<Persona>();
 		DAOPersona dao = new DAOPersona();
 		usuarios=dao.getAllPersonas();
 		model.addAttribute("listUsuarios", usuarios );
+		
+		// TRAIGO LA INFORMACIÓN DE MI YO
+		String yo;
+		HttpSession session=request.getSession();
+		Persona user=(Persona) session.getAttribute("persona");
+		yo= user.getUsername();
+		
+		// TRAIGO LA PERSONA QUE QUIERO MODIFICAR
 		String username;
 		username = request.getParameter("promocionar");
-		System.out.println(username);
-		return new ModelAndView("panel");
-
+		
+		// SE UTILIZA EL DAO PARA TRAERTE LA INFORMACION
+		Persona p = dao.getPersona(username);
+		
+		// SE COMPRUEBA QUE SEA ADMIN, SI NO ES, SE MODIFICA
+		if(p.isEsAdmin() == true){
+			miMAV.addObject("mensaje",
+					"No se puede promocionar un Administrador");
+			return miMAV;
+		}else{
+			p.setEsAdmin(true);
+			dao.update(p);
+			miMAV.addObject("mensaje",
+					"El usuario ha sido promocionado a Administrador");
+			return miMAV;
+		}
 	}
 	
 	@RequestMapping(value = "revocarUsuario", method = RequestMethod.POST)
 	public ModelAndView revocar(HttpServletRequest request, HttpServletResponse response, Model model)throws Exception{
-		List<Persona> usuarios =new ArrayList<Persona>();
-		DAOPersona dao = new DAOPersona();
-		usuarios=dao.getAllPersonas();
-		model.addAttribute("listUsuarios", usuarios );
-		String username;
-		username = request.getParameter("revocar");
-		System.out.println(username);
-		return new ModelAndView("panel");
+		// NOS TRAEMOS LA LISTA DE USUARIOS EXISTENTES
+				ModelAndView miMAV = new ModelAndView("panel");
+				List<Persona> usuarios =new ArrayList<Persona>();
+				DAOPersona dao = new DAOPersona();
+				usuarios=dao.getAllPersonas();
+				model.addAttribute("listUsuarios", usuarios );
+				
+				// TRAIGO LA INFORMACIÓN DE MI YO
+				String yo;
+				HttpSession session=request.getSession();
+				Persona user=(Persona) session.getAttribute("persona");
+				yo= user.getUsername();
+				
+				// TRAIGO LA PERSONA QUE QUIERO MODIFICAR
+				String username;
+				username = request.getParameter("revocar");
+				
+				// SE UTILIZA EL DAO PARA TRAERTE LA INFORMACION
+				Persona p = dao.getPersona(username);
+				
+				// SE COMPRUEBA QUE SEA ADMIN, SI NO ES, SE MODIFICA
+				if(p.isEsAdmin() == false){
+					miMAV.addObject("mensaje",
+							"No se puede revocar los permisos a un Usuario");
+					return miMAV;
+				}else{
+					if(p.getUsername().equals(yo)){
+						miMAV.addObject("mensaje",
+								"No te puedes revocar los permisos a ti mismo!");
+						return miMAV;
+					}else{
+					p.setEsAdmin(false);
+					dao.update(p);
+					miMAV.addObject("mensaje",
+							"Has revocado al usuario");
+					return miMAV;
+					}
+				}
 
 	}
 	
 	@RequestMapping(value = "eliminarUsuario", method = RequestMethod.POST)
 	public ModelAndView eliminar(HttpServletRequest request, HttpServletResponse response, Model model)throws Exception{
+		// NOS TRAEMOS LA LISTA DE USUARIOS EXISTENTES
+		ModelAndView miMAV = new ModelAndView("panel");
 		List<Persona> usuarios =new ArrayList<Persona>();
 		DAOPersona dao = new DAOPersona();
 		usuarios=dao.getAllPersonas();
 		model.addAttribute("listUsuarios", usuarios );
+		
+		// TRAIGO LA INFORMACIÓN DE MI YO
+		String yo;
+		HttpSession session=request.getSession();
+		Persona user=(Persona) session.getAttribute("persona");
+		yo= user.getUsername();
+		
+		// TRAIGO LA PERSONA QUE QUIERO MODIFICAR
 		String username;
 		username = request.getParameter("eliminar");
-		System.out.println(username);
-		return new ModelAndView("panel");
+		
+		// SE UTILIZA EL DAO PARA TRAERTE LA INFORMACION
+		Persona p = dao.getPersona(username);
+		
+		// SE COMPRUEBA QUE SEA ADMIN, SI NO ES, SE MODIFICA
+		if(p.isEsAdmin() == true){
+			miMAV.addObject("mensaje",
+					"No se puede eliminar a un administrador");
+			return miMAV;
+		}else{
+			DAOPublicacion daop= new DAOPublicacion();
+			daop.borrarPublicacionesUsuario(username);
+			dao.deleteByEmail(p.getEmail());
+			usuarios=dao.getAllPersonas();
+			model.addAttribute("listUsuarios", usuarios );
+			miMAV.addObject("mensaje",
+					"Has eliminado correctamente al usuario");
+			return miMAV;
+		}
+		
 	}
 	
 	

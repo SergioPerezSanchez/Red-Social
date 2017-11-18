@@ -30,8 +30,10 @@
                     <li id="liPublicacion" ><a id="aPublicacion" >Publicaciones</a></li>
                     <li id="liAmistad" ><a id="aAmistad" >Amigos</a></li>
                     <li id="liMP"><a id="aMP" >Gente</a></li>
+                    <c:if test = "${persona.isEsAdmin() == true}">
                     <li id="liTodasPublicaciones" class="active" ><a id="aTodasPublicaciones" >Todas Publicaciones</a></li>
                     <li id="liPanel" ><a id="aPanel"> Panel</a></li>
+                    </c:if>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
                     <li id="liPerfil"><a id="aPerfil" ><span class="glyphicon glyphicon-user"></span> Perfil</a></li>

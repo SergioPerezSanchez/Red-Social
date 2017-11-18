@@ -11,6 +11,11 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css" rel="stylesheet" media="screen">
 </head>
+<script language="JavaScript" type="text/javascript">
+		if ("${mensaje}" != "") {
+			alert("${mensaje}");
+		}
+	</script>
 <body >
     <div id="navBar">
         <nav class="navbar navbar-inverse">
@@ -22,8 +27,10 @@
                     <li id="liPublicacion" ><a id="aPublicacion" >Publicaciones</a></li>
                     <li id="liAmistad" ><a id="aAmistad" >Amigos</a></li>
                     <li id="liMP"><a id="aMP" >Gente</a></li>
+                    <c:if test = "${persona.isEsAdmin() == true}">
                     <li id="liTodasPublicaciones" ><a id="aTodasPublicaciones" >Todas Publicaciones</a></li>
                     <li id="liPanel" class="active"><a id="aPanel"> Panel</a></li>
+                    </c:if>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
                     <li id="liPerfil"><a id="aPerfil" ><span class="glyphicon glyphicon-user"></span> Perfil</a></li>
@@ -96,8 +103,8 @@
 				<div id="panelUsuario-${listValue.getUsername()}" class="mensaje" style="margin-top:10px;height:100px; width:100%" >
 				<div id="usuario-${listValue.getUsername()}" style="text-align: left" class="col-md-6 col-lg-6 col-xs-6"> ${listValue.getUsername()}</div>
 						<!--  PROMOCIONAR USUARIOS -->
-				<div class="col-md-6 col-lg-6 col-xs-6" id="panel-${listValue.getUsername()}">
-						<form class="col-md-2 col-lg-2 col-xs-2" action="promocionarUsuario" method="post">
+				<div class="col-md-6 col-lg-6 col-xs-6"  id="panel-${listValue.getUsername()}">
+						<form class="col-md-2 col-lg-2 col-xs-2" style="margin-right: 40px;" action="promocionarUsuario" method="post">
 						<input name="promocionar" value="${listValue.getUsername()}" style="display:none">
 						<button id="promocionar-${listValue.getUsername()}" class="btn btn-success" name="promocionar-'${listValue.getUsername()}">Promocionar</button>
 						</form>

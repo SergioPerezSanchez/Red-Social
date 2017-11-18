@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -30,8 +31,10 @@
                     <li id="liPublicacion"><a id="aPublicacion" >Publicaciones</a></li>
                     <li id="liAmistad"><a id="aAmistad" >Amigos</a></li>
                     <li id="liMP"><a id="aMP" >Gente</a></li>
+                    <c:if test = "${persona.isEsAdmin() == true}">
                     <li id="liTodasPublicaciones"><a id="aTodasPublicaciones" >Todas Publicaciones</a></li>
                     <li id="liPanel" ><a id="aPanel"> Panel</a></li>
+                    </c:if>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
                     <li id="liPerfil" class="active"><a id="aPerfil" ><span class="glyphicon glyphicon-user"></span> Perfil</a></li>
@@ -248,7 +251,7 @@
         </div>
     
     </div><!-- MODIFICARPERFIL -->
-    <!--  
+
     <script type="text/javascript">
     
     $('#btnPublicar').click(function(){
