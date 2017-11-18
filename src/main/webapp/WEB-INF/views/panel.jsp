@@ -12,39 +12,32 @@
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css" rel="stylesheet" media="screen">
 </head>
 <body >
-	<%@ page import="modelo.Persona" %>
-	<%
-		HttpSession sesion = request.getSession();
-		Persona p= (Persona)sesion.getAttribute("persona");
-		if(p==null){
-			response.sendRedirect("home.jsp");
-		}
-	%>
     <div id="navBar">
         <nav class="navbar navbar-inverse">
             <div class="container-fluid">
                 <div class="navbar-header">
-                    <a href="init" class="navbar-brand" >Intravita</a>
+                    <a class="navbar-brand" >Intravita</a>
                 </div>
                 <ul class="nav navbar-nav">
                     <li id="liPublicacion" ><a id="aPublicacion" >Publicaciones</a></li>
                     <li id="liAmistad" ><a id="aAmistad" >Amigos</a></li>
                     <li id="liMP"><a id="aMP" >Gente</a></li>
-                    <li id="liTodasPublicaciones" class="active" ><a id="aTodasPublicaciones" >Todas Publicaciones</a></li>
-                    <li id="liPanel" ><a id="aPanel"> Panel</a></li>
+                    <li id="liTodasPublicaciones" ><a id="aTodasPublicaciones" >Todas Publicaciones</a></li>
+                    <li id="liPanel" class="active"><a id="aPanel"> Panel</a></li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
                     <li id="liPerfil"><a id="aPerfil" ><span class="glyphicon glyphicon-user"></span> Perfil</a></li>
-                    <li id="liLogout"><a id="aLogout" href="exit"><span href="exit" class="glyphicon glyphicon-log-in"></span> Logout</a></li>
+                    <li id="liLogout"><a id="aLogout" href="http://localhost:8080/redSocial/"><span href="http://localhost:8080/redSocial/" class="glyphicon glyphicon-log-in"></span> Logout</a></li>
                 </ul>
             </div>
         </nav>
 
     </div>
-        <style>
+    
+<style>
 	.subencabezado {  /*nombre del estilo o botón*/
 		border: 2px solid grey;  /*borde: estilo y color*/
-		margin-top: 3px;
+		margin-top: 10px;
 		font: normal normal 18px quicksand;  /*fuente*/
 		color: black;  /*color de la fuente*/
 		letter-spacing: 2px; /*separación entre las letras*/
@@ -53,7 +46,21 @@
 		padding: 6px;  /*tamaño del fondo*/
 		border-radius: 30px 0px 30px 0px; /*ángulos de las 4 esquinas del borde/fondo*/
 	}
-	</style>
+	
+	.mensaje{
+		background: #ffffff ;
+		border: 2px solid grey;
+		font: normal normal 12px quicksand;  /*fuente*/
+		color:black;  /*color de la fuente*/
+		letter-spacing: 2px; /*separación entre las letras*/
+		text-align: center; /*alineación del texto*/
+		text-transform: uppercase; /*texto se tpersonaransforma en mayúsculas*/
+		padding: 30px;  /*tamaño del fondo*/
+		border-radius: 30px; /*forma la borde del fondo*/
+	}
+</style>
+
+	
         <!--  PANEL BOTONES INVISIBLES ;D -->
     <div id="divBotonesInvisibles" style="display:none">
     	<form action="amigos" method="get">
@@ -77,23 +84,43 @@
     </div>
     <!--  FIN PANEL BOTONES INVISIBLES ;D -->
     <div id="divTodasPublicaciones" style="height:100%;width:100%; margin-top:-20px; position:absolute;" class="col-lg-12 col-md-12 col-xs-12">
-	<div class="subencabezado" style="width:100%">Todas las Publicaciones</div>
+	<div class="subencabezado" style="width:100%">Panel Administración</div>
 	<div class="panel panel-warning">
       <div class="panel-heading">¡Ten Cuidado!</div>
-      <div class="panel-body">¡Recuerda, está en contra de la ley de protección de datos!</div>
+      <div class="panel-body">¡Recuerda, vas a poder cambiar los permisos de los usuarios!</div>
 
     </div>
-	<div id="panelTodasPublicaciones" style="width:100%;height:80%">
-	      <div > <ul>
-			<c:forEach var="listValue" items="${listPublicaciones}">
-				<li>${listValue.getUsername()} ${listValue.getMensaje()}</li>
+    
+	<div id="panelPanel" style="width:100%;height:80%">
+	      <c:forEach var="listValue" items="${listUsuarios}">
+				<div id="panelUsuario-${listValue.getUsername()}" class="mensaje" style="margin-top:10px;height:100px; width:100%" >
+				<div id="usuario-${listValue.getUsername()}" style="text-align: left" class="col-md-6 col-lg-6 col-xs-6"> ${listValue.getUsername()}</div>
+						<!--  PROMOCIONAR USUARIOS -->
+				<div class="col-md-6 col-lg-6 col-xs-6" id="panel-${listValue.getUsername()}">
+						<form class="col-md-2 col-lg-2 col-xs-2" action="promocionarUsuario" method="post">
+						<input name="promocionar" value="${listValue.getUsername()}" style="display:none">
+						<button id="promocionar-${listValue.getUsername()}" class="btn btn-success" name="promocionar-'${listValue.getUsername()}">Promocionar</button>
+						</form>
+						<!--  REVOCAR USUARIOS -->
+						<form class="col-md-2 col-lg-2 col-xs-2" action="revocarUsuario" method="post">
+						<input name="revocar" value="${listValue.getUsername()}" style="display:none">
+						<button id="revocar-${listValue.getUsername()}" class="btn btn-warning" name="revocar-${listValue.getUsername()}">Revocar</button>
+						</form>
+						<!--  ELIMINAR USUARIOS -->
+						<form class="col-md-2 col-lg-2 col-xs-2" action="eliminarUsuario" method="post">
+						<input name="eliminar" value="${listValue.getUsername()}" style="display:none">
+						<button id="eliminar-${listValue.getUsername()}" class="btn btn-danger" name="eliminar-${listValue.getUsername()}">Eliminar</button>
+						</form>
+				</div>
+				</div>
 			</c:forEach>
-		</ul>
-		</div>
 	</div>
     </div>
     <script type="text/javascript">
     
+    $('#promocionar-${listValue.getUsername()}').click(function(){
+    	alert('HPLA');
+    });
     $('#btnPublicar').click(function(){
     	var texto=$('#textareaPublicacion').val();
     	$('#panel').append('<div id="publicacion" style="margin-top:10px; margin-left:10px; height:100px; width:90%;border-style:solid" ><div id="mensaje" class="col-md-6 col-lg-6 col-xs-6">'+texto+'</div><div id="perfil" class="col-lg-3 col-md-3 col-xs-3"><p><c:out value="${persona}"/>${persona.getNombre()}</p></div></div>');
