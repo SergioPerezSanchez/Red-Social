@@ -81,6 +81,17 @@
 		padding: 6px;  /*tamaño del fondo*/
 		border-radius: 30px 0px 30px 0px; /*ángulos de las 4 esquinas del borde/fondo*/
 	}
+	.mensaje{
+		background: #ffffff ;
+		border: 2px solid grey;
+		font: normal normal 12px quicksand;  /*fuente*/
+		color:black;  /*color de la fuente*/
+		letter-spacing: 2px; /*separación entre las letras*/
+		text-align: center; /*alineación del texto*/
+		text-transform: uppercase; /*texto se tpersonaransforma en mayúsculas*/
+		padding: 30px;  /*tamaño del fondo*/
+		border-radius: 30px; /*forma la borde del fondo*/
+	}
 	</style>
     <div id="divGente" style="height:100%;width:100%;margin-top:-20px; position:absolute" class="col-lg-12 col-md-12 col-xs-12">
 	<!-- Panel Gente -->
@@ -92,10 +103,20 @@
 			<c:forEach var="listValue" items="${listAmigos}">
 				<c:choose>
 					<c:when test="${listAmigos!=null}">
-					<li>${listValue.getNombre()} ${listValue.getApellidos()} Amigos    </li>  <!-- Aqui Va Amigos pon lo si queires en un cuadrado como si fuera un boton o como quieras -->
+					<div id="panelUsuario-${listValue.getUsername()}" class="mensaje" style="margin-top:10px;height:100px; width:100%" >
+					<div id="usuario-${listValue.getUsername()}" style="text-align: left" class="col-md-6 col-lg-6 col-xs-6"> ${listValue.getNombre()} ${listValue.getApellidos()} <p>Amigo</p></div>
+					</div>
 					</c:when>
 					<c:otherwise>
-						<li>${listValue.getNombre()} ${listValue.getApellidos()}  Añadir</li> <!-- Aqui iria el boton añadir igual dentro del <li> -->
+					<div id="panelUsuario-${listValue.getUsername()}" class="mensaje" style="margin-top:10px;height:100px; width:100%" >
+					<div id="usuario-${listValue.getUsername()}" style="text-align: left" class="col-md-6 col-lg-6 col-xs-6"> 
+					${listValue.getNombre()} ${listValue.getApellidos()}
+					</div>
+					<form class="col-md-2 col-lg-2 col-xs-2" action="anadir" method="post">
+						<input name="anadir" value="${listValue.getUsername()}" style="display:none">
+						<button id="anadir-${listValue.getUsername()}" class="btn btn-success" name="anadir-${listValue.getUsername()}">Añadir</button>
+						</form>
+					</div>
 					</c:otherwise>
 				</c:choose>
 
