@@ -47,7 +47,7 @@ public class LoginTests {
 	@Given("^El usuario quiere acceder al sistema$")
 	public void El_usuario_quiere_acceder_al_sistema() throws Throwable {
 		dao = new DAOPersona();
-	    p=new Persona("Carlos", "Delgado", "carlitos93", "carlitos@mail.com", "a1Zs7s2DM", "Calle Jane Doe", "0", "photo", false);
+	    p=new Persona("Carlos", "Delgado", "carlitos93", "carlitos@mail.com", "a1Zs7s2DM", "Calle Jane Doe", "0", "photo", false, null, null);
 	    assert(true);
 	}
 

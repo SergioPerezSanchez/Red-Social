@@ -86,11 +86,23 @@
 	<!-- Panel Amigos -->
 	<div class="subencabezado" style="width:100%">Amigos</div>
 	<div id="panelAmigos" style="width:100%;height:45%">
-	
+	  <div > <ul>
+			<c:forEach var="listValue" items="${listAmigos}">
+				<li>${listValue.getNombre()} ${listValue.getApellidos()}</li>
+			</c:forEach>
+		</ul>
+		</div>
 	</div>
 	<!--  Panel Peticiones -->
 	<div class="subencabezado" style="width:100%">Peticiones de Amistad</div>
 	<div id="panelPeticionesAmistad" style="width:100%;height:45%">
+	
+	  <div > <ul>
+			<c:forEach var="listValue" items="${listPeticiones}" >
+				<li>${listValue.getNombre()} ${listValue.getApellidos()}  </li> <!-- Aqui irian los botones Aceptar y Eliminar !!Dentro del <li>!!! -->
+			</c:forEach>
+		</ul>
+		</div>
 
 	</div>
     </div>

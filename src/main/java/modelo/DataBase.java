@@ -1,5 +1,6 @@
 package modelo;
 
+import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -37,7 +38,9 @@ public class DataBase {
 					.append("direccion", p.getDireccion())
 					.append("telefono", p.getTelefono())
 					.append("foto", p.getFoto())
-					.append("esAdmin", p.isEsAdmin());
+					.append("esAdmin", p.isEsAdmin())
+					.append("amigos", p.getAmigos())
+					.append("peticiones",p.getPeticiones());
 			dbUsuarios.insertOne(doc);
 			return true;
 		}catch(Exception ex) {
@@ -139,7 +142,7 @@ public class DataBase {
 		while(elementos.hasNext()) {
 			doc=elementos.next();
 			if((doc.get("username").toString().equalsIgnoreCase(username))) {
-				p = new Persona(doc.getString("nombre"), doc.getString("apellidos"), doc.getString("username"), doc.getString("email"), doc.getString("clave"), doc.getString("direccion"), doc.getString("telefono"), doc.getString("foto"), doc.getBoolean("esAdmin"));
+				p = new Persona(doc.getString("nombre"), doc.getString("apellidos"), doc.getString("username"), doc.getString("email"), doc.getString("clave"), doc.getString("direccion"), doc.getString("telefono"), doc.getString("foto"), doc.getBoolean("esAdmin"), null, null);
 			}
 		}		
 		return p;
@@ -153,7 +156,7 @@ public class DataBase {
 		while(elementos.hasNext()) {
 			doc=elementos.next();
 			if((doc.get("email").toString().equalsIgnoreCase(email))) {
-				p = new Persona(doc.getString("nombre"), doc.getString("apellidos"), doc.getString("username"), doc.getString("email"), doc.getString("clave"), doc.getString("direccion"), doc.getString("telefono"), doc.getString("foto"), doc.getBoolean("esAdmin"));
+				p = new Persona(doc.getString("nombre"), doc.getString("apellidos"), doc.getString("username"), doc.getString("email"), doc.getString("clave"), doc.getString("direccion"), doc.getString("telefono"), doc.getString("foto"), doc.getBoolean("esAdmin"),(ArrayList<Persona>) doc.get("amigos"),(ArrayList<Persona>) doc.get("peticiones"));
 			}
 		}		
 		return p;
@@ -167,7 +170,7 @@ public class DataBase {
 		elementos = dbUsuarios.find().iterator();
 		while(elementos.hasNext()) {
 			doc=elementos.next();
-			p = new Persona(doc.getString("nombre"), doc.getString("apellidos"), doc.getString("username"), doc.getString("email"), doc.getString("clave"), doc.getString("direccion"), doc.getString("telefono"), doc.getString("foto"), doc.getBoolean("esAdmin"));
+			p = new Persona(doc.getString("nombre"), doc.getString("apellidos"), doc.getString("username"), doc.getString("email"), doc.getString("clave"), doc.getString("direccion"), doc.getString("telefono"), doc.getString("foto"), doc.getBoolean("esAdmin"), (ArrayList<Persona>) doc.get("amigos"),(ArrayList<Persona>) doc.get("amigos"));
 			personas.add(p);
 		}		
 		return personas;
