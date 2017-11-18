@@ -12,11 +12,19 @@
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css" rel="stylesheet" media="screen">
 </head>
 <body >
+	<%@ page import="modelo.Persona" %>
+	<%
+		HttpSession sesion = request.getSession();
+		Persona p= (Persona)sesion.getAttribute("persona");
+		if(p==null){
+			response.sendRedirect("home.jsp");
+		}
+	%>
     <div id="navBar">
         <nav class="navbar navbar-inverse">
             <div class="container-fluid">
                 <div class="navbar-header">
-                    <a class="navbar-brand" >Intravita</a>
+                    <a href="init" class="navbar-brand" >Intravita</a>
                 </div>
                 <ul class="nav navbar-nav">
                     <li id="liPublicacion" ><a id="aPublicacion" >Publicaciones</a></li>
@@ -27,7 +35,7 @@
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
                     <li id="liPerfil"><a id="aPerfil" ><span class="glyphicon glyphicon-user"></span> Perfil</a></li>
-                    <li id="liLogout"><a id="aLogout" href="http://localhost:8080/redSocial/"><span href="http://localhost:8080/redSocial/" class="glyphicon glyphicon-log-in"></span> Logout</a></li>
+                    <li id="liLogout"><a id="aLogout" href="exit"><span href="exit" class="glyphicon glyphicon-log-in"></span> Logout</a></li>
                 </ul>
             </div>
         </nav>

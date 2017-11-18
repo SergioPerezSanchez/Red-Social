@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -11,11 +12,19 @@
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css" rel="stylesheet" media="screen">
 </head>
 <body >
+	<%@ page import="modelo.Persona" %>
+	<%
+		HttpSession sesion = request.getSession();
+		Persona p= (Persona)sesion.getAttribute("persona");
+		if(p==null){
+			response.sendRedirect("home.jsp");
+		}
+	%>
     <div id="navBar">
         <nav class="navbar navbar-inverse">
             <div class="container-fluid">
                 <div class="navbar-header">
-                    <a class="navbar-brand" >Intravita</a>
+                    <a href="init" class="navbar-brand" >Intravita</a>
                 </div>
                 <ul class="nav navbar-nav">
                     <li id="liPublicacion"><a id="aPublicacion" >Publicaciones</a></li>
@@ -26,7 +35,7 @@
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
                     <li id="liPerfil" class="active"><a id="aPerfil" ><span class="glyphicon glyphicon-user"></span> Perfil</a></li>
-                    <li id="liLogout"><a id="aLogout" href="http://localhost:8080/redSocial/"><span href="http://localhost:8080/redSocial/" class="glyphicon glyphicon-log-in"></span> Logout</a></li>
+                    <li id="liLogout"><a id="aLogout" href="exit"><span href="exit" class="glyphicon glyphicon-log-in"></span> Logout</a></li>
                 </ul>
             </div>
         </nav>
@@ -203,21 +212,28 @@
             
             <p style="align-content: center; margin:auto; display:table; font-size: 20px; color:grey;">Modifica Tu Perfil</p>
             <form action="modificarUsuario" method="post"  class="form-signin">
-            <img class="profile-img-card" src="${persona.getFoto()}" alt="" />
+            	<img class="profile-img-card" src="${persona.getFoto()}"/>
                 <span id="reauth-email" class="reauth-email"></span>
                 Email:<input class="form-control" name="aEmail" placeholder="${persona.getEmail() }" disabled> </input>
                 Usuario:<input class="form-control" name="aUser" placeholder="${persona.getUsername() }"  disabled > </input>
-                Nombre<input type="text" name="inputNombre" class="form-control" placeholder="${persona.getNombre()}" required> 
-                Apellidos<input type="text" name="inputApellidos" class="form-control" placeholder="${persona.getApellidos()}" required> 
-                Password<input type="password" name="inputPassword" class="form-control" placeholder="*******" required> 
-                Direccion<input type="text" name="inputDireccion" class="form-control" placeholder="${persona.getDireccion()}" required>
-                Telefono<input type="text" name="inputTelefono" class="form-control" placeholder="${persona.getTelefono()}" required >  
-
+                Nombre<input type="text" name="inputNombre" class="form-control" value="${persona.getNombre()}" required> 
+                Apellidos<input type="text" name="inputApellidos" class="form-control" value="${persona.getApellidos()}" required> 
+                Password<input type="password" name="inputPassword" class="form-control" value="${persona.getPassword()}" required> 
+                Direccion<input type="text" name="inputDireccion" class="form-control" value="${persona.getDireccion()}" required>
+                Telefono<input type="text" name="inputTelefono" class="form-control" value="${persona.getTelefono()}" required >  
+				
                 <div id="remember" class="checkbox">
                     
                 </div>
                 <button class="btn btn-lg btn-primary btn-block btn-signin" type="submit">Modificar</button>
             </form><!-- /form -->
+            <c:out value="${message}"/>
+            <form:form method="post" action="photo" enctype="multipart/form-data" commandName="fileFormBean">
+           		<td>Modifica tu foto de perfil: </td>
+           		<td><input type="file" name="fichero" /></td>
+           		<td colspan="2" align="center">
+    			<input type="submit" value="Subir fichero"></td>
+			</form:form>
             <form action="borrarUsuario" method="post">
              <button class="btn btn-lg btn-primary btn-block btn-danger" type="submit">Eliminar Cuenta</button>
             </form>
@@ -232,6 +248,7 @@
         </div>
     
     </div><!-- MODIFICARPERFIL -->
+    <!--  
     <script type="text/javascript">
     
     $('#btnPublicar').click(function(){
@@ -284,6 +301,7 @@
     $('#aLogout').click(function(){
     	$('#holaMenu2').click();
     });
+
     $('#liPanel').click(function(){
     	$('#holaPanel').click();
     });
@@ -291,6 +309,7 @@
     	$('#holaPanel').click();
     });
 </script>
+
 </body>
 </html>
 

@@ -7,7 +7,7 @@ import static org.apache.commons.codec.binary.Base64.decodeBase64;
 import static org.apache.commons.codec.binary.Base64.encodeBase64;
 
 public class Persona {
-	private String nombre, apellidos, username, email, password, direccion, telefono, foto, original;
+	private String nombre, apellidos, username, email, password, direccion, telefono, foto;
 	private boolean esAdmin;
 	
 	//https://bit502.wordpress.com/2014/06/27/codigo-java-encriptar-y-desencriptar-texto-usando-el-algoritmo-aes-con-cifrado-por-bloques-cbc-de-128-bits/
@@ -20,36 +20,26 @@ public class Persona {
     //iv el vector de inicialización a utilizar
     private final static String iv="0123456789ABCDEF"; 
     
-    public Persona(){
+    /*public Persona(){
     	
-    }
+    }*/
     
-    public Persona (String username, String clave) {
+    public Persona (String username, String password) {
     	this.username=username;
-    	this.password=clave;
-    }
-    
-    public Persona (String clave) {
-    	this.original=clave;
+    	this.password=password;
     }
 
-    public Persona(String n, String ap, String us, String e, String pass, String dir, String tlfn, String photo, boolean esEncriptado, boolean esAdmin) {
+    public Persona(String n, String ap, String us, String e, String pass, String dir, String tlfn, String photo, boolean esAdmin) {
     	try {
 	    	this.nombre=n;
 	    	this.apellidos=ap;
 	    	this.username=us;
 	    	this.email=e;
 	    	this.password=pass;
-	    	this.original=pass;
 	    	this.direccion=dir;
 	    	this.telefono=tlfn;
 	    	this.foto=photo;
 	    	this.esAdmin=esAdmin;
-	    	if(esEncriptado) {
-	    		decrypt();
-	    	}else {
-	    		encrypt();
-	    	}
     	} catch (Exception e1) {
     		e1.printStackTrace();
     	}
@@ -91,17 +81,17 @@ public class Persona {
 	
 	public boolean requisitosPassword() {
 		boolean size=false, numeros=false, minuscula=false, mayuscula=false;
-		if(this.original.length()>=8) {
+		if(getPassword().length()>=8) {
 			size=true;
 		}
-		for(int j=0; j<this.original.length(); j++) {
-			if(esNumero(this.original.charAt(j)))numeros=true;
+		for(int j=0; j<getPassword().length(); j++) {
+			if(esNumero(getPassword().charAt(j)))numeros=true;
 		}
-		for(int j=0; j<this.original.length(); j++) {
-			if(esMayuscula(this.original.charAt(j)))mayuscula=true;
+		for(int j=0; j<getPassword().length(); j++) {
+			if(esMayuscula(getPassword().charAt(j)))mayuscula=true;
 		}
-		for(int j=0; j<this.original.length(); j++) {
-			if(esMinuscula(this.original.charAt(j)))minuscula=true;
+		for(int j=0; j<getPassword().length(); j++) {
+			if(esMinuscula(getPassword().charAt(j)))minuscula=true;
 		}
 		return size&&numeros&&mayuscula&&minuscula;
 	}

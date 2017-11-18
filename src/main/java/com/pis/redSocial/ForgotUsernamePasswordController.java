@@ -48,7 +48,7 @@ public class ForgotUsernamePasswordController {
 	
 	
 	@RequestMapping(value = "recuperaUsernameClave", method = RequestMethod.POST)
-	public ModelAndView recuperaCredenciales(HttpServletRequest request, HttpServletResponse response)throws ServletException, IOException{
+	public ModelAndView recuperaCredenciales(HttpServletRequest request, HttpServletResponse response)throws Exception{
 		String email;
 		email=request.getParameter("inputEmail");
 		DAOPersona dao = new DAOPersona();

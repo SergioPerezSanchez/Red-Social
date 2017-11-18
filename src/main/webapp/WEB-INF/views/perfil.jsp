@@ -11,11 +11,19 @@
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css" rel="stylesheet" media="screen">
 </head>
 <body >
+	<%@ page import="modelo.Persona" %>
+	<%
+		HttpSession sesion = request.getSession();
+		Persona p= (Persona)sesion.getAttribute("persona");
+		if(p==null){
+			response.sendRedirect("home.jsp");
+		}
+	%>
     <div id="navBar">
         <nav class="navbar navbar-inverse">
             <div class="container-fluid">
                 <div class="navbar-header">
-                    <a class="navbar-brand" >Intravita</a>
+                    <a href="init" class="navbar-brand" >Intravita</a>
                 </div>
                 <ul class="nav navbar-nav">
                     <li id="liPublicacion"><a id="aPublicacion" >Publicaciones</a></li>
@@ -26,7 +34,7 @@
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
                     <li id="liPerfil" class="active"><a id="aPerfil" ><span class="glyphicon glyphicon-user"></span> Perfil</a></li>
-                    <li id="liLogout"><a id="aLogout" href="http://localhost:8080/redSocial/"><span href="http://localhost:8080/redSocial/" class="glyphicon glyphicon-log-in"></span> Logout</a></li>
+                    <li id="liLogout"><a id="aLogout" href="exit"><span href="exit" class="glyphicon glyphicon-log-in"></span> Logout</a></li>
                 </ul>
             </div>
         </nav>
@@ -199,7 +207,7 @@
  <div class="card card-container">
             
             <p style="align-content: center; margin:auto; display:table; font-size: 20px; color:grey;">Perfil</p>
-         		<img class="profile-img-card" src="${persona.getFoto()}" alt="" />
+         		<img class="profile-img-card" src="${persona.getFoto()}"/>
                 <span id="reauth-email" class="reauth-email"></span>
                	<p style=" font-size: 20px; color:grey;">Nombre:</p><p><c:out value="${persona}"/>${persona.getNombre()}</p>
                	<p style=" font-size: 20px; color:grey;">Apellidos:</p><p><c:out value="${persona}"/>${persona.getApellidos()}</p>
