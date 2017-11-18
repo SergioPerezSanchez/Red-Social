@@ -248,7 +248,7 @@
         </div>
     
     </div><!-- MODIFICARPERFIL -->
-    <!--  
+  
     <script type="text/javascript">
     
     $('#btnPublicar').click(function(){
