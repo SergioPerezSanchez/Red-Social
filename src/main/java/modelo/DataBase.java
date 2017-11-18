@@ -39,7 +39,8 @@ public class DataBase {
 					.append("telefono", p.getTelefono())
 					.append("foto", p.getFoto())
 					.append("esAdmin", p.isEsAdmin())
-					.append("amigos", p.getAmigos());
+					.append("amigos", p.getAmigos())
+					.append("peticiones",p.getPeticiones());
 			dbUsuarios.insertOne(doc);
 			return true;
 		}catch(Exception ex) {

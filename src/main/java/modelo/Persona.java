@@ -10,8 +10,9 @@ import java.util.ArrayList;
 
 public class Persona {
 	private String nombre, apellidos, username, email, password, direccion, telefono, foto;
-	private ArrayList<Persona>amigos;
 	private boolean esAdmin;
+	private ArrayList<Persona>amigos;
+	private ArrayList<Persona> peticiones;
 	
 	//https://bit502.wordpress.com/2014/06/27/codigo-java-encriptar-y-desencriptar-texto-usando-el-algoritmo-aes-con-cifrado-por-bloques-cbc-de-128-bits/
 	// Definición del tipo de algoritmo a utilizar (AES, DES, RSA)
@@ -44,6 +45,7 @@ public class Persona {
 	    	this.foto=photo;
 	    	this.esAdmin=esAdmin;
 	    	this.amigos=amigos;
+	    	this.setPeticiones(peticiones);
     	} catch (Exception e1) {
     		e1.printStackTrace();
     	}
@@ -162,4 +164,13 @@ public class Persona {
 	public void setAmigos(ArrayList<Persona> amigos) {
 		this.amigos = amigos;
 	}
+
+	public ArrayList<Persona> getPeticiones() {
+		return peticiones;
+	}
+
+	public void setPeticiones(ArrayList<Persona> peticiones) {
+		this.peticiones = peticiones;
+	}
+	
 }
