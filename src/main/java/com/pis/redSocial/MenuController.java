@@ -34,8 +34,9 @@ public class MenuController {
 		//logger.info("Register page! The client locale is {}.", locale);
 		boolean flag=false;
 		String nombre, apellidos, username, email, password, direccion, telefono, foto;
-		ArrayList<Persona>amigos=new ArrayList<Persona>();
-		ArrayList<Persona>peticiones=new ArrayList<Persona>();
+		ArrayList<String>amigos=new ArrayList<String>();
+		ArrayList<String>peticiones=new ArrayList<String>();
+		ArrayList<String>peticionesenviadas=new ArrayList<String>();
 		nombre = request.getParameter("inputNombre");
 		apellidos = request.getParameter("inputApellidos");
 		password = request.getParameter("inputPassword");
@@ -44,7 +45,7 @@ public class MenuController {
 		username= request.getParameter("aUser");
 		email=request.getParameter("aEmail");
 		DAOPersona dao = new DAOPersona();
-		Persona p= new Persona(nombre,apellidos, username,email, password, direccion, telefono, "", dao.getPersona(username).isEsAdmin(), amigos, peticiones);
+		Persona p= new Persona(nombre,apellidos, username,email, password, direccion, telefono, "", dao.getPersona(username).isEsAdmin(), amigos, peticiones,peticionesenviadas);
 		dao.update(p);
 		return new ModelAndView("menu");
 	}

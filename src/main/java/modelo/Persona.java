@@ -11,8 +11,9 @@ import java.util.ArrayList;
 public class Persona {
 	private String nombre, apellidos, username, email, password, direccion, telefono, foto;
 	private boolean esAdmin;
-	private ArrayList<Persona>amigos;
-	private ArrayList<Persona> peticiones;
+	private ArrayList<String> amigos =new ArrayList<String>();
+	private ArrayList<String> peticiones=new ArrayList<String>();
+	private ArrayList<String> peticionesenviadas=new ArrayList<String>();
 	
 	//https://bit502.wordpress.com/2014/06/27/codigo-java-encriptar-y-desencriptar-texto-usando-el-algoritmo-aes-con-cifrado-por-bloques-cbc-de-128-bits/
 	// Definición del tipo de algoritmo a utilizar (AES, DES, RSA)
@@ -33,7 +34,7 @@ public class Persona {
     	this.password=password;
     }
 
-    public Persona(String n, String ap, String us, String e, String pass, String dir, String tlfn, String photo, boolean esAdmin,ArrayList<Persona>amigos,ArrayList<Persona>peticiones) {
+    public Persona(String n, String ap, String us, String e, String pass, String dir, String tlfn, String photo, boolean esAdmin,ArrayList<String>amigos,ArrayList<String>peticiones,ArrayList<String>peticionesenviadas) {
     	try {
 	    	this.nombre=n;
 	    	this.apellidos=ap;
@@ -45,7 +46,8 @@ public class Persona {
 	    	this.foto=photo;
 	    	this.esAdmin=esAdmin;
 	    	this.amigos=amigos;
-	    	this.setPeticiones(peticiones);
+	    	this.peticiones=peticiones;
+	    	this.setPeticionesenviadas(peticionesenviadas);
     	} catch (Exception e1) {
     		e1.printStackTrace();
     	}
@@ -157,20 +159,28 @@ public class Persona {
 		this.esAdmin = esAdmin;
 	}
 
-	public ArrayList<Persona> getAmigos() {
+	public ArrayList<String> getAmigos() {
 		return amigos;
 	}
 
-	public void setAmigos(ArrayList<Persona> amigos) {
+	public void setAmigos(ArrayList<String> amigos) {
 		this.amigos = amigos;
 	}
 
-	public ArrayList<Persona> getPeticiones() {
+	public ArrayList<String> getPeticiones() {
 		return peticiones;
 	}
 
-	public void setPeticiones(ArrayList<Persona> peticiones) {
+	public void setPeticiones(ArrayList<String> peticiones) {
 		this.peticiones = peticiones;
+	}
+
+	public ArrayList<String> getPeticionesenviadas() {
+		return peticionesenviadas;
+	}
+
+	public void setPeticionesenviadas(ArrayList<String> peticionesenviadas) {
+		this.peticionesenviadas = peticionesenviadas;
 	}
 	
 }

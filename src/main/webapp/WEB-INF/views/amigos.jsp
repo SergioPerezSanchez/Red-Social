@@ -86,24 +86,29 @@
 	<!-- Panel Amigos -->
 	<div class="subencabezado" style="width:100%">Amigos</div>
 	<div id="panelAmigos" style="width:100%;height:45%">
-	  <div > <ul>
 			<c:forEach var="listValue" items="${listAmigos}">
-				<li>${listValue.getNombre()} ${listValue.getApellidos()}</li>
+			<div id="usuario-${listValue.getUsername()}" style="text-align: left" class="col-md-6 col-lg-6 col-xs-6"> ${listValue.getNombre()} ${listValue.getApellidos()}</div>				
+						<form class="col-md-2 col-lg-2 col-xs-2" style="margin-right: 40px;" action="eliminarAmigo" method="post">
+							<input name="eliminar" value="${listValue.getUsername()}" style="display:none">
+							<button id="eliminar-${listValue.getUsername()}" class="btn btn-danger" name="eliminar-'${listValue.getUsername()}">Eliminar</button>
+						</form>
 			</c:forEach>
-		</ul>
-		</div>
 	</div>
 	<!--  Panel Peticiones -->
 	<div class="subencabezado" style="width:100%">Peticiones de Amistad</div>
 	<div id="panelPeticionesAmistad" style="width:100%;height:45%">
-	
-	  <div > <ul>
-			<c:forEach var="listValue" items="${listPeticiones}" >
-				<li>${listValue.getNombre()} ${listValue.getApellidos()}  </li> <!-- Aqui irian los botones Aceptar y Eliminar !!Dentro del <li>!!! -->
-			</c:forEach>
-		</ul>
-		</div>
-
+	<c:forEach var="listValue" items="${listPeticiones}">
+			<div id="usuario-${listValue.getUsername()}" style="text-align: left" class="col-md-6 col-lg-6 col-xs-6"> ${listValue.getNombre()} ${listValue.getApellidos()}</div>				
+						<form class="col-md-2 col-lg-2 col-xs-2" style="margin-right: 40px;" action="aceptarPeticion" method="post">
+							<input name="aceptar" value="${listValue.getUsername()}" style="display:none">
+							<button id="aceptar-${listValue.getUsername()}" class="btn btn-success" name="aceptar-'${listValue.getUsername()}">Aceptar</button>
+						</form>
+						<form class="col-md-2 col-lg-2 col-xs-2" style="margin-right: 40px;" action="rechazarPeticion" method="post">
+							<input name="rechazar" value="${listValue.getUsername()}" style="display:none">
+							<button id="rechazar-${listValue.getUsername()}" class="btn btn-danger" name="rechazar-'${listValue.getUsername()}">Rechazar</button>
+						</form>
+						
+	</c:forEach>
 	</div>
     </div>
     <script type="text/javascript">
