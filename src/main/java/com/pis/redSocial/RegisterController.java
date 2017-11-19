@@ -63,8 +63,8 @@ public class RegisterController {
 		telefono = request.getParameter("inputTelefonoRegistro");
 		//foto = request.getParameter("inputFotoRegistro");
 		foto = "https://n6-img-fp.akamaized.net/iconos-gratis/la-imagen-del-usuario-con-el-fondo-negro_318-34564.jpg?size=338&ext=jpg";
-		ArrayList<Persona>amigos=new ArrayList<Persona>();
-		ArrayList<Persona>peticiones=new ArrayList<Persona>();
+		ArrayList<String>amigos=new ArrayList<String>();
+		ArrayList<String>peticiones=new ArrayList<String>();
 		ModelAndView miMAV = new ModelAndView("register");
 		DAOPersona dao = new DAOPersona();
 		Persona p=new Persona(username, password);

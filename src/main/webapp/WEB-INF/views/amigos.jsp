@@ -99,7 +99,7 @@
 	
 	  <div > <ul>
 			<c:forEach var="listValue" items="${listPeticiones}" >
-				<li>${listValue.getNombre()} ${listValue.getApellidos()}  </li> <!-- Aqui irian los botones Aceptar y Eliminar !!Dentro del <li>!!! -->
+				<li>${listValue}  </li> <!-- Aqui irian los botones Aceptar y Eliminar !!Dentro del <li>!!! -->
 			</c:forEach>
 		</ul>
 		</div>

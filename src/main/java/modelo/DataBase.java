@@ -134,6 +134,7 @@ public class DataBase {
 		return true;
 	}
 	
+	@SuppressWarnings("unchecked")
 	protected Persona getPersona(String username) {
 		Persona p=null;
 		db = client.getDatabase(uri.getDatabase());
@@ -142,7 +143,7 @@ public class DataBase {
 		while(elementos.hasNext()) {
 			doc=elementos.next();
 			if((doc.get("username").toString().equalsIgnoreCase(username))) {
-				p = new Persona(doc.getString("nombre"), doc.getString("apellidos"), doc.getString("username"), doc.getString("email"), doc.getString("clave"), doc.getString("direccion"), doc.getString("telefono"), doc.getString("foto"), doc.getBoolean("esAdmin"), null, null);
+				p = new Persona(doc.getString("nombre"), doc.getString("apellidos"), doc.getString("username"), doc.getString("email"), doc.getString("clave"), doc.getString("direccion"), doc.getString("telefono"), doc.getString("foto"), doc.getBoolean("esAdmin"),(ArrayList<String>) doc.get("amigos"),(ArrayList<String>) doc.get("peticiones"));
 			}
 		}		
 		return p;
@@ -156,21 +157,22 @@ public class DataBase {
 		while(elementos.hasNext()) {
 			doc=elementos.next();
 			if((doc.get("email").toString().equalsIgnoreCase(email))) {
-				p = new Persona(doc.getString("nombre"), doc.getString("apellidos"), doc.getString("username"), doc.getString("email"), doc.getString("clave"), doc.getString("direccion"), doc.getString("telefono"), doc.getString("foto"), doc.getBoolean("esAdmin"),(ArrayList<Persona>) doc.get("amigos"),(ArrayList<Persona>) doc.get("peticiones"));
+				p = new Persona(doc.getString("nombre"), doc.getString("apellidos"), doc.getString("username"), doc.getString("email"), doc.getString("clave"), doc.getString("direccion"), doc.getString("telefono"), doc.getString("foto"), doc.getBoolean("esAdmin"),(ArrayList<String>) doc.get("amigos"),(ArrayList<String>) doc.get("peticiones"));
 			}
 		}		
 		return p;
 	}
 	
-	protected LinkedList<Persona>getAllPersonas(){
-		LinkedList<Persona> personas = new LinkedList<Persona>();
+	@SuppressWarnings("unchecked")
+	protected ArrayList<Persona> getAllPersonas(){
+		ArrayList<Persona> personas = new ArrayList<Persona>();
 		Persona p = null;
 		db = client.getDatabase(uri.getDatabase());
 		dbUsuarios = db.getCollection("usuarios");
 		elementos = dbUsuarios.find().iterator();
 		while(elementos.hasNext()) {
 			doc=elementos.next();
-			p = new Persona(doc.getString("nombre"), doc.getString("apellidos"), doc.getString("username"), doc.getString("email"), doc.getString("clave"), doc.getString("direccion"), doc.getString("telefono"), doc.getString("foto"), doc.getBoolean("esAdmin"), (ArrayList<Persona>) doc.get("amigos"),(ArrayList<Persona>) doc.get("amigos"));
+			p = new Persona(doc.getString("nombre"), doc.getString("apellidos"), doc.getString("username"), doc.getString("email"), doc.getString("clave"), doc.getString("direccion"), doc.getString("telefono"), doc.getString("foto"), doc.getBoolean("esAdmin"), (ArrayList<String>) doc.get("amigos"),(ArrayList<String>) doc.get("amigos"));
 			personas.add(p);
 		}		
 		return personas;
