@@ -97,7 +97,7 @@
 	<!--  Panel Peticiones -->
 	<div class="subencabezado" style="width:100%">Peticiones de Amistad</div>
 	<div id="panelPeticionesAmistad" style="width:100%;height:45%">
-	<c:forEach var="listValue" items="${listAmigos}">
+	<c:forEach var="listValue" items="${listPeticiones}">
 			<div id="usuario-${listValue.getUsername()}" style="text-align: left" class="col-md-6 col-lg-6 col-xs-6"> ${listValue.getNombre()} ${listValue.getApellidos()}</div>				
 						<form class="col-md-2 col-lg-2 col-xs-2" style="margin-right: 40px;" action="aceptarPeticion" method="post">
 							<input name="aceptar" value="${listValue.getUsername()}" style="display:none">
@@ -105,7 +105,7 @@
 						</form>
 						<form class="col-md-2 col-lg-2 col-xs-2" style="margin-right: 40px;" action="rechazarPeticion" method="post">
 							<input name="rechazar" value="${listValue.getUsername()}" style="display:none">
-							<button id="rechazar-${listValue.getUsername()}" class="btn btn-danger" name="rechazar-'${listValue.getUsername()}">Aceptar</button>
+							<button id="rechazar-${listValue.getUsername()}" class="btn btn-danger" name="rechazar-'${listValue.getUsername()}">Rechazar</button>
 						</form>
 						
 	</c:forEach>

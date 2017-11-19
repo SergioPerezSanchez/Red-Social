@@ -130,11 +130,8 @@
 		<div id="panelGente" style="width: 100%; height: 80%">
 
 			<ul>
-
-				<c:forEach var="listValue" items="${listPersonas}"
-					varStatus="status">
-					<c:forEach var="listVAmigo" items="${listAmigos}"
-						varStatus="status">
+				<c:forEach var="listValue" items="${listPersonas}">
+					<c:forEach var="listVAmigo" items="${listAmigos}">
 						<c:if test="${listVAmigo.equals(listValue.getUsername())}">
 							<div id="panelUsuario-${listValue.getUsername()}" class="mensaje"
 								style="margin-top: 10px; height: 100px; width: 100%">
@@ -146,31 +143,59 @@
 							</div>
 						</c:if>
 					</c:forEach>
+					<c:choose>
+					<c:when test="${not empty listPeticiones}">
 					<c:forEach var="listVPeticion" items="${listPeticiones}">
-						<c:if test="${listVPeticion.equals(listValue.getUsername())}">
-							<div id="panelUsuario-${listValue.getUsername()}" class="mensaje"
-								style="margin-top: 10px; height: 100px; width: 100%">
-								<div id="usuario-${listValue.getUsername()}"
-									style="text-align: left" class="col-md-6 col-lg-6 col-xs-6">
-									${listValue.getNombre()} ${listValue.getApellidos()}
-									<p>Solicitud Enviada</p>
+						<c:choose>
+							<c:when test="${listVPeticion.equals(listValue.getUsername())}">
+								<div id="panelUsuario-${listValue.getUsername()}"
+									class="mensaje"
+									style="margin-top: 10px; height: 100px; width: 100%">
+									<div id="usuario-${listValue.getUsername()}"
+										style="text-align: left" class="col-md-6 col-lg-6 col-xs-6">
+										${listValue.getNombre()} ${listValue.getApellidos()}
+										<p>Solicitud Enviada</p>
+									</div>
 								</div>
-							</div>
-						</c:if>
+							</c:when>
+							<c:otherwise>
+								<div id="panelUsuario-${listValue.getUsername()}"
+									class="mensaje"
+									style="margin-top: 10px; height: 100px; width: 100%">
+									<div id="usuario-${listValue.getUsername()}"
+										style="text-align: left" class="col-md-6 col-lg-6 col-xs-6">
+										${listValue.getNombre()} ${listValue.getApellidos()}</div>
+									<form class="col-md-2 col-lg-2 col-xs-2"
+										action="enviarPeticion" method="post">
+										<input name="anadir" value="${listValue.getUsername()}"
+											style="display: none">
+										<button id="anadir-${listValue.getUsername()}"
+											class="btn btn-success"
+											name="anadir-${listValue.getUsername()}">Añadir</button>
+									</form>
+								</div>
+							</c:otherwise>
+						</c:choose>
 					</c:forEach>
-					<div id="panelUsuario-${listValue.getUsername()}" class="mensaje"
-						style="margin-top: 10px; height: 100px; width: 100%">
-						<div id="usuario-${listValue.getUsername()}"
-							style="text-align: left" class="col-md-6 col-lg-6 col-xs-6">
-							${listValue.getNombre()} ${listValue.getApellidos()}</div>
-						<form class="col-md-2 col-lg-2 col-xs-2" action="enviarPeticion"
-							method="post">
-							<input name="anadir" value="${listValue.getUsername()}"
-								style="display: none">
-							<button id="anadir-${listValue.getUsername()}"
-								class="btn btn-success" name="anadir-${listValue.getUsername()}">Añadir</button>
-						</form>
-					</div>
+					</c:when>
+					<c:otherwise>
+					<div id="panelUsuario-${listValue.getUsername()}"
+									class="mensaje"
+									style="margin-top: 10px; height: 100px; width: 100%">
+									<div id="usuario-${listValue.getUsername()}"
+										style="text-align: left" class="col-md-6 col-lg-6 col-xs-6">
+										${listValue.getNombre()} ${listValue.getApellidos()}</div>
+									<form class="col-md-2 col-lg-2 col-xs-2"
+										action="enviarPeticion" method="post">
+										<input name="anadir" value="${listValue.getUsername()}"
+											style="display: none">
+										<button id="anadir-${listValue.getUsername()}"
+											class="btn btn-success"
+											name="anadir-${listValue.getUsername()}">Añadir</button>
+									</form>
+								</div>
+					</c:otherwise>
+					</c:choose>
 				</c:forEach>
 			</ul>
 		</div>

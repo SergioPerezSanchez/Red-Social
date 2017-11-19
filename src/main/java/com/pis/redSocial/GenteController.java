@@ -97,7 +97,7 @@ public class GenteController {
 		personas = dao.getAllPersonas();
 		model.addAttribute("listPersonas", personas);
 		ArrayList<String> peticionesenviadas,peticiones;
-		
+		ArrayList<String> peticionesaux =new ArrayList<String>();
 		
 		
 		String yo;
@@ -124,11 +124,16 @@ public class GenteController {
 			//el que la envia
 			String nombreUserPeticion=user.getUsername();
 			
-			p.setPeticiones(peticiones);
+			peticionesaux.add(nombreUserPeticion);
+			peticionesenviadas.add(nombreUser);
+			
+			p.setPeticiones(peticionesaux);
 			user.setPeticionesenviadas(peticionesenviadas);
 			
 			dao.update(user);
 			dao.update(p);
+			personas = dao.getAllPersonas();
+			model.addAttribute("listPersonas", personas);
 			miMAV.addObject("mensaje", "Has enviado la solicitud");
 			return miMAV;
 		}
