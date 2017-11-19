@@ -53,11 +53,11 @@ public class GenteController {
 			e1.printStackTrace();
 		}
 		ArrayList<String> amigos = new ArrayList<String>();
-		ArrayList<String> peticiones = new ArrayList<String>();
+		ArrayList<String> peticionesenviadas = new ArrayList<String>();
 		ArrayList<String> amigosaux = new ArrayList<String>();
 		ArrayList<String> peticionesaux = new ArrayList<String>();
 		amigos = user.getAmigos();
-		peticiones = user.getPeticiones();
+		peticionesenviadas = user.getPeticionesenviadas();
 
 		// Comprobramos los amigos con las personas
 		try {
@@ -75,8 +75,8 @@ public class GenteController {
 		// Comprobamos las peticiones con las personas
 		try {
 			for (int i = 0; i < personas.size(); i++) {
-				for (int j = 0; j < peticiones.size(); j++) {
-					if (personas.get(i).getUsername().equals(peticiones.get(j))) {
+				for (int j = 0; j < peticionesenviadas.size(); j++) {
+					if (personas.get(i).getUsername().equals(peticionesenviadas.get(j))) {
 						peticionesaux.add(personas.get(i).getUsername());
 					}
 				}
@@ -96,30 +96,39 @@ public class GenteController {
 		List<Persona> personas = new ArrayList<Persona>();
 		personas = dao.getAllPersonas();
 		model.addAttribute("listPersonas", personas);
-		ArrayList<String> peticiones;
+		ArrayList<String> peticionesenviadas,peticiones;
+		
+		
+		
 		String yo;
 		HttpSession session = request.getSession();
 		Persona user = (Persona) session.getAttribute("persona");
 		yo = user.getUsername();
-		if (user.getPeticiones() == null) {
-			peticiones = new ArrayList<String>();
-		} else {
-			peticiones = user.getPeticiones();
-		}
+		peticionesenviadas = user.getPeticionesenviadas();
+		peticiones= user.getPeticiones();
+			
+		
+		
+		//Persona que queremos añadir
 		String username;
 		username = request.getParameter("anadir");
 		Persona p = dao.getPersona(username);
+		
+		
 		if (p.getUsername().equals(yo)) {
 			miMAV.addObject("mensaje", "No te puedes añadir a ti mismo!");
 			return miMAV;
 		} else {
-			peticiones.add(p.getUsername());
-			user.setPeticiones(peticiones);
-			if (user.getAmigos() == null) {
-				ArrayList<String> amigosaux = new ArrayList<String>();
-				user.setAmigos(amigosaux);
-			}
+			//al que se le envia
+			String nombreUser=p.getUsername();
+			//el que la envia
+			String nombreUserPeticion=user.getUsername();
+			
+			p.setPeticiones(peticiones);
+			user.setPeticionesenviadas(peticionesenviadas);
+			
 			dao.update(user);
+			dao.update(p);
 			miMAV.addObject("mensaje", "Has enviado la solicitud");
 			return miMAV;
 		}

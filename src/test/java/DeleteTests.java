@@ -16,7 +16,7 @@ public class DeleteTests {
 
 	@When("^Quiere eliminar la cuenta$")
 	public void Quiere_eliminar_la_cuenta() throws Throwable {
-		p=new Persona("Carlos", "Delgado", "carlitos93", "carlitos@mail.com", "a1Zs7s2DM", "Calle Jane Doe", "0", "photo", false, null, null);
+		p=new Persona("Carlos", "Delgado", "carlitos93", "carlitos@mail.com", "a1Zs7s2DM", "Calle Jane Doe", "0", "photo", false, null, null, null);
 		assert(dao.delete(p));
 	}
 

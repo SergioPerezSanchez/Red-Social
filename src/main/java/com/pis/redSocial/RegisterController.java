@@ -65,6 +65,7 @@ public class RegisterController {
 		foto = "https://n6-img-fp.akamaized.net/iconos-gratis/la-imagen-del-usuario-con-el-fondo-negro_318-34564.jpg?size=338&ext=jpg";
 		ArrayList<String>amigos=new ArrayList<String>();
 		ArrayList<String>peticiones=new ArrayList<String>();
+		ArrayList<String>peticionesenviadas=new ArrayList<String>();
 		ModelAndView miMAV = new ModelAndView("register");
 		DAOPersona dao = new DAOPersona();
 		Persona p=new Persona(username, password);
@@ -119,7 +120,7 @@ public class RegisterController {
 						return miMAV;
 					}else{
 							//CREA USUARIO
-							p = new Persona(nombre, apellidos, username, email, password, direccion, telefono, foto, false, amigos,peticiones);
+							p = new Persona(nombre, apellidos, username, email, password, direccion, telefono, foto, false, amigos,peticiones,peticionesenviadas);
 							dao.crearPersona(p);
 							return new ModelAndView("home", "aviso", "Cuenta creada correctamente");
 					}

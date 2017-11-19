@@ -46,13 +46,13 @@ public class AmigosController {
 		try {
 			listAmigos.addAll(a.getAmigos());
 		} catch (Exception e) {
-			
+			System.out.print("Error al cargar amigos");
 		}
 		try {
 			listPeticiones.addAll(a.getPeticiones());
+			
 		} catch (Exception e) {
-			
-			
+			System.out.print("Error al cargar peticiones");
 		}
 		model.addAttribute("listAmigos", listAmigos);
 		model.addAttribute("listPeticiones", listPeticiones);
