@@ -96,7 +96,7 @@
 		background: #ffffff ;
 		border: 2px solid grey;
 		font: normal normal 12px quicksand;  /*fuente*/
-		color:#cccccc;  /*color de la fuente*/
+		color:#000000;  /*color de la fuente*/
 		letter-spacing: 2px; /*separación entre las letras*/
 		text-align: center; /*alineación del texto*/
 		text-transform: uppercase; /*texto se tpersonaransforma en mayúsculas*/
@@ -105,23 +105,45 @@
 	}
     </style>
     <!--  FIN PANEL BOTONES INVISIBLES ;D -->
-
-    <div id="divAdmin" class="${persona.isEsAdmin()}" style="display:none" >${persona.isEsAdmin()}</div>
-    <div id="divPublicaciones" style="height: 100%;width:100%; margin-top:-20px; position:absolute;" class="col-lg-12 col-md-12 col-xs-12">
+	<div id="divPublicaciones" style="height: 100%;width:100%; margin-top:-20px; position:absolute;" class="col-lg-12 col-md-12 col-xs-12">
         <div class="subencabezado" style="width:100%" ">Publicaciones</div>
         <div id="publicacion" class="row-lg-3 row-md-3 row-xs-3">
   			<form action="publicarMensaje" method="post"> <input id="obtenerUsuario" style="display:none">
   			<input style="display:none" id="nombreUser" name="nombreUser" value="${persona.getNombre()}" disabled><input name="message" id="textareaPublicacion" style="margin-top: 20px; padding-bottom: 30px; width:75%">
-  			<div style="float: right; margin-top: 15px" class="col-md-3 col-lg-3 col-xs-3"><button class="btn btn-lg btn-primary btn-block btn-success" id="btnPublicar" type="submit">Publicar</button></form>
-  			<button id="btnAdjuntarFoto" class="btn btn-lg btn-primary btn-block btn-success" type="submit">Adjuntar Foto</button></div>
-        </div>
+  			<button style="float: right; margin-top: 26px; width: 144px; margin-right: 83px;" class="col-md-3 col-lg-3 col-xs-3 btn btn-success" id="btnPublicar" type="submit">Publicar</button>
+  			</form>
+
+     </div>
+       
         <hr style="border: 1px dotted #278e79; width:100%">
         <div id="panel" style="height: 80%; margin-top:15px;class="rog-lg-9 row-md-9 row-xs-9">
 			<c:forEach var="listValue" items="${listPublicacionesPersona}">
-				<div id="publicacion" class="mensaje" style="margin-top:10px;height:100px; width:100%" >
-					<div id="mensaje" style="text-align: left" class="col-md-10 col-lg-10 col-xs-10"> ${listValue.getMensaje()}</div>
-					<div id="perfil" style="font: 15px" class="col-lg-2 col-md-2 col-xs-2"><p>${listValue.getUsername()}</p></div>
+			<div id="panel-${listValue.getUsername()}${listValue.getMensaje()}" class="mensaje" style="margin-top:10px;height:100px; width:100%" >
+				<div id="usuario-${listValue.getUsername()}" style="text-align: center" class="col-md-2 col-lg-2 col-xs-2">${listValue.getUsername()}</div>
+				<input id="mensaje-${listValue.getMensaje()}" name="mensaje-${listValue.getMensaje()}" value="${listValue.getMensaje()}" style="height:90%;text-align: left" class="col-md-8 col-lg-8 col-xs-8" disabled>
+					<!-- PUBLICACION ELIMINAR -->
+				<div class="col-md-1 col-lg-1 col-xs-1"  id="panel-${listValue.getMensaje()}${listValue.getFecha()}">
+						<!--  ELIMINAR USUARIOS -->
+						<form class="" action="eliminarPublicacionPersonal" method="post">
+						<input name="eliminarMensaje" value="${listValue.getMensaje()}" style="display:none">
+						<input name="eliminarFecha" value="${listValue.getFecha()}" style="display:none">
+						<input name="eliminarNombre" value="${listValue.getUsername()}" style="display:none">
+						<button id="eliminar-${listValue.getUsername()}${listValue.getMensaje()}${listValue.getFecha()}" class="btn btn-danger" name="eliminar-${listValue.getUsername()}">Eliminar</button>
+						</form>
+						<button id="editar-${listValue.getUsername()}${listValue.getMensaje()}${listValue.getFecha()}" class="btn btn-warning" name="editar-${listValue.getUsername()}"
+							onclick="var boton_aceptar = document.getElementById('mensaje-${listValue.getMensaje()}'); boton_aceptar.removeAttribute('disabled');
+								document.getElementById('guardar-${listValue.getUsername()}${listValue.getMensaje()}${listValue.getFecha()}').style.display = 'block';
+								document.getElementById('editar-${listValue.getUsername()}${listValue.getMensaje()}${listValue.getFecha()}').style.display = 'none';">Editar</button>
+						<form action="editarPublicacionPersonal" method="post">		
+							<button id="guardar-${listValue.getUsername()}${listValue.getMensaje()}${listValue.getFecha()}" class="btn btn-info" name="guardar-${listValue.getUsername()}" style="display:none"
+								onclick="document.getElementById('nuevoMensaje').value=document.getElementById('mensaje-${listValue.getMensaje()}').value;">Guardar cambios</button>
+							<input name="eliminarMensaje" value="${listValue.getMensaje()}" style="display:none">
+							<input name="eliminarFecha" value="${listValue.getFecha()}" style="display:none">
+							<input name="eliminarNombre" value="${listValue.getUsername()}" style="display:none">
+							<input id="nuevoMensaje" name="nuevoMensaje" value="${listValue.getMensaje()}" type="text" style="display:none">				
+						</form>
 				</div>
+			</div>
 			</c:forEach>
         </div>
         
