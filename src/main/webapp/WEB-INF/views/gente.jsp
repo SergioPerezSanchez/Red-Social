@@ -43,7 +43,8 @@
 					<li id="liTodasPublicaciones"><a id="aTodasPublicaciones">Todas
 							Publicaciones</a></li>
 					<li id="liPanel"><a id="aPanel"> Panel</a></li>
-					<li id="liRegistroUser"><a id="aRegistroUser" >Registra Usuario</a></li>
+					<li id="liRegistroUser"><a id="aRegistroUser">Registra
+							Usuario</a></li>
 				</c:if>
 			</ul>
 			<ul class="nav navbar-nav navbar-right">
@@ -95,8 +96,11 @@
 				class="btn btn-warning" type="submit" value="Panel" name="panel">Volver</button>
 		</form>
 		<form action="registerUsuario" method="get">
-            <button  id="holaRegisterUsuario" style="display:none; padding-bottom:10px; float: right;margin: auto;" class="btn btn-warning" type="submit" value="RegisterUsuario" name="registerusuario" >Volver</button>
-        </form>
+			<button id="holaRegisterUsuario"
+				style="display: none; padding-bottom: 10px; float: right; margin: auto;"
+				class="btn btn-warning" type="submit" value="RegisterUsuario"
+				name="registerusuario">Volver</button>
+		</form>
 
 	</div>
 	<!--  FIN PANEL BOTONES INVISIBLES ;D -->
@@ -135,72 +139,45 @@
 
 			<ul>
 				<c:forEach var="listValue" items="${listPersonas}">
-					<c:forEach var="listVAmigo" items="${listAmigos}">
-						<c:if test="${listVAmigo.equals(listValue.getUsername())}">
-							<div id="panelUsuario-${listValue.getUsername()}" class="mensaje"
-								style="margin-top: 10px; height: 100px; width: 100%">
-								<div id="usuario-${listValue.getUsername()}"
-									style="text-align: left" class="col-md-6 col-lg-6 col-xs-6">
-									${listValue.getNombre()} ${listValue.getApellidos()}
-									<p>Amigo</p>
-								</div>
-							</div>
-						</c:if>
-					</c:forEach>
-					<c:choose>
-					<c:when test="${not empty listPeticiones}">
-					<c:forEach var="listVPeticion" items="${listPeticiones}">
-						<c:choose>
-							<c:when test="${listVPeticion.equals(listValue.getUsername())}">
-								<div id="panelUsuario-${listValue.getUsername()}"
-									class="mensaje"
-									style="margin-top: 10px; height: 100px; width: 100%">
-									<div id="usuario-${listValue.getUsername()}"
-										style="text-align: left" class="col-md-6 col-lg-6 col-xs-6">
-										${listValue.getNombre()} ${listValue.getApellidos()}
-										<p>Solicitud Enviada</p>
-									</div>
-								</div>
-							</c:when>
-							<c:otherwise>
-								<div id="panelUsuario-${listValue.getUsername()}"
-									class="mensaje"
-									style="margin-top: 10px; height: 100px; width: 100%">
-									<div id="usuario-${listValue.getUsername()}"
-										style="text-align: left" class="col-md-6 col-lg-6 col-xs-6">
-										${listValue.getNombre()} ${listValue.getApellidos()}</div>
-									<form class="col-md-2 col-lg-2 col-xs-2"
-										action="enviarPeticion" method="post">
-										<input name="anadir" value="${listValue.getUsername()}"
-											style="display: none">
-										<button id="anadir-${listValue.getUsername()}"
-											class="btn btn-success"
-											name="anadir-${listValue.getUsername()}">Añadir</button>
-									</form>
-								</div>
-							</c:otherwise>
-						</c:choose>
-					</c:forEach>
-					</c:when>
-					<c:otherwise>
-					<div id="panelUsuario-${listValue.getUsername()}"
-									class="mensaje"
-									style="margin-top: 10px; height: 100px; width: 100%">
-									<div id="usuario-${listValue.getUsername()}"
-										style="text-align: left" class="col-md-6 col-lg-6 col-xs-6">
-										${listValue.getNombre()} ${listValue.getApellidos()}</div>
-									<form class="col-md-2 col-lg-2 col-xs-2"
-										action="enviarPeticion" method="post">
-										<input name="anadir" value="${listValue.getUsername()}"
-											style="display: none">
-										<button id="anadir-${listValue.getUsername()}"
-											class="btn btn-success"
-											name="anadir-${listValue.getUsername()}">Añadir</button>
-									</form>
-								</div>
-					</c:otherwise>
-					</c:choose>
-				</c:forEach>
+     <c:choose>
+      <c:when test="${listAmigos.contains(listValue.getUsername())}">
+       <div id="panelUsuario-${listValue.getUsername()}" class="mensaje"
+        style="margin-top: 10px; height: 100px; width: 100%">
+        <div id="usuario-${listValue.getUsername()}"
+         style="text-align: left" class="col-md-6 col-lg-6 col-xs-6">
+         ${listValue.getNombre()} ${listValue.getApellidos()}
+         <p>Amigo</p>
+        </div>
+       </div>
+      </c:when>
+      <c:when test="${listPeticiones.contains(listValue.getUsername())}">
+       <div id="panelUsuario-${listValue.getUsername()}" class="mensaje"
+        style="margin-top: 10px; height: 100px; width: 100%">
+        <div id="usuario-${listValue.getUsername()}"
+         style="text-align: left" class="col-md-6 col-lg-6 col-xs-6">
+         ${listValue.getNombre()} ${listValue.getApellidos()}
+         <p>Solicitud Enviada</p>
+        </div>
+       </div>
+      </c:when>
+      <c:otherwise>
+       <div id="panelUsuario-${listValue.getUsername()}" class="mensaje"
+        style="margin-top: 10px; height: 100px; width: 100%">
+        <div id="usuario-${listValue.getUsername()}"
+         style="text-align: left" class="col-md-6 col-lg-6 col-xs-6">
+         ${listValue.getNombre()} ${listValue.getApellidos()}</div>
+        <form class="col-md-2 col-lg-2 col-xs-2" action="enviarPeticion"
+         method="post">
+         <input name="anadir" value="${listValue.getUsername()}"
+          style="display: none">
+         <button id="anadir-${listValue.getUsername()}"
+          class="btn btn-success"
+          name="anadir-${listValue.getUsername()}">Añadir</button>
+        </form>
+       </div>
+      </c:otherwise>
+     </c:choose>
+    </c:forEach>
 			</ul>
 		</div>
 	</div>
@@ -268,12 +245,12 @@
 		$('#aPanel').click(function() {
 			$('#holaPanel').click();
 		});
-	    $('#liRegistroUser').click(function(){
-	    	$('#holaRegisterUsuario').click();
-	    });
-	    $('#aRegistroUser').click(function(){
-	    	$('#holaRegisterUsuario').click();
-	    });
+		$('#liRegistroUser').click(function() {
+			$('#holaRegisterUsuario').click();
+		});
+		$('#aRegistroUser').click(function() {
+			$('#holaRegisterUsuario').click();
+		});
 	</script>
 </body>
 </html>
