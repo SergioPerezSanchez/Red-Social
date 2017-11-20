@@ -104,7 +104,7 @@
 
 	</div>
 	<!--  FIN PANEL BOTONES INVISIBLES ;D -->
-	<style>
+<style>
 .subencabezado { /*nombre del estilo o botón*/
 	border: 2px solid grey; /*borde: estilo y color*/
 	margin-top: 3px;
@@ -129,6 +129,7 @@
 	padding: 30px; /*tamaño del fondo*/
 	border-radius: 30px; /*forma la borde del fondo*/
 }
+
 </style>
 	<div id="divGente"
 		style="height: 100%; width: 100%; margin-top: -20px; position: absolute"
@@ -136,48 +137,47 @@
 		<!-- Panel Gente -->
 		<div class="subencabezado" style="width: 100%">Gente</div>
 		<div id="panelGente" style="width: 100%; height: 80%">
-
 			<ul>
 				<c:forEach var="listValue" items="${listPersonas}">
-     <c:choose>
-      <c:when test="${listAmigos.contains(listValue.getUsername())}">
-       <div id="panelUsuario-${listValue.getUsername()}" class="mensaje"
-        style="margin-top: 10px; height: 100px; width: 100%">
-        <div id="usuario-${listValue.getUsername()}"
-         style="text-align: left" class="col-md-6 col-lg-6 col-xs-6">
-         ${listValue.getNombre()} ${listValue.getApellidos()}
-         <p>Amigo</p>
-        </div>
-       </div>
-      </c:when>
-      <c:when test="${listPeticiones.contains(listValue.getUsername())}">
-       <div id="panelUsuario-${listValue.getUsername()}" class="mensaje"
-        style="margin-top: 10px; height: 100px; width: 100%">
-        <div id="usuario-${listValue.getUsername()}"
-         style="text-align: left" class="col-md-6 col-lg-6 col-xs-6">
-         ${listValue.getNombre()} ${listValue.getApellidos()}
-         <p>Solicitud Enviada</p>
-        </div>
-       </div>
-      </c:when>
-      <c:otherwise>
-       <div id="panelUsuario-${listValue.getUsername()}" class="mensaje"
-        style="margin-top: 10px; height: 100px; width: 100%">
-        <div id="usuario-${listValue.getUsername()}"
-         style="text-align: left" class="col-md-6 col-lg-6 col-xs-6">
-         ${listValue.getNombre()} ${listValue.getApellidos()}</div>
-        <form class="col-md-2 col-lg-2 col-xs-2" action="enviarPeticion"
-         method="post">
-         <input name="anadir" value="${listValue.getUsername()}"
-          style="display: none">
-         <button id="anadir-${listValue.getUsername()}"
-          class="btn btn-success"
-          name="anadir-${listValue.getUsername()}">Añadir</button>
-        </form>
-       </div>
-      </c:otherwise>
-     </c:choose>
-    </c:forEach>
+					<c:choose>
+						<c:when test="${listAmigos.contains(listValue.getUsername())}">
+							<div id="panelUsuario-${listValue.getUsername()}" class="mensaje"
+								style="margin-top: 10px; height: 100px; width: 100%">
+								<div id="usuario-${listValue.getUsername()}"
+									style="text-align: left" class="col-md-6 col-lg-6 col-xs-6">
+									${listValue.getNombre()} ${listValue.getApellidos()}
+									<p>Amigo</p>
+								</div>
+							</div>
+						</c:when>
+						<c:when test="${listPeticiones.contains(listValue.getUsername())}">
+							<div id="panelUsuario-${listValue.getUsername()}" class="mensaje"
+								style="margin-top: 10px; height: 100px; width: 100%">
+								<div id="usuario-${listValue.getUsername()}"
+									style="text-align: left" class="col-md-6 col-lg-6 col-xs-6">
+									${listValue.getNombre()} ${listValue.getApellidos()}
+									<p>Solicitud Enviada</p>
+								</div>
+							</div>
+						</c:when>
+						<c:otherwise>
+							<div id="panelUsuario-${listValue.getUsername()}" class="mensaje"
+								style="margin-top: 10px; height: 100px; width: 100%">
+								<div id="usuario-${listValue.getUsername()}"
+									style="text-align: left" class="col-md-6 col-lg-6 col-xs-6">
+									${listValue.getNombre()} ${listValue.getApellidos()}</div>
+								<form class="col-md-2 col-lg-2 col-xs-2" action="enviarPeticion"
+									method="post">
+									<input name="anadir" value="${listValue.getUsername()}"
+										style="display: none">
+									<button id="anadir-${listValue.getUsername()}"
+										class="btn btn-success"
+										name="anadir-${listValue.getUsername()}">Añadir</button>
+								</form>
+							</div>
+						</c:otherwise>
+					</c:choose>
+				</c:forEach>
 			</ul>
 		</div>
 	</div>

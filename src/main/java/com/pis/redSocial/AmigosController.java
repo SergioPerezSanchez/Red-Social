@@ -28,15 +28,8 @@ public class AmigosController {
 	 * Simply selects the home view to render by returning its name.
 	 */
 	@RequestMapping(value = "amigos", method = RequestMethod.GET)
-	public String amigos(HttpServletRequest request, Locale locale, Model model) {
-		logger.info("Register page! The client locale is {}.", locale);
-
-		Date date = new Date();
-		DateFormat dateFormat = DateFormat.getDateTimeInstance(DateFormat.LONG, DateFormat.LONG, locale);
-
-		String formattedDate = dateFormat.format(date);
-
-		model.addAttribute("serverTime", formattedDate);
+	public String amigos(HttpServletRequest request, Model model) {
+		
 
 		HttpSession session = request.getSession();
 		Persona a = (Persona) session.getAttribute("persona");
@@ -117,7 +110,10 @@ public class AmigosController {
 		usuarioAceptado.setPeticionesenviadas(peticionesEnviadasUsuarioAcep);
 		dao.update(user);
 		dao.update(usuarioAceptado);
+		user.decrypt();
+		usuarioAceptado.decrypt();
 		miMAV.addObject("mensaje", "Ha aceptado al usuario");
+		amigos(request, model);
 		return miMAV;
 
 	}
@@ -147,7 +143,10 @@ public class AmigosController {
 		
 		dao.update(usuarioRechazado);
 		dao.update(user);
+		user.decrypt();
+		usuarioRechazado.decrypt();
 		miMAV.addObject("mensaje", "No ha aceptado al usuario");
+		amigos(request, model);
 		return miMAV;
 	}
 	
@@ -176,7 +175,10 @@ public class AmigosController {
 		
 		dao.update(usuarioEliminado);
 		dao.update(user);
+		user.decrypt();
+		usuarioEliminado.decrypt();
 		miMAV.addObject("mensaje", "No ha aceptado al usuario");
+		amigos(request, model);
 		return miMAV;
 	}
 	

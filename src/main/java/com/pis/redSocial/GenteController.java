@@ -31,15 +31,10 @@ public class GenteController {
 	 * Simply selects the home view to render by returning its name.
 	 */
 	@RequestMapping(value = "gente", method = RequestMethod.GET)
-	public String gente(Locale locale, HttpServletRequest request, HttpServletResponse response, Model model) {
-		logger.info("Register page! The client locale is {}.", locale);
+	public String gente( HttpServletRequest request, HttpServletResponse response, Model model) {
+	
 
-		Date date = new Date();
-		DateFormat dateFormat = DateFormat.getDateTimeInstance(DateFormat.LONG, DateFormat.LONG, locale);
-
-		String formattedDate = dateFormat.format(date);
-
-		model.addAttribute("serverTime", formattedDate);
+	
 
 		ArrayList<Persona> personas = new ArrayList<Persona>();
 		DAOPersona dao = new DAOPersona();
@@ -89,13 +84,10 @@ public class GenteController {
 	}
 
 	@RequestMapping(value = "enviarPeticion", method = RequestMethod.POST)
-	public ModelAndView enviar(HttpServletRequest request, HttpServletResponse response, Model model) throws Exception {
+	public ModelAndView anadir(Locale locale, HttpServletRequest request, HttpServletResponse response, Model model) throws Exception {
 		ModelAndView miMAV = new ModelAndView("gente");
 		DAOPersona dao = new DAOPersona();
 
-		List<Persona> personas = new ArrayList<Persona>();
-		personas = dao.getAllPersonas();
-		model.addAttribute("listPersonas", personas);
 		ArrayList<String> peticionesenviadas,peticiones;
 		ArrayList<String> peticionesaux =new ArrayList<String>();
 		
@@ -133,12 +125,10 @@ public class GenteController {
 			dao.update(p);
 			user.decrypt();
 			p.decrypt();
-			personas = dao.getAllPersonas();
-			model.addAttribute("listPersonas", personas);
 			miMAV.addObject("mensaje", "Has enviado la solicitud");
+			gente(request, response, model);
 			return miMAV;
 		}
-
 	}
 
 }
