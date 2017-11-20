@@ -117,9 +117,15 @@ public class MenuController {
 		mensaje = request.getParameter("eliminarMensaje");
 		String fecha;
 		fecha = request.getParameter("eliminarFecha");
+		Publicacion pubAnt = daoPublicacion.leerPublicacion(username,fecha);
 		
 		// CREAMOS LA PUBLICACION QUE QUEREMOS BORRAR
-		daoPublicacion.borrarPublicacionExacta(username, fecha);
+		String newUsername = request.getParameter("eliminarNombre");
+		String newMessage = request.getParameter("nuevoMensaje");
+		//String newMessage = "Prueba de editar el mensaje";
+		LinkedList<String> listaVacia = new LinkedList<String> ();
+		Publicacion pubNew = new Publicacion(newUsername,newMessage,"publico",listaVacia);
+		daoPublicacion.actualizaPublicacion(pubAnt, pubNew);
 		HttpSession session=request.getSession();
 		Persona a=(Persona) session.getAttribute("persona");
 		List<Publicacion> publicaciones = daoPublicacion.leerPublicaciones(a.getUsername());

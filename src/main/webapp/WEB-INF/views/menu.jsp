@@ -110,7 +110,7 @@
         <div id="publicacion" class="row-lg-3 row-md-3 row-xs-3">
   			<form action="publicarMensaje" method="post"> <input id="obtenerUsuario" style="display:none">
   			<input style="display:none" id="nombreUser" name="nombreUser" value="${persona.getNombre()}" disabled><input name="message" id="textareaPublicacion" style="margin-top: 20px; padding-bottom: 30px; width:75%">
-  			<button style="float: right; margin-top: 15px" class="col-md-3 col-lg-3 col-xs-3 btn btn-success" id="btnPublicar" type="submit">Publicar</button>
+  			<button style="float: right; margin-top: 26px; width: 144px; margin-right: 83px;" class="col-md-3 col-lg-3 col-xs-3 btn btn-success" id="btnPublicar" type="submit">Publicar</button>
   			</form>
 
      </div>
@@ -120,20 +120,27 @@
 			<c:forEach var="listValue" items="${listPublicacionesPersona}">
 			<div id="panel-${listValue.getUsername()}${listValue.getMensaje()}" class="mensaje" style="margin-top:10px;height:100px; width:100%" >
 				<div id="usuario-${listValue.getUsername()}" style="text-align: center" class="col-md-2 col-lg-2 col-xs-2">${listValue.getUsername()}</div>
-				<input id="mensaje-${listValue.getMensaje()}" value="${listValue.getMensaje()}" style="height:90%;text-align: left" class="col-md-8 col-lg-8 col-xs-8" disabled>
+				<input id="mensaje-${listValue.getMensaje()}" name="mensaje-${listValue.getMensaje()}" value="${listValue.getMensaje()}" style="height:90%;text-align: left" class="col-md-8 col-lg-8 col-xs-8" disabled>
 					<!-- PUBLICACION ELIMINAR -->
 				<div class="col-md-1 col-lg-1 col-xs-1"  id="panel-${listValue.getMensaje()}${listValue.getFecha()}">
 						<!--  ELIMINAR USUARIOS -->
-						<form class="col-md-2 col-lg-2 col-xs-2" action="eliminarPublicacionPersonal" method="post">
+						<form class="" action="eliminarPublicacionPersonal" method="post">
 						<input name="eliminarMensaje" value="${listValue.getMensaje()}" style="display:none">
 						<input name="eliminarFecha" value="${listValue.getFecha()}" style="display:none">
 						<input name="eliminarNombre" value="${listValue.getUsername()}" style="display:none">
 						<button id="eliminar-${listValue.getUsername()}${listValue.getMensaje()}${listValue.getFecha()}" class="btn btn-danger" name="eliminar-${listValue.getUsername()}">Eliminar</button>
-						<form class="col-md-2 col-lg-2 col-xs-2" action="editarPublicacionPersonal" method="post">
-						<input name="eliminarMensaje" value="${listValue.getMensaje()}" style="display:none">
-						<input name="eliminarFecha" value="${listValue.getFecha()}" style="display:none">
-						<input name="eliminarNombre" value="${listValue.getUsername()}" style="display:none">
-						<button id="editar-${listValue.getUsername()}${listValue.getMensaje()}${listValue.getFecha()}" class="btn btn-warning" name="editar-${listValue.getUsername()}">Editar</button>
+						</form>
+						<button id="editar-${listValue.getUsername()}${listValue.getMensaje()}${listValue.getFecha()}" class="btn btn-warning" name="editar-${listValue.getUsername()}"
+							onclick="var boton_aceptar = document.getElementById('mensaje-${listValue.getMensaje()}'); boton_aceptar.removeAttribute('disabled');
+								document.getElementById('guardar-${listValue.getUsername()}${listValue.getMensaje()}${listValue.getFecha()}').style.display = 'block';
+								document.getElementById('editar-${listValue.getUsername()}${listValue.getMensaje()}${listValue.getFecha()}').style.display = 'none';">Editar</button>
+						<form action="editarPublicacionPersonal" method="post">		
+							<button id="guardar-${listValue.getUsername()}${listValue.getMensaje()}${listValue.getFecha()}" class="btn btn-info" name="guardar-${listValue.getUsername()}" style="display:none"
+								onclick="document.getElementById('nuevoMensaje').value=document.getElementById('mensaje-${listValue.getMensaje()}').value;">Guardar cambios</button>
+							<input name="eliminarMensaje" value="${listValue.getMensaje()}" style="display:none">
+							<input name="eliminarFecha" value="${listValue.getFecha()}" style="display:none">
+							<input name="eliminarNombre" value="${listValue.getUsername()}" style="display:none">
+							<input name="nuevoMensaje" style="display:none">				
 						</form>
 				</div>
 			</div>
