@@ -140,7 +140,7 @@
 							<input name="eliminarMensaje" value="${listValue.getMensaje()}" style="display:none">
 							<input name="eliminarFecha" value="${listValue.getFecha()}" style="display:none">
 							<input name="eliminarNombre" value="${listValue.getUsername()}" style="display:none">
-							<input name="nuevoMensaje" style="display:none">				
+							<input id="nuevoMensaje" name="nuevoMensaje" value="${listValue.getMensaje()}" type="text" style="display:none">				
 						</form>
 				</div>
 			</div>
