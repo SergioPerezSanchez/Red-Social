@@ -233,7 +233,7 @@
             <c:out value="${message}"/>
             <form:form method="post" action="photo" enctype="multipart/form-data" commandName="fileFormBean">
            		<td>Modifica tu foto de perfil: </td>
-           		<td><input type="file" name="fichero" /></td>
+           		<td><input type="file" name="fichero" accept="image/jpeg"/></td>
            		<td colspan="2" align="center">
     			<input type="submit" value="Subir fichero"></td>
 			</form:form>

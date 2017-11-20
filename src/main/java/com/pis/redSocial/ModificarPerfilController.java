@@ -73,6 +73,7 @@ private static final Logger logger = LoggerFactory.getLogger(ModificarPerfilCont
 		try{
 			DAOPersona daoPersona = new DAOPersona();
 			daoPersona.update(user);
+			user.decrypt();
 			return new ModelAndView("perfil");
 		}catch (Exception e){
 			e.printStackTrace();
@@ -113,7 +114,7 @@ private static final Logger logger = LoggerFactory.getLogger(ModificarPerfilCont
 			//user.encrypt();
 			DAOPersona daoPersona = new DAOPersona();
 			daoPersona.update(user);
-			
+			user.decrypt();
 			return new ModelAndView("perfil");
 		} catch (Exception e) {
 			e.printStackTrace();
