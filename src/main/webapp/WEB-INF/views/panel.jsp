@@ -65,6 +65,15 @@
 		padding: 30px;  /*tamaño del fondo*/
 		border-radius: 30px; /*forma la borde del fondo*/
 	}
+	.profile-img-card {
+    width: 40px;
+    height: 40px;
+    margin: 0 auto 10px;
+    display: block;
+    -moz-border-radius: 50%;
+    -webkit-border-radius: 50%;
+    border-radius: 50%;
+}
 </style>
 
 	
@@ -101,7 +110,7 @@
 	<div id="panelPanel" style="width:100%;height:80%">
 	      <c:forEach var="listValue" items="${listUsuarios}">
 				<div id="panelUsuario-${listValue.getUsername()}" class="mensaje" style="margin-top:10px;height:100px; width:100%" >
-				<div id="usuario-${listValue.getUsername()}" style="text-align: left" class="col-md-6 col-lg-6 col-xs-6"> ${listValue.getUsername()}</div>
+				<div id="usuario-${listValue.getUsername()}" style="text-align: center" class="col-md-6 col-lg-6 col-xs-6"> <img class="profile-img-card" src="${listValue.getFoto()}"/> ${listValue.getUsername()}</div>
 						<!--  PROMOCIONAR USUARIOS -->
 				<div class="col-md-6 col-lg-6 col-xs-6"  id="panel-${listValue.getUsername()}">
 						<form class="col-md-2 col-lg-2 col-xs-2" style="margin-right: 40px;" action="promocionarUsuario" method="post">

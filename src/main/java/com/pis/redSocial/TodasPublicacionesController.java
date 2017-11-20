@@ -2,6 +2,7 @@ package com.pis.redSocial;
 
 import java.io.IOException;
 import java.text.DateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.LinkedList;
 import java.util.List;
@@ -10,6 +11,7 @@ import java.util.Locale;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import modelo.DAOPersona;
 import modelo.DAOPublicacion;
@@ -67,4 +69,30 @@ private static final Logger logger = LoggerFactory.getLogger(TodasPublicacionesC
 		
 		return "todasPublicaciones";
 	}
-}
+	@RequestMapping(value = "eliminarPublicacion", method = RequestMethod.POST)
+	public ModelAndView eliminar(HttpServletRequest request, HttpServletResponse response, Model model)throws Exception{
+		// NOS TRAEMOS LA LISTA DE USUARIOS EXISTENTES
+		ModelAndView miMAV = new ModelAndView("todasPublicaciones");
+		List<Persona> usuarios =new ArrayList<Persona>();
+		DAOPersona dao = new DAOPersona();
+		usuarios=dao.getAllPersonas();
+		model.addAttribute("listUsuarios", usuarios );
+		DAOPublicacion daoPublicacion = new DAOPublicacion();
+		
+		// TRAIGO LA INFORMACION QUE NECESITO
+		String username;
+		username = request.getParameter("eliminarNombre");
+		String mensaje;
+		mensaje = request.getParameter("eliminarMensaje");
+		String fecha;
+		fecha = request.getParameter("eliminarFecha");
+		
+		// CREAMOS LA PUBLICACION QUE QUEREMOS BORRAR
+		daoPublicacion.borrarPublicacionExacta(username, fecha);
+		LinkedList<Publicacion> publicaciones = daoPublicacion.leerTodasPublicaciones();
+		model.addAttribute("listPublicaciones",publicaciones);
+
+		return miMAV;
+	}
+		
+	}

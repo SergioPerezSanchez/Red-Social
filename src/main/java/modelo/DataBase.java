@@ -247,18 +247,30 @@ protected boolean createPublicacion(Publicacion p) {
     return borrado;
   }
   
-  protected boolean deletePublicacionesUsuario(String username) {
+  protected boolean deletePublicacionExacta(String username, String fecha) {
     db = client.getDatabase(uri.getDatabase());
     dbPublicaciones = db.getCollection("publicaciones");
     elementos = dbPublicaciones.find().iterator();
     while(elementos.hasNext()) {
       aux=elementos.next();
-      if((aux.get("username").toString().equalsIgnoreCase(username))) {
+      if((aux.get("username").toString().equalsIgnoreCase(username))&&(aux.get("fecha").toString().equalsIgnoreCase(fecha))) {
         dbPublicaciones.deleteOne(aux);
       }
     }
     return true;
   }
+  protected boolean deletePublicacionesUsuario(String username) {
+	    db = client.getDatabase(uri.getDatabase());
+	    dbPublicaciones = db.getCollection("publicaciones");
+	    elementos = dbPublicaciones.find().iterator();
+	    while(elementos.hasNext()) {
+	      aux=elementos.next();
+	      if((aux.get("username").toString().equalsIgnoreCase(username))) {
+	        dbPublicaciones.deleteOne(aux);
+	      }
+	    }
+	    return true;
+	  }
   
   protected boolean deleteAllPublicaciones() {
     db = client.getDatabase(uri.getDatabase());
