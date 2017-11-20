@@ -73,6 +73,60 @@ public class MenuController {
 		return "menu";
 	}
 
+	@RequestMapping(value = "eliminarPublicacionPersonal", method = RequestMethod.POST)
+	public ModelAndView eliminar(HttpServletRequest request, HttpServletResponse response, Model model)throws Exception{
+		// NOS TRAEMOS LA LISTA DE USUARIOS EXISTENTES
+		ModelAndView miMAV = new ModelAndView("menu");
+		List<Persona> usuarios =new ArrayList<Persona>();
+		DAOPersona dao = new DAOPersona();
+		usuarios=dao.getAllPersonas();
+		model.addAttribute("listUsuarios", usuarios );
+		DAOPublicacion daoPublicacion = new DAOPublicacion();
+		
+		// TRAIGO LA INFORMACION QUE NECESITO
+		String username;
+		username = request.getParameter("eliminarNombre");
+		String mensaje;
+		mensaje = request.getParameter("eliminarMensaje");
+		String fecha;
+		fecha = request.getParameter("eliminarFecha");
+		
+		// CREAMOS LA PUBLICACION QUE QUEREMOS BORRAR
+		daoPublicacion.borrarPublicacionExacta(username, fecha);
+		HttpSession session=request.getSession();
+		Persona a=(Persona) session.getAttribute("persona");
+		List<Publicacion> publicaciones = daoPublicacion.leerPublicaciones(a.getUsername());
+		model.addAttribute("listPublicacionesPersona", publicaciones );
+
+		return miMAV;
+	}
+	@RequestMapping(value = "editarPublicacionPersonal", method = RequestMethod.POST)
+	public ModelAndView editar(HttpServletRequest request, HttpServletResponse response, Model model)throws Exception{
+		// NOS TRAEMOS LA LISTA DE USUARIOS EXISTENTES
+		ModelAndView miMAV = new ModelAndView("menu");
+		List<Persona> usuarios =new ArrayList<Persona>();
+		DAOPersona dao = new DAOPersona();
+		usuarios=dao.getAllPersonas();
+		model.addAttribute("listUsuarios", usuarios );
+		DAOPublicacion daoPublicacion = new DAOPublicacion();
+		
+		// TRAIGO LA INFORMACION QUE NECESITO
+		String username;
+		username = request.getParameter("eliminarNombre");
+		String mensaje;
+		mensaje = request.getParameter("eliminarMensaje");
+		String fecha;
+		fecha = request.getParameter("eliminarFecha");
+		
+		// CREAMOS LA PUBLICACION QUE QUEREMOS BORRAR
+		daoPublicacion.borrarPublicacionExacta(username, fecha);
+		HttpSession session=request.getSession();
+		Persona a=(Persona) session.getAttribute("persona");
+		List<Publicacion> publicaciones = daoPublicacion.leerPublicaciones(a.getUsername());
+		model.addAttribute("listPublicacionesPersona", publicaciones );
+
+		return miMAV;
+	}
 	
 	@RequestMapping(value = "publicarMensaje", method = RequestMethod.POST)
 	public ModelAndView publicar(HttpServletRequest request, HttpServletResponse response,Model model)throws Exception{
@@ -98,6 +152,7 @@ public class MenuController {
 		}
 		
 	}
+	
 	
 
 }
