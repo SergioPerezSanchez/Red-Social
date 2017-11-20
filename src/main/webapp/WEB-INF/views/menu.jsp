@@ -36,6 +36,7 @@
                     <c:if test = "${persona.isEsAdmin() == true}">
                     <li id="liTodasPublicaciones"><a id="aTodasPublicaciones" >Todas Publicaciones</a></li>
                     <li id="liPanel" ><a id="aPanel"> Panel</a></li>
+                    <li id="liRegistroUser"><a id="aRegistroUser" >Registra Usuario</a></li>
                     </c:if>
                     
                 </ul>
@@ -73,6 +74,9 @@
         </form>
         <form action="panel" method="get">
             <button  id="holaPanel" style="display:none; padding-bottom:10px; float: right;margin: auto;" class="btn btn-warning" type="submit" value="Panel" name="panel" >Volver</button>
+        </form>
+        <form action="registerUsuario" method="get">
+            <button  id="holaRegisterUsuario" style="display:none; padding-bottom:10px; float: right;margin: auto;" class="btn btn-warning" type="submit" value="RegisterUsuario" name="registerusuario" >Volver</button>
         </form>
     </div>
     <style>
@@ -540,6 +544,12 @@
     });
     $('#aPanel').click(function(){
     	$('#holaPanel').click();
+    });
+    $('#liRegistroUser').click(function(){
+    	$('#holaRegisterUsuario').click();
+    });
+    $('#aRegistroUser').click(function(){
+    	$('#holaRegisterUsuario').click();
     });
 </script>
 </body>
