@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+      <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -29,7 +31,10 @@
                     <li id="liPublicacion"><a id="aPublicacion" >Publicaciones</a></li>
                     <li id="liAmistad"><a id="aAmistad" >Amigos</a></li>
                     <li id="liMP"><a id="aMP" >Gente</a></li>
+                    <c:if test = "${persona.isEsAdmin() == true}">
                     <li id="liTodasPublicaciones"><a id="aTodasPublicaciones" >Todas Publicaciones</a></li>
+                    <li id="liPanel" ><a id="aPanel"> Panel</a></li>
+                    </c:if>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
                     <li id="liPerfil" class="active"><a id="aPerfil" ><span class="glyphicon glyphicon-user"></span> Perfil</a></li>
@@ -58,6 +63,9 @@
         </form>
     	<form action="menu" method="get">
             <button  id="holaMenu2" style="display:none; padding-bottom:10px; float: right;margin: auto;" class="btn btn-warning" type="submit" value="Menu" name="menu" >Volver</button>
+        </form>
+        <form action="panel" method="get">
+            <button  id="holaPanel" style="display:none; padding-bottom:10px; float: right;margin: auto;" class="btn btn-warning" type="submit" value="Panel" name="panel" >Volver</button>
         </form>
     </div>
     <!--  FIN PANEL BOTONES INVISIBLES ;D -->
@@ -205,11 +213,11 @@
             <p style="align-content: center; margin:auto; display:table; font-size: 20px; color:grey;">Perfil</p>
          		<img class="profile-img-card" src="${persona.getFoto()}"/>
                 <span id="reauth-email" class="reauth-email"></span>
-               	<p style=" font-size: 20px; color:grey;">Nombre:</p><p><c:out value="${persona}"/>${persona.getNombre()}</p>
-               	<p style=" font-size: 20px; color:grey;">Apellidos:</p><p><c:out value="${persona}"/>${persona.getApellidos()}</p>
-               	<p style=" font-size: 20px; color:grey;">Dirección:</p><p><c:out value="${persona}"/>${persona.getDireccion()}</p>
-               	<p style=" font-size: 20px; color:grey;">Teléfono:</p><p><c:out value="${persona}"/>${persona.getTelefono()}</p>
-               	<p style=" font-size: 20px; color:grey;">Email:</p><p><c:out value="${persona}"/>${persona.getEmail()}</p>
+               	<p style=" font-size: 20px; color:grey;">Nombre:</p><p>${persona.getNombre()}</p>
+               	<p style=" font-size: 20px; color:grey;">Apellidos:</p><p>${persona.getApellidos()}</p>
+               	<p style=" font-size: 20px; color:grey;">Dirección:</p><p>${persona.getDireccion()}</p>
+               	<p style=" font-size: 20px; color:grey;">Teléfono:</p><p>${persona.getTelefono()}</p>
+               	<p style=" font-size: 20px; color:grey;">Email:</p><p>${persona.getEmail()}</p>
                 <div id="remember" class="checkbox">
                   
                 </div>
@@ -274,6 +282,12 @@
     
     $('#aLogout').click(function(){
     	$('#holaMenu2').click();
+    });
+    $('#liPanel').click(function(){
+    	$('#holaPanel').click();
+    });
+    $('#aPanel').click(function(){
+    	$('#holaPanel').click();
     });
 
 </script>

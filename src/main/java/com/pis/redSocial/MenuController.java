@@ -2,6 +2,7 @@ package com.pis.redSocial;
 
 import java.io.IOException;
 import java.text.DateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.LinkedList;
 import java.util.List;
@@ -32,7 +33,10 @@ public class MenuController {
 	public ModelAndView modificar(HttpServletRequest request, HttpServletResponse response)throws Exception{
 		//logger.info("Register page! The client locale is {}.", locale);
 		boolean flag=false;
-		String nombre, apellidos, username, email, password, repitePassword, direccion, telefono, foto;
+		String nombre, apellidos, username, email, password, direccion, telefono, foto;
+		ArrayList<String>amigos=new ArrayList<String>();
+		ArrayList<String>peticiones=new ArrayList<String>();
+		ArrayList<String>peticionesenviadas=new ArrayList<String>();
 		nombre = request.getParameter("inputNombre");
 		apellidos = request.getParameter("inputApellidos");
 		password = request.getParameter("inputPassword");
@@ -41,7 +45,7 @@ public class MenuController {
 		username= request.getParameter("aUser");
 		email=request.getParameter("aEmail");
 		DAOPersona dao = new DAOPersona();
-		Persona p= new Persona(nombre,apellidos, username,email, password, direccion, telefono, "", dao.getPersona(username).isEsAdmin());
+		Persona p= new Persona(nombre,apellidos, username,email, password, direccion, telefono, "", dao.getPersona(username).isEsAdmin(), amigos, peticiones,peticionesenviadas);
 		dao.update(p);
 		return new ModelAndView("menu");
 	}

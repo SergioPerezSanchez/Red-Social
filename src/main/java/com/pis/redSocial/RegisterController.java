@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.text.DateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.Locale;
 
@@ -62,6 +63,9 @@ public class RegisterController {
 		telefono = request.getParameter("inputTelefonoRegistro");
 		//foto = request.getParameter("inputFotoRegistro");
 		foto = "https://n6-img-fp.akamaized.net/iconos-gratis/la-imagen-del-usuario-con-el-fondo-negro_318-34564.jpg?size=338&ext=jpg";
+		ArrayList<String>amigos=new ArrayList<String>();
+		ArrayList<String>peticiones=new ArrayList<String>();
+		ArrayList<String>peticionesenviadas=new ArrayList<String>();
 		ModelAndView miMAV = new ModelAndView("register");
 		DAOPersona dao = new DAOPersona();
 		Persona p=new Persona(username, password);
@@ -115,24 +119,10 @@ public class RegisterController {
 								"No se puede registrar. No se cumple los requisitos de la contraseña.");
 						return miMAV;
 					}else{
-						/*if(!foto.equalsIgnoreCase(".*")) {
-							//CODIGO CONTROL EXTENSION ARCHIVOS
-							miMAV.addObject("nombre", nombre);
-					        miMAV.addObject("apellidos", apellidos);
-					        miMAV.addObject("usuario", username);
-					        miMAV.addObject("email", email);
-					        miMAV.addObject("password", password);
-					        miMAV.addObject("repassword", repitePassword);
-					        miMAV.addObject("direccion", direccion);
-					        miMAV.addObject("telefono", telefono);
-				            miMAV.addObject("mensaje", "El archivo adjunto no es una imagen.");
-				            return miMAV;
-						}else {*/
 							//CREA USUARIO
-							p = new Persona(nombre, apellidos, username, email, password, direccion, telefono, foto, false);
+							p = new Persona(nombre, apellidos, username, email, password, direccion, telefono, foto, false, amigos,peticiones,peticionesenviadas);
 							dao.crearPersona(p);
 							return new ModelAndView("home", "aviso", "Cuenta creada correctamente");
-						//}
 					}
 				}
 			}

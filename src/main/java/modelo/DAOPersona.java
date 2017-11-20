@@ -1,5 +1,6 @@
 package modelo;
 
+import java.util.ArrayList;
 import java.util.LinkedList;
 
 public class DAOPersona {
@@ -52,7 +53,7 @@ public class DAOPersona {
 		return p;
 	}
 	
-	public LinkedList<Persona> getAllPersonas() {
+	public ArrayList<Persona> getAllPersonas() {
 		return db.getAllPersonas();
 	}
 }
