@@ -56,6 +56,26 @@
 		padding: 6px;  /*tamaño del fondo*/
 		border-radius: 30px 0px 30px 0px; /*ángulos de las 4 esquinas del borde/fondo*/
 	}
+		.mensaje{
+		background: #ffffff ;
+		border: 2px solid grey;
+		font: normal normal 12px quicksand;  /*fuente*/
+		color:black;  /*color de la fuente*/
+		letter-spacing: 2px; /*separación entre las letras*/
+		text-align: center; /*alineación del texto*/
+		text-transform: uppercase; /*texto se tpersonaransforma en mayúsculas*/
+		padding: 30px;  /*tamaño del fondo*/
+		border-radius: 30px; /*forma la borde del fondo*/
+	}
+	.profile-img-card {
+    width: 40px;
+    height: 40px;
+    margin: 0 auto 10px;
+    display: block;
+    -moz-border-radius: 50%;
+    -webkit-border-radius: 50%;
+    border-radius: 50%;
+}
 	</style>
         <!--  PANEL BOTONES INVISIBLES ;D -->
     <div id="divBotonesInvisibles" style="display:none">
@@ -86,13 +106,23 @@
       <div class="panel-body">¡Recuerda, está en contra de la ley de protección de datos!</div>
 
     </div>
-	<div id="panelTodasPublicaciones" style="width:100%;height:80%">
-	      <div > <ul>
-			<c:forEach var="listValue" items="${listPublicaciones}">
-				<li>${listValue.getUsername()} ${listValue.getMensaje()}</li>
-			</c:forEach>
-		</ul>
-		</div>
+	<div id="panelTodasPublicaciones" style="width:100%;height:80%"> 	    
+		<c:forEach var="listValue" items="${listPublicaciones}">
+			<div id="panel-${listValue.getUsername()}${listValue.getMensaje()}" class="mensaje" style="margin-top:10px;height:100px; width:100%" >
+				<div id="usuario-${listValue.getUsername()}" style="text-align: center" class="col-md-2 col-lg-2 col-xs-2">${listValue.getUsername()}</div>
+				<div id="mensaje-${listValue.getMensaje()}" style="text-align: center" class="col-md-9 col-lg-9 col-xs-9">${listValue.getMensaje()}</div>
+					<!-- PUBLICACION ELIMINAR -->
+				<div class="col-md-1 col-lg-1 col-xs-1"  id="panel-${listValue.getMensaje()}${listValue.getFecha()}">
+						<!--  ELIMINAR USUARIOS -->
+						<form class="col-md-2 col-lg-2 col-xs-2" action="eliminarPublicacion" method="post">
+						<input name="eliminarMensaje" value="${listValue.getMensaje()}" style="display:none">
+						<input name="eliminarFecha" value="${listValue.getFecha()}" style="display:none">
+						<input name="eliminarNombre" value="${listValue.getUsername()}" style="display:none">
+						<button id="eliminar-${listValue.getUsername()}${listValue.getMensaje()}${listValue.getFecha()}" class="btn btn-danger" name="eliminar-${listValue.getUsername()}">Eliminar</button>
+						</form>
+				</div>
+			</div>
+		</c:forEach>
 	</div>
     </div>
     <script type="text/javascript">

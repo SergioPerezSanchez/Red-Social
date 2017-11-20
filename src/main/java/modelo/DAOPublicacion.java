@@ -25,6 +25,9 @@ public class DAOPublicacion {
 	public boolean borrarPublicacion(Publicacion pub) {
 		return db.deletePublicacion(pub);
 	}
+	public boolean borrarPublicacionExacta(String username, String fecha) {
+		return db.deletePublicacionExacta(username,fecha);
+	}
 	public boolean borrarPublicacionesUsuario(String username) {
 		return db.deletePublicacionesUsuario(username);
 	}

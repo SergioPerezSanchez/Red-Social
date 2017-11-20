@@ -80,6 +80,17 @@
 		padding: 6px;  /*tamaño del fondo*/
 		border-radius: 30px 0px 30px 0px; /*ángulos de las 4 esquinas del borde/fondo*/
 	}
+	.mensaje{
+		background: #ffffff ;
+		border: 2px solid grey;
+		font: normal normal 12px quicksand;  /*fuente*/
+		color:black;  /*color de la fuente*/
+		letter-spacing: 2px; /*separación entre las letras*/
+		text-align: center; /*alineación del texto*/
+		text-transform: uppercase; /*texto se tpersonaransforma en mayúsculas*/
+		padding: 30px;  /*tamaño del fondo*/
+		border-radius: 30px; /*forma la borde del fondo*/
+	}
 	</style>
 
     <div id="divAmigos" style="height: 100%;width:100%; margin-top:-20px; position:absolute" class="col-lg-12 col-md-12 col-xs-12">
