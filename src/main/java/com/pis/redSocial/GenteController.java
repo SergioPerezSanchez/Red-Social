@@ -129,9 +129,10 @@ public class GenteController {
 			
 			p.setPeticiones(peticionesaux);
 			user.setPeticionesenviadas(peticionesenviadas);
-			
 			dao.update(user);
 			dao.update(p);
+			user.decrypt();
+			p.decrypt();
 			personas = dao.getAllPersonas();
 			model.addAttribute("listPersonas", personas);
 			miMAV.addObject("mensaje", "Has enviado la solicitud");
