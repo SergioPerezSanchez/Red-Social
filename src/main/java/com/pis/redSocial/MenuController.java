@@ -68,7 +68,12 @@ public class MenuController {
 		HttpSession session=request.getSession();
 		Persona a=(Persona) session.getAttribute("persona");
 		List<Publicacion> publicaciones = daoPublicacion.leerPublicaciones(a.getUsername());
+		List<String> amigos = a.getAmigos();
+		for (int i = 1; i<amigos.size(); i++) {
+			publicaciones.addAll(daoPublicacion.leerPublicaciones(amigos.get(i)));
+		}
 		model.addAttribute("listPublicacionesPersona", publicaciones );
+		
 		
 		return "menu";
 	}
