@@ -7,9 +7,20 @@ import static org.apache.commons.codec.binary.Base64.decodeBase64;
 import static org.apache.commons.codec.binary.Base64.encodeBase64;
 
 import java.util.ArrayList;
+import java.util.Date;
 
 public class Persona {
 	private String nombre, apellidos, username, email, password, direccion, telefono, foto;
+	private Date fecha;
+
+	public Date getFecha() {
+		return fecha;
+	}
+
+	public void setFecha(Date fecha) {
+		this.fecha = fecha;
+	}
+
 	private boolean esAdmin;
 	private ArrayList<String> amigos =new ArrayList<String>();
 	private ArrayList<String> peticiones=new ArrayList<String>();

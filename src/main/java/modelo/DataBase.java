@@ -41,7 +41,9 @@ public class DataBase {
 					.append("esAdmin", p.isEsAdmin())
 					.append("amigos", p.getAmigos())
 					.append("peticiones",p.getPeticiones())
-					.append("peticionesenviadas", p.getPeticionesenviadas());
+					.append("peticionesenviadas", p.getPeticionesenviadas())
+
+			.append("fecha", p.getFecha());
 			
 			dbUsuarios.insertOne(doc);
 			return true;
