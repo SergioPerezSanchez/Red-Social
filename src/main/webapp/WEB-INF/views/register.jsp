@@ -6,6 +6,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+<script src='https://www.google.com/recaptcha/api.js'></script>
 <script src="http://code.jquery.com/jquery-3.2.1.min.js"
 	integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
 	crossorigin="anonymous"></script>
@@ -192,6 +193,7 @@
 						placeholder="Direccion" required> <input type="text"
 						name="inputTelefonoRegistro" class="form-control"
 						placeholder="Telefono" required>
+						<div class="g-recaptcha" data-sitekey="6Let7joUAAAAAAh-qzDAw9ZhlucMRu48WoMZEZCs"></div>
 						<!--   FOTO DE PERFIL <input
 						type="file" name="inputFotoRegistro" accept="image/*" required> -->
 					<div id="remember" class="checkbox"></div>
