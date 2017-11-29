@@ -39,6 +39,12 @@
 			<version>${org.aspectj-version}</version>
 		</dependency>	
 		
+		<dependency>
+	<groupId>org.glassfish</groupId>
+	<artifactId>javax.json</artifactId>
+	<version>1.0.2</version>
+</dependency>
+		
 		<!-- Logging -->
 		<dependency>
 			<groupId>org.slf4j</groupId>
