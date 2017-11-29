@@ -134,7 +134,7 @@ public class RegisterController {
 							
 						} else 
 							miMAV.addObject("mensaje",
-									"No se puede registrar. No se cumple los requisitos de la contraseña.");
+									"Captcha erroneo.");
 					}
 				}
 			}
