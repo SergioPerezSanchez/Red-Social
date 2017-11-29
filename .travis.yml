@@ -4,10 +4,5 @@ jdk:
 notifications:
   slack: equipo3-pis:heW3XHXrt2LuoYNItXOjNIkN
 deploy:
-  provider: heroku
   api_key:
-    secure: 3037dc9b-fddc-4dc3-8ef7-8310d7680536
-  app: intravita-equipo03
-  on:
-    repo: SergioPerezSanchez/Red-Social
-    branch: master
+    secure: rbE55b+Ddq9B0qKUJepCx5HAqDo8DW6nYaxVi0eS0X6omXU5YHMt60VoeTGktklAv2Vwzi1waESEXUPSOsx/FlLktSVGYlMQl8BThiVYm2TD0Rfy5F9q/AZWbeepKDn+Gq/fbmovcCMR99/cpix1Gy5ud3BxuYQb5Hz+ZDGrO67+kGtrmJyUqtehuLigHDrqWA58jcbB5mBx/z8P6iq/n2t47Qpuh8BaKOsu0PRQwyMi0txEec7kSQNQfJ7h1o1pY1B2mvPf2FIA2p4AWz/gbeIcVYHWfFjVRgcyCu4ZV+HUq0wAdjEPF5vhT1W351bE7BerXpJzWwsO/UtOJmM3OpFkyyK54UtlcZvMQF6r2GMpRJyyhHftodnn9EM1A9WJejrcugkmuybVZXp0O/6kPuucPLMEIQ6UoK5uIDY/ccpgCUB8w03pt4OTOnX5NdZgyD2ZbxLm8+xvLpZ8b05pXBWPBxD1vU54aWRYveDGRXS6KyDv2eAIdSw8pxxy4L4//peFLqvsnZ8jN4URQgRmIwWHcvTkpxeVgq99E8sbA4mRyTtZJkiPwYtuJq1j8orj18azqgALchxC959kCKnPo6/bOzzsdLn/mO5TLV6QwB1iB4073sJmW14Fe1Na9ce9m8ybAsArzkBZ186zCGQ2OMRKQR5Vv4TVxe9E9zLuua4=
