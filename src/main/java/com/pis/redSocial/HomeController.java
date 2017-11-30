@@ -92,7 +92,7 @@ public class HomeController {
 			    if (dias > 1) 
 					return new ModelAndView("passtresmeses", "persona", a);
 			} catch (Exception e) {
-			    e.printStackTrace();
+			    System.out.println("Cuenta antigua");
 			}
 			if(a.isEsAdmin()) {
 				return new ModelAndView("menu", "persona", a);
