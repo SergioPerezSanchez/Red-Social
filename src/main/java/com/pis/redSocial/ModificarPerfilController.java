@@ -73,9 +73,7 @@ private static final Logger logger = LoggerFactory.getLogger(ModificarPerfilCont
 		
 		try{
 			DAOPersona daoPersona = new DAOPersona();
-			user.encrypt();
 			daoPersona.update(user);
-			user.decrypt();
 			session.removeAttribute("persona");
 			session.setAttribute("persona", user);
 			return new ModelAndView("perfil");

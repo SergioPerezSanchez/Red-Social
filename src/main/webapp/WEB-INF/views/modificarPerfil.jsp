@@ -225,7 +225,7 @@
                 Usuario:<input class="form-control" name="aUser" placeholder="${persona.getUsername() }"  disabled > </input>
                 Nombre<input type="text" name="inputNombre" class="form-control" value="${persona.getNombre()}" required> 
                 Apellidos<input type="text" name="inputApellidos" class="form-control" value="${persona.getApellidos()}" required> 
-                Password<input type="password" name="inputPassword" class="form-control" value="${persona.getPassword()}" required> 
+                Password<input type="password" name="inputPassword" class="form-control" required> 
                 Direccion<input type="text" name="inputDireccion" class="form-control" value="${persona.getDireccion()}" required>
                 Telefono<input type="text" name="inputTelefono" class="form-control" value="${persona.getTelefono()}" required >  
 				
