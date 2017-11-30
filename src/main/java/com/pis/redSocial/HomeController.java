@@ -4,6 +4,7 @@ import java.text.DateFormat;
 import java.util.Date;
 import java.util.List;
 import java.util.Locale;
+import java.util.concurrent.TimeUnit;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -71,6 +72,8 @@ public class HomeController {
 		password = request.getParameter("inputPassword");
 		DAOPersona dao = new DAOPersona();
 		Persona p,a;
+	    Date date1;
+	    Date date2 = new Date();
 		p = new Persona(username, password);
 		if(dao.login(p)) {
 			a = dao.getPersona(username);
@@ -79,6 +82,20 @@ public class HomeController {
 			DAOPublicacion daoPublicacion = new DAOPublicacion();
 			List<Publicacion> publicaciones = daoPublicacion.leerPublicaciones(username);
 			model.addAttribute("listPublicacionesPersona", publicaciones );
+			request.getSession().setAttribute("usernombre", a.getNombre());
+			a.setFecha_ultimo_login(new Date());
+			dao.update(a);
+			
+			try {
+				date1 = a.getFecha();
+			    long diff = date2.getTime() - date1.getTime();
+			    int dias = (int) TimeUnit.DAYS.convert(diff, TimeUnit.MILLISECONDS);
+			    System.out.println ("Days: " + dias);
+			    if (dias > 1) 
+					return new ModelAndView("passtresmeses", "persona", a);
+			} catch (Exception e) {
+			    e.printStackTrace();
+			}
 			if(a.isEsAdmin()) {
 				return new ModelAndView("menu", "persona", a);
 			}else {

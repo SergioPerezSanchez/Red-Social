@@ -14,6 +14,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import modelo.DAOPersona;
 import modelo.Persona;
+import modelo.VerifyCaptch;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -69,6 +70,12 @@ public class RegisterController {
 		ModelAndView miMAV = new ModelAndView("register");
 		DAOPersona dao = new DAOPersona();
 		Persona p=new Persona(username, password);
+		
+		String gRecaptchaResponse = request
+				.getParameter("g-recaptcha-response");
+		System.out.println(gRecaptchaResponse);
+		boolean verify = VerifyCaptch.verify(gRecaptchaResponse);
+		
 		if (dao.existeUsername(username)) {
 			miMAV.addObject("nombre", nombre);
 			miMAV.addObject("apellidos", apellidos);
@@ -120,12 +127,20 @@ public class RegisterController {
 						return miMAV;
 					}else{
 							//CREA USUARIO
-							p = new Persona(nombre, apellidos, username, email, password, direccion, telefono, foto, false, amigos,peticiones,peticionesenviadas);
+						if (verify) {
+							p = new Persona(nombre, apellidos, username, email, password, direccion, telefono, foto,
+									false, amigos,peticiones,peticionesenviadas);
+									p.setFecha(new Date());;
 							dao.crearPersona(p);
 							return new ModelAndView("home", "aviso", "Cuenta creada correctamente");
+							
+						} else
+							miMAV.addObject("mensaje",
+									"Captcha erroneo.");
 					}
 				}
 			}
 		}
+		return miMAV;
 	}
 }
