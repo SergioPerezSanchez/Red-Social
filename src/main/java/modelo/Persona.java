@@ -7,9 +7,29 @@ import static org.apache.commons.codec.binary.Base64.decodeBase64;
 import static org.apache.commons.codec.binary.Base64.encodeBase64;
 
 import java.util.ArrayList;
+import java.util.Date;
 
 public class Persona {
 	private String nombre, apellidos, username, email, password, direccion, telefono, foto;
+	private Date fecha_caducidad_password, fecha_ultimo_login;
+	
+
+	public Date getFecha_ultimo_login() {
+		return fecha_ultimo_login;
+	}
+
+	public void setFecha_ultimo_login(Date fecha_ultimo_login) {
+		this.fecha_ultimo_login = fecha_ultimo_login;
+	}
+
+	public Date getFecha() {
+		return fecha_caducidad_password;
+	}
+
+	public void setFecha(Date fecha) {
+		this.fecha_caducidad_password = fecha;
+	}
+
 	private boolean esAdmin;
 	private ArrayList<String> amigos =new ArrayList<String>();
 	private ArrayList<String> peticiones=new ArrayList<String>();

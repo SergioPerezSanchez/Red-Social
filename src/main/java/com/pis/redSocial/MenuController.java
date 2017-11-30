@@ -7,6 +7,7 @@ import java.util.Date;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Locale;
+import java.util.concurrent.TimeUnit;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -49,14 +50,69 @@ public class MenuController {
 		dao.update(p);
 		return new ModelAndView("menu");
 	}
+	
+	@RequestMapping("passtresmeses")
+	public ModelAndView passtresmeses(HttpServletRequest request, HttpServletResponse response)throws Exception{
+		DAOPersona dao = new DAOPersona();
+		String password = request.getParameter("inputPasswordRegistro");
+		String repitePassword = request.getParameter("inputRePasswordRegistro");
+		ModelAndView miMAV = new ModelAndView("menu");
+		String nombre = (String) request.getSession().getAttribute("usernombre");
+		Persona p= (Persona) dao.getPersona(nombre);
+		String oldpassword = p.getPassword();
+		p.setPassword(password);
+		
+		
+		if (!(password.equalsIgnoreCase(repitePassword))) {
+			miMAV.addObject("mensaje",
+					"No se puede registrar. Las contraseñas no coinciden.");
+			miMAV.setViewName("passtresmeses");
+			return miMAV;
+		}if (password.equalsIgnoreCase(oldpassword)) {
+			miMAV.addObject("mensaje",
+					"Escoja una contraseña diferente a la antigua.");
+			miMAV.setViewName("passtresmeses");
+			return miMAV;
+		} else {
+			if (!p.requisitosPassword()) {
+				miMAV.addObject("mensaje",
+						"No se puede registrar. No se cumple los requisitos de la contraseña.");
+				miMAV.setViewName("passtresmeses");
+				return miMAV;
+			}else{
+				p.setFecha(new Date());
+				dao.update(p);				
+				miMAV.addObject("mensaje",
+						"Contraseña cambiada.");	
+			}
+		}
+		return miMAV;		
+		
+	}
 
 	/**
 	 * Simply selects the home view to render by returning its name.
+	 * @throws Exception 
 	 */
 
 	@RequestMapping(value = "menu", method = RequestMethod.GET)
-	public String menu(HttpServletRequest request, Locale locale, Model model) {
+	public String menu(HttpServletRequest request, Locale locale, Model model) throws Exception {
+	    Date date1;
+	    Date date2 = new Date();
+	    DAOPersona dao = new DAOPersona();
+	    Persona e = dao.getPersona((String) request.getSession().getAttribute("usernombre"));
 		logger.info("Register page! The client locale is {}.", locale);
+		
+		try {
+			date1 = e.getFecha();
+		    long diff = date2.getTime() - date1.getTime();
+		    int dias = (int) TimeUnit.DAYS.convert(diff, TimeUnit.MILLISECONDS);
+		    System.out.println ("Days: " + dias);
+		    if (dias > 1) 
+				return "passtresmeses";
+		} catch (Exception x) {
+		    x.printStackTrace();
+		}
 		
 		Date date = new Date();
 		DateFormat dateFormat = DateFormat.getDateTimeInstance(DateFormat.LONG, DateFormat.LONG, locale);
@@ -69,6 +125,7 @@ public class MenuController {
 		Persona a=(Persona) session.getAttribute("persona");
 		List<Publicacion> publicaciones = daoPublicacion.leerPublicaciones(a.getUsername());
 		model.addAttribute("listPublicacionesPersona", publicaciones );
+		System.out.println("ewf");
 		
 		return "menu";
 	}

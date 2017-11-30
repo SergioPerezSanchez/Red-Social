@@ -148,9 +148,6 @@
 	<%
 		HttpSession sesion = request.getSession();
 		Persona p= (Persona)sesion.getAttribute("persona");
-		if(p!=null){
-			response.sendRedirect("menu");
-		}
 	%>
 	<script language="JavaScript" type="text/javascript">
 		if ("${mensaje}" != "") {
@@ -163,24 +160,17 @@
 
 
 		<div class="container">
-			<h1 style="color: white">Regístrate en Intravita</h1>
-			<p style="font-size: 20px; color: white">Introduce tus datos
-				personales a continuación</p>
+			<h1 style="color: white">Cambiar contraseña</h1>
+			<p style="font-size: 20px; color: white">Cambiar contraseña</p>
 			<div class="card card-container">
 				<p
-					style="align-content: center; margin: auto; display: table; font-size: 20px; color: grey;">Registro</p>
+					style="align-content: center; margin: auto; display: table; font-size: 20px; color: grey;">Cambiar contraseña</p>
 				<!-- <img class="profile-img-card" src="//lh3.googleusercontent.com/-6V8xOA6M7BA/AAAAAAAAAAI/AAAAAAAAAAA/rzlHcD0KYwo/photo.jpg?sz=120" alt="" /> -->
-				<form action="crearUsuario" method="post" class="form-signin"
+				<form action="passtresmeses" method="post" class="form-signin"
 					name="form1">
-					<span id="reauth-email" class="reauth-email"></span> <input
-						type="text" name="inputNombreRegistro" class="form-control"
-						placeholder="Nombre" required> <input type="text"
-						name="inputApellidosRegistro" class="form-control"
-						placeholder="Apellidos" required> <input type="text"
-						name="inputUsernameRegistro" class="form-control"
-						placeholder="Username" required> <input type="email"
-						name="inputEmailRegistro" class="form-control"
-						placeholder="Email address" required> <input
+					<span id="reauth-email" class="reauth-email"></span> 
+					Han pasado 3 meses desde que cambió su contraseña por ultima vez
+					 y debe cambiarla de nuevo.<input
 						type="password" id="inputPasswordRegistro"
 						name="inputPasswordRegistro" class="form-control"
 						placeholder="Password" required> La contraseña debe tener
@@ -188,12 +178,7 @@
 					dígito, una letra mayúscula y una letra minúscula. <input
 						type="password" id="inputRePasswordRegistro"
 						name="inputRePasswordRegistro" class="form-control"
-						placeholder="Repita Password" required> <input type="text"
-						name="inputDireccionRegistro" class="form-control"
-						placeholder="Direccion" required> <input type="text"
-						name="inputTelefonoRegistro" class="form-control"
-						placeholder="Telefono" required>
-						<div class="g-recaptcha" data-sitekey="6Ld6GTsUAAAAALXdX-VJcCLh-DCasqovNq8Z7Mi8"></div>
+						placeholder="Repita Password" required> 
 						<!--   FOTO DE PERFIL <input
 						type="file" name="inputFotoRegistro" accept="image/*" required> -->
 					<div id="remember" class="checkbox"></div>
@@ -206,25 +191,20 @@
 					<button type="submit">Subir foto</button></td>
 				</form> -->
 				<div id="remember" class="checkbox"></div>
-				<form action="home.jsp" method="get">
+				<form action="exit" method="get">
+				
+				
 					<button
 						style="padding-bottom: 10px; float: right; margin: auto; display: table;"
-						class="btn btn-warning" type="submit" value="Home" name="home">Volver</button>
+						class="btn btn-warning" type="submit" value="Home" name="home" href="exit">Volver</button>
 				</form>
 			</div>
 			<!-- /card-container -->
 		</div>
 	</div>
 	<script language="JavaScript" type="text/javascript">
-		document.form1.inputNombreRegistro.value = "${nombre}";
-		document.form1.inputApellidosRegistro.value = "${apellidos}";
-		document.form1.inputUsernameRegistro.value = "${usuario}";
-		document.form1.inputEmailRegistro.value = "${email}";
 		document.form1.inputPasswordRegistro.value = "${password}";
 		document.form1.inputRePasswordRegistro.value = "${repassword}";
-		document.form1.inputDireccionRegistro.value = "${direccion}";
-		document.form1.inputTelefonoRegistro.value = "${telefono}";
-		document.form1.inputFotoRegistro.value = "${foto}";
 	</script>
 </body>
 </html>
