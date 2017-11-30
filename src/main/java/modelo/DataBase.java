@@ -45,6 +45,7 @@ public class DataBase {
 					.append("fecha", p.getFecha())
 					.append("fecha_ultimo_login", p.getFecha_ultimo_login());
 			
+			
 			dbUsuarios.insertOne(doc);
 			return true;
 		}catch(Exception ex) {

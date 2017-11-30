@@ -12,6 +12,7 @@ import java.util.Date;
 public class Persona {
 	private String nombre, apellidos, username, email, password, direccion, telefono, foto;
 	private Date fecha_caducidad_password, fecha_ultimo_login;
+	
 
 	public Date getFecha_ultimo_login() {
 		return fecha_ultimo_login;
