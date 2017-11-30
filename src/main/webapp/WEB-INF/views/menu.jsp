@@ -21,6 +21,11 @@
 			response.sendRedirect("home.jsp");
 		}
 	%>
+	<script language="JavaScript" type="text/javascript">
+		if ("${mensaje}" != "") {
+			alert("${mensaje}");
+		}
+	</script>
     <div id="navBar">
         <nav class="navbar navbar-inverse">
             <div class="container-fluid">

@@ -69,9 +69,11 @@ private static final Logger logger = LoggerFactory.getLogger(ModificarPerfilCont
 		user.setPassword(password);
 		user.setDireccion(direccion);
 		user.setTelefono(telefono);
+		user.setFecha(new Date());
 		
 		try{
 			DAOPersona daoPersona = new DAOPersona();
+			user.encrypt();
 			daoPersona.update(user);
 			user.decrypt();
 			session.removeAttribute("persona");
