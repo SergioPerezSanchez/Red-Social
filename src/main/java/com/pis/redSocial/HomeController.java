@@ -83,6 +83,8 @@ public class HomeController {
 			List<Publicacion> publicaciones = daoPublicacion.leerPublicaciones(username);
 			model.addAttribute("listPublicacionesPersona", publicaciones );
 			request.getSession().setAttribute("usernombre", a.getNombre());
+			a.setFecha_ultimo_login(new Date());
+			dao.update(a);
 			
 			try {
 				date1 = a.getFecha();
