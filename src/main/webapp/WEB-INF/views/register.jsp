@@ -193,7 +193,7 @@
 						placeholder="Direccion" required> <input type="text"
 						name="inputTelefonoRegistro" class="form-control"
 						placeholder="Telefono" required>
-						<div class="g-recaptcha" data-sitekey="6Let7joUAAAAAAh-qzDAw9ZhlucMRu48WoMZEZCs"></div>
+						<div class="g-recaptcha" data-sitekey="6Ld6GTsUAAAAALXdX-VJcCLh-DCasqovNq8Z7Mi8"></div>
 						<!--   FOTO DE PERFIL <input
 						type="file" name="inputFotoRegistro" accept="image/*" required> -->
 					<div id="remember" class="checkbox"></div>
