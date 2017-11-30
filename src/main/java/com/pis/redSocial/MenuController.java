@@ -80,6 +80,7 @@ public class MenuController {
 				miMAV.setViewName("passtresmeses");
 				return miMAV;
 			}else{
+				p.setFecha(new Date());
 				dao.update(p);				
 				miMAV.addObject("mensaje",
 						"Contraseña cambiada.");	
