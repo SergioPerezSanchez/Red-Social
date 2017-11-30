@@ -42,8 +42,8 @@ public class DataBase {
 					.append("amigos", p.getAmigos())
 					.append("peticiones",p.getPeticiones())
 					.append("peticionesenviadas", p.getPeticionesenviadas())
-
-			.append("fecha", p.getFecha());
+					.append("fecha", p.getFecha())
+					.append("fecha_ultimo_login", p.getFecha_ultimo_login());
 			
 			dbUsuarios.insertOne(doc);
 			return true;
