@@ -130,7 +130,7 @@ public class RegisterController {
 						if (verify) {
 							p = new Persona(nombre, apellidos, username, email, password, direccion, telefono, foto,
 									false, amigos,peticiones,peticionesenviadas);
-									p.setFecha(new Date());;
+									p.setFecha(new Date());
 							dao.crearPersona(p);
 							return new ModelAndView("home", "aviso", "Cuenta creada correctamente");
 							
